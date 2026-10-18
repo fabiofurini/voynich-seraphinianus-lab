@@ -1,7 +1,6 @@
 # Beyond the Signs
 
 **An open, reproducible research notebook on the Voynich manuscript and the Codex Seraphinianus.**
-*(Original Italian title: “Oltre i segni”.)*
 
 [**Website**](https://fabiofurini.github.io/voynich-seraphinianus-lab/) · [Status](STATUS.md) · [Hypotheses](HYPOTHESES.md) · [Experiments](EXPERIMENTS.md) · [Reports](reports/README.md) · [Reproduce](REPRODUCIBILITY.md) · [Roadmap](ROADMAP.md) · [Contribute](CONTRIBUTING.md)
 
