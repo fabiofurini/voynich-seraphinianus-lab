@@ -1,0 +1,1 @@
+# Voynich & Seraphinianus Lab\n\nPublic research notebook by Fabio Furini. Structured Markdown, reproducible experiments and a companion GitHub Pages website. Initial upload in progress.\n
