@@ -1,7 +1,7 @@
 import pathlib,json,random,re,unicodedata
 P=pathlib.Path(__file__).parent
 ns={'__file__':str(P/'run.py')};exec((P/'run.py').read_text().split('out={}')[0],ns)
-rows=ns['rows'];score=ns['score'];base=P.parent/'Voynich_test_sostituzione/sources'
+rows=ns['rows'];score=ns['score'];base=P.parent/'substitution_attack/sources'
 for lang in ['latin','italian']:
  try:s=(base/('crib_'+lang+'.txt')).read_text(encoding='utf-8-sig')
  except UnicodeDecodeError:s=(base/('crib_'+lang+'.txt')).read_text(encoding='latin-1')

@@ -1,26 +1,48 @@
 # Hypothesis register
 
-[Home](README.md) · [Stato](STATUS.md) · [Ipotesi](HYPOTHESES.md) · [Esperimenti](EXPERIMENTS.md) · [Metodo](REPRODUCIBILITY.md) · [Documenti](reports/README.md) · [Roadmap](ROADMAP.md)
+[Home](README.md) · [Status](STATUS.md) · [Hypotheses](HYPOTHESES.md) · [Experiments](EXPERIMENTS.md) · [Reports](reports/README.md) · [Reproduce](REPRODUCIBILITY.md) · [Roadmap](ROADMAP.md)
 
-Every negative result is scoped to a model, dataset and representation. “Not supported” is not the same as “disproved”.
+Every negative result is scoped to a model, a dataset and a representation. “Not supported” is not the same as “disproved”.
 
-|ID|Hypothesis / prediction|Assessment|Evidence|
+| ID | Hypothesis or prediction | Assessment | Evidence |
 |---|---|---|---|
-|H01|A fixed one-to-one substitution preserving spaces yields ordinary Italian or Latin under our selected glyph units|Disfavoured, not exhaustively falsified|Calibrated search succeeds on controls, not Voynich; key-invariant repeat/transition differences|
-|H02|There are no repeatable local rules|Contradicted for the sampled transcriptions|Held-out local predictors improve strongly over marginals|
-|H03|Local predictability alone demonstrates a meaningful human language|Not a valid discriminant in these tests|The artistic Seraphinianus transcription also has this property|
-|H04|Voynich and Seraphinianus are statistically equivalent|Not established|Some shared patterns, stable differences, OCR uncertainty; no equivalence test|
-|H05|Voynich never benefits from more than two previous units|Too strong; contradicted by the connected-EVA sensitivity variant|Small positive gains remain under some segmentations|
-|H06|Prefix compatibility adds substantial predictive information beyond the immediate suffix context|Not supported in the tested Voynich2-unit model|Combined gain ≈0.001bit/suffix; does not generalize to new forms|
-|H07|The tested2-state PCFG predicts Voynich suffix classes better than HMM2|Contradicted on the held-out split|PCFG−HMM +0.0193bit/token; page-bootstrap95% [+0.0065,+0.0343]|
-|H08|Seraphinianus OCR is sufficiently accurate to treat every repeated character count as ground truth|Not justified|Label comparisons expose count/segmentation disagreement|
-|H09|The manuscript has no recoverable meaning|Open|No experiment here establishes this|
-|H10|Moro's constraints are respected or violated in the codes|Open; not directly testable with current representation|No identified syntax, utterance boundaries or morphosyntactic units|
+| H01 | A fixed one-to-one substitution that keeps spaces yields ordinary Italian or Latin under our glyph units | Disfavoured, not exhaustively falsified | The calibrated search recovers both controls but not the Voynich; key-invariant differences in repeats and transitions |
+| H02 | There are no repeatable local rules | Contradicted for the sampled transcriptions | Held-out local predictors improve strongly over glyph frequencies |
+| H03 | Local predictability alone shows a meaningful human language | Not a valid discriminant in these tests | The artistic Seraphinianus transcription has the same property |
+| H04 | Voynich and Seraphinianus are statistically equivalent | Not established | Some shared patterns, stable differences, OCR uncertainty; no equivalence test |
+| H05 | The Voynich never benefits from more than two previous units | Too strong; contradicted by the connected-EVA variant | Small positive gains remain under some segmentations |
+| H06 | Prefix compatibility adds substantial information beyond the immediate suffix context | Not supported in the tested 2-unit Voynich model | Combined gain ≈ 0.001 bits per suffix; does not generalise to new forms |
+| H07 | The tested 2-state PCFG predicts Voynich suffix classes better than a 2-state HMM | Contradicted on the held-out split | PCFG − HMM = +0.0193 bits/token; page bootstrap 95% [+0.0065, +0.0343] |
+| H08 | The Seraphinianus OCR is accurate enough to treat every repeated-character count as ground truth | Not justified | Label comparisons expose count and segmentation disagreements |
+| H09 | The manuscript has no recoverable meaning | Open | No experiment here establishes this |
+| H10 | The text respects or violates Moro's constraints | Open; not directly testable with the current representation | No identified syntax, utterance boundaries or morphosyntactic units |
+
+## Conjectures under study
+
+These are leads, not results. Each lists what motivates it and what could refute it.
+
+| ID | Conjecture | Motivation | What would refute it |
+|---|---|---|---|
+| C1 | Words are built as prefix + base + suffix, or by extensions `X → aX`, `X → Xa` | All 36 combinations of six starts and six endings occur ([patterns](research/patterns/README.md)) | Units learned on training pages that do not reproduce the families; note that finite-state machines generate such forms too |
+| C2 | Line-final `m` is a positional variant of `r` | m → r turns 74.7% of held-out cases into known words, against 42.6% unchanged | Already weakened: the best substitute changes with comma handling, and labels `otalar` / `otalam` coexist on f70v2 ([report](reports/2026-10-17-controls-and-sections.md)) |
+| C3 | `qo` and `iin` are single signs | q is followed by o 98% of the time; in/iin/iiin occur 1,601/3,688/149 times | Segmentation comparisons on identical held-out targets |
+| C4 | Gallows glyphs mark paragraph starts | 89.4% of paragraph-initial words vs. 8.5% of other line-initial words; 169 of 178 pages agree | Image-level checks showing the effect is a transcription artefact |
+| C5 | Zodiac labels name objects | `okeodaly` on both Taurus pages (f71v, f72r1) | Both folios share a bifolio, so this is one observation |
+| C6 | The text was produced by a local process | Weak long-range context, full prefix–suffix combinability, section-wise drift | A stable hierarchical or long-distance effect on held-out pages |
 
 ## Candidate compositional rules
 
-`word → prefix + base + suffix`, or extensions `X → aX` / `X → Xa`, with compatibility classes. Examples such as `okaiin` and `qokaiin` motivate testing, not a morphological interpretation. Fixed concatenation trees can be generated by finite-state mechanisms; merely drawing a tree is not evidence of human structural dependency.
+`word → prefix + base + suffix`, or extensions `X → aX` / `X → Xa`, with compatibility classes. Examples such as `okaiin` and `qokaiin` motivate testing, not a morphological interpretation. Fixed concatenation trees can be generated by finite-state mechanisms; drawing a tree is not evidence of human structural dependency.
 
 ## What would change our view?
 
-A stable hierarchical predictive advantage on held-out pages, independently validated segmentation, robust longer-distance dependencies beyond layout/section effects, or an externally anchored decipherment that generalizes without ad hoc choices would all challenge a purely local generative account.
+Any of these would challenge a purely local generative account:
+
+- a stable hierarchical predictive advantage on held-out pages;
+- independently validated segmentation;
+- robust long-distance dependencies beyond layout and section effects;
+- an externally anchored decipherment that generalises without ad hoc choices.
+
+## The wider debate
+
+The website's [hypotheses page](https://fabiofurini.github.io/voynich-seraphinianus-lab/hypotheses.html#debate) summarises the established facts (radiocarbon dating, Currier languages, scribal hands) and the four main families of explanation in the literature, with references.

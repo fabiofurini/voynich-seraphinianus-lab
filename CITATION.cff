@@ -1,11 +1,20 @@
 cff-version: 1.2.0
 message: "Please cite this exploratory software and report; do not describe it as a decipherment."
-title: "Oltre i segni: Voynich e Seraphinianus"
+title: "Beyond the Signs: an open research notebook on the Voynich manuscript and the Codex Seraphinianus"
+abstract: "Reproducible statistical experiments on the Voynich manuscript, with the Codex Seraphinianus, Latin and Italian as comparison corpora: matched context models, word-structure tests, calibrated PCFG versus HMM comparisons, a simple-substitution attack with positive controls, and a public register of hypotheses and failed calibrations."
 authors:
   - family-names: Furini
     given-names: Fabio
 type: software
-version: 0.1.0
+version: 0.2.0
 date-released: 2026-10-18
 license: MIT
 repository-code: https://github.com/fabiofurini/voynich-seraphinianus-lab
+url: https://fabiofurini.github.io/voynich-seraphinianus-lab/
+keywords:
+  - Voynich manuscript
+  - Codex Seraphinianus
+  - undeciphered scripts
+  - computational linguistics
+  - information theory
+  - reproducibility

@@ -1,0 +1,344 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Results · Beyond the Signs</title>
+<meta name="description" content="Measured results on the Voynich manuscript and Codex Seraphinianus, with charts, tables and limits.">
+<meta name="theme-color" content="#101d1a">
+<link rel="icon" href="assets/mark.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="styles.css">
+<script defer src="app.js"></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header>
+  <a class="brand" href="index.html"><img src="assets/mark.svg" width="30" height="30" alt=""><span>BEYOND<span class="brand-light"> THE SIGNS</span></span></a>
+  <button id="menu" aria-controls="navigation" aria-expanded="false">Menu ☰</button>
+  <nav id="navigation" aria-label="Main">
+    <a href="index.html">The story</a>
+    <a href="results.html" aria-current="page">Results</a>
+    <a href="lab.html">Lab</a>
+    <a href="methods.html">Methods &amp; tests</a>
+    <a href="hypotheses.html">Hypotheses</a>
+    <a class="nav-repo" href="https://github.com/fabiofurini/voynich-seraphinianus-lab">GitHub ↗</a>
+  </nav>
+</header>
+
+<main id="main">
+<section class="page-hero">
+  <div class="wrap">
+    <div class="eyebrow"><span class="dot"></span> Results · snapshot of 18 October 2026</div>
+    <h1>What the numbers<br><em>actually say.</em></h1>
+    <p class="lead">Six findings, each stated first in plain words. Open the panels under each one for the linguistic reading and the statistical detail. Every value comes from a script in the repository.</p>
+    <div class="metric-row">
+      <div class="metric"><b>5</b><span>corpora compared: 2 Voynich codings, Seraphinianus OCR, Latin, Italian</span></div>
+      <div class="metric"><b>3</b><span>independent page splits for the main test</span></div>
+      <div class="metric"><b>2,000</b><span>page-bootstrap resamples for the grammar test</span></div>
+      <div class="metric"><b>199–1,999</b><span>permutations per null model</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- 1. context gain -->
+<section class="band" id="context">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow">Finding 1 · the most robust result</div>
+        <h2>One more glyph of context<br><em>helps almost nothing.</em></h2>
+      </div>
+      <p>We predict the next glyph inside a word from the two, then the three, glyphs before it. The gain from that extra glyph tells us how much information sits further back.</p>
+    </div>
+
+    <div class="chart-card">
+      <div class="chart-toolbar">
+        <div>
+          <h3 id="gain-title">Gain from order 2 to order 3, bits per glyph</h3>
+          <p id="gain-sub">Each dot is one page split; the bar spans the lowest and highest split.</p>
+        </div>
+        <div class="segmented" role="group" aria-label="Chart view">
+          <button class="selected" id="gain-view" aria-pressed="true">Gain</button>
+          <button id="curve-view" aria-pressed="false">Full curve</button>
+        </div>
+      </div>
+      <div id="gain-chart" class="chart" role="img" aria-labelledby="gain-title gain-sub"><p class="chart-note">Loading the chart…</p></div>
+      <div class="legend" aria-hidden="true">
+        <span><i style="background:var(--voynich)"></i>Voynich (two codings)</span>
+        <span><i style="background:var(--seraph)"></i>Codex Seraphinianus (OCR)</span>
+        <span><i style="background:var(--control)"></i>Latin and Italian controls</span>
+      </div>
+      <div class="table-scroll">
+        <table>
+          <caption>Matched samples: the same number of words of each length (4–10 units) in every corpus. Interpolated back-off models, smoothing chosen on validation pages.</caption>
+          <thead><tr><th>Corpus</th><th class="num">Gain, min–max (bits)</th><th class="num">Mean entropy, order 2</th><th class="num">Mean entropy, order 3</th></tr></thead>
+          <tbody>
+            <tr><td>Voynich, EVA</td><td class="num">0.0003–0.0014</td><td class="num">1.9998</td><td class="num">1.9988</td></tr>
+            <tr><td>Voynich, connected EVA units</td><td class="num">0.0034–0.0146</td><td class="num">2.0143</td><td class="num">2.0071</td></tr>
+            <tr><td>Codex Seraphinianus, OCR</td><td class="num">0.0878–0.1052</td><td class="num">2.0392</td><td class="num">1.9420</td></tr>
+            <tr><td>Latin (Celsus, <i>De medicina</i>)</td><td class="num">0.3189–0.3844</td><td class="num">2.8926</td><td class="num">2.5413</td></tr>
+            <tr><td>Italian (Murri)</td><td class="num">0.2955–0.3425</td><td class="num">2.8722</td><td class="num">2.5530</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <details class="levels">
+      <summary>What it means for a linguist <span class="level-tag">LINGUISTICS</span></summary>
+      <div class="body">
+        <p>In Latin and Italian, the third glyph back still constrains the next one: spelling and morphology carry information over several letters. In the Voynich, almost all of the predictable structure is already captured by the two preceding glyphs. Words behave as if built from short, locally chained pieces.</p>
+        <p>This does not show the absence of language. A syllabic script, a verbose cipher in which one sound is written with several glyphs, or a wrong segmentation of glyphs would all compress information into short local patterns. Grouping six connected EVA glyph clusters into single units already raises the gain from about 0.001 to about 0.009 bits.</p>
+      </div>
+    </details>
+    <details class="levels">
+      <summary>Statistical detail <span class="level-tag">STATISTICS</span></summary>
+      <div class="body">
+        <p>Three page-level splits (seeds 19201–19203), 60% training, 20% validation, 20% test. 1,104–1,139 training words and 270–301 test words per split; 874–1,070 internal test glyphs. Pseudo-pages for controls are blocks of 150 words. Models of order 0–5 with interpolated back-off; back-off strength chosen on validation from {0.1, 1, 10, 100, 1000}. Scored only on true glyphs from the fourth position of a word, identical for all orders; train-derived alphabet with an unknown class.</p>
+        <p>For raw EVA, all three page-bootstrap intervals for the gain include zero. For connected EVA, two of three exclude zero. The min–max range across overlapping splits is not a confidence interval, and no correction for multiple comparisons has been applied.</p>
+      </div>
+    </details>
+  </div>
+</section>
+
+<!-- 2. sections -->
+<section class="band band-alt" id="sections">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow">Finding 2</div>
+        <h2>The text changes<br><em>with the pictures.</em></h2>
+      </div>
+      <p>We took pages written by the same scribe in the same “dialect” (Currier B) and asked whether 30 words were enough to tell a herbal page from a bathing page.</p>
+    </div>
+    <div class="pair">
+      <figure>
+        <img src="assets/img/f34r.jpg" alt="Herbal page f34r: a plant with large leaves and roots." loading="lazy">
+        <figcaption><b>Herbal (H)</b> · 20 pages in the test set. Example: f34r.</figcaption>
+      </figure>
+      <figure>
+        <img src="assets/img/f78r.jpg" alt="Balneological page f78r: figures bathing in connected pools." loading="lazy">
+        <figcaption><b>Balneological (B)</b> · 19 pages in the test set. Example: f78r.</figcaption>
+      </figure>
+    </div>
+    <div class="tab-card">
+      <h3>A naive Bayes classifier, leaving out one bifolio group at a time</h3>
+      <p class="summary-line">Hand 2, Currier B, 39 pages. Vocabulary built from training groups only.</p>
+      <div class="table-scroll">
+        <table>
+          <thead><tr><th>Information used</th><th class="num">Pages correct</th><th class="num">Balanced accuracy</th></tr></thead>
+          <tbody>
+            <tr><td>Whole words</td><td class="num">34 / 39</td><td class="num">87.4%</td></tr>
+            <tr><td>Only the last EVA glyph of each word</td><td class="num">34 / 39</td><td class="num">87.5%</td></tr>
+            <tr><td>Only the last two EVA glyphs</td><td class="num">33 / 39</td><td class="num">85.0%</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="caveat">
+      <h3>Why this is not proof of meaning</h3>
+      <p>Word endings alone classify as well as whole words. And every bathing page in this sample comes from one quire (M), while the herbal pages come from others. Subject and physical position in the book are therefore confounded: a change of spelling habit over time would produce the same result.</p>
+    </div>
+    <details class="levels">
+      <summary>Statistical detail <span class="level-tag">STATISTICS</span></summary>
+      <div class="body">
+        <p>Multinomial naive Bayes, add-one smoothing, uniform class prior. Leave-one-group-out over 10 groups defined by quire and bifolio number. 30 tokens per page sampled without replacement from line-internal positions; first and last words and uncertain lines excluded. Main seed 20261017. Over 30 resamplings, median balanced accuracy is 92.5% for words (range 82.2–97.5%) and 84.8% for final glyphs (74.5–95.0%). Permutation reference with labels shuffled by bifolio group: 1,999 permutations, empirical p = 0.012. That null does not control for quire.</p>
+      </div>
+    </details>
+  </div>
+</section>
+
+<!-- 3. hierarchy -->
+<section class="band" id="hierarchy">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow">Finding 3</div>
+        <h2>A tree-shaped grammar<br><em>does not beat a chain.</em></h2>
+      </div>
+      <p>Human syntax nests phrases inside phrases. We compared a small probabilistic grammar that builds trees (PCFG) with a model that only chains states left to right (HMM), on the same lines of text.</p>
+    </div>
+    <div class="chart-card">
+      <div class="chart-toolbar">
+        <div>
+          <h3 id="hier-title">PCFG minus HMM, test bits per token</h3>
+          <p id="hier-sub">Right of zero: the tree grammar predicts worse. Whiskers: 95% page-bootstrap interval.</p>
+        </div>
+      </div>
+      <div id="hier-chart" class="chart" style="min-height:180px" role="img" aria-labelledby="hier-title hier-sub"></div>
+      <div class="table-scroll">
+        <table>
+          <thead><tr><th>Corpus</th><th class="num">PCFG (bits/token)</th><th class="num">HMM (bits/token)</th><th class="num">PCFG − HMM</th><th class="num">95% interval</th></tr></thead>
+          <tbody>
+            <tr><td>Voynich</td><td class="num">2.312988</td><td class="num">2.293697</td><td class="num">+0.019291</td><td class="num">[+0.006544, +0.034324]</td></tr>
+            <tr><td>Codex Seraphinianus, OCR</td><td class="num">2.075637</td><td class="num">2.079046</td><td class="num">−0.003408</td><td class="num">[−0.008042, +0.000793]</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="caveat">
+      <h3>We nearly published a false negative</h3>
+      <p>The first version of this test failed its own sanity check: on synthetic text generated by a known tree grammar, it could not find the tree. We kept that failure in the record. A stronger fit with more restarts then recovered the synthetic grammar (0.8755 bits against 0.8758 for the true grammar and 0.8991 for the HMM). Only then did we run it on the manuscripts.</p>
+    </div>
+    <details class="levels">
+      <summary>What it means for a linguist <span class="level-tag">LINGUISTICS</span></summary>
+      <div class="body">
+        <p>The models see each word only as one of six suffix classes (five frequent endings plus “other”) and have two latent states each. Lines are treated as units, but we do not know that a line is a sentence. The result rejects one specific prediction: this two-state grammar on this representation. It says nothing about richer grammars, other units, or Andrea Moro's structure-dependence constraints, which would first require knowing what the syntactic units are.</p>
+      </div>
+    </details>
+    <details class="levels">
+      <summary>Statistical detail <span class="level-tag">STATISTICS</span></summary>
+      <div class="body">
+        <p>Lines of 4–14 words; page split 60/20/20; training capped at 1,200 lines. Four initialisations (seeds 13, 29, 43, 61), up to 100 EM iterations, Dirichlet(0.3) initialisation, smoothing 0.1, model selection on validation for both PCFG and HMM. 2,000 paired bootstrap resamples over 40 Voynich and 57 Seraphinianus test pages. Length-conditional probabilities and PCFG normalisation were checked by enumerating every binary string of length 1–5.</p>
+      </div>
+    </details>
+  </div>
+</section>
+
+<!-- 4. substitution -->
+<section class="band band-alt" id="cipher">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow">Finding 4</div>
+        <h2>The codebreaker works.<br><em>Just not here.</em></h2>
+      </div>
+      <p>Could the herbal section be Latin or Italian written in a secret alphabet, one glyph per letter? We built a solver, proved it on known ciphers, then turned it on the manuscript.</p>
+    </div>
+    <div class="chart-card">
+      <div class="chart-toolbar">
+        <div>
+          <h3 id="sub-title">Share of decoded words found in the reference vocabulary</h3>
+          <p id="sub-sub">Words of three or more letters, held-out pages. Controls are real text enciphered with a random alphabet.</p>
+        </div>
+      </div>
+      <div id="sub-chart" class="chart" style="min-height:220px" role="img" aria-labelledby="sub-title sub-sub"></div>
+      <p class="chart-note">On both controls the solver recovered 100% of the letter mapping. For the Voynich there is no true text to compare against; the decoded strings are mechanical output, not readings.</p>
+    </div>
+    <details class="levels">
+      <summary>What it means for a linguist <span class="level-tag">LINGUISTICS</span></summary>
+      <div class="body">
+        <p>A key-independent check points the same way. A one-to-one substitution keeps repeated letters repeated, so a triple glyph must come from a triple letter. 39 of 3,844 Voynich words contain one; the Latin text has 0 of 7,595 and the Italian 1 of 19,118. Treating <span class="eva">iin</span>-type stroke groups as single glyphs would change this, so the result is tied to our choice of 23 units.</p>
+        <p>The test excludes only this family of ciphers: simple substitution, spaces kept, these two languages, these units. Homophonic ciphers, syllabaries, abbreviation systems and other languages remain untested.</p>
+      </div>
+    </details>
+    <details class="levels">
+      <summary>Statistical detail <span class="level-tag">STATISTICS</span></summary>
+      <div class="body">
+        <p>Herbal pages, hand 1, Currier A, from the ZL3b transcription. Pages split by SHA-256 of the page name modulo 3: 19,113 characters for the key search, 18,820 for evaluation. Character 4-gram models with smoothing 0.01, trained on Celsus (40,052 characters) and Murri (95,555 characters). Simulated annealing, 8 restarts × 50,000 swap proposals, temperature 60 → 0.06, seed 20261017. The search is heuristic and does not cover the whole key space.</p>
+      </div>
+    </details>
+  </div>
+</section>
+
+<!-- 5. local structure -->
+<section class="band" id="structure">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow">Finding 5</div>
+        <h2>Rules everywhere,<br><em>at small scale.</em></h2>
+      </div>
+      <p>Measured on 2,952 fully legible paragraph lines (25,373 words) of the ZL3b transcription, against shuffles that keep each line's words but change their order.</p>
+    </div>
+    <div class="tab-card">
+      <h3>Local regularities and their null models</h3>
+      <div class="table-scroll">
+        <table>
+          <thead><tr><th>Pattern</th><th class="num">Observed</th><th class="num">Expected by chance</th><th>Verdict</th></tr></thead>
+          <tbody>
+            <tr><td>Shared information, last glyph of a word → first glyph of the next</td><td class="num">0.2071 bits</td><td class="num">0.0163 (range 0.0128–0.0208)</td><td><span class="status green">Far above chance</span></td></tr>
+            <tr><td>Paragraph-initial words starting with a gallows glyph (f, k, p, t)</td><td class="num">89.4%</td><td class="num">8.5% at other line starts</td><td><span class="status green">Strong</span></td></tr>
+            <tr><td>Word pair <span class="eva">s aiin</span></td><td class="num">38</td><td class="num">5.45</td><td><span class="status green">Above chance</span></td></tr>
+            <tr><td>Word pair <span class="eva">or aiin</span></td><td class="num">37</td><td class="num">6.49</td><td><span class="status green">Above chance</span></td></tr>
+            <tr><td>Word pair <span class="eva">ol shedy</span></td><td class="num">21</td><td class="num">7.15</td><td><span class="status green">Above chance</span></td></tr>
+            <tr><td>Same word twice in a row</td><td class="num">218</td><td class="num">210.9 (range 174–254)</td><td><span class="status gray">No excess</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="chart-note">Word pairs were chosen after counting, so their ratios are descriptive. Joining uncertain spaces (commas in the transcription) lowers the pair counts but keeps them well above expectation.</p>
+    </div>
+    <details class="levels">
+      <summary>What it means for a linguist <span class="level-tag">LINGUISTICS</span></summary>
+      <div class="body">
+        <p>The boundary dependency is the kind of effect produced by sandhi, agreement or fixed phrases, but also by ligatures, segmentation choices or a generator that conditions each word on the previous one. The gallows rule looks like a convention for marking paragraphs, comparable to decorated initials. Repeated words, often cited as evidence of a mechanical process, turn out to be no more frequent than shuffling predicts in this sample.</p>
+      </div>
+    </details>
+  </div>
+</section>
+
+<!-- 6. beyond the word -->
+<section class="band band-alt" id="multiscale">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow">Finding 6</div>
+        <h2>Words cluster by section,<br><em>in every book.</em></h2>
+      </div>
+      <p>Montemurro and Zanette (2013) showed that Voynich words cluster in parts of the text, as topic words do in natural language. We ran a simplified version on all four corpora.</p>
+    </div>
+    <div class="tab-card">
+      <h3>Excess mutual information between word and text block, blocks of 1,000 words</h3>
+      <p class="summary-line">First 7,500 tokens of each corpus; excess over 99 global shuffles.</p>
+      <div class="table-scroll">
+        <table>
+          <thead><tr><th>Corpus</th><th class="num">Excess (bits)</th></tr></thead>
+          <tbody>
+            <tr><td>Latin</td><td class="num">0.1614</td></tr>
+            <tr><td>Voynich</td><td class="num">0.1256</td></tr>
+            <tr><td>Italian</td><td class="num">0.0963</td></tr>
+            <tr><td>Codex Seraphinianus, OCR</td><td class="num">0.0820</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="caveat">
+      <h3>A measure that cannot discriminate</h3>
+      <p>The invented script clusters too. This statistic counts words per block and ignores order, so it detects topic-like vocabulary shifts in any text with sections, meaningful or not. It is not a full replication of the published analysis.</p>
+    </div>
+  </div>
+</section>
+
+<section class="band">
+  <div class="wrap-narrow">
+    <div class="eyebrow">Also measured</div>
+    <h2>Two results we report with caution.</h2>
+    <div class="tab-card">
+      <h3>The Seraphinianus transcription has measurable errors</h3>
+      <p class="summary-line">Comparison of OCR output with the 388 single-word training labels we could locate, on 199 pages.</p>
+      <div class="table-scroll"><table>
+        <thead><tr><th>Agreement</th><th class="num">Words</th><th class="num">Share</th></tr></thead>
+        <tbody>
+          <tr><td>Exact, at the same position</td><td class="num">284 / 388</td><td class="num">73.2%</td></tr>
+          <tr><td>Within ±2 positions</td><td class="num">335 / 388</td><td class="num">86.3%</td></tr>
+        </tbody>
+      </table></div>
+      <p class="chart-note">Typical disagreements are counts of repeated strokes (label <span class="eva">Xeeei</span>, OCR <span class="eva">Xeei</span>), exactly the detail that shifts context statistics. These labels come from training data, so this is not a validated character error rate.</p>
+    </div>
+    <div class="tab-card">
+      <h3>Long prefixes and suffixes: not enough data</h3>
+      <p class="summary-line">When prefix, local context and suffix are forced not to overlap, only 33–53 Voynich test words per split remain for 3-unit segments, and one for 4-unit segments. We draw no conclusion, positive or negative.</p>
+    </div>
+  </div>
+</section>
+
+<section class="closing">
+  <div class="wrap">
+    <div class="eyebrow">Next</div>
+    <h2>Which hypotheses survive?</h2>
+    <p>Ten explicit claims, each with a verdict and the evidence behind it.</p>
+    <a class="button" href="hypotheses.html">Read the hypotheses →</a>
+  </div>
+</section>
+</main>
+
+<footer class="wrap">
+  <a class="brand" href="index.html">BEYOND THE SIGNS</a>
+  <p>Fabio Furini · Exploratory snapshot, 18 October 2026 · AI-assisted analysis<br>
+  Code MIT · Original text CC BY 4.0 · Manuscript images: Beinecke Rare Book &amp; Manuscript Library, Yale University, MS 408.</p>
+  <a href="https://github.com/fabiofurini/voynich-seraphinianus-lab/blob/main/reports/2026-10-18-consolidated.md">Full consolidated report ↗</a>
+</footer>
+</body>
+</html>

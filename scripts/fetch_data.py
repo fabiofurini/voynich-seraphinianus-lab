@@ -9,4 +9,4 @@ for e in json.loads((R/'DATA_SOURCES.json').read_text()):
  if hashlib.sha256(bb).hexdigest()!=e['sha256']:raise SystemExit('SOURCE HASH MISMATCH: '+e['path'])
  p.write_bytes(bb);print('Verified:',e['path'])
  if e['path'].endswith('patterns/voynich_ZL3b.txt'):
-  q=R/'research/Voynich_test_sostituzione/sources/voynich_ZL3b.txt';q.parent.mkdir(parents=True,exist_ok=True);q.write_bytes(bb)
+  q=R/'research/substitution_attack/sources/voynich_ZL3b.txt';q.parent.mkdir(parents=True,exist_ok=True);q.write_bytes(bb)

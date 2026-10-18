@@ -1,0 +1,248 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Voynich Lab · Beyond the Signs</title>
+<meta name="description" content="Play with the Voynich script: glyph statistics, word-building rules, a Voynichese generator and a decipherment game built on real counts.">
+<meta name="theme-color" content="#101d1a">
+<link rel="icon" href="assets/mark.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="styles.css">
+<script defer src="app.js"></script>
+<script defer src="lab.js"></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header>
+  <a class="brand" href="index.html"><img src="assets/mark.svg" width="30" height="30" alt=""><span>BEYOND<span class="brand-light"> THE SIGNS</span></span></a>
+  <button id="menu" aria-controls="navigation" aria-expanded="false">Menu ☰</button>
+  <nav id="navigation" aria-label="Main">
+    <a href="index.html">The story</a>
+    <a href="results.html">Results</a>
+    <a href="lab.html" aria-current="page">Lab</a>
+    <a href="methods.html">Methods &amp; tests</a>
+    <a href="hypotheses.html">Hypotheses</a>
+    <a class="nav-repo" href="https://github.com/fabiofurini/voynich-seraphinianus-lab">GitHub ↗</a>
+  </nav>
+</header>
+
+<main id="main">
+<section class="page-hero lab-hero">
+  <div class="wrap">
+    <div class="eyebrow"><span class="dot"></span> The Voynich Lab · interactive, built on real counts</div>
+    <h1>Try to crack it<br><em>yourself.</em></h1>
+    <p class="lead">Six small experiments you can run in your browser. They use counts from the Zandbergen–Landini transcription (ZL3b, 2025). Explore which glyphs dominate, how words are assembled, and why a convincing decipherment is so easy to fake.</p>
+    <nav class="lab-toc" aria-label="Lab sections">
+      <a href="#glyphs"><b>1</b> Glyph frequencies</a>
+      <a href="#neighbours"><b>2</b> Glyph neighbours</a>
+      <a href="#matrix"><b>3</b> Word machine</a>
+      <a href="#generator"><b>4</b> Write Voynichese</a>
+      <a href="#decipher"><b>5</b> Be the decipherer</a>
+      <a href="#yourtext"><b>6</b> Your language vs Voynich</a>
+    </nav>
+  </div>
+</section>
+
+<!-- 1 -->
+<section class="band" id="glyphs">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow">Experiment 1 · statistics</div>
+        <h2>Which glyphs<br><em>carry the script?</em></h2>
+      </div>
+      <p>Every transcribed glyph in the manuscript, 174,004 in all, counted by EVA label. Hover a bar for the exact count.</p>
+    </div>
+    <div class="chart-card">
+      <div class="chart-toolbar">
+        <div>
+          <h3 id="freq-title">Share of all transcribed glyph units</h3>
+          <p id="freq-sub">Connected clusters such as <span class="eva">ch</span> and <span class="eva">cth</span> count as one unit.</p>
+        </div>
+        <div class="segmented" role="group" aria-label="Units shown">
+          <button class="selected" id="freq-all" aria-pressed="true">All 31</button>
+          <button id="freq-core" aria-pressed="false">Working set of 23</button>
+        </div>
+      </div>
+      <div id="freq-chart" class="chart" role="img" aria-labelledby="freq-title freq-sub"></div>
+    </div>
+    <div class="metric-row">
+      <div class="metric"><b>52.8%</b><span>of all glyphs are just five: <span class="eva">o e y a d</span></span></div>
+      <div class="metric"><b>99.96%</b><span>of legible paragraph text is covered by 23 units</span></div>
+      <div class="metric"><b>8</b><span>very rare glyphs (<span class="eva">x v b j c u z h</span>) make up 0.07%</span></div>
+      <div class="metric"><b id="h1-voy">3.86</b><span>bits of entropy per glyph, single-glyph frequencies only</span></div>
+    </div>
+    <details class="levels">
+      <summary>How to read it <span class="level-tag">EVERYONE</span></summary>
+      <div class="body">
+        <p>European alphabets usually have 20–30 letters with a few very common vowels. The Voynich working set is similar in size, so frequencies alone cannot tell us whether a glyph is a letter, a syllable or part of a larger sign. The rare glyphs may be variants, errors, or symbols with a special use.</p>
+      </div>
+    </details>
+  </div>
+</section>
+
+<!-- 2 -->
+<section class="band band-alt" id="neighbours">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow">Experiment 2 · statistics</div>
+        <h2>Some glyphs have<br><em>almost no freedom.</em></h2>
+      </div>
+      <p>Pick a glyph to see what comes right before and right after it, in 32,888 legible paragraph words.</p>
+    </div>
+    <div class="chart-card">
+      <div class="segmented glyph-pick" role="group" aria-label="Choose a glyph">
+        <button class="selected" data-glyph="q" aria-pressed="true">q</button>
+        <button data-glyph="n" aria-pressed="false">n</button>
+        <button data-glyph="c" aria-pressed="false">c</button>
+        <button data-glyph="h" aria-pressed="false">h</button>
+      </div>
+      <p id="nb-insight" class="kicker" style="margin-top:20px"></p>
+      <div class="nb-grid">
+        <div><h3>Comes before</h3><div id="nb-prev" class="hbars"></div></div>
+        <div><h3>Comes after</h3><div id="nb-next" class="hbars"></div></div>
+      </div>
+      <p class="chart-note">“Word start” and “word end” mark the edges of a word. Only the eight most frequent neighbours are shown.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 3 -->
+<section class="band" id="matrix">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow">Experiment 3 · linguistics</div>
+        <h2>The word machine.</h2>
+      </div>
+      <p>Six common word starts, six common endings. Every one of the 36 combinations exists in the text. Darker cells are more frequent. Click a cell.</p>
+    </div>
+    <div class="chart-card">
+      <div class="chart-toolbar">
+        <div><h3 id="mx-title">How often each start + ending occurs</h3><p id="mx-sub">25,373 words from 2,952 legible paragraph lines.</p></div>
+        <div class="segmented" role="group" aria-label="Matrix values">
+          <button class="selected" id="mx-count" aria-pressed="true">Counts</button>
+          <button id="mx-share" aria-pressed="false">Share of each row</button>
+        </div>
+      </div>
+      <div class="table-scroll"><table class="matrix" id="mx-table" aria-labelledby="mx-title"></table></div>
+      <p id="mx-readout" class="mx-readout">Click a cell to read the word.</p>
+    </div>
+    <div class="two-cols">
+      <div class="col toward-no"><h3>A slot machine?</h3><p class="summary-line" style="margin:0">The <span class="eva">qok</span> row is spread almost evenly over all six endings. Any start seems to fit any ending, as if words were assembled from independent parts.</p></div>
+      <div class="col toward-yes"><h3>Or a grammar?</h3><p class="summary-line" style="margin:0">The <span class="eva">ch</span> and <span class="eva">sh</span> rows strongly prefer <span class="eva">edy</span> and <span class="eva">ol</span>: 383 <span class="eva">chedy</span> against 14 <span class="eva">chain</span>. Parts are not independent, which is what agreement or morphology would do.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 4 -->
+<section class="band band-alt" id="generator">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow">Experiment 4 · play</div>
+        <h2>Write Voynichese<br><em>with dice.</em></h2>
+      </div>
+      <p>This button builds a line by drawing a start and an ending in proportion to the counts above. No meaning goes in.</p>
+    </div>
+    <div class="generator">
+      <p id="gen-line" class="gen-line" aria-live="polite">qokeedy chedy qokain shedy ol otar qokeedy chol</p>
+      <div class="actions" style="margin-top:18px">
+        <button class="button primary" id="gen-go">Roll a new line</button>
+        <label class="toggle"><input type="checkbox" id="gen-chain"> Make each word depend on the previous one</label>
+      </div>
+      <p class="chart-note" id="gen-note">Each word above is a real Voynich word. The line is not.</p>
+    </div>
+    <details class="levels">
+      <summary>Why this matters <span class="level-tag">LINGUISTICS</span></summary>
+      <div class="body">
+        <p>Gordon Rugg (2004) and Timm &amp; Schinner (2020) showed that simple mechanical procedures can produce text with many Voynich-like statistics. A generator that looks right is not proof that the manuscript was made that way, but it raises the bar: any claim of meaning has to explain something a generator cannot. The “depend on the previous word” option mimics the strong boundary dependency we measured between neighbouring words.</p>
+      </div>
+    </details>
+  </div>
+</section>
+
+<!-- 5 -->
+<section class="band" id="decipher">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow">Experiment 5 · the decipherment game</div>
+        <h2>Be the decipherer.</h2>
+      </div>
+      <p>Give each Voynich glyph a letter and watch 60 frequent Voynich words turn into “Latin” or “Italian”. Then let the computer cheat.</p>
+    </div>
+    <div class="chart-card">
+      <div class="dec-controls">
+        <label>Target language
+          <select id="dec-lang"><option value="latin">Latin</option><option value="italian">Italian</option></select>
+        </label>
+        <button class="button ghost" id="dec-random">Random key</button>
+        <button class="button primary" id="dec-solve">Let the computer search</button>
+        <span class="dec-score" aria-live="polite"><b id="dec-hits">0</b> of <span id="dec-total">60</span> words found in the dictionary</span>
+      </div>
+      <div id="dec-key" class="dec-key" aria-label="Glyph to letter key"></div>
+      <div id="dec-words" class="dec-words"></div>
+    </div>
+    <div class="caveat" id="dec-lesson">
+      <h3>The trap every decipherer falls into</h3>
+      <p>With <span id="dec-nsym">17</span> symbols to assign and a free choice of key, a search always finds some “words”. Press the search button and count them. That is how many published decipherments work: they fit the key to the text and then report the matches.</p>
+      <p>Our real test avoided the trap by fixing the key on some pages and checking it on others it had never seen. The best keys found only 1.1% Latin words and 7.0% Italian words there, while the same method recovered 100% of a genuine enciphered text.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 6 -->
+<section class="band band-alt" id="yourtext">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow">Experiment 6 · statistics</div>
+        <h2>Could your language<br><em>be the Voynich?</em></h2>
+      </div>
+      <p>Paste any text in any language. We compute the same simple statistics we know for the Voynich. Then encipher it and watch what does not change.</p>
+    </div>
+    <div class="chart-card">
+      <label for="yt-input" class="label" style="display:block;margin-bottom:8px">Your text</label>
+      <textarea id="yt-input" rows="6" spellcheck="false">Herba haec nascitur in locis humidis et habet folia lata et radicem longam. Succus eius cum vino mixtus dolorem capitis lenit et febrem minuit. Semen in aqua calida coctum ventrem purgat. Flores colligendi sunt mense maio ante solis ortum.</textarea>
+      <div class="actions" style="margin-top:14px">
+        <button class="button primary" id="yt-cipher">Encipher with a random alphabet</button>
+        <button class="button ghost" id="yt-reset">Restore the sample</button>
+      </div>
+      <div class="table-scroll" style="margin-top:20px"><table>
+        <thead><tr><th>Statistic</th><th class="num">Your text</th><th class="num">Voynich (ZL3b)</th><th>Changed by a simple cipher?</th></tr></thead>
+        <tbody id="yt-table"></tbody>
+      </table></div>
+      <p class="chart-note">The sample is a short Latin herbal passage written for this demo. Statistics on a few hundred letters are noisy; paste a longer text for stabler numbers.</p>
+    </div>
+    <details class="levels">
+      <summary>What the comparison shows <span class="level-tag">STATISTICS</span></summary>
+      <div class="body">
+        <p>A one-to-one substitution renames letters but keeps every frequency, every repeated letter and every word length. So if your language's numbers are far from the Voynich's, no simple substitution of your language can produce the Voynich. This is why researchers turned to verbose ciphers, syllabaries and abbreviation systems, which do change these numbers.</p>
+        <p>Single-glyph entropy is computed from frequencies only. Conditional entropy on short texts is strongly biased downward, so we do not compare it with the Voynich here; see the matched, held-out estimates on the <a href="results.html#context">results page</a>.</p>
+      </div>
+    </details>
+  </div>
+</section>
+
+<section class="closing">
+  <div class="wrap">
+    <div class="eyebrow">Want the real thing?</div>
+    <h2>Every experiment here has a<br>tested version in the repository.</h2>
+    <p>The full analyses use held-out pages, null models and positive controls.</p>
+    <a class="button" href="methods.html">See methods &amp; tests →</a>
+  </div>
+</section>
+</main>
+
+<footer class="wrap">
+  <a class="brand" href="index.html">BEYOND THE SIGNS</a>
+  <p>Fabio Furini · Exploratory snapshot, 18 October 2026 · AI-assisted analysis<br>Counts: Zandbergen–Landini ZL3b transcription (2025). Code MIT · Original text CC BY 4.0</p>
+  <a href="https://github.com/fabiofurini/voynich-seraphinianus-lab/tree/main/research">Underlying data ↗</a>
+</footer>
+</body>
+</html>

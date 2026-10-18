@@ -3,7 +3,7 @@
   "matched": [
     {
       "id": "Voynich",
-      "label": "Voynich \u00b7 EVA",
+      "label": "Voynich · EVA",
       "gains": [
         0.0012300040253800937,
         0.0003379570595614112,
@@ -20,7 +20,7 @@
     },
     {
       "id": "Seraphinianus_OCR",
-      "label": "Seraphinianus \u00b7 OCR",
+      "label": "Seraphinianus · OCR",
       "gains": [
         0.09846319066291498,
         0.10517488411506903,
@@ -37,7 +37,7 @@
     },
     {
       "id": "Voynich_connected_EVA",
-      "label": "Voynich \u00b7 unit\u00e0 connesse",
+      "label": "Voynich · connected units",
       "gains": [
         0.0037016148120982972,
         0.014593665335307149,
@@ -54,7 +54,7 @@
     },
     {
       "id": "latin",
-      "label": "Latino \u00b7 Celso",
+      "label": "Latin · Celsus",
       "gains": [
         0.3507533501135107,
         0.3189196445074223,
@@ -71,7 +71,7 @@
     },
     {
       "id": "italian",
-      "label": "Italiano \u00b7 Murri",
+      "label": "Italian · Murri",
       "gains": [
         0.2955311561055938,
         0.34246197257078714,
@@ -104,5 +104,6 @@
         0.000793
       ]
     }
-  }
+  },
+  "note": "Chart data for results.html: gains from order 2 to 3 per page split, and mean test entropy for orders 0-5 (bits per glyph). Source: research/grammar_comparison/matched_backoff_results.json and hierarchy_bootstrap_results.json."
 }

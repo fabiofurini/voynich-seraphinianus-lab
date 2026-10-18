@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Hypotheses · Beyond the Signs</title>
+<meta name="description" content="Ten explicit hypotheses about the Voynich manuscript and Codex Seraphinianus, with verdicts, evidence and open conjectures.">
+<meta name="theme-color" content="#101d1a">
+<link rel="icon" href="assets/mark.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="styles.css">
+<script defer src="app.js"></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header>
+  <a class="brand" href="index.html"><img src="assets/mark.svg" width="30" height="30" alt=""><span>BEYOND<span class="brand-light"> THE SIGNS</span></span></a>
+  <button id="menu" aria-controls="navigation" aria-expanded="false">Menu ☰</button>
+  <nav id="navigation" aria-label="Main">
+    <a href="index.html">The story</a>
+    <a href="results.html">Results</a>
+    <a href="lab.html">Lab</a>
+    <a href="methods.html">Methods &amp; tests</a>
+    <a href="hypotheses.html" aria-current="page">Hypotheses</a>
+    <a class="nav-repo" href="https://github.com/fabiofurini/voynich-seraphinianus-lab">GitHub ↗</a>
+  </nav>
+</header>
+
+<main id="main">
+<section class="page-hero">
+  <div class="wrap">
+    <div class="eyebrow"><span class="dot"></span> Hypotheses &amp; conjectures · a register that can change</div>
+    <h1>Explicit claims.<br><em>No ready-made verdict.</em></h1>
+    <p class="lead">Each hypothesis is written so that it could fail. “Not supported” is not the same as “disproved”: every verdict is tied to a model, a dataset and a way of cutting the text into units.</p>
+    <div class="legend" style="margin-top:26px">
+      <span><span class="status green">Supported</span> the data agree</span>
+      <span><span class="status amber">Disfavoured</span> evidence against, not exhaustive</span>
+      <span><span class="status blue">Contradicted</span> rejected on held-out data, for this model</span>
+      <span><span class="status gray">Open</span> not testable yet, or untested</span>
+    </div>
+  </div>
+</section>
+
+<section class="band">
+  <div class="wrap">
+    <div class="eyebrow">The register</div>
+    <h2>Ten hypotheses, ten verdicts.</h2>
+    <div class="hyp-grid">
+      <article class="hyp-card"><span class="id">H01</span><span class="status amber">Disfavoured</span><h3>The herbal text is Latin or Italian in a simple cipher</h3><p>One glyph per letter, spaces preserved, under our 23 glyph units.</p><p class="evidence">The solver recovers both controls and finds no reading in the Voynich. Triple glyphs that a Latin plaintext could not produce. The search is heuristic, so not exhaustively falsified.</p></article>
+      <article class="hyp-card"><span class="id">H02</span><span class="status blue">Contradicted</span><h3>There are no repeatable local rules</h3><p>The text would then be close to random at the glyph level.</p><p class="evidence">Models trained on some pages predict other pages far better than glyph frequencies alone.</p></article>
+      <article class="hyp-card"><span class="id">H03</span><span class="status blue">Contradicted</span><h3>Local predictability proves a human language</h3><p>A tempting argument often made for the Voynich.</p><p class="evidence">The Seraphinianus, an invented script, is just as locally predictable. The property does not discriminate.</p></article>
+      <article class="hyp-card"><span class="id">H04</span><span class="status gray">Not established</span><h3>The two codices are statistically equivalent</h3><p>Same kind of object, produced the same way.</p><p class="evidence">Some shared patterns, some stable differences (context gain 0.001 vs 0.09 bits), and OCR uncertainty. No equivalence test was run.</p></article>
+      <article class="hyp-card"><span class="id">H05</span><span class="status blue">Contradicted</span><h3>Nothing beyond two preceding glyphs helps</h3><p>An earlier, too-strong wording of our own result.</p><p class="evidence">With connected EVA units the gain is small but positive (0.003–0.015 bits). We corrected the claim.</p></article>
+      <article class="hyp-card"><span class="id">H06</span><span class="status amber">Not supported</span><h3>Prefixes strongly constrain suffixes</h3><p>As in languages with agreement or vowel harmony inside the word.</p><p class="evidence">Combined gain about 0.001 bits per suffix in the 2-unit model, and no generalisation to unseen word forms.</p></article>
+      <article class="hyp-card"><span class="id">H07</span><span class="status blue">Contradicted</span><h3>A tree grammar predicts better than a chain</h3><p>The tested two-state PCFG against a two-state HMM, on suffix classes.</p><p class="evidence">PCFG worse by 0.0193 bits/token; 95% interval [+0.0065, +0.0343]. This rejects one model on one representation, not hierarchy in general.</p></article>
+      <article class="hyp-card"><span class="id">H08</span><span class="status amber">Not justified</span><h3>The Seraphinianus OCR is exact enough to count strokes</h3><p>Needed to trust repeated-glyph statistics on the comparison text.</p><p class="evidence">Disagreements concentrate exactly on counts of repeated strokes and on segmentation.</p></article>
+      <article class="hyp-card"><span class="id">H09</span><span class="status gray">Open</span><h3>The manuscript has no recoverable meaning</h3><p>The hoax or glossolalia family of explanations.</p><p class="evidence">No experiment here establishes this, and statistics alone cannot (see the identifiability argument on the methods page).</p></article>
+      <article class="hyp-card"><span class="id">H10</span><span class="status gray">Open</span><h3>The text respects or violates Moro's constraints</h3><p>Structure-dependent rules that human brains learn and “impossible” linear rules they do not.</p><p class="evidence">Not directly testable: we have no identified syntax, utterance boundaries or morphosyntactic units to test them on.</p></article>
+    </div>
+  </div>
+</section>
+
+<section class="band band-alt">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow">Conjectures under study</div>
+        <h2>Ideas we are testing,<br><em>not results.</em></h2>
+      </div>
+      <p>These are working leads. Each comes with the observation that motivates it and the check that could kill it.</p>
+    </div>
+    <div class="hyp-grid">
+      <article class="hyp-card"><span class="id">C1 · WORD BUILDING</span><h3>Words are prefix + base + suffix</h3><p>Families such as <span class="eva">okaiin</span> / <span class="eva">qokaiin</span> (166 and 220 occurrences) suggest a rule <span class="eva">word → prefix + base + suffix</span>, or extensions <span class="eva">X → aX</span> and <span class="eva">X → Xa</span>.</p><p class="evidence">Caution: a finite-state machine can generate such forms. Drawing a tree is not evidence of human structural dependency.</p></article>
+      <article class="hyp-card"><span class="id">C2 · ALLOGRAPHY</span><h3>Final <span class="eva">m</span> is a variant of <span class="eva">r</span></h3><p>Replacing line-final <span class="eva">m</span> by <span class="eva">r</span> turns 74.7% of held-out cases into known words, against 42.6% unchanged.</p><p class="evidence">Weakened by controls: the best substitute changes with how uncertain spaces are handled, and labels <span class="eva">otalar</span> and <span class="eva">otalam</span> sit side by side on f70v2. Global merging abandoned for now.</p></article>
+      <article class="hyp-card"><span class="id">C3 · UNITS</span><h3><span class="eva">qo</span> and <span class="eva">iin</span> are single units</h3><p><span class="eva">q</span> is followed by <span class="eva">o</span> 98% of the time; <span class="eva">in</span>, <span class="eva">iin</span>, <span class="eva">iiin</span> occur 1,601, 3,688 and 149 times.</p><p class="evidence">Changing units changes every statistic on this site. Units must be learned on training pages only, then compared on the same test targets.</p></article>
+      <article class="hyp-card"><span class="id">C4 · LAYOUT</span><h3>Gallows glyphs mark paragraphs</h3><p>89.4% of paragraph-initial words start with <span class="eva">f k p t</span>, against 8.5% of other line-initial words; 169 of 178 pages agree.</p><p class="evidence">Open question: are they separate markers, like decorated initials, or part of the first word?</p></article>
+      <article class="hyp-card"><span class="id">C5 · LABELS</span><h3>Zodiac labels name things</h3><p><span class="eva">okeodaly</span> appears on both Taurus pages, f71v and f72r1, with different neighbours.</p><p class="evidence">Both folios belong to the same bifolio, so this is one observation, not two. Near-spellings occur on 9–10 other pages.</p></article>
+      <article class="hyp-card"><span class="id">C6 · PRODUCTION</span><h3>Text was generated by a local process</h3><p>The combined picture of weak long-range context, full prefix–suffix combinability and section-wise drift fits a scribe following local habits.</p><p class="evidence">To test it: topic-varying generators and copy-and-edit models matched to section structure, scored on held-out pages.</p></article>
+    </div>
+  </div>
+</section>
+
+<section class="band band-alt" id="debate">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow">The wider debate</div>
+        <h2>What is known<br><em>outside this project.</em></h2>
+      </div>
+      <p>A century of research has narrowed the question. These are the established facts and the main families of explanation, with the strongest evidence each side cites.</p>
+    </div>
+    <div class="tab-card">
+      <h3>Established facts about the object</h3>
+      <div class="table-scroll"><table>
+        <thead><tr><th>Fact</th><th>Evidence</th></tr></thead>
+        <tbody>
+          <tr><td>The vellum dates from the early 15th century</td><td>Radiocarbon dating at the University of Arizona (2009): 1404–1438.</td></tr>
+          <tr><td>The inks are consistent with the period</td><td>Materials analysis by McCrone Associates (2009) found no modern pigments.</td></tr>
+          <tr><td>The text has two statistical “dialects”</td><td>Prescott Currier (1976) separated Currier A and B, which differ in word endings and frequencies.</td></tr>
+          <tr><td>Several scribes wrote it</td><td>Lisa Fagin Davis (2020) identified five scribal hands by palaeography.</td></tr>
+          <tr><td>Word statistics resemble language in some ways and not in others</td><td>Word frequencies follow a Zipf-like curve, but glyph-level entropy is unusually low (Bowern &amp; Lindemann 2021).</td></tr>
+        </tbody>
+      </table></div>
+    </div>
+    <div class="hyp-grid">
+      <article class="hyp-card"><span class="id">FAMILY A</span><h3>A natural language in an unknown script</h3><p>Proposals include European, Semitic and Asian languages, often with a syllabic or abbreviating script.</p><p class="evidence"><b>For:</b> Zipf-like word frequencies, word clustering by section (Montemurro &amp; Zanette 2013), text that tracks illustrations. <b>Against:</b> very low glyph entropy, rigid word structure. Our results: <a href="results.html#sections">section effect</a> supports, <a href="results.html#context">context gain</a> constrains.</p></article>
+      <article class="hyp-card"><span class="id">FAMILY B</span><h3>A cipher or code</h3><p>A known language disguised by a verbose cipher, nomenclator or code book.</p><p class="evidence"><b>For:</b> 15th-century Italy used ciphers widely; verbose ciphers lower entropy. <b>Against:</b> no plaintext recovered despite intense effort. Our results: simple substitution of Latin or Italian is <a href="results.html#cipher">disfavoured</a>.</p></article>
+      <article class="hyp-card"><span class="id">FAMILY C</span><h3>Meaningless text, made by a procedure</h3><p>A hoax, a commercial fake or a devotional exercise produced with tables or a grille.</p><p class="evidence"><b>For:</b> Rugg (2004) reproduced Voynich-like words with a Cardan grille; Timm &amp; Schinner (2020) generated similar text by copying and modifying earlier words. <b>Against:</b> the procedure would have to reproduce section effects and Currier dialects. Our results: the <a href="lab.html#generator">word machine</a> shows how far simple rules go.</p></article>
+      <article class="hyp-card"><span class="id">FAMILY D</span><h3>Constructed language or glossolalia</h3><p>An invented philosophical language, or speech-like writing produced without a fixed code.</p><p class="evidence"><b>For:</b> regular morphology with odd distributions. <b>Against:</b> hard to test without units. The Seraphinianus, an artist's invented script, is the closest modern analogue and shares several statistics.</p></article>
+    </div>
+    <div class="caveat">
+      <h3>A note on claimed decipherments</h3>
+      <p>New decipherments are announced almost every year. None has yet been accepted, because none predicts unseen text. Stephen Bax's provisional plant-name readings (2014) are often cited as the most careful attempt: he presented them as a starting point, not a solution.</p>
+    </div>
+  </div>
+</section>
+
+<section class="band">
+  <div class="wrap-narrow">
+    <div class="eyebrow">Falsifiability</div>
+    <h2>What would change our view?</h2>
+    <p class="kicker">Any of these would challenge a purely local account of the Voynich text.</p>
+    <div class="glossary">
+      <details open><summary>A stable hierarchical advantage on held-out pages</summary><p>A grammar with nested structure that predicts unseen pages better than the best sequential model, across codings and splits.</p></details>
+      <details><summary>Independently validated segmentation</summary><p>Units learned without looking at the test pages that also agree with palaeographic evidence from the images.</p></details>
+      <details><summary>Long-distance dependencies beyond layout</summary><p>Dependencies that survive controls for line position, page, section and scribe.</p></details>
+      <details><summary>A decipherment that predicts</summary><p>An externally anchored reading that generalises to new pages without ad hoc choices, and makes predictions before they are checked.</p></details>
+    </div>
+  </div>
+</section>
+
+<section class="band band-alt">
+  <div class="wrap-narrow">
+    <div class="eyebrow">Glossary</div>
+    <h2>Terms used on this site.</h2>
+    <div class="glossary">
+      <details><summary>EVA</summary><p>The European Voynich Alphabet: a convention for typing Voynich glyphs with Latin letters. <span class="eva">ch</span> or <span class="eva">aiin</span> name shapes, not sounds.</p></details>
+      <details><summary>Entropy, in bits per glyph</summary><p>How many yes/no questions a model needs, on average, to guess the next glyph. Lower means better prediction, not better translation.</p></details>
+      <details><summary>Positive control</summary><p>A test case where we know the answer. If a method fails on it, its failure on the Voynich tells us nothing.</p></details>
+      <details><summary>PCFG and HMM</summary><p>A probabilistic context-free grammar builds nested trees; a hidden Markov model chains hidden states left to right. Comparing them asks whether nesting adds predictive power.</p></details>
+      <details><summary>Currier A and B, hands</summary><p>Two statistical “dialects” of the Voynich text identified by Prescott Currier in the 1970s, and the distinct scribal hands identified by palaeographers.</p></details>
+      <details><summary>Moro's constraints</summary><p>Andrea Moro and colleagues showed that brains handle rules based on hierarchical structure differently from rules based on linear word order. Testing a script for this needs known syntactic units first.</p></details>
+    </div>
+    <div class="doc-list" style="margin-top:34px">
+      <a href="https://doi.org/10.1146/annurev-linguistics-011619-030613"><span class="doc-icon">REF</span><div><h3>Bowern &amp; Lindemann (2021)</h3><p>The Linguistics of the Voynich Manuscript. Annual Review of Linguistics.</p></div><span>↗</span></a>
+      <a href="https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0066344"><span class="doc-icon">REF</span><div><h3>Montemurro &amp; Zanette (2013)</h3><p>Keywords and co-occurrence patterns in the Voynich manuscript. PLOS ONE.</p></div><span>↗</span></a>
+      <a href="https://www.nature.com/articles/nn1077"><span class="doc-icon">REF</span><div><h3>Musso, Moro et al. (2003)</h3><p>Broca's area and the language instinct. Nature Neuroscience.</p></div><span>↗</span></a>
+      <a href="https://doi.org/10.1080/01611194.2019.1596999"><span class="doc-icon">REF</span><div><h3>Timm &amp; Schinner (2020)</h3><p>A possible generating algorithm of the Voynich manuscript. Cryptologia.</p></div><span>↗</span></a>
+      <a href="https://doi.org/10.1080/0161-110491892755"><span class="doc-icon">REF</span><div><h3>Rugg (2004)</h3><p>An elegant hoax? A possible solution to the Voynich manuscript. Cryptologia.</p></div><span>↗</span></a>
+      <a href="https://doi.org/10.1353/mns.2020.0011"><span class="doc-icon">REF</span><div><h3>Davis (2020)</h3><p>How many glyphs and how many scribes? Digital palaeography and the Voynich manuscript. Manuscript Studies.</p></div><span>↗</span></a>
+      <a href="https://www.voynich.nu/"><span class="doc-icon">WEB</span><div><h3>René Zandbergen, voynich.nu</h3><p>The reference site on the manuscript's history, writing system and transcriptions.</p></div><span>↗</span></a>
+    </div>
+  </div>
+</section>
+
+<section class="closing">
+  <div class="wrap">
+    <div class="eyebrow">Propose a hypothesis</div>
+    <h2>Write it so it can fail.</h2>
+    <p>State the corpus version, the units, the split, the control and the result that would prove you wrong.</p>
+    <a class="button" href="https://github.com/fabiofurini/voynich-seraphinianus-lab/blob/main/CONTRIBUTING.md">How to contribute ↗</a>
+  </div>
+</section>
+</main>
+
+<footer class="wrap">
+  <a class="brand" href="index.html">BEYOND THE SIGNS</a>
+  <p>Fabio Furini · Exploratory snapshot, 18 October 2026 · AI-assisted analysis<br>Code MIT · Original text CC BY 4.0</p>
+  <a href="https://github.com/fabiofurini/voynich-seraphinianus-lab/blob/main/HYPOTHESES.md">Hypothesis register on GitHub ↗</a>
+</footer>
+</body>
+</html>

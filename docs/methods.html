@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Methods &amp; Tests · Beyond the Signs</title>
+<meta name="description" content="Data sources, experimental design, null models, calibration and reproduction for the Voynich and Seraphinianus experiments.">
+<meta name="theme-color" content="#101d1a">
+<link rel="icon" href="assets/mark.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="styles.css">
+<script defer src="app.js"></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header>
+  <a class="brand" href="index.html"><img src="assets/mark.svg" width="30" height="30" alt=""><span>BEYOND<span class="brand-light"> THE SIGNS</span></span></a>
+  <button id="menu" aria-controls="navigation" aria-expanded="false">Menu ☰</button>
+  <nav id="navigation" aria-label="Main">
+    <a href="index.html">The story</a>
+    <a href="results.html">Results</a>
+    <a href="lab.html">Lab</a>
+    <a href="methods.html" aria-current="page">Methods &amp; tests</a>
+    <a href="hypotheses.html">Hypotheses</a>
+    <a class="nav-repo" href="https://github.com/fabiofurini/voynich-seraphinianus-lab">GitHub ↗</a>
+  </nav>
+</header>
+
+<main id="main">
+<section class="page-hero">
+  <div class="wrap">
+    <div class="eyebrow"><span class="dot"></span> Methods &amp; tests · for statisticians and replicators</div>
+    <h1>How we tried<br><em>not to fool ourselves.</em></h1>
+    <p class="lead">Undeciphered scripts attract pattern-finding. The safeguards below are the core of the project: held-out pages, matched samples, null models, positive controls, and a public record of the tests that failed.</p>
+  </div>
+</section>
+
+<section class="band">
+  <div class="wrap">
+    <div class="eyebrow">Design principles</div>
+    <h2>Five rules for every experiment.</h2>
+    <div class="hyp-grid">
+      <article class="hyp-card"><span class="id">RULE 1</span><h3>Test on unseen pages</h3><p>Models are fitted on some pages and scored on others. Splits are by page, never by word, so a model cannot memorise the test text.</p></article>
+      <article class="hyp-card"><span class="id">RULE 2</span><h3>Compare like with like</h3><p>Corpora are matched for sample size and word-length distribution before any comparison, because both change entropy estimates.</p></article>
+      <article class="hyp-card"><span class="id">RULE 3</span><h3>Prove the test can succeed</h3><p>Each method is first run on a positive control where the answer is known: enciphered Latin, synthetic grammars. If it fails there, its failure on the Voynich means nothing.</p></article>
+      <article class="hyp-card"><span class="id">RULE 4</span><h3>State the null</h3><p>Every “above chance” claim names its shuffle: within line, within page, by position and length bin, by bifolio group.</p></article>
+      <article class="hyp-card"><span class="id">RULE 5</span><h3>Keep the failures</h3><p>Superseded and failed analyses stay in the repository with their results, marked as such. Scope every negative result to a model, a dataset and a coding.</p></article>
+    </div>
+  </div>
+</section>
+
+<section class="band band-alt">
+  <div class="wrap">
+    <div class="eyebrow">Data</div>
+    <h2>Five corpora, all with fixed hashes.</h2>
+    <p class="prose" style="color:var(--ink-2)">Third-party texts are not stored in the repository. A downloader fetches the exact versions listed here and refuses to run if a SHA-256 hash differs.</p>
+    <div class="tab-card">
+      <div class="table-scroll"><table>
+        <thead><tr><th>Corpus</th><th>Source</th><th>Role</th><th>Notes</th></tr></thead>
+        <tbody>
+          <tr><td>Voynich, ZL3b</td><td>Zandbergen–Landini transcription, version of 13 May 2025</td><td><span class="status blue">Subject</span></td><td>5,385 loci, 227 panel identifiers, 174,004 glyph units. EVA alphabet.</td></tr>
+          <tr><td>Voynich, H layer</td><td>Takahashi transcription, Stolfi interlinear archive 1.6e6</td><td><span class="status blue">Subject</span></td><td>Used in the earliest experiments. Shares sources with ZL3b, so not independent.</td></tr>
+          <tr><td>Codex Seraphinianus</td><td>Ponzi OCR transliteration, commit <code>6bc7c93</code></td><td><span class="status amber">Comparison</span></td><td>Invented modern script. OCR errors audited; see results.</td></tr>
+          <tr><td>Latin</td><td>Celsus, <i>De medicina</i>, book I</td><td><span class="status green">Control</span></td><td>Medical prose, comparable in subject to a herbal.</td></tr>
+          <tr><td>Italian</td><td>Romolo Murri, <i>Il partito radicale</i> (Project Gutenberg 26166)</td><td><span class="status green">Control</span></td><td>Modern Italian, not a medieval corpus.</td></tr>
+        </tbody>
+      </table></div>
+    </div>
+    <details class="levels">
+      <summary>How glyphs are counted <span class="level-tag">TRANSCRIPTION</span></summary>
+      <div class="body">
+        <p>We use a working inventory of 23 graphic units: 17 single EVA letters (<span class="eva">a d e f g i k l m n o p q r s t y</span>) and 6 connected clusters (<span class="eva">ch sh ckh cth cph cfh</span>), matched greedily. This covers 99.96% of legible paragraph text in ZL3b. Alternative readings are resolved by taking the first variant (817 cases); 209 illegible markers are excluded. The inventory is a convention for counting. It is not a claim that these are 23 letters.</p>
+        <p>Facts that make naive letter readings risky: <span class="eva">q</span> is word-initial 99.5% of the time and followed by <span class="eva">o</span> 98.0% of the time; <span class="eva">n</span> follows <span class="eva">i</span> 98.0% of the time and ends the word 99.0% of the time. Whether <span class="eva">qo</span> and <span class="eva">iin</span> are single units is unresolved.</p>
+      </div>
+    </details>
+  </div>
+</section>
+
+<section class="band">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow">Experiment register</div>
+        <h2>Twelve experiments,<br><em>including the failed one.</em></h2>
+      </div>
+      <p>Open any line for design, result and main limitation, with links to the script and its output.</p>
+    </div>
+    <div class="filters segmented" role="group" aria-label="Filter experiments" style="display:inline-flex;margin-bottom:18px">
+      <button class="selected" data-filter="all" aria-pressed="true">All</button>
+      <button data-filter="done" aria-pressed="false">Completed</button>
+      <button data-filter="limited" aria-pressed="false">Limited or failed</button>
+    </div>
+    <div id="register">
+      <details class="experiment" data-kind="done"><summary><span class="exp-num">E01</span><div><h3>Local context, first comparison</h3><p class="description">Markov models on each corpus.</p></div><span class="status gray">Superseded</span></summary>
+        <div class="exp-detail"><p><strong>Result.</strong> Both codices are strongly predictable locally.</p><p><strong>Limit.</strong> Unequal sample sizes and codings; replaced by E02.</p><div class="exp-meta"><a href="https://github.com/fabiofurini/voynich-seraphinianus-lab/blob/main/research/grammar_comparison/run.py">run.py</a><a href="https://github.com/fabiofurini/voynich-seraphinianus-lab/blob/main/research/grammar_comparison/results.json">results.json</a></div></div></details>
+      <details class="experiment" data-kind="done"><summary><span class="exp-num">E02</span><div><h3>Matched samples with back-off</h3><p class="description">The main result: extra context gain.</p></div><span class="status green">Completed</span></summary>
+        <div class="exp-detail"><p><strong>Design.</strong> Equal word counts per length, three page splits, interpolated back-off tuned on validation.</p><p><strong>Result.</strong> Voynich gain 0.0003–0.0014 bits; Latin and Italian 0.30–0.38.</p><p><strong>Limit.</strong> Three splits, small matched samples, unknown segmentation.</p><div class="exp-meta"><a href="https://github.com/fabiofurini/voynich-seraphinianus-lab/blob/main/research/grammar_comparison/matched_backoff.py">matched_backoff.py</a><a href="https://github.com/fabiofurini/voynich-seraphinianus-lab/blob/main/research/grammar_comparison/matched_backoff_results.json">results</a></div></div></details>
+      <details class="experiment" data-kind="done"><summary><span class="exp-num">E03</span><div><h3>Dependencies at word boundaries</h3><p class="description">Do word ends predict the next word's start?</p></div><span class="status green">Completed</span></summary>
+        <div class="exp-detail"><p><strong>Design.</strong> 199 permutations preserving page, position bin and length bin.</p><p><strong>Result.</strong> Both codices exceed every permutation.</p><p><strong>Limit.</strong> Layout, handwriting and OCR can contribute. This is not a test of syntax.</p><div class="exp-meta"><a href="https://github.com/fabiofurini/voynich-seraphinianus-lab/blob/main/research/grammar_comparison/robust_boundary.py">robust_boundary.py</a><a href="https://github.com/fabiofurini/voynich-seraphinianus-lab/blob/main/research/grammar_comparison/robust_boundary_results.json">results</a></div></div></details>
+      <details class="experiment" data-kind="done"><summary><span class="exp-num">E04</span><div><h3>Prefixes and suffixes</h3><p class="description">Does the start of a word predict its ending?</p></div><span class="status green">Completed</span></summary>
+        <div class="exp-detail"><p><strong>Result.</strong> Large shared families exist, but a 2-unit prefix adds about 0.001 bits per suffix beyond local context, and does not generalise to new word forms.</p><p><strong>Limit.</strong> Specific to this representation.</p><div class="exp-meta"><a href="https://github.com/fabiofurini/voynich-seraphinianus-lab/blob/main/research/grammar_comparison/affix_prediction.py">affix_prediction.py</a><a href="https://github.com/fabiofurini/voynich-seraphinianus-lab/blob/main/research/grammar_comparison/affix_prediction_results.json">results</a></div></div></details>
+      <details class="experiment" data-kind="limited"><summary><span class="exp-num">E05</span><div><h3>Long disjoint affixes</h3><p class="description">3- and 4-unit segments that do not overlap.</p></div><span class="status amber">Inconclusive</span></summary>
+        <div class="exp-detail"><p><strong>Result.</strong> 33–53 test words per split for 3-unit segments; one for 4-unit segments.</p><p><strong>Limit.</strong> Underpowered. The absence of an effect here cannot be read as the absence of a rule.</p><div class="exp-meta"><a href="https://github.com/fabiofurini/voynich-seraphinianus-lab/blob/main/research/grammar_comparison/long_affix_prediction.py">long_affix_prediction.py</a><a href="https://github.com/fabiofurini/voynich-seraphinianus-lab/blob/main/research/grammar_comparison/long_affix_disjoint_3_results.json">3 units</a><a href="https://github.com/fabiofurini/voynich-seraphinianus-lab/blob/main/research/grammar_comparison/long_affix_disjoint_4_results.json">4 units</a></div></div></details>
+      <details class="experiment" data-kind="limited"><summary><span class="exp-num">E06</span><div><h3>OCR audit of the Seraphinianus</h3><p class="description">How reliable is the comparison corpus?</p></div><span class="status amber">Limited</span></summary>
+        <div class="exp-detail"><p><strong>Result.</strong> 73.2% exact agreement, 86.3% within ±2 positions, on 388 words. 12 original images inspected.</p><p><strong>Limit.</strong> Labels come from the OCR training set, so this is not an independent error rate.</p><div class="exp-meta"><a href="https://github.com/fabiofurini/voynich-seraphinianus-lab/blob/main/research/grammar_comparison/ocr_audit.py">ocr_audit.py</a><a href="https://github.com/fabiofurini/voynich-seraphinianus-lab/blob/main/research/grammar_comparison/ocr_audit_results.json">results</a></div></div></details>
+      <details class="experiment" data-kind="limited"><summary><span class="exp-num">E07</span><div><h3>Hierarchy, first fit</h3><p class="description">PCFG against HMM, initial optimiser.</p></div><span class="status amber">Calibration failed</span></summary>
+        <div class="exp-detail"><p><strong>Result.</strong> On synthetic data from a known grammar, the fitted PCFG scored 0.9912 bits, worse than the HMM (0.8991) and the true grammar (0.8758). The optimiser was stuck in a local optimum.</p><p><strong>Limit.</strong> Must not be used as evidence. Kept as a record of why calibration matters.</p><div class="exp-meta"><a href="https://github.com/fabiofurini/voynich-seraphinianus-lab/blob/main/research/grammar_comparison/hierarchy_probe.py">hierarchy_probe.py</a><a href="https://github.com/fabiofurini/voynich-seraphinianus-lab/blob/main/research/grammar_comparison/hierarchy_probe_results.json">results</a></div></div></details>
+      <details class="experiment" data-kind="done"><summary><span class="exp-num">E08</span><div><h3>Synthetic control and calibration</h3><p class="description">Can the stronger fit find a known tree?</p></div><span class="status green">Passed</span></summary>
+        <div class="exp-detail"><p><strong>Result.</strong> With Dirichlet(0.3) initialisation, more restarts and up to 100 iterations, the PCFG reached 0.8755 bits, matching the true grammar.</p><div class="exp-meta"><a href="https://github.com/fabiofurini/voynich-seraphinianus-lab/blob/main/research/grammar_comparison/hierarchy_calibration.py">hierarchy_calibration.py</a><a href="https://github.com/fabiofurini/voynich-seraphinianus-lab/blob/main/research/grammar_comparison/hierarchy_calibration_results.json">results</a></div></div></details>
+      <details class="experiment" data-kind="done"><summary><span class="exp-num">E09</span><div><h3>Hierarchy, stronger fit</h3><p class="description">The calibrated comparison on real text.</p></div><span class="status green">Completed</span></summary>
+        <div class="exp-detail"><p><strong>Result.</strong> Voynich: PCFG worse than HMM by 0.0193 bits/token. Seraphinianus: a tiny, uncertain advantage.</p><p><strong>Limit.</strong> Two states, suffix classes, lines not known to be sentences.</p><div class="exp-meta"><a href="https://github.com/fabiofurini/voynich-seraphinianus-lab/blob/main/research/grammar_comparison/hierarchy_stronger.py">hierarchy_stronger.py</a><a href="https://github.com/fabiofurini/voynich-seraphinianus-lab/blob/main/research/grammar_comparison/hierarchy_stronger_results.json">results</a></div></div></details>
+      <details class="experiment" data-kind="done"><summary><span class="exp-num">E10</span><div><h3>Page bootstrap</h3><p class="description">Uncertainty for E09.</p></div><span class="status green">Completed</span></summary>
+        <div class="exp-detail"><p><strong>Result.</strong> Voynich 95% interval [+0.0065, +0.0343]; Seraphinianus [−0.0080, +0.0008].</p><p><strong>Limit.</strong> Conditional on the selected models and this split.</p><div class="exp-meta"><a href="https://github.com/fabiofurini/voynich-seraphinianus-lab/blob/main/research/grammar_comparison/hierarchy_bootstrap.py">hierarchy_bootstrap.py</a><a href="https://github.com/fabiofurini/voynich-seraphinianus-lab/blob/main/research/grammar_comparison/hierarchy_bootstrap_results.json">results</a></div></div></details>
+      <details class="experiment" data-kind="done"><summary><span class="exp-num">E11</span><div><h3>Multiscale organisation</h3><p class="description">Do words cluster in parts of the text?</p></div><span class="status green">Exploratory</span></summary>
+        <div class="exp-detail"><p><strong>Result.</strong> All four corpora cluster, the invented script included.</p><p><strong>Limit.</strong> Not a full replication of Montemurro and Zanette (2013).</p><div class="exp-meta"><a href="https://github.com/fabiofurini/voynich-seraphinianus-lab/blob/main/research/grammar_comparison/multiscale.py">multiscale.py</a><a href="https://github.com/fabiofurini/voynich-seraphinianus-lab/blob/main/research/grammar_comparison/multiscale_results.json">results</a></div></div></details>
+      <details class="experiment" data-kind="limited"><summary><span class="exp-num">E12</span><div><h3>Simple substitution attack</h3><p class="description">Latin or Italian in a secret alphabet?</p></div><span class="status amber">No reading found</span></summary>
+        <div class="exp-detail"><p><strong>Result.</strong> Controls fully recovered; Voynich output not readable (1.1% and 7.0% of words in vocabulary).</p><p><strong>Limit.</strong> Heuristic search; only these languages, units and spacing.</p><div class="exp-meta"><a href="https://github.com/fabiofurini/voynich-seraphinianus-lab/blob/main/research/substitution_attack/README.md">method</a><a href="https://github.com/fabiofurini/voynich-seraphinianus-lab/blob/main/research/substitution_attack/results.json">results</a></div></div></details>
+    </div>
+  </div>
+</section>
+
+<section class="band band-alt">
+  <div class="wrap-narrow">
+    <div class="eyebrow">Uncertainty</div>
+    <h2>What our intervals mean, and what they do not.</h2>
+    <div class="prose">
+      <p>The min–max range across overlapping page splits describes sensitivity to the split. It is not a confidence interval.</p>
+      <p>Page-bootstrap intervals resample test pages and keep the fitted models fixed. They are conditional on those models and on this corpus.</p>
+      <p>Pages in the same quire are not independent, and the two Voynich transcriptions share sources. The split replications reuse pages and are not independent books.</p>
+      <p>No correction for multiple comparisons has been applied. The project is exploratory: treat every p-value and interval as a guide for the next confirmatory test, not as a conclusion.</p>
+    </div>
+    <div class="caveat">
+      <h3>Why statistics alone cannot prove a text is meaningless</h3>
+      <p>Without restricting the family of encodings, any finite string C can be matched to any plaintext P of the same length by choosing the key K = C − P modulo the alphabet size. This is an identifiability argument, not a historical claim that a one-time pad was used. A negative result is only meaningful once we say which encodings, languages and segmentations it excludes.</p>
+    </div>
+  </div>
+</section>
+
+<section class="band">
+  <div class="wrap-narrow">
+    <div class="eyebrow">Reproduce</div>
+    <h2>Rerun everything in five commands.</h2>
+    <p style="color:var(--ink-2)">Python 3.10+ with NumPy (Pillow only for the OCR image panel). The substitution attack also needs a C++17 compiler.</p>
+<pre>git clone https://github.com/fabiofurini/voynich-seraphinianus-lab
+cd voynich-seraphinianus-lab
+pip install -r requirements.txt
+python scripts/fetch_data.py                 # downloads sources, verifies SHA-256
+python scripts/reproduce.py --suite matched  # or: affixes, hierarchy, calibration,
+                                             #     multiscale, boundary, substitution</pre>
+    <div class="tab-card">
+      <div class="table-scroll"><table>
+        <thead><tr><th>Suite</th><th>Script</th><th>Scope</th></tr></thead>
+        <tbody>
+          <tr><td><code>matched</code></td><td>matched_backoff.py</td><td>3 page splits, matched word lengths, back-off tuned on validation</td></tr>
+          <tr><td><code>affixes</code></td><td>affix_prediction.py, long_affix_prediction.py</td><td>Suffix from prefix and context; 5 page splits</td></tr>
+          <tr><td><code>hierarchy</code></td><td>hierarchy_stronger.py</td><td>4 restarts × 100 EM iterations</td></tr>
+          <tr><td><code>calibration</code></td><td>hierarchy_control.py, hierarchy_calibration.py</td><td>Known synthetic PCFG; failed and passing runs</td></tr>
+          <tr><td><code>multiscale</code></td><td>multiscale.py</td><td>7,500 tokens per corpus</td></tr>
+          <tr><td><code>boundary</code></td><td>robust_boundary.py</td><td>199 stratified permutations</td></tr>
+          <tr><td><code>substitution</code></td><td>substitution_attack/voynich_attack.py</td><td>Simulated annealing with positive controls</td></tr>
+        </tbody>
+      </table></div>
+    </div>
+  </div>
+</section>
+
+<section class="closing">
+  <div class="wrap">
+    <div class="eyebrow">Contribute</div>
+    <h2>Found a flaw? Tell us.</h2>
+    <p>Open an issue with a precise hypothesis, corpus version, segmentation, split and a prediction that could fail.</p>
+    <a class="button" href="https://github.com/fabiofurini/voynich-seraphinianus-lab/issues">Open an issue ↗</a>
+  </div>
+</section>
+</main>
+
+<footer class="wrap">
+  <a class="brand" href="index.html">BEYOND THE SIGNS</a>
+  <p>Fabio Furini · Exploratory snapshot, 18 October 2026 · AI-assisted analysis<br>Code MIT · Original text CC BY 4.0 · Third-party sources keep their own terms.</p>
+  <a href="https://github.com/fabiofurini/voynich-seraphinianus-lab/blob/main/REPRODUCIBILITY.md">Reproducibility guide ↗</a>
+</footer>
+</body>
+</html>

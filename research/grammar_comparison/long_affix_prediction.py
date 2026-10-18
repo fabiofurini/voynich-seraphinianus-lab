@@ -6,7 +6,7 @@ rows={k:v for k,v in ns['rows'].items() if k in ['Voynich','Seraphinianus_OCR']}
 rows['Voynich']=[(p,[tuple(re.findall('ckh|cth|cph|cfh|ch|sh|.',w)) for w in ws]) for p,ws in rows['Voynich']]
 rows['Seraphinianus_OCR']=[(p,[tuple(w) for w in ws]) for p,ws in rows['Seraphinianus_OCR']]
 
-base=P.parent/'Voynich_test_sostituzione/sources'
+base=P.parent/'substitution_attack/sources'
 for lang in ['latin','italian']:
  try:t=(base/('crib_'+lang+'.txt')).read_text(encoding='utf-8-sig')
  except UnicodeDecodeError:t=(base/('crib_'+lang+'.txt')).read_text(encoding='latin-1')

@@ -1,12 +1,19 @@
-# GitHub Pages deployment
+# Website deployment (GitHub Pages)
 
-[Home](README.md) · [Stato](STATUS.md) · [Ipotesi](HYPOTHESES.md) · [Esperimenti](EXPERIMENTS.md) · [Metodo](REPRODUCIBILITY.md) · [Documenti](reports/README.md) · [Roadmap](ROADMAP.md)
+[Home](README.md) · [Status](STATUS.md) · [Hypotheses](HYPOTHESES.md) · [Experiments](EXPERIMENTS.md) · [Reports](reports/README.md) · [Reproduce](REPRODUCIBILITY.md) · [Roadmap](ROADMAP.md)
 
-1. Create public repository `fabiofurini/voynich-seraphinianus-lab` initialized with a README.
-2. Upload this checkout to its default branch.
-3. Settings → Pages → Deploy from a branch → `main` → `/docs` → Save.
-4. Verify the returned Pages URL. Expected project address: `https://fabiofurini.github.io/voynich-seraphinianus-lab/` (not a claim that deployment has occurred).
+The website in [`docs/`](docs/) is static: HTML, one stylesheet, two scripts and images, with no build step. Relative links work under the project sub-path.
 
-No build step: docs/index.html, styles.css and app.js are static, with local JSON. Relative paths work under the project subpath. Run python scripts/check_publication.py before pushing updates.
+**One-time setup (repository owner):** Settings → Pages → *Build and deployment* → Source: *Deploy from a branch* → Branch: `main`, folder `/docs` → Save.
 
-If repository creation is unavailable through the connected tools, the owner must create it once. This local project remains fully reviewable before publication.
+The site is then served at <https://fabiofurini.github.io/voynich-seraphinianus-lab/> and updates on every push to `main`.
+
+| Page | File | Audience |
+|---|---|---|
+| The story | `docs/index.html` | General readers |
+| Results | `docs/results.html` | Everyone; panels for linguists and statisticians |
+| Voynich Lab | `docs/lab.html` + `docs/lab.js` | Interactive exploration |
+| Methods & tests | `docs/methods.html` | Statisticians, replicators |
+| Hypotheses | `docs/hypotheses.html` | Linguists, researchers |
+
+Preview locally with `python -m http.server 8000 --directory docs`, and run `python scripts/check_publication.py` before pushing.

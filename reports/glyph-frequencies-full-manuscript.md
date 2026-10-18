@@ -1,12 +1,14 @@
-# Inventario e frequenze su tutto il corpus Voynich ZL3b
+# Glyph inventory and frequencies across the whole Voynich transcription (ZL3b)
 
-Conteggio di segni grafici trascritti, non di fonemi. Fonte: Zandbergen-Landini, ZL3b, versione 13 maggio 2025.
+[Home](../README.md) · [Reports](README.md) · [Glyph inventory](2026-10-17-glyph-inventory.md) · [Code](../research/voynich_full_inventory.py) · [Output](../research/voynich_full_inventory.json)
 
-Sono inclusi tutti i 5385 loci in 227 identificatori di facciata/pannello: paragrafi, etichette, testi circolari, radiali e marginali trascritti. I pannelli di un foglio ripiegato hanno identificatori separati: non si tratta di 227 fogli fisici.
+A count of transcribed graphic signs, not of phonemes. Source: Zandbergen–Landini transcription ZL3b, version of 13 May 2025.
 
-Denominatore: 174,004 unità classificate, comprendenti forme base e gruppi/codici speciali. Ogni gruppo tra graffe viene preservato come una classe di forma composta, senza affermare che sia un glifo semplice. Si tratta di un conteggio convenzionale sulla trascrizione, non di una verifica completa delle immagini.
+All 5,385 loci in 227 page/panel identifiers are included: paragraphs, labels, circular, radial and marginal texts. Panels of a foldout have separate identifiers, so these are **not** 227 physical folios.
 
-| Etichetta EVA | Occorrenze | Frequenza |
+Denominator: **174,004 classified units**, including basic forms and special groups or codes. Each group in curly brackets is kept as one compound-form class, without claiming that it is a simple glyph. This is a conventional count on the transcription, not a complete check against the images.
+
+| EVA label | Occurrences | Share |
 |---|---:|---:|
 | `o` | 25,619 | 14.7232% |
 | `e` | 20,425 | 11.7382% |
@@ -40,23 +42,24 @@ Denominatore: 174,004 unità classificate, comprendenti forme base e gruppi/codi
 | `z` | 9 | 0.0052% |
 | `h` | 4 | 0.0023% |
 
-Forme composte e codici estesi: 547 occorrenze, 0.3144% del totale. Elenco completo sotto.
 
-## Incertezza e convenzioni
+Compound forms and extended codes: 547 occurrences, 0.3144% of the total (full list below).
 
-- Le etichette EVA non indicano pronuncia. ch/sh/ckh/cth/cph/cfh vengono contati con corrispondenza massimale come unità connesse.
-- Le maiuscole EVA vengono normalizzate perché codificano connessione grafica, non lettere distinte.
-- Gli 817 gruppi di lettura alternativa sono risolti scegliendo la prima variante: i numeri non sono indipendenti da questa scelta.
-- I 209 marcatori di testo illeggibile sono esclusi dal denominatore. Un marcatore può non corrispondere a un singolo glifo fisico.
-- I 27 apostrofi/modificatori vengono registrati separatamente, non contati come lettere indipendenti.
-- Le parti note dei token parzialmente illeggibili sono conteggiate: qui non escludiamo intere parole o righe.
-- I commenti editoriali e le parole latine/tedesche riportate nei commenti non entrano nel conteggio.
-- Le pagine perdute e il testo non trascritto non sono recuperabili da questo conteggio.
-- Non sono rimasti caratteri non gestiti dopo il parsing.
+## Uncertainty and conventions
 
-## Forme composte e codici estesi
+- EVA labels do not indicate pronunciation. `ch`, `sh`, `ckh`, `cth`, `cph` and `cfh` are counted by maximal match as connected units.
+- EVA capitals are normalised because they encode graphic connection, not distinct letters.
+- The 817 alternative-reading groups are resolved by choosing the first variant; the counts depend on this choice.
+- The 209 illegible-text markers are excluded from the denominator. One marker need not correspond to one physical glyph.
+- The 27 apostrophes/modifiers are recorded separately, not counted as independent letters.
+- Known parts of partly illegible tokens are counted; whole words or lines are not excluded here.
+- Editorial comments, and Latin or German words quoted in comments, are not counted.
+- Lost pages and untranscribed text cannot be recovered by this count.
+- No unhandled characters remained after parsing.
 
-| Classe conservata dalla trascrizione | Occorrenze |
+## Compound forms and extended codes
+
+| Class kept from the transcription | Occurrences |
 |---|---:|
 | `{ikh}` | 36 |
 | `{ch'}` | 28 |
@@ -228,12 +231,13 @@ Forme composte e codici estesi: 547 occorrenze, 0.3144% del totale. Elenco compl
 | `{y@162;h}` | 1 |
 | `{yko}` | 1 |
 
-## Fonte e riproduzione
+## Source and reproduction
 
-https://arxiv.org/src/2608.17096v1/anc/data/voynich-units/ZL3b.txt
+- Transcription: <https://arxiv.org/src/2608.17096v1/anc/data/voynich-units/ZL3b.txt>
+- Original EVA glyph table: <https://www.voynich.nu/hist/gabriel/eva2_reference.pdf>
 
-Tavola originale delle forme EVA: https://www.voynich.nu/hist/gabriel/eva2_reference.pdf
+```bash
+python research/voynich_full_inventory.py research/patterns/voynich_ZL3b.txt > full_inventory.json
+```
 
-python voynich_full_inventory.py voynich_ZL3b.txt > inventario_completo.json
-
-Lo script, la fonte e il JSON completo sono inclusi nel pacchetto riproducibile. Hash SHA256 della fonte: 8384ef2572444d076a9dfb22bb069808e331546832e0b456a4507adb376e7657
+Source SHA-256: `8384ef2572444d076a9dfb22bb069808e331546832e0b456a4507adb376e7657`

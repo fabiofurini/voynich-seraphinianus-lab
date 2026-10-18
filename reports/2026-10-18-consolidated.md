@@ -1,101 +1,113 @@
-# Voynich e Seraphinianus: controlli statistici consolidati
+# Voynich and Seraphinianus: consolidated statistical checks
 
-18 ottobre 2026. Studio esplorativo riproducibile; nessuna traduzione e nessuna prova di intraducibilità.
+[Home](../README.md) · [Reports](README.md) · [Experiments](../EXPERIMENTS.md) · [Reproduce](../REPRODUCIBILITY.md) · [Sources](../DATA_SOURCES.json) · [Rights](../RIGHTS.md)
 
-> **Esiti finali:** (1) la debole utilità di contesti aggiuntivi nel Voynich sopravvive a pareggiamento e backoff, ma non è esattamente nulla con accorpamenti EVA; (2) auditOCR con388parole localizzabili: disaccordi e segmentazione impediscono un CER indipendente; (3) affissi3–4unità: dati Voynich troppo scarsi per inferenze affidabili disgiunte; (4) modello gerarchico rafforzato, calibrato su controllo sintetico, non migliora il Voynich rispetto a HMM nella rappresentazione esaminata; Seraph inconcludente. Nessuna prova di intraducibilità o di equivalenza fra codici.
+18 October 2026. Reproducible exploratory study; no translation and no proof of untranslatability.
 
+> **Final outcomes.**
+> 1. The weak usefulness of extra context in the Voynich survives sample matching and back-off, but it is not exactly zero with connected EVA units.
+> 2. OCR audit on 388 locatable words: disagreements and segmentation prevent an independent character error rate.
+> 3. Affixes of 3–4 units: Voynich data are too sparse for reliable disjoint inference.
+> 4. A strengthened hierarchical model, calibrated on a synthetic control, does not improve on an HMM for the Voynich in the examined representation; the Seraphinianus result is inconclusive.
+>
+> No proof of untranslatability or of equivalence between the two codices.
 
+## 1. Matched comparison and rare contexts (E02)
 
+Three page splits (seeds 19201–19203): 60% training, 20% validation, 20% test. Within each split, every one of the five corpora has the same number of words of each length from 4 to 10 units. Depending on the split there are 1,104–1,139 training words and 270–301 test words, with 874–1,070 internal test characters. Pseudo-pages for the control texts are blocks of 150 words.
 
+Interpolated models of order 0–5: each context backs off to the shorter one, with back-off strength chosen on validation from {0.1, 1, 10, 100, 1000}. Evaluation uses only real letters from the fourth position of the word onward, identical for every order; word starts and ends are excluded. The alphabet is derived from the training split only, with an unknown class. Matching uses the availability of word lengths in each corpus, not the frequencies of the characters to be predicted.
 
-## 1. Confronto pareggiato e contesti rari
-
-Tre separazioni per pagine (seed19201–19203), 60% apprendimento,20% validazione,20% verifica. Entro ogni split stesso numero di parole per ogni lunghezza4–10 in tutti i cinque corpora. 1104–1139 parole di apprendimento e 270–301 di verifica a seconda dello split; 874–1070 caratteri interni verificati. Le pseudo-pagine dei controlli sono blocchi di150 parole.
-
-Modelli interpolati di ordine0–5: ogni contesto ripiega su quello più corto; forza del backoff scelta in validazione fra0.1,1,10,100,1000. Valutazione sulle sole lettere reali dalla quarta posizione della parola, identiche per tutti gli ordini; esclusi inizi/fine parola. Alfabeto derivato dal solo train con classe ignota. Il pareggiamento usa disponibilità delle lunghezze nei corpora, non frequenze dei caratteri da predire.
-
-
-
-|Corpus|Guadagno ordine2→3, min–max bit|Media ordine2|Media ordine3|
-
+| Corpus | Gain from order 2 to 3, min–max (bits) | Mean, order 2 | Mean, order 3 |
 |---|---:|---:|---:|
+| Voynich | 0.0003–0.0014 | 1.9998 | 1.9988 |
+| Seraphinianus OCR | 0.0878–0.1052 | 2.0392 | 1.9420 |
+| Voynich, connected EVA | 0.0034–0.0146 | 2.0143 | 2.0071 |
+| Latin | 0.3189–0.3844 | 2.8926 | 2.5413 |
+| Italian | 0.2955–0.3425 | 2.8722 | 2.5530 |
 
-|Voynich|0.0003–0.0014|1.9998|1.9988|
+The raw Voynich gain is very small, and all three page-bootstrap intervals include zero. Merging the six connected EVA groups makes the gain small but positive, with 2 of 3 intervals excluding zero: saying that the text contains no further information would be wrong. The Seraphinianus and the control texts show larger gains.
 
-|Seraphinianus_OCR|0.0878–0.1052|2.0392|1.9420|
+The intervals are conditional on the samples; they do not give a probability that the book is asemic. These are exploratory multiple comparisons, and the splits reuse pages. Differences in script and transliteration remain.
 
-|Voynich_connected_EVA|0.0034–0.0146|2.0143|2.0071|
+## 2. Seraphinianus OCR audit (E06)
 
-|latin|0.3189–0.3844|2.8926|2.5413|
+Scripts and outputs: `ocr_audit*`. The documented sample contains 442 original labels (no augmentation), 411 locatable positions, and 388 comparable single words on 199 pages.
 
-|italian|0.2955–0.3425|2.8722|2.5530|
+| Agreement | Words | Share |
+|---|---:|---:|
+| Exact, at the same position | 284 / 388 | 73.20% |
+| Within ±2 positions | 335 / 388 | 86.34% |
 
+Disagreements include segmentation shifts. These figures are **not** a validated CER or WER: they are training-set labels, not an independent check. Twelve original images were inspected. Graphic recurrences are visible, but the sign-to-transliteration convention was not independently certified.
 
+Examples of differences in the number of repeated strokes: label `Xeeei` against OCR `Xeei`; label `rrgiiiiiiiiLb` against OCR `rrgiiiiiiiLb`. These are exactly the discrepancies that can alter context statistics. The OCR limitation is documented, not solved.
 
-Il guadagno del Voynich grezzo è molto piccolo e tutti e tre gli intervalli bootstrap per pagina includono zero. Accorpando i sei gruppi EVA connessi il guadagno diventa piccolo ma positivo, con2/3 intervalli che escludono zero: dire che il testo non contiene nessuna informazione ulteriore sarebbe sbagliato. Seraphinianus e testi di controllo mostrano guadagni maggiori. Gli intervalli sono condizionati ai campioni; non danno probabilità che il libro sia asemico. Sono confronti multipli esplorativi e gli split riutilizzano pagine. Differenze di scrittura e traslitterazione restano.
+## 3. Long affixes and disjoint segments (E05)
 
+Script `long_affix_prediction.py` with parameter 3 or 4. Prefix, pre-suffix local context and suffix do not overlap; the minimum length is 3A. The model predicts only the suffix, not a whole word. Smoothing uses a vocabulary of suffixes observed in the corpus (transductive information about types, not test frequencies). In the earlier `affix_prediction.py` tests, segments were 2 units long with a minimum word length of 5, so prefix and local context could partly overlap in shorter words.
 
+In the Voynich, 33–53 test occurrences per split remain with 3-unit segments, and **one** per split with 4-unit segments. The synthetic control is detected, but the real data lack the power for any conclusion about long segments. No null value should be read as the absence of grammar. The files `long_affix_3/4_results` keep the first, less restrictive analysis; `long_affix_disjoint_3/4_results` keep the disjoint check.
 
-## 2. Audit OCR Seraphinianus
+## 4. Organisation beyond the word: multiscale comparison (E11)
 
-Script e risultati ocr_audit*. Il campione documentato comprende442 etichette originali (senza augmentation);411 posizioni localizzabili;388 singole parole confrontabili su199 pagine. Accordo esatto alla posizione284/388=73.20%; entro±2 posizioni335/388=86.34%. Disaccordi includono spostamenti di segmentazione. Questi numeri NON sono un tasso CER o WER validato.
+`multiscale.py`: the first 7,500 tokens of each corpus; blocks of 100, 300, 1,000 and 3,000 tokens; mutual information between word and block; 99 global permutations and 99 within-page permutations. All four corpora show an excess over global shuffling, the Seraphinianus included.
 
-Sono etichette del dataset di addestramento, non una verifica indipendente. Sono state visualizzate12 immagini originali: ricorrenze grafiche visibili, ma convenzione segno→traslitterazione non certificata autonomamente. Esempi di differenza nella quantità di tratti ripetuti: label Xeeei contro OCR Xeei; label rrgiiiiiiiiLb contro OCR rrgiiiiiiiLb. Sono proprio discrepanze che possono alterare le statistiche dei contesti. Il limite OCR è documentato, non risolto.
+| Corpus | Excess at block size 1,000 (bits) |
+|---|---:|
+| Latin | 0.1614 |
+| Voynich | 0.1256 |
+| Italian | 0.0963 |
+| Seraphinianus | 0.0820 |
 
+These values are not an equivalence test. Shuffling within pages leaves the indicator almost unchanged at large scales. This is partly mathematical: the statistic uses word counts per block, not syntactic order, and if a page stays in the same block its counts do not change. The same happens in the linguistic controls. This is neither a refutation of semantics nor a full replication of Montemurro & Zanette; it shows that the measure alone does not identify syntax or meaning.
 
+Reference: Montemurro & Zanette (2013), <https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0066344>. That work analyses reordered sections and co-occurrence structures that are not fully replicated here.
 
-## 3. Affissi lunghi e segmenti disgiunti
+## 5. Hierarchy against sequence (E07–E10)
 
-Script long_affix_prediction.py con parametro3 o4; prefisso, contesto locale presuffisso e suffisso non si sovrappongono: lunghezza minima3A. Prevede solo il suffisso, non una parola completa. Smoothing su un vocabolario di suffissi osservati nel corpus (informazione transduttiva sui tipi, non frequenze test). Nei test precedenti affix_prediction.py i segmenti erano di2 unità e la lunghezza minima5: il prefisso e il contesto locale possono quindi sovrapporsi in parte nelle parole più corte.
+### 5.1 First comparison and failed positive control (E07)
 
-Nel Voynich restano33–53 occorrenze di verifica per split con segmenti3, e UNA per split con segmenti4. Il controllo sintetico è rilevato, ma nei dati reali non c’è potenza sufficiente per una conclusione sui segmenti lunghi. Nessun valore nullo va interpretato come assenza di grammatica. I file long_affix_3/4_results conservano la prima analisi meno restrittiva, quelli long_affix_disjoint_3/4_results la verifica disgiunta.
+A comparison beyond the single word used lines of 4–14 words, mapped to 5 suffix classes frequent in the training split plus OTHER. PCFG2 and HMM2 each have two latent states; unigram and bigram models are sequential baselines. Page split 60/20/20, training capped at 1,200 lines, 2 initialisations, 25 EM epochs, selection on validation.
 
+| Corpus | Bigram (bits/token) | HMM2 | PCFG2 |
+|---|---:|---:|---:|
+| Voynich | 2.29638 | 2.29752 | 2.31111 |
+| Seraphinianus | 2.08774 | 2.08965 | 2.11333 |
 
+**The positive control failed.** On 2,000 lines generated by a grammar of the same family, the learned PCFG scored 0.991189 bits/token, the HMM 0.899125, and the known true grammar 0.875845. A hierarchical signal existed, but the first fit did not recover it. The lack of advantage on the real texts is therefore **not** evidence of absent hierarchy. Length-conditional probabilities and PCFG normalisation were verified by enumerating every binary string of length 1–5.
 
-## 4. Organizzazione oltre la parola: confronto multiscala
+### 5.2 Correction after strengthened calibration (E08)
 
-Multiscale.py: primi7500 token di ciascun corpus, blocchi100/300/1000/3000, MI(parola,blocco),99 permutazioni globali e99 entro pagina. Tutti e quattro mostrano un eccesso rispetto al rimescolamento globale, incluso il Seraphinianus. A scala1000: Voynich0.1256bit di eccesso, Seraphinianus0.0820, latino0.1614, italiano0.0963. Questi valori non sono un test di equivalenza.
+The first failure was not definitive. With Dirichlet(0.3) initialisation, more restarts and up to 100 iterations, the synthetic control succeeded: four restarts completed within 60 s, and the best PCFG reached 0.875506 bits/token, against 0.899125 for the HMM and 0.875845 for the true grammar. The initial fit had collapsed into a local optimum. This shows the importance of calibration; it does not guarantee power for human grammars or for the unknown representation of the codices.
 
-Rimescolare entro pagina lascia quasi invariato questo indicatore a scale ampie. Questo è in parte matematico: la statistica usa conteggi di parole nei blocchi, non ordine sintattico, e se una pagina resta nello stesso blocco i conteggi non cambiano. Lo stesso accade nei controlli linguistici. Non è una confutazione della semantica né una replica completa di Montemurro–Zanette. Dimostra che la misura da sola non identifica sintassi o significato.
+### 5.3 Final result of the strengthened comparison (E09–E10)
 
-Studio di riferimento: Montemurro e Zanette2013, https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0066344 . Il lavoro analizza sezioni riordinate e strutture di cooccorrenza non replicate integralmente qui.
+Four initialisations (seeds 13, 29, 43, 61), 100 iterations each, Dirichlet(0.3) initialisation, smoothing 0.1 and model selection on validation, for both PCFG2 and HMM2. Corpus, representation and split unchanged.
 
-
-
-## 5. Moro: cosa richiederebbe una verifica
-
-Musso, Moro et al.2003, Broca’s area and the language instinct, https://www.nature.com/articles/nn1077 ; Moro, Impossible Languages, https://academic.oup.com/mit-press-scholarship-online/book/18683 . I risultati su apprendimento di regole e dipendenza dalla struttura non costituiscono una funzione nota che proietta vincoli grammaticali sulle sequenze di una scrittura ignota. Un confronto PCFG/sequenziale è una prova esplorativa su modelli statistici, non verifica dei vincoli di Moro. Anche una morfologia regolare può essere prodotta da un automa; l’esistenza di un albero di concatenazione non dimostra sintassi gerarchica linguistica.
-
-
-
-## Conclusione provvisoria
-
-Il risultato più robusto è la debole utilità del contesto aggiuntivo entro parola nel Voynich rispetto ai testi di confronto, anche pareggiando lunghezze e quantità e usando backoff. Sopravvive però un piccolo guadagno con segmentazione EVA connessa. Le somiglianze col Seraphinianus sono specifiche, non equivalenza generale. Non si può dedurre intraducibilità senza ipotesi restrittive sulla codifica.
-
-## 6. Confronto gerarchico iniziale e controllo positivo
-È stato eseguito un confronto oltre la singola parola usando righe di4–14 parole, trasformate in5 classi di suffissi frequenti nel solo train più OTHER. PCFG2 e HMM2 hanno due stati latenti; unigrammi e bigrammi sono controlli sequenziali. Split60/20/20 per pagine, cap1200righe train,2inizializzazioni,25EMepochs, scelta sul validation.
-Test bit/token: Voynich bigramma2.29638,HMM2.29752,PCFG2.31111; Seraphinianus bigramma2.08774,HMM2.08965,PCFG2.11333.
-Il controllo positivo è fallito: su2000righe generate da una grammatica della stessa famiglia, PCFG appresa0.991189, HMM0.899125, grammatica vera nota0.875845. Quindi un segnale gerarchico esiste, ma il primo fitting non lo recupera. L’assenza di vantaggio sui testi reali NON è evidenza di assenza di gerarchia. Probabilità condizionate alla lunghezza e normalizzazione PCFG verificate enumerando tutte le stringhe binarie di lunghezza1–5.
-Righe non equivalgono a frasi; classi di suffissi possono eliminare dipendenze; due stati sono una semplificazione estrema. Non è una ricostruzione della grammatica umana né una verifica di Moro.
-
-## Perché questi dati non possono provare intraducibilità assoluta
-Senza limitare la famiglia di codifiche, qualsiasi stringa finita C può essere resa compatibile con qualsiasi testo P di uguale lunghezza definendo una chiave K=C−P modulo la dimensione dell’alfabeto. È un argomento di identificabilità, non l’ipotesi storica che sia stato usato un one-time pad. Bisogna quindi specificare quali codifiche, lingue e segmentazioni si stanno escludendo; un fallimento di apprendimento non esclude tutte le grammatiche.
-
-
-### Correzione dopo calibrazione rafforzata
-Il primo fallimento del controllo positivo non è definitivo: con inizializzazioni Dirichlet(0.3), più ripartenze e fino100iterazioni, il controllo sintetico è riuscito. Quattro ripartenze completate entro60s; PCFG migliore0.875506bit/token, rispetto a0.899125HMM e0.875845grammatica vera. Il fitting iniziale collassava in un ottimo locale; il modello probabilistico può recuperare il segnale nel controllo specifico. Questo dimostra l’importanza della calibrazione, non garantisce potenza per grammatiche umane o per la rappresentazione ignota dei codici.
-
-
-## Riproduzione e provenienza
-
-[Home](../README.md) · [Esperimenti](../EXPERIMENTS.md) · [Riproduzione](../REPRODUCIBILITY.md) · [Fonti](../DATA_SOURCES.json) · [Diritti](../RIGHTS.md)
-
-Il repository pubblico contiene codice, aggregati e documenti originali in Markdown. Le trascrizioni di terzi, le etichette OCR complete e le immagini del libro moderno non sono redistribuite: il downloader le recupera localmente con hash verificato. I risultati pubblici dell’audit sono limitati agli aggregati. La versione privata precedente del pacchetto comprendeva materiali di analisi non inclusi nella pubblicazione.
-
-### Esito finale del confronto gerarchico rafforzato
-Quattro inizializzazioni[13,29,43,61],100iterazioni ciascuna, inizializzazione Dirichlet(0.3), smoothing0.1 e selezione del modello sulla validazione, sia PCFG2 sia HMM2. Corpus/rappresentazione e split invariati.
-|Corpus|PCFG2 testbit/token|HMM2 testbit/token|Differenza PCFG−HMM|Bootstrap95% per pagina|
+| Corpus | PCFG2 test (bits/token) | HMM2 test (bits/token) | PCFG − HMM | 95% page bootstrap |
 |---|---:|---:|---:|---|
-|Voynich|2.312988|2.293697|+0.019291|[+0.006544,+0.034324]|
-|SeraphinianusOCR|2.075637|2.079046|−0.003408|[−0.008042,+0.000793]|
-2000bootstrap accoppiati su40pagine Voynich e57Seraph; intervalli esplorativi condizionati ai modelli selezionati e a questo split. Il modello gerarchico è peggiore nel Voynich; nel Seraph il vantaggio nominale è molto piccolo e l’intervallo comprende zero. Il controllo positivo rafforzato riesce. Questo risultato esclude solo l’utilità predittiva aggiuntiva di QUESTA PCFG a due stati su QUESTA rappresentazione in classi di suffissi. Non esclude grammatiche più ricche, rappresentazioni diverse, struttura interna alle parole o sintassi non conservata dai confini delle righe. Niente interpretazione semantica o test diretto di Moro.
+| Voynich | 2.312988 | 2.293697 | +0.019291 | [+0.006544, +0.034324] |
+| Seraphinianus OCR | 2.075637 | 2.079046 | −0.003408 | [−0.008042, +0.000793] |
+
+2,000 paired bootstrap resamples over 40 Voynich and 57 Seraphinianus test pages; exploratory intervals, conditional on the selected models and this split. The hierarchical model is worse for the Voynich; for the Seraphinianus the nominal advantage is very small and the interval includes zero. The strengthened positive control succeeds.
+
+This result excludes only the additional predictive value of **this** two-state PCFG on **this** representation in suffix classes. It does not exclude richer grammars, different representations, structure inside words, or syntax not preserved by line boundaries. Lines are not equivalent to sentences; suffix classes may remove dependencies; two states are an extreme simplification. No semantic interpretation and no direct test of Moro.
+
+## 6. Moro: what a test would require
+
+Musso, Moro et al. (2003), *Broca's area and the language instinct*, <https://www.nature.com/articles/nn1077>; Moro, *Impossible Languages*, <https://academic.oup.com/mit-press-scholarship-online/book/18683>.
+
+The results on rule learning and structure dependence do not provide a known function that projects grammatical constraints onto the sequences of an unknown script. A PCFG-versus-sequential comparison is an exploratory test of statistical models, not a test of Moro's constraints. A regular morphology can also be produced by an automaton; the existence of a concatenation tree does not prove linguistic hierarchical syntax.
+
+## 7. Why these data cannot prove absolute untranslatability
+
+Without restricting the family of encodings, any finite string C can be made compatible with any text P of the same length by defining a key K = C − P modulo the alphabet size. This is an identifiability argument, not a historical claim that a one-time pad was used. One must therefore state which encodings, languages and segmentations are being excluded; a learning failure does not exclude all grammars.
+
+## Provisional conclusion
+
+The most robust result is the weak usefulness of extra within-word context in the Voynich compared with the control texts, even after matching lengths and amounts and using back-off. A small gain survives with connected EVA segmentation. The similarities with the Seraphinianus are specific, not a general equivalence. Untranslatability cannot be deduced without restrictive assumptions about the encoding.
+
+## Reproduction and provenance
+
+The public repository contains code, aggregates and original documents in Markdown. Third-party transcriptions, complete OCR labels and images of the modern book are not redistributed: the downloader fetches them locally with verified hashes. Public audit results are limited to aggregates. The earlier private version of the package included analysis materials not included in this publication.

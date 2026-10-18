@@ -8,7 +8,7 @@
     "rights": "Third-party source; downloaded locally, not relicensed. See RIGHTS.md."
   },
   {
-    "path": "research/Voynich_test_sostituzione/sources/crib_latin.txt",
+    "path": "research/substitution_attack/sources/crib_latin.txt",
     "url": "https://arxiv.org/src/2608.17096v1/anc/data/voynich-units/latin/celsus.de_medicina.part.1.tess",
     "sha256": "8015edceab63af08657345c802c161fe4a159425f82869266cef9603f6e8d5d9",
     "bundled": false,
@@ -16,7 +16,7 @@
     "rights": "Third-party source; downloaded locally, not relicensed. See RIGHTS.md."
   },
   {
-    "path": "research/Voynich_test_sostituzione/sources/crib_italian.txt",
+    "path": "research/substitution_attack/sources/crib_italian.txt",
     "url": "https://arxiv.org/src/2608.17096v1/anc/data/voynich-units/italian/26166.txt",
     "sha256": "b3ed20f08ef7304a2dcf09600288894366e3bb79264ebb0ab1c6324eb80091d6",
     "bundled": false,

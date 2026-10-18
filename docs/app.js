@@ -1,23 +1,185 @@
 'use strict';
-const repo='https://github.com/fabiofurini/voynich-seraphinianus-lab';
-const experiments=[
-['01','completed','Contesto locale e pagine nuove','La differenza resiste a campioni pareggiati e backoff.','ESEGUITO','matched_backoff_results.json','Stesso numero di parole per ogni lunghezza, tre separazioni per pagine e parametri scelti su validazione.','Il guadagno da due a tre unità precedenti è minimo nel Voynich e maggiore nei controlli italiano e latino.','La segmentazione EVA accorpata conserva un piccolo guadagno; non dimostra assenza di informazione a distanza.'],
-['02','completed','Inizio e fine delle parole','Regolarità presenti in entrambi i codici.','ESEGUITO','robust_boundary_results.json','199 permutazioni che preservano pagina, fascia di posizione e lunghezza.','Le dipendenze ai confini superano tutte le permutazioni in entrambi i testi.','Impaginazione, grafia e OCR possono contribuire: non è una prova di sintassi.'],
-['03','limited','Prefissi, suffissi e composizione','Le famiglie esistono; i segmenti lunghi richiedono più dati.','DATI SCARSI','long_affix_disjoint_3_results.json','Segmenti di 2, 3 e 4 unità; verifica su pagine escluse; controllo artificiale positivo.','Molte forme condividono segmenti. Il prefisso di due unità aggiunge poco al contesto locale del suffisso.','Con segmenti disgiunti di tre unità restano 33–53 parole di test per split; con quattro, una sola. Nessuna conclusione negativa affidabile.'],
-['04','limited','Audit della trascrizione OCR','Le ripetizioni sono sensibili agli errori di riconoscimento.','AUDIT LIMITATO','ocr_audit_results.json','388 singole parole localizzabili e 12 ritagli originali ispezionati.','73,2% di accordi alla posizione; 86,3% cercando entro due posizioni vicine.','Non è un tasso di accuratezza validato: le etichette provengono dall’addestramento e ci sono spostamenti di segmentazione.'],
-['05','completed','Gerarchia contro sequenza','Una piccola grammatica, dopo una calibrazione riuscita.','ESEGUITO','hierarchy_stronger_results.json','PCFG e HMM a due stati; classi di finali; quattro inizializzazioni e 100 iterazioni.','Nel Voynich la PCFG è peggiore dell’HMM di 0,0193 bit/token. Nel Seraphinianus il piccolo vantaggio è incerto.','Riguarda questa rappresentazione riduttiva, non tutte le grammatiche. Righe non note come frasi. Non è un test diretto di Moro.'],
-['06','limited','Tentativo di sostituzione semplice','I controlli funzionano, ma non emerge una lettura coerente.','ESITO NEGATIVO','../Voynich_test_sostituzione/results.json','Ricerca euristica su latino e italiano, con spazi e unità fissati; verifica su pagine separate.','Il recupero dei controlli cifrati è completo; nel Voynich non si ottiene una lettura coerente.','Non è una ricerca esaustiva su tutte le chiavi; non esclude altre lingue, abbreviazioni o codifiche.'],
-['07','completed','Organizzazione su scale maggiori','Anche la trascrizione artistica mostra addensamenti.','ESEGUITO','multiscale_results.json','7.500 token per corpus; blocchi di 100–3.000 parole; controlli di rimescolamento.','Tutti i corpora mostrano eterogeneità oltre il rimescolamento globale.','La misura usa conteggi nei blocchi, non sintassi; non replica integralmente Montemurro–Zanette.']
+// Beyond the Signs — shared script: mobile menu, experiment filter, and the SVG charts on results.html.
+// Chart data mirror research outputs (matched_backoff_results.json, hierarchy_bootstrap_results.json,
+// substitution_attack/results.json); values are copied here so the page works without fetch().
+
+(function(){
+  const menu=document.getElementById('menu'),nav=document.getElementById('navigation');
+  if(menu&&nav)menu.addEventListener('click',()=>{const o=nav.classList.toggle('open');menu.setAttribute('aria-expanded',String(o));});
+
+  // experiment register filter (methods.html)
+  const filters=document.querySelectorAll('[data-filter]');
+  filters.forEach(b=>b.addEventListener('click',()=>{
+    filters.forEach(x=>{x.classList.toggle('selected',x===b);x.setAttribute('aria-pressed',String(x===b));});
+    document.querySelectorAll('#register .experiment').forEach(e=>{e.hidden=b.dataset.filter!=='all'&&e.dataset.kind!==b.dataset.filter;});
+  }));
+})();
+
+const NS='http://www.w3.org/2000/svg';
+const css=n=>getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+function el(tag,attrs,parent,text){
+  const e=document.createElementNS(NS,tag);
+  for(const k in attrs)e.setAttribute(k,attrs[k]);
+  if(text!=null)e.textContent=text;
+  if(parent)parent.appendChild(e);
+  return e;
+}
+function svgRoot(host,w,h){host.innerHTML='';return el('svg',{viewBox:`0 0 ${w} ${h}`,preserveAspectRatio:'xMidYMid meet'},host);}
+const hostW=host=>Math.max(300,Math.min(900,Math.round(host.clientWidth||760)));
+
+// shared tooltip
+const tip=document.createElement('div');tip.className='tip';tip.setAttribute('role','status');
+document.addEventListener('DOMContentLoaded',()=>document.body.appendChild(tip));
+function showTip(evt,html){tip.innerHTML=html;tip.classList.add('on');moveTip(evt);}
+function moveTip(evt){const x=Math.min(evt.clientX+14,innerWidth-262);tip.style.left=x+'px';tip.style.top=(evt.clientY+14)+'px';}
+function hideTip(){tip.classList.remove('on');}
+function hover(node,html){
+  node.style.cursor='default';
+  node.addEventListener('mouseenter',e=>showTip(e,html));
+  node.addEventListener('mousemove',moveTip);
+  node.addEventListener('mouseleave',hideTip);
+  node.setAttribute('tabindex','0');
+  node.addEventListener('focus',()=>{const r=node.getBoundingClientRect();showTip({clientX:r.right,clientY:r.top},html);});
+  node.addEventListener('blur',hideTip);
+}
+const fmt=(v,d=4)=>v.toFixed(d);
+
+/* ---------- data ---------- */
+const CORPORA=[
+  {id:'voy',label:'Voynich · EVA',fam:'--voynich',dash:'',gains:[0.00123,0.000338,0.001352],
+   curve:[4.0362,2.2086,1.9998,1.9988,1.9948,1.9948]},
+  {id:'voyc',label:'Voynich · connected units',fam:'--voynich',dash:'6 4',gains:[0.003702,0.014594,0.003449],
+   curve:[3.9311,2.1803,2.0143,2.0071,2.0067,2.0029]},
+  {id:'ser',label:'Seraphinianus · OCR',fam:'--seraph',dash:'',gains:[0.098463,0.105175,0.087796],
+   curve:[3.6729,2.2125,2.0392,1.9420,1.9274,1.9180]},
+  {id:'lat',label:'Latin · Celsus',fam:'--control',dash:'',gains:[0.350753,0.31892,0.384435],
+   curve:[4.0355,3.3234,2.8926,2.5413,2.2450,2.2493]},
+  {id:'ita',label:'Italian · Murri',fam:'--control',dash:'6 4',gains:[0.295531,0.342462,0.319759],
+   curve:[3.9825,3.2097,2.8722,2.5530,2.2949,2.2948]}
 ];
-const list=document.getElementById('experiment-list');
-for(const [n,status,title,sub,badge,file,method,result,limit] of experiments){const item=document.createElement('details');item.className='experiment';item.dataset.status=status;item.innerHTML=`<summary><span class="exp-number">${n}</span><div><h3>${title}</h3><p class="description">${sub}</p></div><span class="status ${status==='limited'?'amber':'green'}">${badge}</span></summary><div class="exp-detail"><p><strong>Metodo.</strong> ${method}</p><p><strong>Risultato.</strong> ${result}</p><p><strong>Limite.</strong> ${limit}</p><a href="${repo}/blob/main/research/grammar_comparison/${file}">Apri l’output tecnico ↗</a></div>`;list.appendChild(item)}
-for(const b of document.querySelectorAll('[data-filter]'))b.addEventListener('click',()=>{for(const q of document.querySelectorAll('[data-filter]')){q.classList.toggle('selected',q===b);q.setAttribute('aria-pressed',String(q===b))}for(const e of document.querySelectorAll('.experiment'))e.hidden=b.dataset.filter!=='all'&&e.dataset.status!==b.dataset.filter});
-const menu=document.getElementById('menu'),nav=document.getElementById('navigation');menu.addEventListener('click',()=>{const v=nav.classList.toggle('open');menu.setAttribute('aria-expanded',String(v))});for(const a of nav.querySelectorAll('a'))a.addEventListener('click',()=>{nav.classList.remove('open');menu.setAttribute('aria-expanded','false')});
-const colors=['#254f43','#6b8a57','#b37043','#8b779d','#477c8b'];let data,view='gain';
-const fmt=x=>x.toFixed(4).replace('.',',');
-function draw(){if(!data)return;const rows=data.matched;const W=900,L=220,R=55,T=30,plot=W-L-R;let parts=[];
-if(view==='gain'){const H=320,max=.42;parts.push(`<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Guadagno predittivo del terzo carattere precedente: piccolo nel Voynich, maggiore nel Seraphinianus e nei controlli italiano e latino."><title>Guadagno predittivo, tre split pareggiati</title>`);for(let x=0;x<=.4;x+=.1){const xx=L+x/max*plot;parts.push(`<line x1="${xx}" x2="${xx}" y1="20" y2="263" stroke="#e2e6dc"/><text x="${xx}" y="290" text-anchor="middle" fill="#647067" font-size="12">${x.toFixed(1).replace('.',',')}</text>`)}rows.forEach((r,i)=>{const y=T+i*47,mean=r.gains.reduce((a,b)=>a+b,0)/r.gains.length,min=Math.min(...r.gains),maxi=Math.max(...r.gains),x=L+mean/max*plot;parts.push(`<text x="0" y="${y+13}" fill="#263d32" font-size="13">${r.label}</text><rect x="${L}" y="${y}" width="${Math.max(1.5,mean/max*plot)}" height="21" rx="2" fill="${colors[i]}"/><line x1="${L+min/max*plot}" x2="${L+maxi/max*plot}" y1="${y+10.5}" y2="${y+10.5}" stroke="#172d29" stroke-width="2"/><circle cx="${x}" cy="${y+10.5}" r="3" fill="#172d29"/><text x="${Math.min(854,L+maxi/max*plot+12)}" y="${y+14}" font-size="11" fill="#53635b">${fmt(mean)}</text>`)});parts.push('<text x="845" y="313" text-anchor="end" fill="#647067" font-size="11">bit per carattere interno · più alto = più beneficio</text></svg>');document.getElementById('chart-note').textContent='Barra: media dei tre split. Segmento nero: minimo–massimo fra split, non intervallo di confidenza. Il confronto non misura significato o traducibilità.';
-}else{const H=365,x=k=>L+k/5*plot,y=v=>280-(v-1.5)/3*235;parts.push(`<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Errore predittivo per contesto da zero a cinque caratteri; meno bit significa migliore previsione."><title>Curva dell’errore predittivo</title>`);for(const v of [1.5,2,2.5,3,3.5,4,4.5])parts.push(`<line x1="${L}" x2="${W-R}" y1="${y(v)}" y2="${y(v)}" stroke="#e2e6dc"/><text x="${L-14}" y="${y(v)+4}" text-anchor="end" font-size="11" fill="#647067">${v}</text>`);for(let k=0;k<6;k++)parts.push(`<text x="${x(k)}" y="303" text-anchor="middle" font-size="12" fill="#647067">${k}</text>`);rows.forEach((r,i)=>{parts.push(`<polyline points="${r.curve.map((v,k)=>`${x(k)},${y(v)}`).join(' ')}" fill="none" stroke="${colors[i]}" stroke-width="2.5"/>`);r.curve.forEach((v,k)=>parts.push(`<circle cx="${x(k)}" cy="${y(v)}" r="3" fill="${colors[i]}"/>`));parts.push(`<rect x="0" y="${28+i*31}" width="12" height="4" fill="${colors[i]}"/><text x="20" y="${34+i*31}" font-size="12" fill="#263d32">${r.label}</text>`)});parts.push('<text x="845" y="339" text-anchor="end" fill="#647067" font-size="11">numero di unità precedenti usate · meno bit = meglio</text></svg>');document.getElementById('chart-note').textContent='Medie sui tre split; stessi caratteri interni valutati a ogni ordine. I livelli assoluti dipendono anche dalla codifica: non sono una classifica di linguisticità.'}
-document.getElementById('chart').innerHTML=parts.join('');}
-for(const mode of ['gain','curve'])document.getElementById(mode+'-view').addEventListener('click',()=>{view=mode;for(const m of ['gain','curve']){const b=document.getElementById(m+'-view');b.classList.toggle('selected',m===view);b.setAttribute('aria-pressed',String(m===view))}draw()});
-fetch('assets/results.json').then(r=>{if(!r.ok)throw Error('Dati non disponibili');return r.json()}).then(d=>{data=d;document.getElementById('chart-values').innerHTML=data.matched.map(r=>`<tr><th scope="row">${r.label}</th><td>${fmt(Math.min(...r.gains))}</td><td>${fmt(Math.max(...r.gains))}</td></tr>`).join('');draw()}).catch(()=>{document.getElementById('chart').innerHTML='<p>Il grafico non è disponibile. Puoi leggere i risultati nel rapporto Markdown o aprire direttamente <a href="assets/results.json">il file numerico</a>.</p>'});
+
+/* ---------- chart 1a: gain dot-range ---------- */
+function gainChart(host){
+  const W=hostW(host),narrow=W<560,rowH=narrow?62:50,top=narrow?24:18,left=narrow?14:210,right=narrow?16:40,bottom=40,H=top+rowH*CORPORA.length+bottom;
+  const s=svgRoot(host,W,H),ink=css('--ink'),muted=css('--muted'),line=css('--line');
+  const xMax=0.4,x=v=>left+(W-left-right)*v/xMax;
+  for(let t=0;t<=0.4001;t+=0.1){
+    el('line',{x1:x(t),x2:x(t),y1:top-6,y2:H-bottom+4,stroke:line,'stroke-width':1},s);
+    el('text',{x:x(t),y:H-bottom+22,'text-anchor':'middle','font-size':12,fill:muted,'font-family':'IBM Plex Mono,monospace'},s,t.toFixed(1));
+  }
+  el('text',{x:left+(W-left-right)/2,y:H-4,'text-anchor':'middle','font-size':12,fill:muted},s,narrow?'bits gained by the third preceding glyph':'bits per glyph gained by the third preceding glyph');
+  CORPORA.forEach((c,i)=>{
+    const y=top+rowH*i+rowH/2+(narrow?8:0),col=css(c.fam),mn=Math.min(...c.gains),mx=Math.max(...c.gains);
+    if(narrow)el('text',{x:left,y:y-15,'font-size':13,fill:ink,'font-weight':500},s,c.label+'  ·  '+fmt(mn)+'–'+fmt(mx));
+    else el('text',{x:left-16,y:y+4,'text-anchor':'end','font-size':13.5,fill:ink,'font-weight':500},s,c.label);
+    el('rect',{x:x(mn)-2,y:y-6,width:Math.max(4,x(mx)-x(mn)+4),height:12,rx:6,fill:col,opacity:.28},s);
+    c.gains.forEach((g,k)=>{
+      const dot=el('circle',{cx:x(g),cy:y,r:6,fill:col,stroke:css('--white'),'stroke-width':2},s);
+      hover(dot,`<b>${c.label}</b><br>Split ${k+1}: ${fmt(g)} bits`);
+    });
+    if(!narrow)el('text',{x:x(mx)+14,y:y+4,'font-size':12,fill:muted,'font-family':'IBM Plex Mono,monospace'},s,`${fmt(mn)}–${fmt(mx)}`);
+  });
+}
+
+/* ---------- chart 1b: entropy curve ---------- */
+function curveChart(host){
+  const W=hostW(host),narrow=W<560,H=narrow?320:380,top=20,left=narrow?44:58,right=narrow?14:190,bottom=48;
+  const s=svgRoot(host,W,H),muted=css('--muted'),line=css('--line'),ink=css('--ink');
+  const yMin=1.8,yMax=4.2,x=o=>left+(W-left-right)*o/5,y=v=>top+(H-top-bottom)*(yMax-v)/(yMax-yMin);
+  for(let v=2;v<=4.0001;v+=0.5){
+    el('line',{x1:left,x2:W-right,y1:y(v),y2:y(v),stroke:line},s);
+    el('text',{x:left-10,y:y(v)+4,'text-anchor':'end','font-size':12,fill:muted,'font-family':'IBM Plex Mono,monospace'},s,v.toFixed(1));
+  }
+  for(let o=0;o<=5;o++)el('text',{x:x(o),y:H-bottom+22,'text-anchor':'middle','font-size':12,fill:muted,'font-family':'IBM Plex Mono,monospace'},s,o);
+  el('text',{x:left+(W-left-right)/2,y:H-6,'text-anchor':'middle','font-size':12,fill:muted},s,narrow?'model order':'model order (number of preceding glyphs)');
+  el('text',{x:14,y:top+(H-top-bottom)/2,'text-anchor':'middle','font-size':12,fill:muted,transform:`rotate(-90 14 ${top+(H-top-bottom)/2})`},s,'test entropy, bits per glyph');
+  // highlight the 2→3 step
+  el('rect',{x:x(2),y:top,width:x(3)-x(2),height:H-top-bottom,fill:css('--lime'),opacity:.35},s);
+  el('text',{x:(x(2)+x(3))/2,y:top+14,'text-anchor':'middle','font-size':11,fill:ink,'font-weight':600},s,'2 → 3');
+  // end labels, nudged apart
+  const ends=CORPORA.map(c=>({c,y:y(c.curve[5])})).sort((a,b)=>a.y-b.y);
+  for(let i=1;i<ends.length;i++)if(ends[i].y-ends[i-1].y<16)ends[i].y=ends[i-1].y+16;
+  CORPORA.forEach(c=>{
+    const col=css(c.fam);
+    el('path',{d:c.curve.map((v,o)=>(o?'L':'M')+x(o)+' '+y(v)).join(' '),fill:'none',stroke:col,'stroke-width':2.2,'stroke-dasharray':c.dash,'stroke-linejoin':'round'},s);
+    c.curve.forEach((v,o)=>{
+      const p=el('circle',{cx:x(o),cy:y(v),r:4.5,fill:col,stroke:css('--white'),'stroke-width':1.5},s);
+      const hit=el('circle',{cx:x(o),cy:y(v),r:11,fill:'transparent'},s);
+      hover(hit,`<b>${c.label}</b><br>Order ${o}: ${fmt(v)} bits`);
+    });
+    const e=ends.find(z=>z.c===c);
+    if(!narrow)el('text',{x:W-right+12,y:e.y+4,'font-size':12.5,fill:ink},s,c.label);
+  });
+}
+
+/* ---------- chart 2: PCFG − HMM with interval ---------- */
+function hierChart(host){
+  const rows=[{label:'Voynich',fam:'--voynich',d:0.019291,lo:0.006544,hi:0.034324},
+              {label:'Seraphinianus · OCR',fam:'--seraph',d:-0.003408,lo:-0.008042,hi:0.000793}];
+  const W=hostW(host),narrow=W<560,rowH=narrow?66:56,top=narrow?24:16,left=narrow?14:190,right=narrow?16:40,bottom=44,H=top+rowH*rows.length+bottom;
+  const s=svgRoot(host,W,H),muted=css('--muted'),line=css('--line'),ink=css('--ink');
+  const lo=-0.015,hi=0.04,x=v=>left+(W-left-right)*(v-lo)/(hi-lo);
+  for(let t=-0.01;t<=0.04001;t+=0.01){
+    el('line',{x1:x(t),x2:x(t),y1:top-4,y2:H-bottom+4,stroke:Math.abs(t)<1e-9?ink:line,'stroke-width':Math.abs(t)<1e-9?1.5:1},s);
+    el('text',{x:x(t),y:H-bottom+22,'text-anchor':'middle','font-size':12,fill:muted,'font-family':'IBM Plex Mono,monospace'},s,(narrow&&Math.round(t*100)%2?'':(t>0?'+':'')+t.toFixed(2)));
+  }
+  el('text',{x:x(0)-8,y:H-6,'text-anchor':'end','font-size':11.5,fill:muted},s,narrow?'← tree better':'← tree grammar better');
+  el('text',{x:x(0)+8,y:H-6,'font-size':11.5,fill:muted},s,narrow?'chain better →':'chain model better →');
+  rows.forEach((r,i)=>{
+    const y=top+rowH*i+rowH/2+(narrow?8:0),col=css(r.fam);
+    if(narrow)el('text',{x:left,y:y-17,'font-size':13,fill:ink,'font-weight':500},s,r.label+'  ·  '+(r.d>0?'+':'')+fmt(r.d));
+    else el('text',{x:left-16,y:y+4,'text-anchor':'end','font-size':13.5,fill:ink,'font-weight':500},s,r.label);
+    el('line',{x1:x(r.lo),x2:x(r.hi),y1:y,y2:y,stroke:col,'stroke-width':2.5},s);
+    [r.lo,r.hi].forEach(v=>el('line',{x1:x(v),x2:x(v),y1:y-8,y2:y+8,stroke:col,'stroke-width':2.5},s));
+    const d=el('circle',{cx:x(r.d),cy:y,r:7.5,fill:col,stroke:css('--white'),'stroke-width':2},s);
+    hover(d,`<b>${r.label}</b><br>PCFG − HMM: ${(r.d>0?'+':'')+fmt(r.d)} bits/token<br>95% interval [${fmt(r.lo)}, ${fmt(r.hi)}]`);
+    if(!narrow)el('text',{x:x(r.hi)+12,y:y+4,'font-size':12,fill:muted,'font-family':'IBM Plex Mono,monospace'},s,(r.d>0?'+':'')+fmt(r.d));
+  });
+}
+
+/* ---------- chart 3: substitution attack ---------- */
+function subChart(host){
+  const rows=[{label:'Latin control',fam:'--control',v:68.60,n:'933 / 1,360'},
+              {label:'Italian control',fam:'--control',v:74.15,n:'1,770 / 2,387'},
+              {label:'Voynich, Latin key',fam:'--voynich',v:1.11,n:'35 / 3,153'},
+              {label:'Voynich, Italian key',fam:'--voynich',v:7.01,n:'221 / 3,153'}];
+  const W=hostW(host),narrow=W<560,rowH=narrow?60:46,top=narrow?22:10,left=narrow?14:190,right=narrow?70:110,bottom=40,H=top+rowH*rows.length+bottom;
+  const s=svgRoot(host,W,H),muted=css('--muted'),line=css('--line'),ink=css('--ink');
+  const x=v=>left+(W-left-right)*v/100;
+  for(let t=0;t<=100;t+=25){
+    el('line',{x1:x(t),x2:x(t),y1:top,y2:H-bottom+4,stroke:line},s);
+    el('text',{x:x(t),y:H-bottom+22,'text-anchor':'middle','font-size':12,fill:muted,'font-family':'IBM Plex Mono,monospace'},s,t+'%');
+  }
+  rows.forEach((r,i)=>{
+    const y=top+rowH*i+(narrow?14:8),h=narrow?24:rowH-18,col=css(r.fam);
+    if(narrow)el('text',{x:left,y:y-6,'font-size':13,fill:ink,'font-weight':500},s,r.label);
+    else el('text',{x:left-16,y:y+h/2+4,'text-anchor':'end','font-size':13.5,fill:ink,'font-weight':500},s,r.label);
+    const w=Math.max(4,x(r.v)-left);
+    const b=el('path',{d:`M${left} ${y} H${left+w-4} a4 4 0 0 1 4 4 V${y+h-4} a4 4 0 0 1 -4 4 H${left} Z`,fill:col},s);
+    hover(b,`<b>${r.label}</b><br>${r.v.toFixed(2)}% of words (${r.n})`);
+    el('text',{x:left+w+10,y:y+h/2+4,'font-size':12.5,fill:ink,'font-family':'IBM Plex Mono,monospace'},s,r.v.toFixed(2)+'%');
+  });
+}
+
+/* ---------- wiring ---------- */
+document.addEventListener('DOMContentLoaded',()=>{
+  const g=document.getElementById('gain-chart');
+  if(g){
+    const gb=document.getElementById('gain-view'),cb=document.getElementById('curve-view');
+    const title=document.getElementById('gain-title'),sub=document.getElementById('gain-sub');
+    const show=mode=>{
+      gb.classList.toggle('selected',mode==='gain');cb.classList.toggle('selected',mode==='curve');
+      gb.setAttribute('aria-pressed',String(mode==='gain'));cb.setAttribute('aria-pressed',String(mode==='curve'));
+      if(mode==='gain'){title.textContent='Gain from order 2 to order 3, bits per glyph';sub.textContent='Each dot is one page split; the bar spans the lowest and highest split.';gainChart(g);}
+      else{title.textContent='Test entropy by model order';sub.textContent='Mean over three page splits. Dashed lines: second coding of the same family. The shaded band is the step measured above.';curveChart(g);}
+    };
+    gb.addEventListener('click',()=>show('gain'));cb.addEventListener('click',()=>show('curve'));
+    show('gain');
+  }
+  const h=document.getElementById('hier-chart');if(h)hierChart(h);
+  const sc=document.getElementById('sub-chart');if(sc)subChart(sc);
+  let lastW=innerWidth,t;
+  addEventListener('resize',()=>{clearTimeout(t);t=setTimeout(()=>{if(Math.abs(innerWidth-lastW)<40)return;lastW=innerWidth;
+    if(g)(document.getElementById('curve-view').classList.contains('selected')?curveChart:gainChart)(g);
+    if(h)hierChart(h);if(sc)subChart(sc);},150);});
+});
