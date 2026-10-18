@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Hypotheses · Beyond the Signs</title>
-<meta name="description" content="Ten explicit hypotheses about the Voynich manuscript and Codex Seraphinianus, with verdicts, evidence and open conjectures.">
+<meta name="description" content="Twelve explicit hypotheses about the Voynich manuscript and Codex Seraphinianus, with verdicts, evidence and open conjectures.">
 <meta name="theme-color" content="#101d1a">
 <link rel="alternate" hreflang="it" href="it/hypotheses.html">
 <link rel="alternate" hreflang="en" href="hypotheses.html">
@@ -49,7 +49,7 @@
 <section class="band">
   <div class="wrap">
     <div class="eyebrow">The register</div>
-    <h2>Ten hypotheses, ten verdicts.</h2>
+    <h2>Twelve hypotheses, twelve verdicts.</h2>
     <div class="hyp-grid">
       <article class="hyp-card"><span class="id">H01</span><span class="status amber">Disfavoured</span><h3>The herbal text is Latin or Italian in a simple cipher</h3><p>One glyph per letter, spaces preserved, under our 23 glyph units.</p><p class="evidence">The solver recovers both controls and finds no reading in the Voynich. Triple glyphs that a Latin plaintext could not produce. The search is heuristic, so not exhaustively falsified.</p></article>
       <article class="hyp-card"><span class="id">H02</span><span class="status blue">Contradicted</span><h3>There are no repeatable local rules</h3><p>The text would then be close to random at the glyph level.</p><p class="evidence">Models trained on some pages predict other pages far better than glyph frequencies alone.</p></article>
@@ -61,6 +61,8 @@
       <article class="hyp-card"><span class="id">H08</span><span class="status amber">Not justified</span><h3>The Seraphinianus OCR is exact enough to count strokes</h3><p>Needed to trust repeated-glyph statistics on the comparison text.</p><p class="evidence">Disagreements concentrate exactly on counts of repeated strokes and on segmentation.</p></article>
       <article class="hyp-card"><span class="id">H09</span><span class="status gray">Open</span><h3>The manuscript has no recoverable meaning</h3><p>The hoax or glossolalia family of explanations.</p><p class="evidence">No experiment here establishes this, and statistics alone cannot (see the identifiability argument on the methods page).</p></article>
       <article class="hyp-card"><span class="id">H10</span><span class="status gray">Open</span><h3>The text respects or violates Moro's constraints</h3><p>Structure-dependent rules that human brains learn and “impossible” linear rules they do not.</p><p class="evidence">Not directly testable: we have no identified syntax, utterance boundaries or morphosyntactic units to test them on.</p></article>
+      <article class="hyp-card"><span class="id">H11</span><span class="status amber">Not supported</span><h3>The script is a syllabary with a Kober–Ventris grid</h3><p>Signs sharing a consonant would alternate after the same stem, as in Linear B.</p><p class="evidence">Pre-registered E13: no syllabary signature in 24 analyses; an alphabet-sized inventory (18–31 active signs, against 51–77 in a mock syllabary). The mock-syllabary control failed narrowly, so the test is underpowered.</p></article>
+      <article class="hyp-card"><span class="id">H12</span><span class="status blue">Contradicted</span><h3>The zodiac labels are a numbering of degrees or days</h3><p>That would give an internal anchor, like Ventris's numerals.</p><p class="evidence">Pre-registered E14: no alignment across signs (p = 0.13) and no sequential structure (p = 0.30), while Latin and Roman numerals pass the same tests at p = 0.005.</p></article>
     </div>
   </div>
 </section>
@@ -79,7 +81,7 @@
       <article class="hyp-card"><span class="id">C2 · ALLOGRAPHY</span><h3>Final <span class="eva">m</span> is a variant of <span class="eva">r</span></h3><p>Replacing line-final <span class="eva">m</span> by <span class="eva">r</span> turns 74.7% of held-out cases into known words, against 42.6% unchanged.</p><p class="evidence">Weakened by controls: the best substitute changes with how uncertain spaces are handled, and labels <span class="eva">otalar</span> and <span class="eva">otalam</span> sit side by side on f70v2. Global merging abandoned for now.</p></article>
       <article class="hyp-card"><span class="id">C3 · UNITS</span><h3><span class="eva">qo</span> and <span class="eva">iin</span> are single units</h3><p><span class="eva">q</span> is followed by <span class="eva">o</span> 98% of the time; <span class="eva">in</span>, <span class="eva">iin</span>, <span class="eva">iiin</span> occur 1,601, 3,688 and 149 times.</p><p class="evidence">Changing units changes every statistic on this site. Units must be learned on training pages only, then compared on the same test targets.</p></article>
       <article class="hyp-card"><span class="id">C4 · LAYOUT</span><h3>Gallows glyphs mark paragraphs</h3><p>89.4% of paragraph-initial words start with <span class="eva">f k p t</span>, against 8.5% of other line-initial words; 169 of 178 pages agree.</p><p class="evidence">Open question: are they separate markers, like decorated initials, or part of the first word?</p></article>
-      <article class="hyp-card"><span class="id">C5 · LABELS</span><h3>Zodiac labels name things</h3><p><span class="eva">okeodaly</span> appears on both Taurus pages, f71v and f72r1, with different neighbours.</p><p class="evidence">Both folios belong to the same bifolio, so this is one observation, not two. Near-spellings occur on 9–10 other pages.</p></article>
+      <article class="hyp-card"><span class="id">C5 · LABELS</span><h3>Zodiac labels name things</h3><p><span class="eva">okeodaly</span> appears on both Taurus pages, f71v and f72r1, with different neighbours.</p><p class="evidence">Both folios belong to the same bifolio, so this is one observation, not two. E14 shows the zodiac labels are not a numbering cycle; they may still be names.</p></article>
       <article class="hyp-card"><span class="id">C6 · PRODUCTION</span><h3>Text was generated by a local process</h3><p>The combined picture of weak long-range context, full prefix–suffix combinability and section-wise drift fits a scribe following local habits.</p><p class="evidence">To test it: topic-varying generators and copy-and-edit models matched to section structure, scored on held-out pages.</p></article>
     </div>
   </div>

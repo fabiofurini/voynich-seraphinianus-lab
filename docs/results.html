@@ -36,7 +36,7 @@
   <div class="wrap">
     <div class="eyebrow"><span class="dot"></span> Results · snapshot of 18 October 2026</div>
     <h1>What the numbers<br><em>actually say.</em></h1>
-    <p class="lead">Six findings, each stated first in plain words. Open the panels under each one for the linguistic reading and the statistical detail. Every value comes from a script in the repository.</p>
+    <p class="lead">Seven findings, each stated first in plain words. Open the panels under each one for the linguistic reading and the statistical detail. Every value comes from a script in the repository.</p>
     <div class="metric-row">
       <div class="metric"><b>5</b><span>corpora compared: 2 Voynich codings, Seraphinianus OCR, Latin, Italian</span></div>
       <div class="metric"><b>3</b><span>independent page splits for the main test</span></div>
@@ -304,6 +304,54 @@
   </div>
 </section>
 
+<!-- 7. linear B footholds -->
+<section class="band" id="footholds">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow">Finding 7 · pre-registered</div>
+        <h2>No foothold of the kind<br><em>that cracked Linear B.</em></h2>
+      </div>
+      <p>Linear B fell because its signs formed a syllabic grid and because some words could be anchored to things outside the text. We tested both conditions on the Voynich, with the protocol published before the runs.</p>
+    </div>
+    <div class="pair">
+      <figure>
+        <img src="assets/img/f71v-72r.jpg" alt="Zodiac pages f71v and 72r with rings of labelled figures." loading="lazy" style="aspect-ratio:auto">
+        <figcaption><b>Zodiac labels.</b> 299 labels on 12 pages, about 30 per sign.</figcaption>
+      </figure>
+      <div class="tab-card" style="margin:0">
+        <h3>Two footholds, two tests</h3>
+        <div class="table-scroll"><table>
+          <thead><tr><th>Test</th><th>Voynich</th><th>Control</th></tr></thead>
+          <tbody>
+            <tr><td>Zodiac labels aligned across signs, like a numbering</td><td class="num">p = 0.13</td><td class="num">numerals p = 0.005</td></tr>
+            <tr><td>Neighbouring labels progress like consecutive numbers</td><td class="num">p = 0.30</td><td class="num">numerals p = 0.005</td></tr>
+            <tr><td>Analyses showing a syllabary signature</td><td class="num">0 / 24</td><td class="num">mock syllabary: 0 / 8</td></tr>
+            <tr><td>Active signs in the alternation graph</td><td class="num">18–31</td><td class="num">alphabets 20–23 · syllabary 51–77</td></tr>
+          </tbody>
+        </table></div>
+      </div>
+    </div>
+    <div class="caveat">
+      <h3>How strong is each negative?</h3>
+      <p>The zodiac result is solid: the same test finds numeral cycles perfectly. The syllabary result is weaker: our mock syllabary just missed the pre-registered criteria, so the test has not shown it can recognise a real one.</p>
+    </div>
+    <details class="levels">
+      <summary>What it means for a linguist <span class="level-tag">LINGUISTICS</span></summary>
+      <div class="body">
+        <p>The Voynich glyphs fall into three stable positional classes: the gallows with <span class="eva">q</span>; <span class="eva">a e o y d ch sh</span>; and <span class="eva">i l r m n</span> with the <span class="eva">iin</span> groups. Alphabets split into vowels and consonants instead. The first class matches the “core” of Stolfi's word grammar (2000). The classes describe where a glyph can stand in a word, not how it sounds.</p>
+        <p>The zodiac labels form their own vocabulary: 77% begin with <span class="eva">o</span> (20% in running text) and they are two units longer than text words. They may be names of stars, days or figures, but they do not number anything.</p>
+      </div>
+    </details>
+    <details class="levels">
+      <summary>Statistical detail <span class="level-tag">STATISTICS</span></summary>
+      <div class="body">
+        <p>E13: sign-alternation graph after shared 2- and 3-unit stems, forward and mirrored, three segmentations, matched and full samples; greedy modularity against 499 permutations of the junction-sign column. E14: cross-sign repetition against running-text blocks and other label families; positional alignment minimised over rotations and reading direction; within-ring adjacency; 999 permutations; controls run through the same code. Decision rules were committed before the runs.</p>
+      </div>
+    </details>
+  </div>
+</section>
+
 <section class="band">
   <div class="wrap-narrow">
     <div class="eyebrow">Also measured</div>
@@ -331,7 +379,7 @@
   <div class="wrap">
     <div class="eyebrow">Next</div>
     <h2>Which hypotheses survive?</h2>
-    <p>Ten explicit claims, each with a verdict and the evidence behind it.</p>
+    <p>Twelve explicit claims, each with a verdict and the evidence behind it.</p>
     <a class="button" href="hypotheses.html">Read the hypotheses →</a>
   </div>
 </section>

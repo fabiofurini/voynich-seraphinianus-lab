@@ -36,7 +36,7 @@
   <div class="wrap">
     <div class="eyebrow"><span class="dot"></span> Risultati · istantanea del 18 ottobre 2026</div>
     <h1>Che cosa dicono<br><em>davvero i numeri.</em></h1>
-    <p class="lead">Sei risultati, ognuno spiegato prima in parole semplici. Apri i pannelli sotto ciascuno per la lettura linguistica e il dettaglio statistico. Ogni valore viene da uno script del repository.</p>
+    <p class="lead">Sette risultati, ognuno spiegato prima in parole semplici. Apri i pannelli sotto ciascuno per la lettura linguistica e il dettaglio statistico. Ogni valore viene da uno script del repository.</p>
     <div class="metric-row">
       <div class="metric"><b>5</b><span>corpora confrontati: 2 codifiche del Voynich, Seraphinianus OCR, latino, italiano</span></div>
       <div class="metric"><b>3</b><span>split di pagine indipendenti per il test principale</span></div>
@@ -304,6 +304,54 @@
   </div>
 </section>
 
+<!-- 7. linear B footholds -->
+<section class="band" id="footholds">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow">Risultato 7 · pre-registrato</div>
+        <h2>Nessun appiglio del tipo<br><em>che ha aperto la Lineare B.</em></h2>
+      </div>
+      <p>La Lineare B è caduta perché i suoi segni formavano una griglia sillabica e perché alcune parole si potevano agganciare a cose esterne al testo. Abbiamo verificato entrambe le condizioni sul Voynich, con il protocollo pubblicato prima delle esecuzioni.</p>
+    </div>
+    <div class="pair">
+      <figure>
+        <img src="../assets/img/f71v-72r.jpg" alt="Pagine dello zodiaco f71v e 72r con anelli di figure etichettate." loading="lazy" style="aspect-ratio:auto">
+        <figcaption><b>Etichette dello zodiaco.</b> 299 etichette su 12 pagine, circa 30 per segno.</figcaption>
+      </figure>
+      <div class="tab-card" style="margin:0">
+        <h3>Due appigli, due test</h3>
+        <div class="table-scroll"><table>
+          <thead><tr><th>Test</th><th>Voynich</th><th>Controllo</th></tr></thead>
+          <tbody>
+            <tr><td>Etichette allineate tra segni, come una numerazione</td><td class="num">p = 0,13</td><td class="num">numerali p = 0,005</td></tr>
+            <tr><td>Le etichette vicine procedono come numeri consecutivi</td><td class="num">p = 0,30</td><td class="num">numerali p = 0,005</td></tr>
+            <tr><td>Analisi con impronta di sillabario</td><td class="num">0 / 24</td><td class="num">finto sillabario: 0 / 8</td></tr>
+            <tr><td>Segni attivi nel grafo delle alternanze</td><td class="num">18–31</td><td class="num">alfabeti 20–23 · sillabario 51–77</td></tr>
+          </tbody>
+        </table></div>
+      </div>
+    </div>
+    <div class="caveat">
+      <h3>Quanto è forte ciascun risultato negativo?</h3>
+      <p>Il risultato sullo zodiaco è solido: lo stesso test riconosce perfettamente i cicli numerici. Quello sul sillabario è più debole: il nostro finto sillabario ha mancato di poco i criteri pre-registrati, quindi il test non ha dimostrato di saperne riconoscere uno vero.</p>
+    </div>
+    <details class="levels">
+      <summary>Che cosa significa per un linguista <span class="level-tag">LINGUISTICA</span></summary>
+      <div class="body">
+        <p>I glifi del Voynich si dividono in tre classi posizionali stabili: i gallows con <span class="eva">q</span>; <span class="eva">a e o y d ch sh</span>; e <span class="eva">i l r m n</span> con i gruppi <span class="eva">iin</span>. Gli alfabeti invece si dividono in vocali e consonanti. La prima classe coincide con il “core” della grammatica delle parole di Stolfi (2000). Le classi descrivono dove un glifo può stare nella parola, non come suona.</p>
+        <p>Le etichette dello zodiaco formano un vocabolario proprio: il 77% comincia con <span class="eva">o</span> (il 20% nel testo corrente) e sono più lunghe di due unità rispetto alle parole del testo. Potrebbero essere nomi di stelle, giorni o figure, ma non numerano nulla.</p>
+      </div>
+    </details>
+    <details class="levels">
+      <summary>Dettaglio statistico <span class="level-tag">STATISTICA</span></summary>
+      <div class="body">
+        <p>E13: grafo delle alternanze dei segni dopo radici comuni di 2 e 3 unità, in avanti e a specchio, tre segmentazioni, campioni pareggiati e completi; modularità greedy contro 499 permutazioni della colonna dei segni di giunzione. E14: ripetizione tra segni confrontata con blocchi di testo corrente e altre famiglie di etichette; allineamento posizionale minimizzato su rotazioni e verso di lettura; somiglianza tra etichette vicine nello stesso anello; 999 permutazioni; controlli eseguiti con lo stesso codice. Le regole di decisione sono state pubblicate prima delle esecuzioni.</p>
+      </div>
+    </details>
+  </div>
+</section>
+
 <section class="band">
   <div class="wrap-narrow">
     <div class="eyebrow">Altre misure</div>
@@ -331,7 +379,7 @@
   <div class="wrap">
     <div class="eyebrow">Avanti</div>
     <h2>Quali ipotesi sopravvivono?</h2>
-    <p>Dieci affermazioni esplicite, ognuna con il suo esito e le prove su cui si basa.</p>
+    <p>Dodici affermazioni esplicite, ognuna con il suo esito e le prove su cui si basa.</p>
     <a class="button" href="hypotheses.html">Leggi le ipotesi →</a>
   </div>
 </section>

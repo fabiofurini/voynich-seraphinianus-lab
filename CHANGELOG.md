@@ -6,6 +6,7 @@
 - New pre-registered experiments E13 (syllabary fingerprint) and E14 (zodiac labels as a cycle) in `research/structure_probes/`; protocol committed before the runs (`56565ef`).
 - E13: no syllabary signature in 24 analyses; mock-syllabary control failed narrowly. E14: zodiac labels are not a numbering cycle; numeral controls pass.
 - Hypotheses H11, H12 added; roadmap follow-ups.
+- Website aligned in both languages: Finding 7 on the results pages, E13–E14 in the experiment register, H11–H12 on the hypotheses pages, counts updated (14 experiments, 12 hypotheses).
 
 ## 0.3.0 — 2026-10-18
 - Italian version of the whole website in `docs/it/` (five pages), with an EN · IT switch and `hreflang` links on every page.

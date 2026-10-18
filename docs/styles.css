@@ -416,3 +416,6 @@ select:focus-visible,textarea:focus-visible{outline:3px solid var(--orange);outl
 .lang-switch b{color:var(--green)}
 .lang-switch a{text-decoration:none;border-bottom:1px solid var(--line-2)}
 .lang-switch a:hover{color:var(--orange)}
+
+/* keep short statistics on one line */
+td.num{white-space:nowrap}
