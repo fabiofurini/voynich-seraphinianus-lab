@@ -1,0 +1,22 @@
+[
+  {
+    "name": "Voynich",
+    "PCFG_minus_HMM_bits_per_token": 0.019291321429148148,
+    "test_page_cluster_bootstrap95_percentile": [
+      0.006544193607330539,
+      0.03432385429709708
+    ],
+    "test_pages_with_eligible_rows": 40,
+    "note": "Conditional on fitted models, single split; no adjustment for model search."
+  },
+  {
+    "name": "Seraphinianus_OCR",
+    "PCFG_minus_HMM_bits_per_token": -0.0034082552425238745,
+    "test_page_cluster_bootstrap95_percentile": [
+      -0.008041717479266991,
+      0.000793039353051659
+    ],
+    "test_pages_with_eligible_rows": 57,
+    "note": "Conditional on fitted models, single split; no adjustment for model search."
+  }
+]

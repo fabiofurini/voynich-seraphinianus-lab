@@ -1,0 +1,712 @@
+{
+  "Voynich": [
+    {
+      "seed": 33125,
+      "train_tokens": 139,
+      "validation_tokens": 36,
+      "test_tokens": 45,
+      "test_unseen_form_tokens": 42,
+      "selected_taus_prefix_sequential": [
+        1000,
+        1,
+        1000
+      ],
+      "test_bits_per_suffix_baseline_prefix_sequential_combined": [
+        4.453412176712012,
+        4.454097047141306,
+        4.180801560433159,
+        4.180793245173142
+      ],
+      "unseen_form_bits_per_suffix_baseline_prefix_sequential_combined": [
+        4.673010279947003,
+        4.673634602423632,
+        4.470877641863972,
+        4.470877641863972
+      ],
+      "combined_gain_vs_sequential_page_bootstrap95": [
+        -9.25185853854297e-18,
+        2.1663593587778857e-05
+      ]
+    },
+    {
+      "seed": 33126,
+      "train_tokens": 136,
+      "validation_tokens": 45,
+      "test_tokens": 39,
+      "test_unseen_form_tokens": 38,
+      "selected_taus_prefix_sequential": [
+        1000,
+        1,
+        1000
+      ],
+      "test_bits_per_suffix_baseline_prefix_sequential_combined": [
+        5.0656651954472665,
+        5.067108643680813,
+        4.926207613354888,
+        4.926263061478207
+      ],
+      "unseen_form_bits_per_suffix_baseline_prefix_sequential_combined": [
+        5.157190593661932,
+        5.158485000095738,
+        5.040432908324175,
+        5.040508801701749
+      ],
+      "combined_gain_vs_sequential_page_bootstrap95": [
+        -0.00017478474835227095,
+        4.6546550864435065e-05
+      ]
+    },
+    {
+      "seed": 33127,
+      "train_tokens": 129,
+      "validation_tokens": 38,
+      "test_tokens": 53,
+      "test_unseen_form_tokens": 47,
+      "selected_taus_prefix_sequential": [
+        1000,
+        10,
+        10
+      ],
+      "test_bits_per_suffix_baseline_prefix_sequential_combined": [
+        4.675306434774199,
+        4.675376863932494,
+        4.358485265015114,
+        4.341206071292696
+      ],
+      "unseen_form_bits_per_suffix_baseline_prefix_sequential_combined": [
+        5.035442434571004,
+        5.036254291057935,
+        4.784047642909994,
+        4.7898988566865865
+      ],
+      "combined_gain_vs_sequential_page_bootstrap95": [
+        -0.005392295049017047,
+        0.05810821856870412
+      ]
+    },
+    {
+      "seed": 33128,
+      "train_tokens": 141,
+      "validation_tokens": 46,
+      "test_tokens": 33,
+      "test_unseen_form_tokens": 28,
+      "selected_taus_prefix_sequential": [
+        1000,
+        10,
+        1000
+      ],
+      "test_bits_per_suffix_baseline_prefix_sequential_combined": [
+        4.011634495708312,
+        4.011805671580885,
+        3.732914548803031,
+        3.7325005770338104
+      ],
+      "unseen_form_bits_per_suffix_baseline_prefix_sequential_combined": [
+        4.339100293997563,
+        4.339808496232789,
+        4.175192188968203,
+        4.175146525028867
+      ],
+      "combined_gain_vs_sequential_page_bootstrap95": [
+        -9.498189181839943e-05,
+        0.0009842478555235918
+      ]
+    },
+    {
+      "seed": 33129,
+      "train_tokens": 144,
+      "validation_tokens": 39,
+      "test_tokens": 37,
+      "test_unseen_form_tokens": 35,
+      "selected_taus_prefix_sequential": [
+        1000,
+        10,
+        1000
+      ],
+      "test_bits_per_suffix_baseline_prefix_sequential_combined": [
+        4.979625404219431,
+        4.98158587430726,
+        4.784171397475361,
+        4.78414983578501
+      ],
+      "unseen_form_bits_per_suffix_baseline_prefix_sequential_combined": [
+        5.188441092430362,
+        5.190475112085716,
+        5.012584494548361,
+        5.012625693810472
+      ],
+      "combined_gain_vs_sequential_page_bootstrap95": [
+        -5.302082676213156e-05,
+        0.00018583755168859778
+      ]
+    }
+  ],
+  "Seraphinianus_OCR": [
+    {
+      "seed": 33125,
+      "train_tokens": 9130,
+      "validation_tokens": 3386,
+      "test_tokens": 2782,
+      "test_unseen_form_tokens": 1806,
+      "selected_taus_prefix_sequential": [
+        100,
+        10,
+        10
+      ],
+      "test_bits_per_suffix_baseline_prefix_sequential_combined": [
+        4.481431865372567,
+        4.3356037373860286,
+        3.4023378783264735,
+        3.392831697273938
+      ],
+      "unseen_form_bits_per_suffix_baseline_prefix_sequential_combined": [
+        5.185610698990641,
+        5.191842253919484,
+        4.524551605180521,
+        4.628886077974949
+      ],
+      "combined_gain_vs_sequential_page_bootstrap95": [
+        -0.006568542568046893,
+        0.027027979185406528
+      ]
+    },
+    {
+      "seed": 33126,
+      "train_tokens": 9112,
+      "validation_tokens": 3149,
+      "test_tokens": 3037,
+      "test_unseen_form_tokens": 1976,
+      "selected_taus_prefix_sequential": [
+        100,
+        10,
+        10
+      ],
+      "test_bits_per_suffix_baseline_prefix_sequential_combined": [
+        4.6188389063399615,
+        4.462233565566241,
+        3.549490519534165,
+        3.5344102714041035
+      ],
+      "unseen_form_bits_per_suffix_baseline_prefix_sequential_combined": [
+        5.313656300593109,
+        5.326496326066,
+        4.678137154045631,
+        4.787763820988536
+      ],
+      "combined_gain_vs_sequential_page_bootstrap95": [
+        -0.009347364163816964,
+        0.036103705436903395
+      ]
+    },
+    {
+      "seed": 33127,
+      "train_tokens": 10029,
+      "validation_tokens": 2331,
+      "test_tokens": 2938,
+      "test_unseen_form_tokens": 1908,
+      "selected_taus_prefix_sequential": [
+        100,
+        10,
+        10
+      ],
+      "test_bits_per_suffix_baseline_prefix_sequential_combined": [
+        4.5186885229094615,
+        4.371649974688772,
+        3.450120165378325,
+        3.4304158613707565
+      ],
+      "unseen_form_bits_per_suffix_baseline_prefix_sequential_combined": [
+        5.1647394964381546,
+        5.168688107975679,
+        4.485475633498713,
+        4.5880327672878805
+      ],
+      "combined_gain_vs_sequential_page_bootstrap95": [
+        0.0006896251453242738,
+        0.04244446522750582
+      ]
+    },
+    {
+      "seed": 33128,
+      "train_tokens": 8691,
+      "validation_tokens": 3151,
+      "test_tokens": 3456,
+      "test_unseen_form_tokens": 2243,
+      "selected_taus_prefix_sequential": [
+        100,
+        10,
+        10
+      ],
+      "test_bits_per_suffix_baseline_prefix_sequential_combined": [
+        4.518762265590764,
+        4.367677688267558,
+        3.4976891425171015,
+        3.484911089721919
+      ],
+      "unseen_form_bits_per_suffix_baseline_prefix_sequential_combined": [
+        5.238382101752619,
+        5.244824227355777,
+        4.635672564509657,
+        4.748974138402651
+      ],
+      "combined_gain_vs_sequential_page_bootstrap95": [
+        -0.00482464307319378,
+        0.030672125563489278
+      ]
+    },
+    {
+      "seed": 33129,
+      "train_tokens": 9773,
+      "validation_tokens": 3116,
+      "test_tokens": 2409,
+      "test_unseen_form_tokens": 1632,
+      "selected_taus_prefix_sequential": [
+        100,
+        10,
+        10
+      ],
+      "test_bits_per_suffix_baseline_prefix_sequential_combined": [
+        4.732698323527978,
+        4.61618794444455,
+        3.7371118742973177,
+        3.7351757663186427
+      ],
+      "unseen_form_bits_per_suffix_baseline_prefix_sequential_combined": [
+        5.451394530402731,
+        5.488430281616533,
+        4.815882237158657,
+        4.9224442197043405
+      ],
+      "combined_gain_vs_sequential_page_bootstrap95": [
+        -0.021299452910008575,
+        0.02564635370033988
+      ]
+    }
+  ],
+  "latin": [
+    {
+      "seed": 33125,
+      "train_tokens": 724,
+      "validation_tokens": 209,
+      "test_tokens": 206,
+      "test_unseen_form_tokens": 145,
+      "selected_taus_prefix_sequential": [
+        10,
+        1,
+        10
+      ],
+      "test_bits_per_suffix_baseline_prefix_sequential_combined": [
+        6.731331661082725,
+        6.058680044471559,
+        5.464860436492637,
+        5.454974460524877
+      ],
+      "unseen_form_bits_per_suffix_baseline_prefix_sequential_combined": [
+        7.235607678565841,
+        7.375903674428447,
+        7.300638156130861,
+        7.350292807381615
+      ],
+      "combined_gain_vs_sequential_page_bootstrap95": [
+        -0.015235158414222788,
+        0.03165584339526266
+      ]
+    },
+    {
+      "seed": 33126,
+      "train_tokens": 696,
+      "validation_tokens": 202,
+      "test_tokens": 241,
+      "test_unseen_form_tokens": 169,
+      "selected_taus_prefix_sequential": [
+        10,
+        1,
+        10
+      ],
+      "test_bits_per_suffix_baseline_prefix_sequential_combined": [
+        6.654956473896853,
+        5.905757468068042,
+        5.355928536651558,
+        5.337688799826919
+      ],
+      "unseen_form_bits_per_suffix_baseline_prefix_sequential_combined": [
+        7.2317016564722225,
+        7.285775797909163,
+        7.232128833918227,
+        7.263903963474805
+      ],
+      "combined_gain_vs_sequential_page_bootstrap95": [
+        0.0004720932135841118,
+        0.0335740379317817
+      ]
+    },
+    {
+      "seed": 33127,
+      "train_tokens": 675,
+      "validation_tokens": 232,
+      "test_tokens": 232,
+      "test_unseen_form_tokens": 158,
+      "selected_taus_prefix_sequential": [
+        10,
+        1,
+        1
+      ],
+      "test_bits_per_suffix_baseline_prefix_sequential_combined": [
+        6.757121000672898,
+        5.949696083472378,
+        5.218075238656659,
+        5.206666728074475
+      ],
+      "unseen_form_bits_per_suffix_baseline_prefix_sequential_combined": [
+        7.271742087739814,
+        7.4039306066067265,
+        7.142249284917827,
+        7.3527851235665
+      ],
+      "combined_gain_vs_sequential_page_bootstrap95": [
+        -0.04737909157435409,
+        0.07286023771170683
+      ]
+    },
+    {
+      "seed": 33128,
+      "train_tokens": 673,
+      "validation_tokens": 231,
+      "test_tokens": 235,
+      "test_unseen_form_tokens": 171,
+      "selected_taus_prefix_sequential": [
+        10,
+        1,
+        10
+      ],
+      "test_bits_per_suffix_baseline_prefix_sequential_combined": [
+        6.723007436885346,
+        6.065221915167913,
+        5.453368923398507,
+        5.443478222173083
+      ],
+      "unseen_form_bits_per_suffix_baseline_prefix_sequential_combined": [
+        7.124457538046981,
+        7.307090727396959,
+        7.118828406408126,
+        7.150508417613158
+      ],
+      "combined_gain_vs_sequential_page_bootstrap95": [
+        -0.0008300852225890016,
+        0.018448247380699844
+      ]
+    },
+    {
+      "seed": 33129,
+      "train_tokens": 685,
+      "validation_tokens": 217,
+      "test_tokens": 237,
+      "test_unseen_form_tokens": 166,
+      "selected_taus_prefix_sequential": [
+        10,
+        1,
+        10
+      ],
+      "test_bits_per_suffix_baseline_prefix_sequential_combined": [
+        6.68125724415953,
+        5.9333772506407225,
+        5.3989470658102094,
+        5.384465684672448
+      ],
+      "unseen_form_bits_per_suffix_baseline_prefix_sequential_combined": [
+        7.144325411131146,
+        7.2440553232990075,
+        7.294613677827836,
+        7.328089760149763
+      ],
+      "combined_gain_vs_sequential_page_bootstrap95": [
+        0.003614884961316214,
+        0.024328190197934398
+      ]
+    }
+  ],
+  "italian": [
+    {
+      "seed": 33125,
+      "train_tokens": 2028,
+      "validation_tokens": 657,
+      "test_tokens": 663,
+      "test_unseen_form_tokens": 316,
+      "selected_taus_prefix_sequential": [
+        1,
+        1,
+        1
+      ],
+      "test_bits_per_suffix_baseline_prefix_sequential_combined": [
+        6.0788166513794595,
+        4.4967003615721035,
+        3.681752549940583,
+        3.6418077831865676
+      ],
+      "unseen_form_bits_per_suffix_baseline_prefix_sequential_combined": [
+        6.805558015313713,
+        8.037117461860223,
+        6.56860728776695,
+        6.9307638260177375
+      ],
+      "combined_gain_vs_sequential_page_bootstrap95": [
+        -0.030267879339404183,
+        0.0972046421993793
+      ]
+    },
+    {
+      "seed": 33126,
+      "train_tokens": 2067,
+      "validation_tokens": 617,
+      "test_tokens": 664,
+      "test_unseen_form_tokens": 339,
+      "selected_taus_prefix_sequential": [
+        1,
+        1,
+        10
+      ],
+      "test_bits_per_suffix_baseline_prefix_sequential_combined": [
+        6.140667523562778,
+        4.759819239557571,
+        3.994109061273312,
+        3.9525276840860224
+      ],
+      "unseen_form_bits_per_suffix_baseline_prefix_sequential_combined": [
+        6.876065458499965,
+        8.067481111709965,
+        6.816659027102262,
+        6.8866843939334315
+      ],
+      "combined_gain_vs_sequential_page_bootstrap95": [
+        0.025033038194364744,
+        0.05796440787799709
+      ]
+    },
+    {
+      "seed": 33127,
+      "train_tokens": 2037,
+      "validation_tokens": 660,
+      "test_tokens": 651,
+      "test_unseen_form_tokens": 295,
+      "selected_taus_prefix_sequential": [
+        1,
+        1,
+        10
+      ],
+      "test_bits_per_suffix_baseline_prefix_sequential_combined": [
+        5.886334818352942,
+        4.23971812222941,
+        3.3580089981442303,
+        3.3027977808559683
+      ],
+      "unseen_form_bits_per_suffix_baseline_prefix_sequential_combined": [
+        6.438806317787004,
+        7.598188343078455,
+        6.046245324814732,
+        6.109727205933632
+      ],
+      "combined_gain_vs_sequential_page_bootstrap95": [
+        0.03828077984563529,
+        0.07081093444685066
+      ]
+    },
+    {
+      "seed": 33128,
+      "train_tokens": 2057,
+      "validation_tokens": 641,
+      "test_tokens": 650,
+      "test_unseen_form_tokens": 324,
+      "selected_taus_prefix_sequential": [
+        1,
+        1,
+        1
+      ],
+      "test_bits_per_suffix_baseline_prefix_sequential_combined": [
+        6.099199569873749,
+        4.609166174959449,
+        3.7227253791838213,
+        3.710221192833768
+      ],
+      "unseen_form_bits_per_suffix_baseline_prefix_sequential_combined": [
+        6.776224812860067,
+        7.800910873579498,
+        6.437276665493854,
+        6.801462074262509
+      ],
+      "combined_gain_vs_sequential_page_bootstrap95": [
+        -0.0480535241192797,
+        0.07118846754233252
+      ]
+    },
+    {
+      "seed": 33129,
+      "train_tokens": 2027,
+      "validation_tokens": 660,
+      "test_tokens": 661,
+      "test_unseen_form_tokens": 313,
+      "selected_taus_prefix_sequential": [
+        1,
+        1,
+        10
+      ],
+      "test_bits_per_suffix_baseline_prefix_sequential_combined": [
+        6.096626230477936,
+        4.494953923485585,
+        3.6183072859948813,
+        3.5644815541878856
+      ],
+      "unseen_form_bits_per_suffix_baseline_prefix_sequential_combined": [
+        6.948725691579558,
+        8.024650605049322,
+        6.539913232086849,
+        6.591861600012454
+      ],
+      "combined_gain_vs_sequential_page_bootstrap95": [
+        0.03626700933840382,
+        0.06891996180386525
+      ]
+    }
+  ],
+  "positive_control_prefix_suffix_agreement": [
+    {
+      "seed": 33125,
+      "train_tokens": 3600,
+      "validation_tokens": 1200,
+      "test_tokens": 1200,
+      "test_unseen_form_tokens": 1033,
+      "selected_taus_prefix_sequential": [
+        1,
+        1000,
+        1
+      ],
+      "test_bits_per_suffix_baseline_prefix_sequential_combined": [
+        2.0061091974982226,
+        0.006050981860197574,
+        2.006187016676312,
+        1.2239596216606718
+      ],
+      "unseen_form_bits_per_suffix_baseline_prefix_sequential_combined": [
+        2.008000734686215,
+        0.006057175004711699,
+        2.008623312136361,
+        1.3352454962678895
+      ],
+      "combined_gain_vs_sequential_page_bootstrap95": [
+        0.7555277713904357,
+        0.806862880851566
+      ]
+    },
+    {
+      "seed": 33126,
+      "train_tokens": 3600,
+      "validation_tokens": 1200,
+      "test_tokens": 1200,
+      "test_unseen_form_tokens": 1031,
+      "selected_taus_prefix_sequential": [
+        1,
+        1000,
+        1
+      ],
+      "test_bits_per_suffix_baseline_prefix_sequential_combined": [
+        2.0004140175893848,
+        0.006018058370151139,
+        2.0004081079238416,
+        1.206228771532602
+      ],
+      "unseen_form_bits_per_suffix_baseline_prefix_sequential_combined": [
+        2.0019521214280687,
+        0.006027368850506211,
+        2.002375655436857,
+        1.3129987127214402
+      ],
+      "combined_gain_vs_sequential_page_bootstrap95": [
+        0.7529849221174303,
+        0.8319521977565956
+      ]
+    },
+    {
+      "seed": 33127,
+      "train_tokens": 3600,
+      "validation_tokens": 1200,
+      "test_tokens": 1200,
+      "test_unseen_form_tokens": 1034,
+      "selected_taus_prefix_sequential": [
+        1,
+        1000,
+        1
+      ],
+      "test_bits_per_suffix_baseline_prefix_sequential_combined": [
+        2.0021481172581486,
+        0.006017342533731491,
+        2.002081380717637,
+        1.1954936882823526
+      ],
+      "unseen_form_bits_per_suffix_baseline_prefix_sequential_combined": [
+        2.003572573973912,
+        0.0060333598121945645,
+        2.003937758996178,
+        1.3000041963079059
+      ],
+      "combined_gain_vs_sequential_page_bootstrap95": [
+        0.7674509188532285,
+        0.8398107068964129
+      ]
+    },
+    {
+      "seed": 33128,
+      "train_tokens": 3600,
+      "validation_tokens": 1200,
+      "test_tokens": 1200,
+      "test_unseen_form_tokens": 1036,
+      "selected_taus_prefix_sequential": [
+        1,
+        100,
+        1
+      ],
+      "test_bits_per_suffix_baseline_prefix_sequential_combined": [
+        2.005121397723774,
+        0.006034192448294717,
+        2.0070626476594446,
+        1.2311857589692936
+      ],
+      "unseen_form_bits_per_suffix_baseline_prefix_sequential_combined": [
+        2.004089409837253,
+        0.006032794653698847,
+        2.0108632788026264,
+        1.3392290123737114
+      ],
+      "combined_gain_vs_sequential_page_bootstrap95": [
+        0.7304859965690057,
+        0.8181361703896065
+      ]
+    },
+    {
+      "seed": 33129,
+      "train_tokens": 3600,
+      "validation_tokens": 1200,
+      "test_tokens": 1200,
+      "test_unseen_form_tokens": 1024,
+      "selected_taus_prefix_sequential": [
+        1,
+        1000,
+        1
+      ],
+      "test_bits_per_suffix_baseline_prefix_sequential_combined": [
+        2.00587365966473,
+        0.006051966674212483,
+        2.005730956435613,
+        1.1916297394756477
+      ],
+      "unseen_form_bits_per_suffix_baseline_prefix_sequential_combined": [
+        2.006990218532315,
+        0.0060432484190223925,
+        2.0074449330985757,
+        1.304341148396458
+      ],
+      "combined_gain_vs_sequential_page_bootstrap95": [
+        0.7778059635716941,
+        0.8541944127793877
+      ]
+    }
+  ]
+}

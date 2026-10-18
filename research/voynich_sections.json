@@ -1,0 +1,286 @@
+{
+  "design": "Hand 2, Currier B only. H vs B illustration categories. 30 randomly sampled interior tokens/page. Leave one quire+bifolio group out; uniform class prior; add-one multinomial NB.",
+  "limits": [
+    "Section and quire/location are confounded: this is NOT proof of semantic content.",
+    "Hand/Currier assignments and illustration categories are supplied by ZL metadata.",
+    "Pseudotext or a changing encoding could yield section prediction.",
+    "Exploratory design selected after inspecting metadata; no external confirmation."
+  ],
+  "n_pages": 39,
+  "class_counts": {
+    "H": 20,
+    "B": 19
+  },
+  "n_bifolio_groups": 10,
+  "features": {
+    "word": {
+      "correct": 34,
+      "balanced_accuracy": 0.8736842105263158,
+      "sampling_30_seeds_range": [
+        0.8223684210526316,
+        0.975
+      ],
+      "sampling_30_seeds_median": 0.925
+    },
+    "last_char": {
+      "correct": 34,
+      "balanced_accuracy": 0.875,
+      "sampling_30_seeds_range": [
+        0.7447368421052631,
+        0.95
+      ],
+      "sampling_30_seeds_median": 0.8480263157894736
+    },
+    "last_two_chars": {
+      "correct": 33,
+      "balanced_accuracy": 0.85,
+      "sampling_30_seeds_range": [
+        0.6671052631578948,
+        0.95
+      ],
+      "sampling_30_seeds_median": 0.8743421052631579
+    }
+  },
+  "page_predictions": [
+    {
+      "page": "f26r",
+      "group": "D-2",
+      "truth": "H",
+      "pred": "B"
+    },
+    {
+      "page": "f26v",
+      "group": "D-2",
+      "truth": "H",
+      "pred": "B"
+    },
+    {
+      "page": "f31r",
+      "group": "D-2",
+      "truth": "H",
+      "pred": "B"
+    },
+    {
+      "page": "f31v",
+      "group": "D-2",
+      "truth": "H",
+      "pred": "H"
+    },
+    {
+      "page": "f33r",
+      "group": "E-1",
+      "truth": "H",
+      "pred": "H"
+    },
+    {
+      "page": "f33v",
+      "group": "E-1",
+      "truth": "H",
+      "pred": "H"
+    },
+    {
+      "page": "f34r",
+      "group": "E-2",
+      "truth": "H",
+      "pred": "H"
+    },
+    {
+      "page": "f34v",
+      "group": "E-2",
+      "truth": "H",
+      "pred": "H"
+    },
+    {
+      "page": "f39r",
+      "group": "E-2",
+      "truth": "H",
+      "pred": "H"
+    },
+    {
+      "page": "f39v",
+      "group": "E-2",
+      "truth": "H",
+      "pred": "H"
+    },
+    {
+      "page": "f40r",
+      "group": "E-1",
+      "truth": "H",
+      "pred": "H"
+    },
+    {
+      "page": "f40v",
+      "group": "E-1",
+      "truth": "H",
+      "pred": "H"
+    },
+    {
+      "page": "f43r",
+      "group": "F-3",
+      "truth": "H",
+      "pred": "B"
+    },
+    {
+      "page": "f43v",
+      "group": "F-3",
+      "truth": "H",
+      "pred": "H"
+    },
+    {
+      "page": "f46r",
+      "group": "F-3",
+      "truth": "H",
+      "pred": "H"
+    },
+    {
+      "page": "f46v",
+      "group": "F-3",
+      "truth": "H",
+      "pred": "H"
+    },
+    {
+      "page": "f50r",
+      "group": "G-2",
+      "truth": "H",
+      "pred": "H"
+    },
+    {
+      "page": "f50v",
+      "group": "G-2",
+      "truth": "H",
+      "pred": "H"
+    },
+    {
+      "page": "f55r",
+      "group": "G-2",
+      "truth": "H",
+      "pred": "H"
+    },
+    {
+      "page": "f55v",
+      "group": "G-2",
+      "truth": "H",
+      "pred": "H"
+    },
+    {
+      "page": "f75r",
+      "group": "M-1",
+      "truth": "B",
+      "pred": "B"
+    },
+    {
+      "page": "f75v",
+      "group": "M-1",
+      "truth": "B",
+      "pred": "B"
+    },
+    {
+      "page": "f76v",
+      "group": "M-2",
+      "truth": "B",
+      "pred": "B"
+    },
+    {
+      "page": "f77r",
+      "group": "M-3",
+      "truth": "B",
+      "pred": "B"
+    },
+    {
+      "page": "f77v",
+      "group": "M-3",
+      "truth": "B",
+      "pred": "B"
+    },
+    {
+      "page": "f78r",
+      "group": "M-4",
+      "truth": "B",
+      "pred": "H"
+    },
+    {
+      "page": "f78v",
+      "group": "M-4",
+      "truth": "B",
+      "pred": "B"
+    },
+    {
+      "page": "f79r",
+      "group": "M-5",
+      "truth": "B",
+      "pred": "B"
+    },
+    {
+      "page": "f79v",
+      "group": "M-5",
+      "truth": "B",
+      "pred": "B"
+    },
+    {
+      "page": "f80r",
+      "group": "M-5",
+      "truth": "B",
+      "pred": "B"
+    },
+    {
+      "page": "f80v",
+      "group": "M-5",
+      "truth": "B",
+      "pred": "B"
+    },
+    {
+      "page": "f81r",
+      "group": "M-4",
+      "truth": "B",
+      "pred": "B"
+    },
+    {
+      "page": "f81v",
+      "group": "M-4",
+      "truth": "B",
+      "pred": "B"
+    },
+    {
+      "page": "f82r",
+      "group": "M-3",
+      "truth": "B",
+      "pred": "B"
+    },
+    {
+      "page": "f82v",
+      "group": "M-3",
+      "truth": "B",
+      "pred": "B"
+    },
+    {
+      "page": "f83r",
+      "group": "M-2",
+      "truth": "B",
+      "pred": "B"
+    },
+    {
+      "page": "f83v",
+      "group": "M-2",
+      "truth": "B",
+      "pred": "B"
+    },
+    {
+      "page": "f84r",
+      "group": "M-1",
+      "truth": "B",
+      "pred": "B"
+    },
+    {
+      "page": "f84v",
+      "group": "M-1",
+      "truth": "B",
+      "pred": "B"
+    }
+  ],
+  "permutation_reference": {
+    "n": 1999,
+    "mean": 0.4130966799189068,
+    "fraction_at_least_observed_plus_one": 0.012,
+    "caveat": "Bifolio permutation is a reference model, not a control for quire/location."
+  }
+}

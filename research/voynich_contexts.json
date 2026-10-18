@@ -1,0 +1,217 @@
+{
+  "m": {
+    "matches": 5,
+    "n": 198,
+    "examples": [
+      [
+        "daiin",
+        "dam",
+        "dam"
+      ],
+      [
+        "daiin",
+        "dam",
+        "dam"
+      ],
+      [
+        "daiin",
+        "dam",
+        "dam"
+      ],
+      [
+        "ar",
+        "am",
+        "am"
+      ],
+      [
+        "taiin",
+        "dam",
+        "dam"
+      ]
+    ]
+  },
+  "r": {
+    "matches": 20,
+    "n": 198,
+    "examples": [
+      [
+        "or",
+        "am",
+        "ar"
+      ],
+      [
+        "daiin",
+        "cthom",
+        "cthor"
+      ],
+      [
+        "daiin",
+        "dam",
+        "dar"
+      ],
+      [
+        "daiin",
+        "dam",
+        "dar"
+      ],
+      [
+        "o",
+        "kom",
+        "kor"
+      ],
+      [
+        "qokar",
+        "okam",
+        "okar"
+      ],
+      [
+        "daiin",
+        "dam",
+        "dar"
+      ],
+      [
+        "chol",
+        "dam",
+        "dar"
+      ]
+    ]
+  },
+  "l": {
+    "matches": 22,
+    "n": 198,
+    "examples": [
+      [
+        "or",
+        "am",
+        "al"
+      ],
+      [
+        "daiin",
+        "cthom",
+        "cthol"
+      ],
+      [
+        "chey",
+        "dam",
+        "dal"
+      ],
+      [
+        "o",
+        "kam",
+        "kal"
+      ],
+      [
+        "daiin",
+        "dam",
+        "dal"
+      ],
+      [
+        "daiin",
+        "dam",
+        "dal"
+      ],
+      [
+        "daiin",
+        "otam",
+        "otal"
+      ],
+      [
+        "o",
+        "kom",
+        "kol"
+      ]
+    ]
+  },
+  "in": {
+    "matches": 17,
+    "n": 198,
+    "examples": [
+      [
+        "or",
+        "am",
+        "ain"
+      ],
+      [
+        "chey",
+        "dam",
+        "dain"
+      ],
+      [
+        "daiin",
+        "dam",
+        "dain"
+      ],
+      [
+        "daiin",
+        "dam",
+        "dain"
+      ],
+      [
+        "daiin",
+        "dam",
+        "dain"
+      ],
+      [
+        "chol",
+        "dam",
+        "dain"
+      ],
+      [
+        "ar",
+        "am",
+        "ain"
+      ],
+      [
+        "qokeedy",
+        "qokam",
+        "qokain"
+      ]
+    ]
+  },
+  "iin": {
+    "matches": 24,
+    "n": 198,
+    "examples": [
+      [
+        "or",
+        "am",
+        "aiin"
+      ],
+      [
+        "daiin",
+        "cthom",
+        "cthoiin"
+      ],
+      [
+        "chey",
+        "dam",
+        "daiin"
+      ],
+      [
+        "o",
+        "kam",
+        "kaiin"
+      ],
+      [
+        "daiin",
+        "dam",
+        "daiin"
+      ],
+      [
+        "daiin",
+        "dam",
+        "daiin"
+      ],
+      [
+        "okedy",
+        "okam",
+        "okaiin"
+      ],
+      [
+        "qokar",
+        "okam",
+        "okaiin"
+      ]
+    ]
+  }
+}

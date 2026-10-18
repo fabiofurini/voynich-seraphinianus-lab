@@ -1,0 +1,78 @@
+{
+  "latin": {
+    "language_model_chars": 40052,
+    "control_chars": 10008,
+    "cipher_train_chars": 19113,
+    "cipher_test_chars": 18820,
+    "cases": {
+      "positive_control": {
+        "training_score_per_quadgram": -8.78030759516242,
+        "key": "yinucwjmkopzdhxtsqrebvgfal",
+        "training_dictionary_coverage": {
+          "recognized_tokens": 933,
+          "tokens": 1360,
+          "fraction": 0.6860294117647059
+        },
+        "character_recovery": 1.0,
+        "true_plaintext_dictionary_coverage": {
+          "recognized_tokens": 933,
+          "tokens": 1360,
+          "fraction": 0.6860294117647059
+        }
+      },
+      "voynich": {
+        "training_score_per_quadgram": -11.997183920512821,
+        "key": "uclqzrgsxeibftanodvpmhkyjw",
+        "training_dictionary_coverage": {
+          "recognized_tokens": 29,
+          "tokens": 3153,
+          "fraction": 0.009197589597209007
+        },
+        "heldout_dictionary_coverage": {
+          "recognized_tokens": 35,
+          "tokens": 3153,
+          "fraction": 0.011100539169045354
+        },
+        "heldout_sample": "gdao docurre is i s ndlo dut kut ux onllo dut it ido cdi sgico igicut dico cu po pipo vo cgvllo mo gindico cus cis digli curt cux aidlo digico binio vis curt hius cut dlo nico iniurre vivo digo dis mi s vis igus cisdlo dici sis do mo fi is dilla dlis cis mlo ogis cis cisi ogis ci sdrico igisvis gis "
+      }
+    }
+  },
+  "italian": {
+    "language_model_chars": 95555,
+    "control_chars": 19999,
+    "cipher_train_chars": 19113,
+    "cipher_test_chars": 18820,
+    "cases": {
+      "positive_control": {
+        "training_score_per_quadgram": -8.408518432986597,
+        "key": "xinucwymzopjdhktsqrebvgfal",
+        "training_dictionary_coverage": {
+          "recognized_tokens": 1770,
+          "tokens": 2387,
+          "fraction": 0.7415165479681609
+        },
+        "character_recovery": 1.0,
+        "true_plaintext_dictionary_coverage": {
+          "recognized_tokens": 1770,
+          "tokens": 2387,
+          "fraction": 0.7415165479681609
+        }
+      },
+      "voynich": {
+        "training_score_per_quadgram": -11.776759878702249,
+        "key": "acuhjtgrzoebmlpnidsfvqxywk",
+        "training_dictionary_coverage": {
+          "recognized_tokens": 197,
+          "tokens": 3153,
+          "fraction": 0.0624801776086267
+        },
+        "heldout_dictionary_coverage": {
+          "recognized_tokens": 221,
+          "tokens": 3153,
+          "fraction": 0.07009197589597209
+        },
+        "heldout_sample": "gdpi dicatto er e r ndui dal xal az inuui dal el edi cde rgeci egecal deci ca fi fefi si cgsuui vi gendeci car cer degue catl caz pedui degeci benei ser catl qear cal dui neci eneatto sesi degi der ve r ser egar cerdui dece rer di vi me er deuup duer cer vui iger cer cere iger ce rdteci egerser ger "
+      }
+    }
+  }
+}

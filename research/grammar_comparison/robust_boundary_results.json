@@ -1,0 +1,22 @@
+{
+  "Voynich": {
+    "observed_MI": 0.20710757952286532,
+    "position_length_page_preserving_null_mean": 0.012686155442205381,
+    "null_min": 0.009838558514675688,
+    "null_max": 0.01561539065265366,
+    "p_upper": 0.005,
+    "permutations": 199,
+    "singleton_slots": 487,
+    "all_slots": 25373
+  },
+  "Seraphinianus_OCR": {
+    "observed_MI": 0.19535193267719675,
+    "position_length_page_preserving_null_mean": 0.0671168482254112,
+    "null_min": 0.06118792746412902,
+    "null_max": 0.07182003496524647,
+    "p_upper": 0.005,
+    "permutations": 199,
+    "singleton_slots": 746,
+    "all_slots": 32977
+  }
+}

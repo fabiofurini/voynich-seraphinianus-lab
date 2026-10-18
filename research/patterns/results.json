@@ -1,0 +1,485 @@
+{
+  "scope": "ZL3b; P0 paragraphs only; whole rows with ambiguous tokens excluded; commas split; no cross-line ngrams.",
+  "lines": 2952,
+  "pages": 202,
+  "tokens": 25373,
+  "adjacent_identical_words": {
+    "observed": 218,
+    "exact_shuffle_expectation": 210.86288561112096,
+    "null_min_max": [
+      174,
+      254
+    ],
+    "permutations": 499
+  },
+  "boundary_last_first_eva_char_mi_bits": {
+    "observed": 0.20710757952286532,
+    "shuffle_mean": 0.016259994988416102,
+    "shuffle_min_max": [
+      0.01280194255492981,
+      0.020782144607073116
+    ]
+  },
+  "paragraph_first_letters": {
+    "y": 8,
+    "c": 3,
+    "k": 46,
+    "p": 248,
+    "t": 121,
+    "f": 23,
+    "s": 9,
+    "q": 19,
+    "o": 6,
+    "d": 6,
+    "l": 1
+  },
+  "other_line_first_letters": {
+    "s": 456,
+    "y": 427,
+    "d": 448,
+    "o": 370,
+    "c": 107,
+    "q": 382,
+    "t": 154,
+    "k": 18,
+    "f": 2,
+    "l": 51,
+    "r": 6,
+    "p": 34,
+    "x": 1,
+    "a": 6
+  },
+  "word_family_counts": {
+    "ok": {
+      "aiin": 166,
+      "ain": 102,
+      "edy": 80,
+      "eedy": 76,
+      "ol": 46,
+      "ar": 90
+    },
+    "qok": {
+      "aiin": 220,
+      "ain": 230,
+      "edy": 209,
+      "eedy": 244,
+      "ol": 75,
+      "ar": 117
+    },
+    "ot": {
+      "aiin": 118,
+      "ain": 74,
+      "edy": 110,
+      "eedy": 69,
+      "ol": 47,
+      "ar": 98
+    },
+    "qot": {
+      "aiin": 58,
+      "ain": 53,
+      "edy": 66,
+      "eedy": 63,
+      "ol": 35,
+      "ar": 52
+    },
+    "ch": {
+      "aiin": 37,
+      "ain": 14,
+      "edy": 383,
+      "eedy": 41,
+      "ol": 287,
+      "ar": 54
+    },
+    "sh": {
+      "aiin": 16,
+      "ain": 8,
+      "edy": 335,
+      "eedy": 64,
+      "ol": 130,
+      "ar": 25
+    }
+  },
+  "common_bigrams": [
+    {
+      "words": [
+        "s",
+        "aiin"
+      ],
+      "count": 38,
+      "pages": 32,
+      "expected_line_shuffle": 5.451,
+      "ratio": 6.971
+    },
+    {
+      "words": [
+        "or",
+        "aiin"
+      ],
+      "count": 37,
+      "pages": 29,
+      "expected_line_shuffle": 6.488,
+      "ratio": 5.702
+    },
+    {
+      "words": [
+        "chol",
+        "daiin"
+      ],
+      "count": 25,
+      "pages": 24,
+      "expected_line_shuffle": 11.254,
+      "ratio": 2.221
+    },
+    {
+      "words": [
+        "ol",
+        "shedy"
+      ],
+      "count": 21,
+      "pages": 16,
+      "expected_line_shuffle": 7.15,
+      "ratio": 2.937
+    },
+    {
+      "words": [
+        "shedy",
+        "qokedy"
+      ],
+      "count": 20,
+      "pages": 14,
+      "expected_line_shuffle": 8.039,
+      "ratio": 2.488
+    },
+    {
+      "words": [
+        "chol",
+        "chol"
+      ],
+      "count": 18,
+      "pages": 13,
+      "expected_line_shuffle": 10.762,
+      "ratio": 1.673
+    },
+    {
+      "words": [
+        "ol",
+        "chedy"
+      ],
+      "count": 18,
+      "pages": 14,
+      "expected_line_shuffle": 7.666,
+      "ratio": 2.348
+    },
+    {
+      "words": [
+        "chedy",
+        "qokain"
+      ],
+      "count": 18,
+      "pages": 14,
+      "expected_line_shuffle": 6.964,
+      "ratio": 2.585
+    },
+    {
+      "words": [
+        "r",
+        "aiin"
+      ],
+      "count": 17,
+      "pages": 12,
+      "expected_line_shuffle": 2.062,
+      "ratio": 8.244
+    },
+    {
+      "words": [
+        "ar",
+        "aiin"
+      ],
+      "count": 17,
+      "pages": 12,
+      "expected_line_shuffle": 4.401,
+      "ratio": 3.863
+    },
+    {
+      "words": [
+        "qokeedy",
+        "qokeedy"
+      ],
+      "count": 16,
+      "pages": 9,
+      "expected_line_shuffle": 8.756,
+      "ratio": 1.827
+    },
+    {
+      "words": [
+        "chedy",
+        "qokeey"
+      ],
+      "count": 15,
+      "pages": 11,
+      "expected_line_shuffle": 5.651,
+      "ratio": 2.654
+    },
+    {
+      "words": [
+        "o",
+        "l"
+      ],
+      "count": 14,
+      "pages": 14,
+      "expected_line_shuffle": 1.792,
+      "ratio": 7.813
+    },
+    {
+      "words": [
+        "ar",
+        "al"
+      ],
+      "count": 14,
+      "pages": 11,
+      "expected_line_shuffle": 3.429,
+      "ratio": 4.083
+    },
+    {
+      "words": [
+        "qol",
+        "chedy"
+      ],
+      "count": 14,
+      "pages": 10,
+      "expected_line_shuffle": 5.11,
+      "ratio": 2.74
+    },
+    {
+      "words": [
+        "qokedy",
+        "qokeedy"
+      ],
+      "count": 13,
+      "pages": 9,
+      "expected_line_shuffle": 6.029,
+      "ratio": 2.156
+    },
+    {
+      "words": [
+        "s",
+        "ar"
+      ],
+      "count": 12,
+      "pages": 12,
+      "expected_line_shuffle": 2.549,
+      "ratio": 4.707
+    },
+    {
+      "words": [
+        "qokeedy",
+        "qokedy"
+      ],
+      "count": 12,
+      "pages": 11,
+      "expected_line_shuffle": 6.029,
+      "ratio": 1.99
+    },
+    {
+      "words": [
+        "shedy",
+        "qokeedy"
+      ],
+      "count": 12,
+      "pages": 8,
+      "expected_line_shuffle": 5.53,
+      "ratio": 2.17
+    },
+    {
+      "words": [
+        "shey",
+        "qokain"
+      ],
+      "count": 12,
+      "pages": 5,
+      "expected_line_shuffle": 3.958,
+      "ratio": 3.032
+    },
+    {
+      "words": [
+        "ol",
+        "sheey"
+      ],
+      "count": 11,
+      "pages": 10,
+      "expected_line_shuffle": 2.757,
+      "ratio": 3.99
+    },
+    {
+      "words": [
+        "chedy",
+        "qokedy"
+      ],
+      "count": 11,
+      "pages": 11,
+      "expected_line_shuffle": 6.509,
+      "ratio": 1.69
+    },
+    {
+      "words": [
+        "qokedy",
+        "qokedy"
+      ],
+      "count": 11,
+      "pages": 5,
+      "expected_line_shuffle": 8.191,
+      "ratio": 1.343
+    },
+    {
+      "words": [
+        "qokain",
+        "chedy"
+      ],
+      "count": 11,
+      "pages": 8,
+      "expected_line_shuffle": 6.964,
+      "ratio": 1.58
+    },
+    {
+      "words": [
+        "qokar",
+        "shedy"
+      ],
+      "count": 11,
+      "pages": 9,
+      "expected_line_shuffle": 2.595,
+      "ratio": 4.24
+    }
+  ],
+  "repeated_sequences": {
+    "3": [
+      {
+        "words": [
+          "ol",
+          "shedy",
+          "qokedy"
+        ],
+        "count": 5,
+        "pages": 5
+      },
+      {
+        "words": [
+          "qokedy",
+          "qokedy",
+          "qokedy"
+        ],
+        "count": 3,
+        "pages": 2
+      },
+      {
+        "words": [
+          "shedy",
+          "qokedy",
+          "qokeedy"
+        ],
+        "count": 3,
+        "pages": 2
+      },
+      {
+        "words": [
+          "l",
+          "s",
+          "aiin"
+        ],
+        "count": 3,
+        "pages": 3
+      },
+      {
+        "words": [
+          "chey",
+          "qol",
+          "chedy"
+        ],
+        "count": 3,
+        "pages": 3
+      },
+      {
+        "words": [
+          "dar",
+          "shey",
+          "cthar"
+        ],
+        "count": 2,
+        "pages": 2
+      },
+      {
+        "words": [
+          "chol",
+          "daiin",
+          "cthy"
+        ],
+        "count": 2,
+        "pages": 2
+      },
+      {
+        "words": [
+          "chol",
+          "chy",
+          "chaiin"
+        ],
+        "count": 2,
+        "pages": 2
+      },
+      {
+        "words": [
+          "cho",
+          "s",
+          "chol"
+        ],
+        "count": 2,
+        "pages": 2
+      },
+      {
+        "words": [
+          "cthor",
+          "chol",
+          "chor"
+        ],
+        "count": 2,
+        "pages": 2
+      },
+      {
+        "words": [
+          "daiin",
+          "cthor",
+          "chol"
+        ],
+        "count": 2,
+        "pages": 2
+      },
+      {
+        "words": [
+          "ykeey",
+          "okeey",
+          "cheor"
+        ],
+        "count": 2,
+        "pages": 2
+      }
+    ],
+    "4": [
+      {
+        "words": [
+          "ol",
+          "shedy",
+          "qokedy",
+          "qokeedy"
+        ],
+        "count": 2,
+        "pages": 2
+      }
+    ],
+    "5": [],
+    "6": []
+  },
+  "paired_page_initials": {
+    "pages": 178,
+    "higher_paragraph_gallows_rate": 169,
+    "ties": 6
+  }
+}

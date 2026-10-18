@@ -1,0 +1,170 @@
+{
+  "Voynich": {
+    "tokens": 7500,
+    "pages_or_pseudopages": 115,
+    "scales": {
+      "100": {
+        "observed_MI": 3.372631543973852,
+        "global_shuffle_mean": 3.233759676993322,
+        "within_page_shuffle_mean": 3.36514263501424,
+        "excess_vs_global": 0.13887186698053,
+        "excess_vs_within_page": 0.007488908959611962,
+        "p_upper_global": 0.01,
+        "p_upper_within_page": 0.03
+      },
+      "300": {
+        "observed_MI": 2.2031755540937588,
+        "global_shuffle_mean": 2.0680004749606558,
+        "within_page_shuffle_mean": 2.2019054813651584,
+        "excess_vs_global": 0.135175079133103,
+        "excess_vs_within_page": 0.0012700727286003577,
+        "p_upper_global": 0.01,
+        "p_upper_within_page": 0.35
+      },
+      "1000": {
+        "observed_MI": 1.231716342884288,
+        "global_shuffle_mean": 1.1061266080343233,
+        "within_page_shuffle_mean": 1.2285550714944122,
+        "excess_vs_global": 0.12558973484996483,
+        "excess_vs_within_page": 0.003161271389875875,
+        "p_upper_global": 0.01,
+        "p_upper_within_page": 0.07
+      },
+      "3000": {
+        "observed_MI": 0.5863892134151887,
+        "global_shuffle_mean": 0.4856297123009018,
+        "within_page_shuffle_mean": 0.5852832891064167,
+        "excess_vs_global": 0.10075950111428689,
+        "excess_vs_within_page": 0.0011059243087719883,
+        "p_upper_global": 0.01,
+        "p_upper_within_page": 0.1
+      }
+    }
+  },
+  "Seraphinianus_OCR": {
+    "tokens": 7500,
+    "pages_or_pseudopages": 54,
+    "scales": {
+      "100": {
+        "observed_MI": 4.667634267252338,
+        "global_shuffle_mean": 4.601101015991619,
+        "within_page_shuffle_mean": 4.6596284787574325,
+        "excess_vs_global": 0.06653325126071952,
+        "excess_vs_within_page": 0.00800578849490563,
+        "p_upper_global": 0.01,
+        "p_upper_within_page": 0.02
+      },
+      "300": {
+        "observed_MI": 3.3379429056571355,
+        "global_shuffle_mean": 3.2593023073270104,
+        "within_page_shuffle_mean": 3.3331426027753475,
+        "excess_vs_global": 0.07864059833012504,
+        "excess_vs_within_page": 0.00480030288178801,
+        "p_upper_global": 0.01,
+        "p_upper_within_page": 0.04
+      },
+      "1000": {
+        "observed_MI": 2.0336428451824573,
+        "global_shuffle_mean": 1.951618155692545,
+        "within_page_shuffle_mean": 2.032814801048508,
+        "excess_vs_global": 0.08202468948991237,
+        "excess_vs_within_page": 0.0008280441339492128,
+        "p_upper_global": 0.01,
+        "p_upper_within_page": 0.36
+      },
+      "3000": {
+        "observed_MI": 1.0066846152020554,
+        "global_shuffle_mean": 0.9362343986137289,
+        "within_page_shuffle_mean": 1.0067945541075454,
+        "excess_vs_global": 0.07045021658832651,
+        "excess_vs_within_page": -0.0001099389054899369,
+        "p_upper_global": 0.01,
+        "p_upper_within_page": 0.5
+      }
+    }
+  },
+  "latin": {
+    "tokens": 7500,
+    "pages_or_pseudopages": 50,
+    "scales": {
+      "100": {
+        "observed_MI": 3.7236387100479753,
+        "global_shuffle_mean": 3.590196099119857,
+        "within_page_shuffle_mean": 3.6877831164202197,
+        "excess_vs_global": 0.13344261092811838,
+        "excess_vs_within_page": 0.03585559362775559,
+        "p_upper_global": 0.01,
+        "p_upper_within_page": 0.01
+      },
+      "300": {
+        "observed_MI": 2.506418348128871,
+        "global_shuffle_mean": 2.3521175071185905,
+        "within_page_shuffle_mean": 2.506418348128871,
+        "excess_vs_global": 0.15430084101028063,
+        "excess_vs_within_page": 0.0,
+        "p_upper_global": 0.01,
+        "p_upper_within_page": 1.0
+      },
+      "1000": {
+        "observed_MI": 1.4455637865205024,
+        "global_shuffle_mean": 1.284142398792161,
+        "within_page_shuffle_mean": 1.4406660005804768,
+        "excess_vs_global": 0.16142138772834147,
+        "excess_vs_within_page": 0.004897785940025656,
+        "p_upper_global": 0.01,
+        "p_upper_within_page": 0.02
+      },
+      "3000": {
+        "observed_MI": 0.7052683797257873,
+        "global_shuffle_mean": 0.5641785529312922,
+        "within_page_shuffle_mean": 0.7052683797257873,
+        "excess_vs_global": 0.1410898267944951,
+        "excess_vs_within_page": 0.0,
+        "p_upper_global": 0.01,
+        "p_upper_within_page": 1.0
+      }
+    }
+  },
+  "italian": {
+    "tokens": 7500,
+    "pages_or_pseudopages": 50,
+    "scales": {
+      "100": {
+        "observed_MI": 3.176012595956626,
+        "global_shuffle_mean": 3.096791011706173,
+        "within_page_shuffle_mean": 3.1559978023308277,
+        "excess_vs_global": 0.07922158425045289,
+        "excess_vs_within_page": 0.020014793625798166,
+        "p_upper_global": 0.01,
+        "p_upper_within_page": 0.01
+      },
+      "300": {
+        "observed_MI": 2.1001875222003985,
+        "global_shuffle_mean": 2.0026679916129657,
+        "within_page_shuffle_mean": 2.1001875222003985,
+        "excess_vs_global": 0.09751953058743279,
+        "excess_vs_within_page": 0.0,
+        "p_upper_global": 0.01,
+        "p_upper_within_page": 1.0
+      },
+      "1000": {
+        "observed_MI": 1.1841589038791684,
+        "global_shuffle_mean": 1.08786864283108,
+        "within_page_shuffle_mean": 1.1802998432463394,
+        "excess_vs_global": 0.09629026104808847,
+        "excess_vs_within_page": 0.0038590606328290367,
+        "p_upper_global": 0.01,
+        "p_upper_within_page": 0.03
+      },
+      "3000": {
+        "observed_MI": 0.5278480549729915,
+        "global_shuffle_mean": 0.479574766599418,
+        "within_page_shuffle_mean": 0.5278480549729915,
+        "excess_vs_global": 0.048273288373573475,
+        "excess_vs_within_page": 0.0,
+        "p_upper_global": 0.01,
+        "p_upper_within_page": 1.0
+      }
+    }
+  }
+}

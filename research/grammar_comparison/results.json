@@ -1,0 +1,202 @@
+{
+  "Voynich": {
+    "pages": 202,
+    "lines": 2952,
+    "tokens": 25373,
+    "train_pages": 162,
+    "test_pages": 40,
+    "word_internal_models": {
+      "0": {
+        "bits_per_encoded_character_including_end": 3.8715833269610145,
+        "contexts": 1
+      },
+      "1": {
+        "bits_per_encoded_character_including_end": 2.063851379484958,
+        "contexts": 25
+      },
+      "2": {
+        "bits_per_encoded_character_including_end": 1.8521608271627812,
+        "contexts": 246
+      },
+      "3": {
+        "bits_per_encoded_character_including_end": 1.8506544375053127,
+        "contexts": 1141
+      }
+    },
+    "within_word_character_shuffle_models": {
+      "0": {
+        "bits_per_encoded_character_including_end": 3.8715833269610145,
+        "contexts": 1
+      },
+      "1": {
+        "bits_per_encoded_character_including_end": 3.6127523969396838,
+        "contexts": 25
+      },
+      "2": {
+        "bits_per_encoded_character_including_end": 3.4479968786489135,
+        "contexts": 389
+      },
+      "3": {
+        "bits_per_encoded_character_including_end": 3.4400178494333775,
+        "contexts": 4074
+      }
+    },
+    "word_boundary_last_first_MI": {
+      "observed": 0.2071075795228653,
+      "line_word_shuffle_mean": 0.01608710770737526,
+      "null_min": 0.013400359635311889,
+      "null_max": 0.019206790849006988,
+      "p_upper": 0.005
+    }
+  },
+  "Seraphinianus_OCR": {
+    "pages": 286,
+    "lines": 5896,
+    "tokens": 32977,
+    "train_pages": 229,
+    "test_pages": 57,
+    "word_internal_models": {
+      "0": {
+        "bits_per_encoded_character_including_end": 3.7114347278224282,
+        "contexts": 1
+      },
+      "1": {
+        "bits_per_encoded_character_including_end": 2.0254755003286786,
+        "contexts": 33
+      },
+      "2": {
+        "bits_per_encoded_character_including_end": 1.832615222410938,
+        "contexts": 498
+      },
+      "3": {
+        "bits_per_encoded_character_including_end": 1.7689139863323817,
+        "contexts": 2290
+      }
+    },
+    "within_word_character_shuffle_models": {
+      "0": {
+        "bits_per_encoded_character_including_end": 3.711434727822428,
+        "contexts": 1
+      },
+      "1": {
+        "bits_per_encoded_character_including_end": 3.529310763034129,
+        "contexts": 33
+      },
+      "2": {
+        "bits_per_encoded_character_including_end": 3.4599178065014207,
+        "contexts": 820
+      },
+      "3": {
+        "bits_per_encoded_character_including_end": 3.564364502735961,
+        "contexts": 8278
+      }
+    },
+    "word_boundary_last_first_MI": {
+      "observed": 0.19535193267719678,
+      "line_word_shuffle_mean": 0.06533815082669,
+      "null_min": 0.060058670344347996,
+      "null_max": 0.07067265117758445,
+      "p_upper": 0.005
+    }
+  },
+  "Voynich_connected_EVA": {
+    "pages": 202,
+    "lines": 2952,
+    "tokens": 25373,
+    "train_pages": 162,
+    "test_pages": 40,
+    "word_internal_models": {
+      "0": {
+        "bits_per_encoded_character_including_end": 3.839157036436873,
+        "contexts": 1
+      },
+      "1": {
+        "bits_per_encoded_character_including_end": 2.1713301184242457,
+        "contexts": 31
+      },
+      "2": {
+        "bits_per_encoded_character_including_end": 2.0081125939623736,
+        "contexts": 324
+      },
+      "3": {
+        "bits_per_encoded_character_including_end": 2.0282314081509214,
+        "contexts": 1558
+      }
+    },
+    "within_word_character_shuffle_models": {
+      "0": {
+        "bits_per_encoded_character_including_end": 3.839157036436872,
+        "contexts": 1
+      },
+      "1": {
+        "bits_per_encoded_character_including_end": 3.5761467485922913,
+        "contexts": 31
+      },
+      "2": {
+        "bits_per_encoded_character_including_end": 3.4009156757890677,
+        "contexts": 501
+      },
+      "3": {
+        "bits_per_encoded_character_including_end": 3.413961577956881,
+        "contexts": 4373
+      }
+    },
+    "word_boundary_last_first_MI": {
+      "observed": 0.2172162368750512,
+      "line_word_shuffle_mean": 0.01969640759332832,
+      "null_min": 0.016340029776058116,
+      "null_max": 0.022889296579923637,
+      "p_upper": 0.005
+    }
+  },
+  "Seraphinianus_lowercase_sensitivity": {
+    "pages": 286,
+    "lines": 5896,
+    "tokens": 32977,
+    "train_pages": 229,
+    "test_pages": 57,
+    "word_internal_models": {
+      "0": {
+        "bits_per_encoded_character_including_end": 3.4408211299134135,
+        "contexts": 1
+      },
+      "1": {
+        "bits_per_encoded_character_including_end": 2.0814163879890955,
+        "contexts": 23
+      },
+      "2": {
+        "bits_per_encoded_character_including_end": 1.804329308101407,
+        "contexts": 313
+      },
+      "3": {
+        "bits_per_encoded_character_including_end": 1.7279492177718294,
+        "contexts": 1620
+      }
+    },
+    "within_word_character_shuffle_models": {
+      "0": {
+        "bits_per_encoded_character_including_end": 3.4408211299134135,
+        "contexts": 1
+      },
+      "1": {
+        "bits_per_encoded_character_including_end": 3.288965583534587,
+        "contexts": 23
+      },
+      "2": {
+        "bits_per_encoded_character_including_end": 3.2212983542283014,
+        "contexts": 432
+      },
+      "3": {
+        "bits_per_encoded_character_including_end": 3.2608370670800872,
+        "contexts": 4440
+      }
+    },
+    "word_boundary_last_first_MI": {
+      "observed": 0.1415498021730001,
+      "line_word_shuffle_mean": 0.042347711267180455,
+      "null_min": 0.03798990526873324,
+      "null_max": 0.04692015084751562,
+      "p_upper": 0.005
+    }
+  }
+}

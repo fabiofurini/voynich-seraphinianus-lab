@@ -1,0 +1,13 @@
+{
+  "summary": {
+    "AAA_labels": 442,
+    "position_available": 411,
+    "single_word_labels": 388,
+    "exact_single": 284,
+    "exact_single_fraction": 0.7319587628865979,
+    "CER_single_position": 0.18098772480730801,
+    "nearby_exact_single": 335,
+    "caveat": "Training labels, not independent ground truth. Fixed positional comparison is contaminated by OCR segmentation shifts; CER is positional disagreement, not validated OCR error rate."
+  },
+  "rights_note": "Full OCR training records not redistributed; download upstream for audit."
+}

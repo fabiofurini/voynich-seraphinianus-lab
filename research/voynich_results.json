@@ -1,0 +1,427 @@
+{
+  "source_sha256": "f3c170a131f65afb3835712d5918d88d623e560f0037c1be3f2828de9f287137",
+  "clean_lines": 3840,
+  "train_pages": 119,
+  "test_pages": 83,
+  "method": "Map terminal EVA m to a fixed string; score membership in TRAIN internal-word vocabulary. Rank on train; evaluate on held-out pages. No phonetic interpretation.",
+  "candidate_ranking_train": [
+    [
+      "r",
+      280
+    ],
+    [
+      "l",
+      263
+    ],
+    [
+      "in",
+      241
+    ],
+    [
+      "m",
+      163
+    ],
+    [
+      "n",
+      139
+    ],
+    [
+      "",
+      115
+    ],
+    [
+      "s",
+      105
+    ],
+    [
+      "dy",
+      62
+    ],
+    [
+      "y",
+      45
+    ],
+    [
+      "sh",
+      40
+    ],
+    [
+      "d",
+      27
+    ],
+    [
+      "aiin",
+      26
+    ],
+    [
+      "t",
+      18
+    ],
+    [
+      "i",
+      14
+    ],
+    [
+      "k",
+      13
+    ],
+    [
+      "p",
+      12
+    ],
+    [
+      "o",
+      9
+    ],
+    [
+      "ch",
+      6
+    ],
+    [
+      "c",
+      5
+    ],
+    [
+      "g",
+      5
+    ],
+    [
+      "a",
+      1
+    ],
+    [
+      "e",
+      0
+    ],
+    [
+      "f",
+      0
+    ],
+    [
+      "h",
+      0
+    ],
+    [
+      "q",
+      0
+    ],
+    [
+      "x",
+      0
+    ],
+    [
+      "z",
+      0
+    ]
+  ],
+  "winner": "r",
+  "winner_train": {
+    "n": 363,
+    "hits": 280,
+    "rate": 0.7713,
+    "examples": [
+      [
+        [
+          "am",
+          "ar"
+        ],
+        35
+      ],
+      [
+        [
+          "dam",
+          "dar"
+        ],
+        30
+      ],
+      [
+        [
+          "otam",
+          "otar"
+        ],
+        20
+      ],
+      [
+        [
+          "ram",
+          "rar"
+        ],
+        10
+      ],
+      [
+        [
+          "qokam",
+          "qokar"
+        ],
+        9
+      ],
+      [
+        [
+          "om",
+          "or"
+        ],
+        8
+      ],
+      [
+        [
+          "okam",
+          "okar"
+        ],
+        7
+      ],
+      [
+        [
+          "cham",
+          "char"
+        ],
+        6
+      ],
+      [
+        [
+          "aram",
+          "arar"
+        ],
+        6
+      ],
+      [
+        [
+          "qotam",
+          "qotar"
+        ],
+        6
+      ],
+      [
+        [
+          "sam",
+          "sar"
+        ],
+        6
+      ],
+      [
+        [
+          "oram",
+          "orar"
+        ],
+        5
+      ]
+    ]
+  },
+  "winner_test": {
+    "n": 277,
+    "hits": 207,
+    "rate": 0.7473,
+    "examples": [
+      [
+        [
+          "dam",
+          "dar"
+        ],
+        27
+      ],
+      [
+        [
+          "am",
+          "ar"
+        ],
+        19
+      ],
+      [
+        [
+          "qokam",
+          "qokar"
+        ],
+        10
+      ],
+      [
+        [
+          "otam",
+          "otar"
+        ],
+        8
+      ],
+      [
+        [
+          "okam",
+          "okar"
+        ],
+        8
+      ],
+      [
+        [
+          "chom",
+          "chor"
+        ],
+        6
+      ],
+      [
+        [
+          "om",
+          "or"
+        ],
+        6
+      ],
+      [
+        [
+          "cham",
+          "char"
+        ],
+        4
+      ],
+      [
+        [
+          "daram",
+          "darar"
+        ],
+        4
+      ],
+      [
+        [
+          "alam",
+          "alar"
+        ],
+        4
+      ],
+      [
+        [
+          "ram",
+          "rar"
+        ],
+        4
+      ],
+      [
+        [
+          "cthom",
+          "cthor"
+        ],
+        3
+      ]
+    ]
+  },
+  "identity_test": {
+    "n": 277,
+    "hits": 118,
+    "rate": 0.426,
+    "examples": [
+      [
+        [
+          "dam",
+          "dam"
+        ],
+        27
+      ],
+      [
+        [
+          "am",
+          "am"
+        ],
+        19
+      ],
+      [
+        [
+          "otam",
+          "otam"
+        ],
+        8
+      ],
+      [
+        [
+          "okam",
+          "okam"
+        ],
+        8
+      ],
+      [
+        [
+          "chom",
+          "chom"
+        ],
+        6
+      ],
+      [
+        [
+          "om",
+          "om"
+        ],
+        6
+      ],
+      [
+        [
+          "cham",
+          "cham"
+        ],
+        4
+      ],
+      [
+        [
+          "daram",
+          "daram"
+        ],
+        4
+      ],
+      [
+        [
+          "alam",
+          "alam"
+        ],
+        4
+      ],
+      [
+        [
+          "cthom",
+          "cthom"
+        ],
+        3
+      ],
+      [
+        [
+          "okom",
+          "okom"
+        ],
+        3
+      ],
+      [
+        [
+          "aim",
+          "aim"
+        ],
+        3
+      ]
+    ]
+  },
+  "all_candidates_test": {
+    "": 0.3177,
+    "a": 0.0036,
+    "c": 0.0072,
+    "d": 0.1264,
+    "e": 0.0,
+    "f": 0.0217,
+    "g": 0.0072,
+    "h": 0.0,
+    "i": 0.0469,
+    "k": 0.0505,
+    "l": 0.6931,
+    "m": 0.426,
+    "n": 0.3394,
+    "o": 0.0325,
+    "p": 0.0505,
+    "q": 0.0,
+    "r": 0.7473,
+    "s": 0.3141,
+    "t": 0.0578,
+    "x": 0.0,
+    "y": 0.1408,
+    "z": 0.0,
+    "ch": 0.0072,
+    "sh": 0.0794,
+    "aiin": 0.083,
+    "in": 0.5451,
+    "dy": 0.1841
+  },
+  "limits": [
+    "Vocabulary overlap is not semantic evidence.",
+    "Common target endings and short forms can inflate matches.",
+    "A global substitution may conceal multiple glyph functions.",
+    "Single transcription; no image validation.",
+    "Exploratory hypothesis; not evidence of novel discovery."
+  ]
+}

@@ -1,0 +1,9 @@
+__pycache__/
+*.pyc
+.venv/
+research/patterns/voynich_ZL3b.txt
+research/Voynich_test_sostituzione/sources/*.txt
+research/seraph_ocr/
+research/Voynich_test_sostituzione/run/
+research/Voynich_test_sostituzione/voynich_attack_bin
+.local/
