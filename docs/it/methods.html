@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Metodi e test · Oltre i segni</title>
+<meta name="description" content="Fonti dei dati, disegno sperimentale, modelli nulli, calibrazione e riproduzione degli esperimenti su Voynich e Seraphinianus.">
+<meta name="theme-color" content="#101d1a">
+<link rel="alternate" hreflang="en" href="../methods.html">
+<link rel="alternate" hreflang="it" href="methods.html">
+<link rel="icon" href="../assets/mark.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="../styles.css">
+<script defer src="../app.js"></script>
+</head>
+<body>
+<a class="skip" href="#main">Vai al contenuto</a>
+<header>
+  <a class="brand" href="index.html"><img src="../assets/mark.svg" width="30" height="30" alt=""><span>OLTRE<span class="brand-light"> I SEGNI</span></span></a>
+  <button id="menu" aria-controls="navigation" aria-expanded="false">Menu ☰</button>
+  <nav id="navigation" aria-label="Principale">
+    <a href="index.html">La storia</a>
+    <a href="results.html">Risultati</a>
+    <a href="lab.html">Laboratorio</a>
+    <a href="methods.html" aria-current="page">Metodi e test</a>
+    <a href="hypotheses.html">Ipotesi</a>
+    <a class="nav-repo" href="https://github.com/fabiofurini/voynich-seraphinianus-lab">GitHub ↗</a>
+    <span class="lang-switch"><a href="../methods.html" hreflang="en" lang="en">EN</a> · <b>IT</b></span>
+  </nav>
+</header>
+
+<main id="main">
+<section class="page-hero">
+  <div class="wrap">
+    <div class="eyebrow"><span class="dot"></span> Metodi e test · per statistici e per chi vuole replicare</div>
+    <h1>Come abbiamo cercato<br><em>di non ingannarci.</em></h1>
+    <p class="lead">Le scritture indecifrate attirano chi cerca schemi a tutti i costi. Le garanzie descritte qui sono il cuore del progetto: pagine tenute da parte, campioni pareggiati, modelli nulli, controlli positivi e un registro pubblico dei test falliti.</p>
+  </div>
+</section>
+
+<section class="band">
+  <div class="wrap">
+    <div class="eyebrow">Principi di disegno</div>
+    <h2>Cinque regole per ogni esperimento.</h2>
+    <div class="hyp-grid">
+      <article class="hyp-card"><span class="id">REGOLA 1</span><h3>Verificare su pagine mai viste</h3><p>I modelli si adattano su alcune pagine e si valutano su altre. Gli split sono per pagina, mai per parola, così un modello non può memorizzare il testo di test.</p></article>
+      <article class="hyp-card"><span class="id">REGOLA 2</span><h3>Confrontare cose confrontabili</h3><p>Prima di ogni confronto i corpora vengono pareggiati per dimensione del campione e distribuzione delle lunghezze delle parole, perché entrambe alterano le stime di entropia.</p></article>
+      <article class="hyp-card"><span class="id">REGOLA 3</span><h3>Dimostrare che il test può riuscire</h3><p>Ogni metodo viene prima applicato a un controllo positivo di cui si conosce la risposta: latino cifrato, grammatiche sintetiche. Se lì fallisce, il suo fallimento sul Voynich non significa nulla.</p></article>
+      <article class="hyp-card"><span class="id">REGOLA 4</span><h3>Dichiarare il modello nullo</h3><p>Ogni affermazione “sopra il caso” indica il suo rimescolamento: dentro la riga, dentro la pagina, per fascia di posizione e lunghezza, per gruppo di bifogli.</p></article>
+      <article class="hyp-card"><span class="id">REGOLA 5</span><h3>Tenere i fallimenti</h3><p>Le analisi superate o fallite restano nel repository con i loro risultati, segnalate come tali. Ogni risultato negativo vale per un modello, un insieme di dati e una codifica.</p></article>
+    </div>
+  </div>
+</section>
+
+<section class="band band-alt">
+  <div class="wrap">
+    <div class="eyebrow">Dati</div>
+    <h2>Cinque corpora, tutti con hash fissato.</h2>
+    <p class="prose" style="color:var(--ink-2)">I testi di terzi non sono conservati nel repository. Uno script scarica le versioni esatte elencate qui e si rifiuta di procedere se un hash SHA-256 non corrisponde.</p>
+    <div class="tab-card">
+      <div class="table-scroll"><table>
+        <thead><tr><th>Corpus</th><th>Fonte</th><th>Ruolo</th><th>Note</th></tr></thead>
+        <tbody>
+          <tr><td>Voynich, ZL3b</td><td>Trascrizione Zandbergen–Landini, versione del 13 maggio 2025</td><td><span class="status blue">Oggetto</span></td><td>5.385 loci, 227 identificativi di pannello, 174.004 unità grafiche. Alfabeto EVA.</td></tr>
+          <tr><td>Voynich, strato H</td><td>Trascrizione di Takahashi, archivio interlineare di Stolfi 1.6e6</td><td><span class="status blue">Oggetto</span></td><td>Usata nei primissimi esperimenti. Condivide fonti con ZL3b, quindi non è indipendente.</td></tr>
+          <tr><td>Codex Seraphinianus</td><td>Traslitterazione OCR di Ponzi, commit <code>6bc7c93</code></td><td><span class="status amber">Confronto</span></td><td>Scrittura moderna inventata. Errori OCR verificati: vedi i risultati.</td></tr>
+          <tr><td>Latino</td><td>Celso, <i>De medicina</i>, libro I</td><td><span class="status green">Controllo</span></td><td>Prosa medica, di argomento paragonabile a un erbario.</td></tr>
+          <tr><td>Italiano</td><td>Romolo Murri, <i>Il partito radicale</i> (Project Gutenberg 26166)</td><td><span class="status green">Controllo</span></td><td>Italiano moderno, non un corpus medievale.</td></tr>
+        </tbody>
+      </table></div>
+    </div>
+    <details class="levels">
+      <summary>Come si contano i glifi <span class="level-tag">TRASCRIZIONE</span></summary>
+      <div class="body">
+        <p>Usiamo un inventario di lavoro di 23 unità grafiche: 17 lettere EVA singole (<span class="eva">a d e f g i k l m n o p q r s t y</span>) e 6 gruppi connessi (<span class="eva">ch sh ckh cth cph cfh</span>), riconosciuti per corrispondenza massimale. Coprono il 99,96% del testo leggibile dei paragrafi in ZL3b. Le letture alternative si risolvono prendendo la prima variante (817 casi); i 209 marcatori di illeggibilità sono esclusi. L’inventario è una convenzione per contare, non l’affermazione che queste siano 23 lettere.</p>
+        <p>Fatti che rendono rischiosa una lettura ingenua: <span class="eva">q</span> sta a inizio parola nel 99,5% dei casi ed è seguita da <span class="eva">o</span> nel 98,0%; <span class="eva">n</span> segue <span class="eva">i</span> nel 98,0% dei casi e chiude la parola nel 99,0%. Se <span class="eva">qo</span> e <span class="eva">iin</span> siano unità singole resta aperto.</p>
+      </div>
+    </details>
+  </div>
+</section>
+
+<section class="band">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow">Registro degli esperimenti</div>
+        <h2>Dodici esperimenti,<br><em>compreso quello fallito.</em></h2>
+      </div>
+      <p>Apri una riga per disegno, risultato e limite principale, con i link allo script e al suo output.</p>
+    </div>
+    <div class="filters segmented" role="group" aria-label="Filtra gli esperimenti" style="display:inline-flex;margin-bottom:18px">
+      <button class="selected" data-filter="all" aria-pressed="true">Tutti</button>
+      <button data-filter="done" aria-pressed="false">Completati</button>
+      <button data-filter="limited" aria-pressed="false">Limitati o falliti</button>
+    </div>
+    <div id="register">
+      <details class="experiment" data-kind="done"><summary><span class="exp-num">E01</span><div><h3>Contesto locale, primo confronto</h3><p class="description">Modelli di Markov su ogni corpus.</p></div><span class="status gray">Superato</span></summary>
+        <div class="exp-detail"><p><strong>Risultato.</strong> Entrambi i codici sono molto prevedibili localmente.</p><p><strong>Limite.</strong> Campioni e codifiche di dimensioni diverse; sostituito da E02.</p><div class="exp-meta"><a href="https://github.com/fabiofurini/voynich-seraphinianus-lab/blob/main/research/grammar_comparison/run.py">run.py</a><a href="https://github.com/fabiofurini/voynich-seraphinianus-lab/blob/main/research/grammar_comparison/results.json">results.json</a></div></div></details>
+      <details class="experiment" data-kind="done"><summary><span class="exp-num">E02</span><div><h3>Campioni pareggiati con backoff</h3><p class="description">Il risultato principale: il guadagno del contesto aggiuntivo.</p></div><span class="status green">Completato</span></summary>
+        <div class="exp-detail"><p><strong>Disegno.</strong> Stesso numero di parole per lunghezza, tre split di pagine, backoff interpolato regolato in validazione.</p><p><strong>Risultato.</strong> Guadagno nel Voynich 0,0003–0,0014 bit; latino e italiano 0,30–0,38.</p><p><strong>Limite.</strong> Tre split, campioni pareggiati piccoli, segmentazione ignota.</p><div class="exp-meta"><a href="https://github.com/fabiofurini/voynich-seraphinianus-lab/blob/main/research/grammar_comparison/matched_backoff.py">matched_backoff.py</a><a href="https://github.com/fabiofurini/voynich-seraphinianus-lab/blob/main/research/grammar_comparison/matched_backoff_results.json">risultati</a></div></div></details>
+      <details class="experiment" data-kind="done"><summary><span class="exp-num">E03</span><div><h3>Dipendenze ai confini di parola</h3><p class="description">La fine di una parola predice l’inizio della successiva?</p></div><span class="status green">Completato</span></summary>
+        <div class="exp-detail"><p><strong>Disegno.</strong> 199 permutazioni che conservano pagina, fascia di posizione e fascia di lunghezza.</p><p><strong>Risultato.</strong> Entrambi i codici superano ogni permutazione.</p><p><strong>Limite.</strong> Impaginazione, grafia e OCR possono contribuire. Non è un test di sintassi.</p><div class="exp-meta"><a href="https://github.com/fabiofurini/voynich-seraphinianus-lab/blob/main/research/grammar_comparison/robust_boundary.py">robust_boundary.py</a><a href="https://github.com/fabiofurini/voynich-seraphinianus-lab/blob/main/research/grammar_comparison/robust_boundary_results.json">risultati</a></div></div></details>
+      <details class="experiment" data-kind="done"><summary><span class="exp-num">E04</span><div><h3>Prefissi e suffissi</h3><p class="description">L’inizio di una parola predice il suo finale?</p></div><span class="status green">Completato</span></summary>
+        <div class="exp-detail"><p><strong>Risultato.</strong> Esistono ampie famiglie condivise, ma un prefisso di 2 unità aggiunge circa 0,001 bit per suffisso oltre al contesto locale e non si generalizza a forme nuove.</p><p><strong>Limite.</strong> Specifico di questa rappresentazione.</p><div class="exp-meta"><a href="https://github.com/fabiofurini/voynich-seraphinianus-lab/blob/main/research/grammar_comparison/affix_prediction.py">affix_prediction.py</a><a href="https://github.com/fabiofurini/voynich-seraphinianus-lab/blob/main/research/grammar_comparison/affix_prediction_results.json">risultati</a></div></div></details>
+      <details class="experiment" data-kind="limited"><summary><span class="exp-num">E05</span><div><h3>Affissi lunghi disgiunti</h3><p class="description">Segmenti di 3 e 4 unità che non si sovrappongono.</p></div><span class="status amber">Inconcludente</span></summary>
+        <div class="exp-detail"><p><strong>Risultato.</strong> 33–53 parole di test per split con segmenti di 3 unità; una sola con segmenti di 4.</p><p><strong>Limite.</strong> Potenza insufficiente. L’assenza di un effetto qui non si può leggere come assenza di una regola.</p><div class="exp-meta"><a href="https://github.com/fabiofurini/voynich-seraphinianus-lab/blob/main/research/grammar_comparison/long_affix_prediction.py">long_affix_prediction.py</a><a href="https://github.com/fabiofurini/voynich-seraphinianus-lab/blob/main/research/grammar_comparison/long_affix_disjoint_3_results.json">3 unità</a><a href="https://github.com/fabiofurini/voynich-seraphinianus-lab/blob/main/research/grammar_comparison/long_affix_disjoint_4_results.json">4 unità</a></div></div></details>
+      <details class="experiment" data-kind="limited"><summary><span class="exp-num">E06</span><div><h3>Verifica dell’OCR del Seraphinianus</h3><p class="description">Quanto è affidabile il corpus di confronto?</p></div><span class="status amber">Limitato</span></summary>
+        <div class="exp-detail"><p><strong>Risultato.</strong> 73,2% di concordanza esatta, 86,3% entro ±2 posizioni, su 388 parole. 12 immagini originali esaminate.</p><p><strong>Limite.</strong> Le etichette vengono dall’insieme di addestramento dell’OCR, quindi non è un tasso d’errore indipendente.</p><div class="exp-meta"><a href="https://github.com/fabiofurini/voynich-seraphinianus-lab/blob/main/research/grammar_comparison/ocr_audit.py">ocr_audit.py</a><a href="https://github.com/fabiofurini/voynich-seraphinianus-lab/blob/main/research/grammar_comparison/ocr_audit_results.json">risultati</a></div></div></details>
+      <details class="experiment" data-kind="limited"><summary><span class="exp-num">E07</span><div><h3>Gerarchia, primo fitting</h3><p class="description">PCFG contro HMM, ottimizzatore iniziale.</p></div><span class="status amber">Calibrazione fallita</span></summary>
+        <div class="exp-detail"><p><strong>Risultato.</strong> Su dati sintetici da una grammatica nota, la PCFG adattata dava 0,9912 bit, peggio dell’HMM (0,8991) e della grammatica vera (0,8758). L’ottimizzatore era bloccato in un ottimo locale.</p><p><strong>Limite.</strong> Non va usato come prova. Resta agli atti per mostrare perché la calibrazione conta.</p><div class="exp-meta"><a href="https://github.com/fabiofurini/voynich-seraphinianus-lab/blob/main/research/grammar_comparison/hierarchy_probe.py">hierarchy_probe.py</a><a href="https://github.com/fabiofurini/voynich-seraphinianus-lab/blob/main/research/grammar_comparison/hierarchy_probe_results.json">risultati</a></div></div></details>
+      <details class="experiment" data-kind="done"><summary><span class="exp-num">E08</span><div><h3>Controllo sintetico e calibrazione</h3><p class="description">Il fitting rafforzato trova un albero noto?</p></div><span class="status green">Superato</span></summary>
+        <div class="exp-detail"><p><strong>Risultato.</strong> Con inizializzazione Dirichlet(0,3), più ripartenze e fino a 100 iterazioni, la PCFG raggiunge 0,8755 bit, pari alla grammatica vera.</p><div class="exp-meta"><a href="https://github.com/fabiofurini/voynich-seraphinianus-lab/blob/main/research/grammar_comparison/hierarchy_calibration.py">hierarchy_calibration.py</a><a href="https://github.com/fabiofurini/voynich-seraphinianus-lab/blob/main/research/grammar_comparison/hierarchy_calibration_results.json">risultati</a></div></div></details>
+      <details class="experiment" data-kind="done"><summary><span class="exp-num">E09</span><div><h3>Gerarchia, fitting rafforzato</h3><p class="description">Il confronto calibrato sul testo reale.</p></div><span class="status green">Completato</span></summary>
+        <div class="exp-detail"><p><strong>Risultato.</strong> Voynich: PCFG peggiore dell’HMM di 0,0193 bit/token. Seraphinianus: un vantaggio minimo e incerto.</p><p><strong>Limite.</strong> Due stati, classi di suffisso, righe non necessariamente frasi.</p><div class="exp-meta"><a href="https://github.com/fabiofurini/voynich-seraphinianus-lab/blob/main/research/grammar_comparison/hierarchy_stronger.py">hierarchy_stronger.py</a><a href="https://github.com/fabiofurini/voynich-seraphinianus-lab/blob/main/research/grammar_comparison/hierarchy_stronger_results.json">risultati</a></div></div></details>
+      <details class="experiment" data-kind="done"><summary><span class="exp-num">E10</span><div><h3>Bootstrap per pagina</h3><p class="description">L’incertezza di E09.</p></div><span class="status green">Completato</span></summary>
+        <div class="exp-detail"><p><strong>Risultato.</strong> Intervallo al 95% per il Voynich [+0,0065; +0,0343]; per il Seraphinianus [−0,0080; +0,0008].</p><p><strong>Limite.</strong> Condizionato ai modelli selezionati e a questo split.</p><div class="exp-meta"><a href="https://github.com/fabiofurini/voynich-seraphinianus-lab/blob/main/research/grammar_comparison/hierarchy_bootstrap.py">hierarchy_bootstrap.py</a><a href="https://github.com/fabiofurini/voynich-seraphinianus-lab/blob/main/research/grammar_comparison/hierarchy_bootstrap_results.json">risultati</a></div></div></details>
+      <details class="experiment" data-kind="done"><summary><span class="exp-num">E11</span><div><h3>Organizzazione su più scale</h3><p class="description">Le parole si raggruppano in parti del testo?</p></div><span class="status green">Esplorativo</span></summary>
+        <div class="exp-detail"><p><strong>Risultato.</strong> Tutti e quattro i corpora si raggruppano, compresa la scrittura inventata.</p><p><strong>Limite.</strong> Non è una replica completa di Montemurro e Zanette (2013).</p><div class="exp-meta"><a href="https://github.com/fabiofurini/voynich-seraphinianus-lab/blob/main/research/grammar_comparison/multiscale.py">multiscale.py</a><a href="https://github.com/fabiofurini/voynich-seraphinianus-lab/blob/main/research/grammar_comparison/multiscale_results.json">risultati</a></div></div></details>
+      <details class="experiment" data-kind="limited"><summary><span class="exp-num">E12</span><div><h3>Attacco per sostituzione semplice</h3><p class="description">Latino o italiano con un alfabeto segreto?</p></div><span class="status amber">Nessuna lettura</span></summary>
+        <div class="exp-detail"><p><strong>Risultato.</strong> Controlli ricostruiti per intero; output del Voynich illeggibile (1,1% e 7,0% di parole nel vocabolario).</p><p><strong>Limite.</strong> Ricerca euristica; solo queste lingue, unità e spaziature.</p><div class="exp-meta"><a href="https://github.com/fabiofurini/voynich-seraphinianus-lab/blob/main/research/substitution_attack/README.md">metodo</a><a href="https://github.com/fabiofurini/voynich-seraphinianus-lab/blob/main/research/substitution_attack/results.json">risultati</a></div></div></details>
+    </div>
+  </div>
+</section>
+
+<section class="band band-alt">
+  <div class="wrap-narrow">
+    <div class="eyebrow">Incertezza</div>
+    <h2>Che cosa significano i nostri intervalli, e che cosa no.</h2>
+    <div class="prose">
+      <p>L’intervallo min–max tra split di pagine sovrapposti descrive la sensibilità allo split. Non è un intervallo di confidenza.</p>
+      <p>Gli intervalli bootstrap per pagina ricampionano le pagine di test tenendo fissi i modelli adattati. Sono condizionati a quei modelli e a questo corpus.</p>
+      <p>Le pagine dello stesso fascicolo non sono indipendenti, e le due trascrizioni del Voynich condividono fonti. Le repliche sugli split riusano pagine e non sono libri indipendenti.</p>
+      <p>Non è stata applicata alcuna correzione per confronti multipli. Il progetto è esplorativo: ogni p-value e ogni intervallo vanno presi come guida per il prossimo test confermativo, non come conclusione.</p>
+    </div>
+    <div class="caveat">
+      <h3>Perché la statistica da sola non può dimostrare che un testo non ha significato</h3>
+      <p>Senza restringere la famiglia di codifiche, qualsiasi stringa finita C può essere fatta corrispondere a qualsiasi testo in chiaro P della stessa lunghezza scegliendo la chiave K = C − P modulo la dimensione dell’alfabeto. È un argomento di identificabilità, non un’ipotesi storica sull’uso di un cifrario a chiave monouso. Un risultato negativo ha senso solo quando si dice quali codifiche, lingue e segmentazioni esclude.</p>
+    </div>
+  </div>
+</section>
+
+<section class="band">
+  <div class="wrap-narrow">
+    <div class="eyebrow">Riprodurre</div>
+    <h2>Rifai tutto in cinque comandi.</h2>
+    <p style="color:var(--ink-2)">Python 3.10+ con NumPy (Pillow serve solo per il pannello di immagini OCR). L’attacco per sostituzione richiede anche un compilatore C++17.</p>
+<pre>git clone https://github.com/fabiofurini/voynich-seraphinianus-lab
+cd voynich-seraphinianus-lab
+pip install -r requirements.txt
+python scripts/fetch_data.py                 # scarica le fonti, verifica gli SHA-256
+python scripts/reproduce.py --suite matched  # oppure: affixes, hierarchy, calibration,
+                                             #         multiscale, boundary, substitution</pre>
+    <div class="tab-card">
+      <div class="table-scroll"><table>
+        <thead><tr><th>Suite</th><th>Script</th><th>Ambito</th></tr></thead>
+        <tbody>
+          <tr><td><code>matched</code></td><td>matched_backoff.py</td><td>3 split di pagine, lunghezze di parola pareggiate, backoff regolato in validazione</td></tr>
+          <tr><td><code>affixes</code></td><td>affix_prediction.py, long_affix_prediction.py</td><td>Suffisso da prefisso e contesto; 5 split di pagine</td></tr>
+          <tr><td><code>hierarchy</code></td><td>hierarchy_stronger.py</td><td>4 ripartenze × 100 iterazioni EM</td></tr>
+          <tr><td><code>calibration</code></td><td>hierarchy_control.py, hierarchy_calibration.py</td><td>PCFG sintetica nota; esecuzione fallita e riuscita</td></tr>
+          <tr><td><code>multiscale</code></td><td>multiscale.py</td><td>7.500 token per corpus</td></tr>
+          <tr><td><code>boundary</code></td><td>robust_boundary.py</td><td>199 permutazioni stratificate</td></tr>
+          <tr><td><code>substitution</code></td><td>substitution_attack/voynich_attack.py</td><td>Simulated annealing con controlli positivi</td></tr>
+        </tbody>
+      </table></div>
+    </div>
+  </div>
+</section>
+
+<section class="closing">
+  <div class="wrap">
+    <div class="eyebrow">Contribuisci</div>
+    <h2>Hai trovato un errore? Diccelo.</h2>
+    <p>Apri una issue con un’ipotesi precisa, versione del corpus, segmentazione, split e una previsione che potrebbe rivelarsi sbagliata.</p>
+    <a class="button" href="https://github.com/fabiofurini/voynich-seraphinianus-lab/issues">Apri una issue ↗</a>
+  </div>
+</section>
+</main>
+
+<footer class="wrap">
+  <a class="brand" href="index.html">OLTRE I SEGNI</a>
+  <p>Fabio Furini · Istantanea esplorativa, 18 ottobre 2026 · Analisi assistita da AI<br>Codice MIT · Testi originali CC BY 4.0 · Le fonti di terzi mantengono i propri termini.</p>
+  <a href="https://github.com/fabiofurini/voynich-seraphinianus-lab/blob/main/notebook/REPRODUCIBILITY.md">Guida alla riproduzione (in inglese) ↗</a>
+</footer>
+</body>
+</html>

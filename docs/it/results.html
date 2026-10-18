@@ -1,0 +1,347 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Risultati · Oltre i segni</title>
+<meta name="description" content="Risultati misurati sul manoscritto Voynich e sul Codex Seraphinianus, con grafici, tabelle e limiti.">
+<meta name="theme-color" content="#101d1a">
+<link rel="alternate" hreflang="en" href="../results.html">
+<link rel="alternate" hreflang="it" href="results.html">
+<link rel="icon" href="../assets/mark.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="../styles.css">
+<script defer src="../app.js"></script>
+</head>
+<body>
+<a class="skip" href="#main">Vai al contenuto</a>
+<header>
+  <a class="brand" href="index.html"><img src="../assets/mark.svg" width="30" height="30" alt=""><span>OLTRE<span class="brand-light"> I SEGNI</span></span></a>
+  <button id="menu" aria-controls="navigation" aria-expanded="false">Menu ☰</button>
+  <nav id="navigation" aria-label="Principale">
+    <a href="index.html">La storia</a>
+    <a href="results.html" aria-current="page">Risultati</a>
+    <a href="lab.html">Laboratorio</a>
+    <a href="methods.html">Metodi e test</a>
+    <a href="hypotheses.html">Ipotesi</a>
+    <a class="nav-repo" href="https://github.com/fabiofurini/voynich-seraphinianus-lab">GitHub ↗</a>
+    <span class="lang-switch"><a href="../results.html" hreflang="en" lang="en">EN</a> · <b>IT</b></span>
+  </nav>
+</header>
+
+<main id="main">
+<section class="page-hero">
+  <div class="wrap">
+    <div class="eyebrow"><span class="dot"></span> Risultati · istantanea del 18 ottobre 2026</div>
+    <h1>Che cosa dicono<br><em>davvero i numeri.</em></h1>
+    <p class="lead">Sei risultati, ognuno spiegato prima in parole semplici. Apri i pannelli sotto ciascuno per la lettura linguistica e il dettaglio statistico. Ogni valore viene da uno script del repository.</p>
+    <div class="metric-row">
+      <div class="metric"><b>5</b><span>corpora confrontati: 2 codifiche del Voynich, Seraphinianus OCR, latino, italiano</span></div>
+      <div class="metric"><b>3</b><span>split di pagine indipendenti per il test principale</span></div>
+      <div class="metric"><b>2.000</b><span>ricampionamenti bootstrap per pagina nel test sulla grammatica</span></div>
+      <div class="metric"><b>199–1.999</b><span>permutazioni per modello nullo</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- 1. guadagno di contesto -->
+<section class="band" id="context">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow">Risultato 1 · il più solido</div>
+        <h2>Un glifo di contesto in più<br><em>non aiuta quasi per niente.</em></h2>
+      </div>
+      <p>Prevediamo il glifo successivo dentro una parola a partire dai due, poi dai tre, glifi precedenti. Il guadagno dato da quel glifo in più dice quanta informazione si trova più indietro.</p>
+    </div>
+
+    <div class="chart-card">
+      <div class="chart-toolbar">
+        <div>
+          <h3 id="gain-title">Guadagno dall’ordine 2 all’ordine 3, bit per glifo</h3>
+          <p id="gain-sub">Ogni punto è uno split di pagine; la barra va dallo split più basso al più alto.</p>
+        </div>
+        <div class="segmented" role="group" aria-label="Vista del grafico">
+          <button class="selected" id="gain-view" aria-pressed="true">Guadagno</button>
+          <button id="curve-view" aria-pressed="false">Curva completa</button>
+        </div>
+      </div>
+      <div id="gain-chart" class="chart" role="img" aria-labelledby="gain-title gain-sub"><p class="chart-note">Caricamento del grafico…</p></div>
+      <div class="legend" aria-hidden="true">
+        <span><i style="background:var(--voynich)"></i>Voynich (due codifiche)</span>
+        <span><i style="background:var(--seraph)"></i>Codex Seraphinianus (OCR)</span>
+        <span><i style="background:var(--control)"></i>Controlli in latino e italiano</span>
+      </div>
+      <div class="table-scroll">
+        <table>
+          <caption>Campioni pareggiati: lo stesso numero di parole di ogni lunghezza (4–10 unità) in ogni corpus. Modelli con backoff interpolato, smoothing scelto sulle pagine di validazione.</caption>
+          <thead><tr><th>Corpus</th><th class="num">Guadagno, min–max (bit)</th><th class="num">Entropia media, ordine 2</th><th class="num">Entropia media, ordine 3</th></tr></thead>
+          <tbody>
+            <tr><td>Voynich, EVA</td><td class="num">0,0003–0,0014</td><td class="num">1,9998</td><td class="num">1,9988</td></tr>
+            <tr><td>Voynich, unità EVA connesse</td><td class="num">0,0034–0,0146</td><td class="num">2,0143</td><td class="num">2,0071</td></tr>
+            <tr><td>Codex Seraphinianus, OCR</td><td class="num">0,0878–0,1052</td><td class="num">2,0392</td><td class="num">1,9420</td></tr>
+            <tr><td>Latino (Celso, <i>De medicina</i>)</td><td class="num">0,3189–0,3844</td><td class="num">2,8926</td><td class="num">2,5413</td></tr>
+            <tr><td>Italiano (Murri)</td><td class="num">0,2955–0,3425</td><td class="num">2,8722</td><td class="num">2,5530</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <details class="levels">
+      <summary>Che cosa significa per un linguista <span class="level-tag">LINGUISTICA</span></summary>
+      <div class="body">
+        <p>In latino e in italiano il terzo glifo all’indietro vincola ancora il successivo: ortografia e morfologia portano informazione su più lettere. Nel Voynich quasi tutta la struttura prevedibile è già catturata dai due glifi precedenti. Le parole si comportano come se fossero costruite da pezzi brevi, concatenati localmente.</p>
+        <p>Questo non dimostra l’assenza di una lingua. Una scrittura sillabica, un cifrario “prolisso” che scrive un suono con più glifi, o una segmentazione sbagliata dei glifi concentrerebbero tutti l’informazione in schemi locali brevi. Raggruppare sei gruppi EVA connessi in unità singole porta già il guadagno da circa 0,001 a circa 0,009 bit.</p>
+      </div>
+    </details>
+    <details class="levels">
+      <summary>Dettaglio statistico <span class="level-tag">STATISTICA</span></summary>
+      <div class="body">
+        <p>Tre split a livello di pagina (seed 19201–19203), 60% addestramento, 20% validazione, 20% test. Da 1.104 a 1.139 parole di addestramento e da 270 a 301 parole di test per split; da 874 a 1.070 glifi interni nel test. Le pseudo-pagine dei controlli sono blocchi di 150 parole. Modelli di ordine 0–5 con backoff interpolato; forza del backoff scelta in validazione tra {0,1; 1; 10; 100; 1000}. Valutazione solo sui glifi reali dalla quarta posizione della parola, identica per tutti gli ordini; alfabeto derivato dal solo addestramento, con una classe per l’ignoto.</p>
+        <p>Per l’EVA grezzo, tutti e tre gli intervalli bootstrap per pagina del guadagno includono lo zero. Per l’EVA connesso, due su tre lo escludono. L’intervallo min–max tra split sovrapposti non è un intervallo di confidenza, e non è stata applicata alcuna correzione per confronti multipli.</p>
+      </div>
+    </details>
+  </div>
+</section>
+
+<!-- 2. sezioni -->
+<section class="band band-alt" id="sections">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow">Risultato 2</div>
+        <h2>Il testo cambia<br><em>con le figure.</em></h2>
+      </div>
+      <p>Abbiamo preso pagine scritte dallo stesso scriba nello stesso “dialetto” (Currier B) e ci siamo chiesti se 30 parole bastino per distinguere una pagina dell’erbario da una delle vasche.</p>
+    </div>
+    <div class="pair">
+      <figure>
+        <img src="../assets/img/f34r.jpg" alt="Pagina dell’erbario f34r: una pianta con grandi foglie e radici." loading="lazy">
+        <figcaption><b>Erbario (H)</b> · 20 pagine nell’insieme di test. Esempio: f34r.</figcaption>
+      </figure>
+      <figure>
+        <img src="../assets/img/f78r.jpg" alt="Pagina balneologica f78r: figure che fanno il bagno in vasche collegate." loading="lazy">
+        <figcaption><b>Balneologica (B)</b> · 19 pagine nell’insieme di test. Esempio: f78r.</figcaption>
+      </figure>
+    </div>
+    <div class="tab-card">
+      <h3>Un classificatore naive Bayes, lasciando fuori un gruppo di bifogli alla volta</h3>
+      <p class="summary-line">Mano 2, Currier B, 39 pagine. Vocabolario costruito solo sui gruppi di addestramento.</p>
+      <div class="table-scroll">
+        <table>
+          <thead><tr><th>Informazione usata</th><th class="num">Pagine corrette</th><th class="num">Accuratezza bilanciata</th></tr></thead>
+          <tbody>
+            <tr><td>Parole intere</td><td class="num">34 / 39</td><td class="num">87,4%</td></tr>
+            <tr><td>Solo l’ultimo glifo EVA di ogni parola</td><td class="num">34 / 39</td><td class="num">87,5%</td></tr>
+            <tr><td>Solo gli ultimi due glifi EVA</td><td class="num">33 / 39</td><td class="num">85,0%</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="caveat">
+      <h3>Perché non è una prova di significato</h3>
+      <p>I soli finali di parola classificano bene quanto le parole intere. E tutte le pagine delle vasche di questo campione vengono da un unico fascicolo (M), mentre quelle dell’erbario vengono da altri. Argomento e posizione fisica nel libro sono quindi confusi: un cambiamento di abitudini ortografiche nel tempo produrrebbe lo stesso risultato.</p>
+    </div>
+    <details class="levels">
+      <summary>Dettaglio statistico <span class="level-tag">STATISTICA</span></summary>
+      <div class="body">
+        <p>Naive Bayes multinomiale, smoothing additivo +1, prior uniforme sulle classi. Validazione lasciando fuori un gruppo alla volta su 10 gruppi definiti da fascicolo e numero di bifoglio. 30 token per pagina estratti senza reinserimento da posizioni interne alla riga; escluse prima e ultima parola e righe incerte. Seed principale 20261017. Su 30 ricampionamenti, l’accuratezza bilanciata mediana è 92,5% per le parole (intervallo 82,2–97,5%) e 84,8% per i glifi finali (74,5–95,0%). Riferimento a permutazione con etichette rimescolate per gruppo di bifogli: 1.999 permutazioni, p empirico = 0,012. Questo modello nullo non controlla il fascicolo.</p>
+      </div>
+    </details>
+  </div>
+</section>
+
+<!-- 3. gerarchia -->
+<section class="band" id="hierarchy">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow">Risultato 3</div>
+        <h2>Una grammatica ad albero<br><em>non batte una catena.</em></h2>
+      </div>
+      <p>La sintassi umana annida sintagmi dentro sintagmi. Abbiamo confrontato una piccola grammatica probabilistica che costruisce alberi (PCFG) con un modello che concatena stati da sinistra a destra (HMM), sulle stesse righe di testo.</p>
+    </div>
+    <div class="chart-card">
+      <div class="chart-toolbar">
+        <div>
+          <h3 id="hier-title">PCFG meno HMM, bit per token sul test</h3>
+          <p id="hier-sub">A destra dello zero la grammatica ad albero prevede peggio. Baffi: intervallo bootstrap per pagina al 95%.</p>
+        </div>
+      </div>
+      <div id="hier-chart" class="chart" style="min-height:180px" role="img" aria-labelledby="hier-title hier-sub"></div>
+      <div class="table-scroll">
+        <table>
+          <thead><tr><th>Corpus</th><th class="num">PCFG (bit/token)</th><th class="num">HMM (bit/token)</th><th class="num">PCFG − HMM</th><th class="num">Intervallo al 95%</th></tr></thead>
+          <tbody>
+            <tr><td>Voynich</td><td class="num">2,312988</td><td class="num">2,293697</td><td class="num">+0,019291</td><td class="num">[+0,006544; +0,034324]</td></tr>
+            <tr><td>Codex Seraphinianus, OCR</td><td class="num">2,075637</td><td class="num">2,079046</td><td class="num">−0,003408</td><td class="num">[−0,008042; +0,000793]</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="caveat">
+      <h3>Abbiamo quasi pubblicato un falso negativo</h3>
+      <p>La prima versione di questo test non ha superato il proprio controllo: su testo sintetico generato da una grammatica ad albero nota, non riusciva a trovare l’albero. Abbiamo lasciato quel fallimento agli atti. Un fitting più robusto, con più ripartenze, ha poi recuperato la grammatica sintetica (0,8755 bit contro 0,8758 della grammatica vera e 0,8991 dell’HMM). Solo allora lo abbiamo applicato ai manoscritti.</p>
+    </div>
+    <details class="levels">
+      <summary>Che cosa significa per un linguista <span class="level-tag">LINGUISTICA</span></summary>
+      <div class="body">
+        <p>I modelli vedono ogni parola solo come una di sei classi di suffisso (cinque finali frequenti più “altro”) e hanno due stati latenti ciascuno. Le righe sono trattate come unità, ma non sappiamo se una riga sia una frase. Il risultato respinge una previsione specifica: questa grammatica a due stati su questa rappresentazione. Non dice nulla su grammatiche più ricche, su altre unità, né sui vincoli di dipendenza dalla struttura di Andrea Moro, che richiederebbero prima di sapere quali sono le unità sintattiche.</p>
+      </div>
+    </details>
+    <details class="levels">
+      <summary>Dettaglio statistico <span class="level-tag">STATISTICA</span></summary>
+      <div class="body">
+        <p>Righe di 4–14 parole; split per pagine 60/20/20; addestramento limitato a 1.200 righe. Quattro inizializzazioni (seed 13, 29, 43, 61), fino a 100 iterazioni EM, inizializzazione Dirichlet(0,3), smoothing 0,1, selezione del modello in validazione sia per la PCFG sia per l’HMM. 2.000 ricampionamenti bootstrap appaiati su 40 pagine di test del Voynich e 57 del Seraphinianus. Le probabilità condizionate alla lunghezza e la normalizzazione della PCFG sono state verificate enumerando tutte le stringhe binarie di lunghezza 1–5.</p>
+      </div>
+    </details>
+  </div>
+</section>
+
+<!-- 4. sostituzione -->
+<section class="band band-alt" id="cipher">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow">Risultato 4</div>
+        <h2>Il decifratore funziona.<br><em>Ma non qui.</em></h2>
+      </div>
+      <p>La sezione dell’erbario potrebbe essere latino o italiano scritto con un alfabeto segreto, un glifo per lettera? Abbiamo costruito un risolutore, lo abbiamo provato su cifrari noti, poi lo abbiamo applicato al manoscritto.</p>
+    </div>
+    <div class="chart-card">
+      <div class="chart-toolbar">
+        <div>
+          <h3 id="sub-title">Quota di parole decodificate presenti nel vocabolario di riferimento</h3>
+          <p id="sub-sub">Parole di tre o più lettere, pagine tenute da parte. I controlli sono testi reali cifrati con un alfabeto casuale.</p>
+        </div>
+      </div>
+      <div id="sub-chart" class="chart" style="min-height:220px" role="img" aria-labelledby="sub-title sub-sub"></div>
+      <p class="chart-note">Su entrambi i controlli il risolutore ha ricostruito il 100% della corrispondenza tra lettere. Per il Voynich non esiste un testo vero con cui confrontarsi; le stringhe decodificate sono output meccanico, non letture.</p>
+    </div>
+    <details class="levels">
+      <summary>Che cosa significa per un linguista <span class="level-tag">LINGUISTICA</span></summary>
+      <div class="body">
+        <p>Un controllo indipendente dalla chiave va nella stessa direzione. Una sostituzione uno a uno conserva le lettere ripetute, quindi un glifo triplo deve venire da una lettera tripla. 39 parole Voynich su 3.844 ne contengono uno; il testo latino 0 su 7.595 e quello italiano 1 su 19.118. Trattare i gruppi di tratti come <span class="eva">iin</span> come glifi singoli cambierebbe questo dato, quindi il risultato dipende dalla nostra scelta di 23 unità.</p>
+        <p>Il test esclude solo questa famiglia di cifrari: sostituzione semplice, spazi conservati, queste due lingue, queste unità. Cifrari omofonici, sillabari, sistemi di abbreviazione e altre lingue restano da provare.</p>
+      </div>
+    </details>
+    <details class="levels">
+      <summary>Dettaglio statistico <span class="level-tag">STATISTICA</span></summary>
+      <div class="body">
+        <p>Pagine dell’erbario, mano 1, Currier A, dalla trascrizione ZL3b. Pagine divise con SHA-256 del nome di pagina modulo 3: 19.113 caratteri per la ricerca della chiave, 18.820 per la valutazione. Modelli di 4-grammi di caratteri con smoothing 0,01, addestrati su Celso (40.052 caratteri) e Murri (95.555 caratteri). Simulated annealing, 8 ripartenze × 50.000 proposte di scambio, temperatura da 60 a 0,06, seed 20261017. La ricerca è euristica e non copre l’intero spazio delle chiavi.</p>
+      </div>
+    </details>
+  </div>
+</section>
+
+<!-- 5. struttura locale -->
+<section class="band" id="structure">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow">Risultato 5</div>
+        <h2>Regole ovunque,<br><em>su piccola scala.</em></h2>
+      </div>
+      <p>Misurato su 2.952 righe di paragrafo interamente leggibili (25.373 parole) della trascrizione ZL3b, contro rimescolamenti che mantengono le parole di ogni riga ma ne cambiano l’ordine.</p>
+    </div>
+    <div class="tab-card">
+      <h3>Regolarità locali e relativi modelli nulli</h3>
+      <div class="table-scroll">
+        <table>
+          <thead><tr><th>Schema</th><th class="num">Osservato</th><th class="num">Atteso per caso</th><th>Esito</th></tr></thead>
+          <tbody>
+            <tr><td>Informazione condivisa, ultimo glifo di una parola → primo glifo della successiva</td><td class="num">0,2071 bit</td><td class="num">0,0163 (intervallo 0,0128–0,0208)</td><td><span class="status green">Molto sopra il caso</span></td></tr>
+            <tr><td>Parole a inizio paragrafo che cominciano con un glifo a forca (f, k, p, t)</td><td class="num">89,4%</td><td class="num">8,5% negli altri inizi di riga</td><td><span class="status green">Forte</span></td></tr>
+            <tr><td>Coppia di parole <span class="eva">s aiin</span></td><td class="num">38</td><td class="num">5,45</td><td><span class="status green">Sopra il caso</span></td></tr>
+            <tr><td>Coppia di parole <span class="eva">or aiin</span></td><td class="num">37</td><td class="num">6,49</td><td><span class="status green">Sopra il caso</span></td></tr>
+            <tr><td>Coppia di parole <span class="eva">ol shedy</span></td><td class="num">21</td><td class="num">7,15</td><td><span class="status green">Sopra il caso</span></td></tr>
+            <tr><td>Stessa parola due volte di fila</td><td class="num">218</td><td class="num">210,9 (intervallo 174–254)</td><td><span class="status gray">Nessun eccesso</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="chart-note">Le coppie sono state scelte dopo il conteggio, quindi i rapporti sono descrittivi. Unendo gli spazi incerti (le virgole della trascrizione) i conteggi scendono ma restano ben sopra l’atteso.</p>
+    </div>
+    <details class="levels">
+      <summary>Che cosa significa per un linguista <span class="level-tag">LINGUISTICA</span></summary>
+      <div class="body">
+        <p>La dipendenza ai confini di parola è il tipo di effetto prodotto da sandhi, accordo o espressioni fisse, ma anche da legature, scelte di segmentazione o da un generatore che condiziona ogni parola sulla precedente. La regola dei glifi a forca sembra una convenzione per segnalare i paragrafi, paragonabile alle iniziali decorate. Le parole ripetute, spesso citate come prova di un processo meccanico, in questo campione non sono più frequenti di quanto preveda il rimescolamento.</p>
+      </div>
+    </details>
+  </div>
+</section>
+
+<!-- 6. oltre la parola -->
+<section class="band band-alt" id="multiscale">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow">Risultato 6</div>
+        <h2>Le parole si raggruppano per sezione,<br><em>in ogni libro.</em></h2>
+      </div>
+      <p>Montemurro e Zanette (2013) hanno mostrato che le parole del Voynich si concentrano in parti del testo, come le parole tematiche nelle lingue naturali. Abbiamo applicato una versione semplificata a tutti e quattro i corpora.</p>
+    </div>
+    <div class="tab-card">
+      <h3>Informazione mutua in eccesso tra parola e blocco di testo, blocchi di 1.000 parole</h3>
+      <p class="summary-line">Primi 7.500 token di ogni corpus; eccesso rispetto a 99 rimescolamenti globali.</p>
+      <div class="table-scroll">
+        <table>
+          <thead><tr><th>Corpus</th><th class="num">Eccesso (bit)</th></tr></thead>
+          <tbody>
+            <tr><td>Latino</td><td class="num">0,1614</td></tr>
+            <tr><td>Voynich</td><td class="num">0,1256</td></tr>
+            <tr><td>Italiano</td><td class="num">0,0963</td></tr>
+            <tr><td>Codex Seraphinianus, OCR</td><td class="num">0,0820</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="caveat">
+      <h3>Una misura che non discrimina</h3>
+      <p>Anche la scrittura inventata si raggruppa. Questa statistica conta le parole per blocco e ignora l’ordine, quindi rileva cambi di vocabolario tematici in qualsiasi testo diviso in sezioni, che abbia significato o no. Non è una replica completa dell’analisi pubblicata.</p>
+    </div>
+  </div>
+</section>
+
+<section class="band">
+  <div class="wrap-narrow">
+    <div class="eyebrow">Altre misure</div>
+    <h2>Due risultati da prendere con cautela.</h2>
+    <div class="tab-card">
+      <h3>La trascrizione del Seraphinianus ha errori misurabili</h3>
+      <p class="summary-line">Confronto tra l’output OCR e le 388 etichette di addestramento di parole singole che siamo riusciti a localizzare, su 199 pagine.</p>
+      <div class="table-scroll"><table>
+        <thead><tr><th>Concordanza</th><th class="num">Parole</th><th class="num">Quota</th></tr></thead>
+        <tbody>
+          <tr><td>Esatta, nella stessa posizione</td><td class="num">284 / 388</td><td class="num">73,2%</td></tr>
+          <tr><td>Entro ±2 posizioni</td><td class="num">335 / 388</td><td class="num">86,3%</td></tr>
+        </tbody>
+      </table></div>
+      <p class="chart-note">Le discordanze tipiche riguardano il numero di tratti ripetuti (etichetta <span class="eva">Xeeei</span>, OCR <span class="eva">Xeei</span>), proprio il dettaglio che sposta le statistiche di contesto. Le etichette vengono dai dati di addestramento, quindi questo non è un tasso d’errore validato.</p>
+    </div>
+    <div class="tab-card">
+      <h3>Prefissi e suffissi lunghi: dati insufficienti</h3>
+      <p class="summary-line">Imponendo che prefisso, contesto locale e suffisso non si sovrappongano, restano solo 33–53 parole di test del Voynich per split con segmenti di 3 unità, e una sola con segmenti di 4. Non traiamo conclusioni, né positive né negative.</p>
+    </div>
+  </div>
+</section>
+
+<section class="closing">
+  <div class="wrap">
+    <div class="eyebrow">Avanti</div>
+    <h2>Quali ipotesi sopravvivono?</h2>
+    <p>Dieci affermazioni esplicite, ognuna con il suo esito e le prove su cui si basa.</p>
+    <a class="button" href="hypotheses.html">Leggi le ipotesi →</a>
+  </div>
+</section>
+</main>
+
+<footer class="wrap">
+  <a class="brand" href="index.html">OLTRE I SEGNI</a>
+  <p>Fabio Furini · Istantanea esplorativa, 18 ottobre 2026 · Analisi assistita da AI<br>
+  Codice MIT · Testi originali CC BY 4.0 · Immagini del manoscritto: Beinecke Rare Book &amp; Manuscript Library, Yale University, MS 408.</p>
+  <a href="https://github.com/fabiofurini/voynich-seraphinianus-lab/blob/main/reports/2026-10-18-consolidated.md">Rapporto consolidato completo (in inglese) ↗</a>
+</footer>
+</body>
+</html>

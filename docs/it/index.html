@@ -1,0 +1,247 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Oltre i segni</title>
+<meta name="description" content="Un quaderno di ricerca aperto e riproducibile sul manoscritto Voynich e il Codex Seraphinianus: cosa la statistica può dire, e cosa no, su una scrittura che nessuno sa leggere.">
+<meta name="theme-color" content="#101d1a">
+<link rel="alternate" hreflang="en" href="../index.html">
+<link rel="alternate" hreflang="it" href="index.html">
+<link rel="icon" href="../assets/mark.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="../styles.css">
+<script defer src="../app.js"></script>
+</head>
+<body>
+<a class="skip" href="#main">Vai al contenuto</a>
+<header>
+  <a class="brand" href="index.html"><img src="../assets/mark.svg" width="30" height="30" alt=""><span>OLTRE<span class="brand-light"> I SEGNI</span></span></a>
+  <button id="menu" aria-controls="navigation" aria-expanded="false">Menu ☰</button>
+  <nav id="navigation" aria-label="Principale">
+    <a href="index.html" aria-current="page">La storia</a>
+    <a href="results.html">Risultati</a>
+    <a href="lab.html">Laboratorio</a>
+    <a href="methods.html">Metodi e test</a>
+    <a href="hypotheses.html">Ipotesi</a>
+    <a class="nav-repo" href="https://github.com/fabiofurini/voynich-seraphinianus-lab">GitHub ↗</a>
+    <span class="lang-switch"><a href="../index.html" hreflang="en" lang="en">EN</a> · <b>IT</b></span>
+  </nav>
+</header>
+
+<main id="main">
+<section class="hero-img">
+  <img src="../assets/img/f1r.jpg" alt="Foglio 1r del manoscritto Voynich: righe di una scrittura sconosciuta intorno a una pianta verde sbiadita, con iniziali rosse.">
+  <div class="hero-inner">
+    <div class="eyebrow"><span class="dot"></span> Quaderno di ricerca aperto · Manoscritto Voynich e Codex Seraphinianus</div>
+    <h1>Una scrittura piena di regole.<br><em>Dice qualcosa?</em></h1>
+    <p class="lead">Due libri illustrati che nessuno sa leggere. Uno ha sei secoli ed è ancora indecifrato. L’altro è stato inventato da un artista nel 1981. Misuriamo che cosa fanno davvero i loro segni, e teniamo anche i risultati che ci deludono.</p>
+    <div class="actions">
+      <a class="button primary" href="#clues">Guarda gli indizi <span>↓</span></a>
+      <a class="text-link" href="results.html">Vai direttamente ai risultati →</a>
+    </div>
+    <div class="hero-stats" aria-label="Il progetto in numeri">
+      <div><b>174.004</b><span>glifi contati</span></div>
+      <div><b>12</b><span>esperimenti</span></div>
+      <div><b>10</b><span>ipotesi registrate</span></div>
+      <div><b>0</b><span>decifrazioni annunciate</span></div>
+    </div>
+  </div>
+  <p class="hero-credit">Foglio 1r, manoscritto Voynich. Beinecke Rare Book &amp; Manuscript Library, Yale University, <a href="https://collections.library.yale.edu/catalog/2002046">MS 408</a>.</p>
+</section>
+
+<div class="statement"><div class="wrap">
+  <span class="label">A che punto siamo</span>
+  <p>Non abbiamo decifrato il manoscritto Voynich.<br>Non abbiamo dimostrato che sia privo di significato.</p>
+  <a href="hypotheses.html">Che cosa possiamo dire →</a>
+</div></div>
+
+<section class="band">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow">Due libri, una domanda</div>
+        <h2>La sola struttura<br>basta a fare una lingua?</h2>
+      </div>
+      <p>Ogni testo scritto da persone ha delle regolarità. Ne hanno anche molte cose che non portano alcun messaggio. La parte difficile è distinguerle.</p>
+    </div>
+    <div class="two-cols" style="margin-top:10px">
+      <div class="prose">
+        <h3 style="font:600 26px/1.2 var(--serif)">Il manoscritto Voynich</h3>
+        <p>Circa 240 pagine di pergamena, datate al radiocarbonio tra il 1404 e il 1438, piene di piante che non corrispondono a specie note, carte del cielo e piccole figure nude immerse in vasche verdi. La scrittura è fluida e coerente, come se gli scribi sapessero esattamente che cosa stavano facendo. Resiste da oltre un secolo a crittografi di professione, linguisti e statistici.</p>
+      </div>
+      <div class="prose">
+        <h3 style="font:600 26px/1.2 var(--serif)">Il Codex Seraphinianus</h3>
+        <p>Un’enciclopedia di un mondo immaginario, disegnata e scritta dall’artista italiano Luigi Serafini alla fine degli anni Settanta. La sua scrittura sembra altrettanto sistematica. Serafini ha detto che non nasconde alcun messaggio. Per questo è un controllo raro: una scrittura moderna, fluida e inventata con cui misurare il Voynich.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<figure class="script-band">
+  <img src="../assets/img/script-detail.jpg" alt="Dettaglio di tre righe di scrittura Voynich dal foglio 1r, con glifi ad anello e a forma di forca.">
+  <figcaption class="band-caption">Foglio 1r, dettaglio. I trascrittori scrivono questi glifi con l’alfabeto EVA: la prima parola della riga 2 si trascrive più o meno <span style="font-family:var(--mono)">kchsy</span>. Le lettere EVA sono etichette per le forme, non suoni.</figcaption>
+</figure>
+
+<section class="band band-alt">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow">Che cosa mostrano le pagine</div>
+        <h2>Cinque tipi di pagina,<br><em>un solo tipo di scrittura.</em></h2>
+      </div>
+      <p>Gli studiosi dividono il manoscritto in base alle illustrazioni. Il testo cambia leggermente da sezione a sezione, e uno dei nostri esperimenti si chiede se questi cambiamenti seguano le figure.</p>
+    </div>
+    <div class="gallery">
+      <figure class="wide">
+        <img src="../assets/img/f34r.jpg" alt="Foglio 34r: una grande pianta con radici e foglie larghe, circondata dal testo." loading="lazy">
+        <span class="folio">f34r · erbario</span>
+        <h3>Piante che nessuno sa identificare</h3>
+        <p>La sezione più ampia. Ogni pagina accosta una pianta a un blocco di testo, come in un erbario medievale.</p>
+      </figure>
+      <figure class="wide">
+        <img src="../assets/img/f78r.jpg" alt="Foglio 78r: piccole figure femminili nude in vasche verdi e azzurre collegate da tubi." loading="lazy">
+        <span class="folio">f78r · balneologica</span>
+        <h3>Figure nelle vasche verdi</h3>
+        <p>Figure nude in bacini collegati tra loro. Il testo di queste pagine usa finali di parola nettamente diversi.</p>
+      </figure>
+      <figure>
+        <img src="../assets/img/f67r.jpg" alt="Foglio 67r: diagrammi astronomici circolari con stelle e testo disposto a raggiera." loading="lazy">
+        <span class="folio">f67r · astronomica</span>
+        <h3>Cerchi e stelle</h3>
+        <p>Diagrammi con etichette scritte lungo anelli e raggi.</p>
+      </figure>
+      <figure class="wide" style="grid-column:span 4">
+        <img src="../assets/img/f71v-72r.jpg" alt="Fogli 71v e 72r: medaglioni zodiacali con un animale al centro e anelli di figure che reggono stelle." loading="lazy" style="aspect-ratio:auto">
+        <span class="folio">f71v–72r · zodiaco</span>
+        <h3>Le pagine dello zodiaco</h3>
+        <p>La parola <span class="eva">okeodaly</span> compare nell’anello esterno di entrambe queste pagine del Toro. Stessa grafia, vicini diversi: un’etichetta ripetuta, non una frase ripetuta.</p>
+      </figure>
+      <figure class="full">
+        <img src="../assets/img/f85r-86v.jpg" alt="Parte del pieghevole delle Rosette, fogli 85r e 86v: un diagramma circolare con una falce di luna al centro e testo fitto." loading="lazy">
+        <span class="folio">f85r–86v · il pieghevole delle Rosette</span>
+        <h3>La pagina più grande del libro</h3>
+        <p>Un pieghevole di nove medaglioni collegati, qui mostrato in parte. Il testo corre in spirali, anelli e blocchi intorno ai disegni.</p>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<section class="band" id="clues">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow">Gli indizi finora</div>
+        <h2>Indizi che puntano<br><em>in due direzioni.</em></h2>
+      </div>
+      <p>Ogni risultato qui sotto è un numero misurato in questo progetto, con un controllo con cui confrontarlo. Nessuno, da solo, chiude la questione.</p>
+    </div>
+
+    <div class="two-cols">
+      <div class="col toward-no">
+        <h3>Verso “nessun messaggio”</h3>
+        <p class="summary-line">Risultati compatibili con una scrittura prodotta da semplici regole locali, con poca informazione oltre il segno successivo.</p>
+        <div class="clue">
+          <span class="num-big">0,001 <small>bit</small></span>
+          <h4>Un contesto più lungo quasi non aiuta</h4>
+          <p>Conoscere tre glifi precedenti invece di due migliora la previsione di circa 0,001 bit nel Voynich. In latino e in italiano il guadagno è di circa 0,33 bit, circa 300 volte di più.</p>
+        </div>
+        <div class="clue">
+          <span class="num-big">36 <small>su 36</small></span>
+          <h4>Ogni inizio si combina con ogni finale</h4>
+          <p>Sei inizi di parola (<span class="eva">ok, qok, ot, qot, ch, sh</span>) si combinano con tutti e sei i finali comuni (<span class="eva">aiin, ain, edy, eedy, ol, ar</span>). Assomiglia a una slot machine quanto a una grammatica.</p>
+        </div>
+        <div class="clue">
+          <span class="num-big">39 <small>contro 0</small></span>
+          <h4>Le lettere triple sono comuni</h4>
+          <p>39 parole del nostro campione Voynich contengono lo stesso glifo tre volte di fila. Il testo latino di controllo non ne ha nessuna su 7.595 parole. Un semplice cifrario lettera per lettera applicato al latino non potrebbe produrle.</p>
+        </div>
+        <div class="clue">
+          <span class="num-big">100% <small>contro 1–7%</small></span>
+          <h4>Il decifratore funziona solo sui controlli</h4>
+          <p>Il nostro programma ricostruisce per intero latino e italiano cifrati con un alfabeto segreto. Applicato al Voynich non produce alcun testo leggibile.</p>
+        </div>
+      </div>
+
+      <div class="col toward-yes">
+        <h3>Verso “qualcosa è codificato”</h3>
+        <p class="summary-line">Risultati compatibili con un sistema organizzato, in cui le parole dipendono da contesto, posizione e argomento.</p>
+        <div class="clue">
+          <span class="num-big">87% <small>di accuratezza</small></span>
+          <h4>Il testo “sa” che cosa mostra la figura</h4>
+          <p>Da sole 30 parole, un classificatore semplice distingue le pagine dell’erbario da quelle delle vasche in 34 pagine su 39, a parità di scriba e di “dialetto”.</p>
+        </div>
+        <div class="clue">
+          <span class="num-big">13× <small>il caso</small></span>
+          <h4>Le parole vicine dipendono l’una dall’altra</h4>
+          <p>L’ultimo glifo di una parola condivide 0,21 bit di informazione con il primo glifo della successiva. Mescolando le righe si ottiene 0,016. L’ordine reale delle parole conta.</p>
+        </div>
+        <div class="clue">
+          <span class="num-big">89% <small>contro 8%</small></span>
+          <h4>I paragrafi hanno una forma</h4>
+          <p>Quasi nove parole su dieci che aprono un paragrafo cominciano con un alto glifo a “forca” (gallows). Negli altri inizi di riga la quota è dell’8%. Qualcosa segnala dove comincia un paragrafo.</p>
+        </div>
+        <div class="clue">
+          <span class="num-big">38 <small>contro 5,5</small></span>
+          <h4>Alcune coppie di parole sono preferite</h4>
+          <p>La coppia <span class="eva">s aiin</span> compare 38 volte, dove il rimescolamento ne prevede 5,5. Espressioni fisse come questa sono tipiche delle lingue, anche se non lo dimostrano.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="balance">
+      <p><strong>Come leggiamo il bilancio.</strong> Il testo del Voynich è molto organizzato, ma gran parte di questa organizzazione è molto locale: dentro la parola e tra parole vicine. Il Seraphinianus, una scrittura inventata, condivide diverse di queste proprietà. L’organizzazione quindi non prova il significato, e un segnale locale debole non ne prova l’assenza. Entrambe le colonne hanno dei limiti, elencati nella <a href="results.html">pagina dei risultati</a>.</p>
+    </div>
+  </div>
+</section>
+
+<section class="band band-alt">
+  <div class="wrap">
+    <div class="eyebrow">Leggi al tuo livello</div>
+    <h2>Quattro porte d’ingresso.</h2>
+    <div class="paths">
+      <a href="results.html">
+        <span class="n">Per i curiosi</span>
+        <h3>Risultati, con grafici →</h3>
+        <p>Che cosa abbiamo misurato, che cosa significa in parole semplici, e le immagini che lo accompagnano.</p>
+      </a>
+      <a href="hypotheses.html">
+        <span class="n">Per i linguisti</span>
+        <h3>Ipotesi e congetture →</h3>
+        <p>Dieci ipotesi esplicite con il loro esito, regole candidate di formazione delle parole, e che cosa ci farebbe cambiare idea.</p>
+      </a>
+      <a href="lab.html">
+        <span class="n">Per chi ama gli enigmi</span>
+        <h3>Il laboratorio Voynich →</h3>
+        <p>Statistiche dei glifi da esplorare, un generatore di “voynichese” e un gioco di decifrazione che mostra perché le false soluzioni sono facili.</p>
+      </a>
+      <a href="methods.html">
+        <span class="n">Per gli statistici</span>
+        <h3>Metodi e test →</h3>
+        <p>Split, smoothing, modelli nulli a permutazione, intervalli bootstrap, calibrazioni fallite, e il codice per rifare tutto.</p>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="closing">
+  <div class="wrap">
+    <div class="eyebrow">Ricerca aperta</div>
+    <h2>Un’ipotesi vale qualcosa<br>solo se può essere messa alla prova.</h2>
+    <p>Ogni numero di questo sito viene da codice che chiunque può eseguire. Repliche, correzioni e risultati contrari sono benvenuti.</p>
+    <a class="button" href="https://github.com/fabiofurini/voynich-seraphinianus-lab">Apri il repository ↗</a>
+  </div>
+</section>
+</main>
+
+<footer class="wrap">
+  <a class="brand" href="index.html">OLTRE I SEGNI</a>
+  <p>Fabio Furini · Istantanea esplorativa, 18 ottobre 2026 · Analisi assistita da AI<br>
+  Codice MIT · Testi originali CC BY 4.0 · Immagini del manoscritto: Beinecke Rare Book &amp; Manuscript Library, Yale University, MS 408 (opera di pubblico dominio).<br>
+  Nessuna immagine del Codex Seraphinianus è riprodotta: il libro è protetto da diritto d’autore.</p>
+  <a href="https://github.com/fabiofurini/voynich-seraphinianus-lab/blob/main/RIGHTS.md">Fonti e diritti ↗</a>
+</footer>
+</body>
+</html>

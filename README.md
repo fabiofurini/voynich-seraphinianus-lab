@@ -2,7 +2,7 @@
 
 **An open, reproducible research notebook on the Voynich manuscript and the Codex Seraphinianus.**
 
-[**Website**](https://fabiofurini.github.io/voynich-seraphinianus-lab/) · [Status](notebook/STATUS.md) · [Hypotheses](notebook/HYPOTHESES.md) · [Experiments](notebook/EXPERIMENTS.md) · [Reports](reports/README.md) · [Reproduce](notebook/REPRODUCIBILITY.md) · [Roadmap](notebook/ROADMAP.md) · [Contribute](CONTRIBUTING.md)
+[**Website**](https://fabiofurini.github.io/voynich-seraphinianus-lab/) ([Italiano](https://fabiofurini.github.io/voynich-seraphinianus-lab/it/)) · [Status](notebook/STATUS.md) · [Hypotheses](notebook/HYPOTHESES.md) · [Experiments](notebook/EXPERIMENTS.md) · [Reports](reports/README.md) · [Reproduce](notebook/REPRODUCIBILITY.md) · [Roadmap](notebook/ROADMAP.md) · [Contribute](CONTRIBUTING.md)
 
 > We have **not** deciphered the Voynich manuscript, **not** shown that it is meaningless, and **not** shown that it is equivalent to the Codex Seraphinianus. We test explicit hypotheses against controls and keep the results that go against our expectations.
 
@@ -81,7 +81,7 @@ voynich-seraphinianus-lab/
 │   ├── substitution_attack/   E12: cipher solver with positive controls
 │   └── early_studies/         glyph inventory, final-m test, section classifier
 ├── scripts/               fetch sources (hash-checked), reproduce suites, pre-publication checks
-├── docs/                  the public website (GitHub Pages)
+├── docs/                  the public website (GitHub Pages); Italian version in docs/it/
 ├── DATA_SOURCES.json      every external source: URL, SHA-256, rights note
 ├── CHECKSUMS.json         SHA-256 of every file in this snapshot
 └── LICENSE · RIGHTS.md · CITATION.cff · CONTRIBUTING.md · CHANGELOG.md
@@ -113,4 +113,4 @@ Other suites: `affixes`, `hierarchy`, `calibration`, `multiscale`, `boundary`, `
 - **Licences:** code MIT; original text and derived tables CC BY 4.0. Third-party sources keep their own terms and are not redistributed ([RIGHTS.md](RIGHTS.md)). Voynich images on the website come from the Beinecke Library (public-domain work); no Seraphinianus images are reproduced.
 - **Contribute** through issues and pull requests: state a hypothesis, corpus version, segmentation, split, control and the result that would prove it wrong ([CONTRIBUTING.md](CONTRIBUTING.md)).
 
-Project by **Fabio Furini**, developed with AI assistance and open to independent verification. Snapshot of 18 October 2026, version 0.2.1.
+Project by **Fabio Furini**, developed with AI assistance and open to independent verification. Snapshot of 18 October 2026, version 0.3.0.

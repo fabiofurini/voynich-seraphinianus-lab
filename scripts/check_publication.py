@@ -3,7 +3,7 @@
     python scripts/check_publication.py
 
 Checks: Python syntax, JSON validity, unique HTML ids and working local links on
-every page of the website, working relative links in every Markdown file, and the
+every page of the website (English and Italian), working relative links in every Markdown file, and the
 absence of private data or third-party material that must not be redistributed.
 """
 from pathlib import Path
@@ -49,20 +49,21 @@ for p in ROOT.rglob('*.json'):
         errors.append(f'Invalid JSON: {p.relative_to(ROOT)}: {e}')
 
 # 2. Website pages: unique ids, local links and anchors resolve
-for page in sorted((ROOT / 'docs').glob('*.html')):
+for page in sorted((ROOT / 'docs').rglob('*.html')):
     html = page.read_text()
+    name = page.relative_to(ROOT / 'docs')
     ids = re.findall(r'\bid="([^"]+)"', html)
     dupes = {i for i in ids if ids.count(i) > 1}
     if dupes:
-        errors.append(f'{page.name}: duplicate ids {sorted(dupes)}')
+        errors.append(f'{name}: duplicate ids {sorted(dupes)}')
     for target in re.findall(r'(?:href|src)="([^"]+)"', html):
         if is_external(target):
             continue
         path, _, anchor = target.partition('#')
-        if path and not (ROOT / 'docs' / path).exists():
-            errors.append(f'{page.name}: missing file {target}')
+        if path and not (page.parent / path).exists():
+            errors.append(f'{name}: missing file {target}')
         elif anchor:
-            dest = (ROOT / 'docs' / path).read_text() if path else html
+            dest = (page.parent / path).read_text() if path else html
             if f'id="{anchor}"' not in dest:
                 errors.append(f'{page.name}: missing anchor {target}')
 

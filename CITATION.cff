@@ -6,7 +6,7 @@ authors:
   - family-names: Furini
     given-names: Fabio
 type: software
-version: 0.2.1
+version: 0.3.0
 date-released: 2026-10-18
 license: MIT
 repository-code: https://github.com/fabiofurini/voynich-seraphinianus-lab

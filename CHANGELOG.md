@@ -2,6 +2,11 @@
 
 [Home](README.md) · [Status](notebook/STATUS.md) · [Hypotheses](notebook/HYPOTHESES.md) · [Experiments](notebook/EXPERIMENTS.md) · [Reports](reports/README.md) · [Reproduce](notebook/REPRODUCIBILITY.md) · [Roadmap](notebook/ROADMAP.md)
 
+## 0.3.0 — 2026-10-18
+- Italian version of the whole website in `docs/it/` (five pages), with an EN · IT switch and `hreflang` links on every page.
+- Charts and the Voynich Lab are bilingual: labels, tooltips, insights and number formats (decimal comma) follow the page language.
+- `check_publication.py` checks the Italian pages too.
+
 ## 0.2.1 — 2026-10-18
 - Root decluttered: research record moved to `notebook/`, first experiments to `research/early_studies/`; every link updated.
 - README gains a visual repository tree; README files added to the new folders.

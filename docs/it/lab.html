@@ -1,0 +1,251 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Laboratorio Voynich · Oltre i segni</title>
+<meta name="description" content="Gioca con la scrittura del Voynich: statistiche dei glifi, regole di formazione delle parole, un generatore di voynichese e un gioco di decifrazione basati su conteggi reali.">
+<meta name="theme-color" content="#101d1a">
+<link rel="alternate" hreflang="en" href="../lab.html">
+<link rel="alternate" hreflang="it" href="lab.html">
+<link rel="icon" href="../assets/mark.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="../styles.css">
+<script defer src="../app.js"></script>
+<script defer src="../lab.js"></script>
+</head>
+<body>
+<a class="skip" href="#main">Vai al contenuto</a>
+<header>
+  <a class="brand" href="index.html"><img src="../assets/mark.svg" width="30" height="30" alt=""><span>OLTRE<span class="brand-light"> I SEGNI</span></span></a>
+  <button id="menu" aria-controls="navigation" aria-expanded="false">Menu ☰</button>
+  <nav id="navigation" aria-label="Principale">
+    <a href="index.html">La storia</a>
+    <a href="results.html">Risultati</a>
+    <a href="lab.html" aria-current="page">Laboratorio</a>
+    <a href="methods.html">Metodi e test</a>
+    <a href="hypotheses.html">Ipotesi</a>
+    <a class="nav-repo" href="https://github.com/fabiofurini/voynich-seraphinianus-lab">GitHub ↗</a>
+    <span class="lang-switch"><a href="../lab.html" hreflang="en" lang="en">EN</a> · <b>IT</b></span>
+  </nav>
+</header>
+
+<main id="main">
+<section class="page-hero lab-hero">
+  <div class="wrap">
+    <div class="eyebrow"><span class="dot"></span> Il laboratorio Voynich · interattivo, su conteggi reali</div>
+    <h1>Prova a decifrarlo<br><em>tu stesso.</em></h1>
+    <p class="lead">Sei piccoli esperimenti da fare nel browser. Usano i conteggi della trascrizione Zandbergen–Landini (ZL3b, 2025). Scopri quali glifi dominano, come sono costruite le parole e perché è così facile fingere una decifrazione convincente.</p>
+    <nav class="lab-toc" aria-label="Sezioni del laboratorio">
+      <a href="#glyphs"><b>1</b> Frequenze dei glifi</a>
+      <a href="#neighbours"><b>2</b> I vicini dei glifi</a>
+      <a href="#matrix"><b>3</b> La macchina delle parole</a>
+      <a href="#generator"><b>4</b> Scrivi in voynichese</a>
+      <a href="#decipher"><b>5</b> Fai il decifratore</a>
+      <a href="#yourtext"><b>6</b> La tua lingua contro il Voynich</a>
+    </nav>
+  </div>
+</section>
+
+<!-- 1 -->
+<section class="band" id="glyphs">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow">Esperimento 1 · statistica</div>
+        <h2>Quali glifi<br><em>reggono la scrittura?</em></h2>
+      </div>
+      <p>Ogni glifo trascritto del manoscritto, 174.004 in tutto, contato per etichetta EVA. Passa sopra una barra per il conteggio esatto.</p>
+    </div>
+    <div class="chart-card">
+      <div class="chart-toolbar">
+        <div>
+          <h3 id="freq-title">Quota di tutte le unità grafiche trascritte</h3>
+          <p id="freq-sub">I gruppi connessi come <span class="eva">ch</span> e <span class="eva">cth</span> contano come un’unica unità.</p>
+        </div>
+        <div class="segmented" role="group" aria-label="Unità mostrate">
+          <button class="selected" id="freq-all" aria-pressed="true">Tutte e 31</button>
+          <button id="freq-core" aria-pressed="false">Insieme di lavoro di 23</button>
+        </div>
+      </div>
+      <div id="freq-chart" class="chart" role="img" aria-labelledby="freq-title freq-sub"></div>
+    </div>
+    <div class="metric-row">
+      <div class="metric"><b>52,8%</b><span>di tutti i glifi sono solo cinque: <span class="eva">o e y a d</span></span></div>
+      <div class="metric"><b>99,96%</b><span>del testo leggibile dei paragrafi è coperto da 23 unità</span></div>
+      <div class="metric"><b>8</b><span>glifi rarissimi (<span class="eva">x v b j c u z h</span>) fanno lo 0,07%</span></div>
+      <div class="metric"><b id="h1-voy">3,85</b><span>bit di entropia per glifo, dalle sole frequenze dei singoli glifi</span></div>
+    </div>
+    <details class="levels">
+      <summary>Come leggerlo <span class="level-tag">PER TUTTI</span></summary>
+      <div class="body">
+        <p>Gli alfabeti europei hanno di solito 20–30 lettere, con poche vocali molto frequenti. L’insieme di lavoro del Voynich ha dimensioni simili, quindi le sole frequenze non dicono se un glifo sia una lettera, una sillaba o parte di un segno più grande. I glifi rari potrebbero essere varianti, errori o simboli con un uso speciale.</p>
+      </div>
+    </details>
+  </div>
+</section>
+
+<!-- 2 -->
+<section class="band band-alt" id="neighbours">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow">Esperimento 2 · statistica</div>
+        <h2>Alcuni glifi non hanno<br><em>quasi libertà.</em></h2>
+      </div>
+      <p>Scegli un glifo per vedere che cosa viene subito prima e subito dopo, su 32.888 parole leggibili dei paragrafi.</p>
+    </div>
+    <div class="chart-card">
+      <div class="segmented glyph-pick" role="group" aria-label="Scegli un glifo">
+        <button class="selected" data-glyph="q" aria-pressed="true">q</button>
+        <button data-glyph="n" aria-pressed="false">n</button>
+        <button data-glyph="c" aria-pressed="false">c</button>
+        <button data-glyph="h" aria-pressed="false">h</button>
+      </div>
+      <p id="nb-insight" class="kicker" style="margin-top:20px"></p>
+      <div class="nb-grid">
+        <div><h3>Viene prima</h3><div id="nb-prev" class="hbars"></div></div>
+        <div><h3>Viene dopo</h3><div id="nb-next" class="hbars"></div></div>
+      </div>
+      <p class="chart-note">“Inizio parola” e “fine parola” indicano i bordi della parola. Sono mostrati solo gli otto vicini più frequenti.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 3 -->
+<section class="band" id="matrix">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow">Esperimento 3 · linguistica</div>
+        <h2>La macchina delle parole.</h2>
+      </div>
+      <p>Sei inizi di parola comuni, sei finali comuni. Tutte e 36 le combinazioni esistono nel testo. Le celle più scure sono più frequenti. Clicca su una cella.</p>
+    </div>
+    <div class="chart-card">
+      <div class="chart-toolbar">
+        <div><h3 id="mx-title">Quante volte compare ogni inizio + finale</h3><p id="mx-sub">25.373 parole da 2.952 righe di paragrafo leggibili.</p></div>
+        <div class="segmented" role="group" aria-label="Valori della matrice">
+          <button class="selected" id="mx-count" aria-pressed="true">Conteggi</button>
+          <button id="mx-share" aria-pressed="false">Quota di ogni riga</button>
+        </div>
+      </div>
+      <div class="table-scroll"><table class="matrix" id="mx-table" aria-labelledby="mx-title"></table></div>
+      <p id="mx-readout" class="mx-readout">Clicca su una cella per leggere la parola.</p>
+    </div>
+    <div class="two-cols">
+      <div class="col toward-no"><h3>Una slot machine?</h3><p class="summary-line" style="margin:0">La riga <span class="eva">qok</span> si distribuisce quasi uniformemente su tutti e sei i finali. Qualunque inizio sembra adattarsi a qualunque finale, come se le parole fossero montate con pezzi indipendenti.</p></div>
+      <div class="col toward-yes"><h3>O una grammatica?</h3><p class="summary-line" style="margin:0">Le righe <span class="eva">ch</span> e <span class="eva">sh</span> preferiscono nettamente <span class="eva">edy</span> e <span class="eva">ol</span>: 383 <span class="eva">chedy</span> contro 14 <span class="eva">chain</span>. I pezzi non sono indipendenti, come accadrebbe con accordo o morfologia.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 4 -->
+<section class="band band-alt" id="generator">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow">Esperimento 4 · gioco</div>
+        <h2>Scrivi in voynichese<br><em>con i dadi.</em></h2>
+      </div>
+      <p>Questo pulsante costruisce una riga estraendo un inizio e un finale in proporzione ai conteggi qui sopra. Non ci entra alcun significato.</p>
+    </div>
+    <div class="generator">
+      <p id="gen-line" class="gen-line" aria-live="polite">qokeedy chedy qokain shedy ol otar qokeedy chol</p>
+      <div class="actions" style="margin-top:18px">
+        <button class="button primary" id="gen-go">Tira una nuova riga</button>
+        <label class="toggle"><input type="checkbox" id="gen-chain"> Fai dipendere ogni parola dalla precedente</label>
+      </div>
+      <p class="chart-note" id="gen-note">Ogni parola qui sopra è una vera parola del Voynich. La riga no.</p>
+    </div>
+    <details class="levels">
+      <summary>Perché conta <span class="level-tag">LINGUISTICA</span></summary>
+      <div class="body">
+        <p>Gordon Rugg (2004) e Timm &amp; Schinner (2020) hanno mostrato che semplici procedure meccaniche possono produrre testo con molte statistiche simili a quelle del Voynich. Un generatore che sembra giusto non prova che il manoscritto sia stato fatto così, ma alza l’asticella: qualsiasi tesi di significato deve spiegare qualcosa che un generatore non sa fare. L’opzione “dipendere dalla precedente” imita la forte dipendenza che abbiamo misurato tra parole vicine.</p>
+      </div>
+    </details>
+  </div>
+</section>
+
+<!-- 5 -->
+<section class="band" id="decipher">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow">Esperimento 5 · il gioco della decifrazione</div>
+        <h2>Fai il decifratore.</h2>
+      </div>
+      <p>Assegna una lettera a ogni glifo del Voynich e guarda 60 parole frequenti trasformarsi in “latino” o “italiano”. Poi lascia che il computer bari.</p>
+    </div>
+    <div class="chart-card">
+      <div class="dec-controls">
+        <label>Lingua di arrivo
+          <select id="dec-lang"><option value="latin">Latino</option><option value="italian">Italiano</option></select>
+        </label>
+        <button class="button ghost" id="dec-random">Chiave casuale</button>
+        <button class="button primary" id="dec-solve">Fai cercare il computer</button>
+        <span class="dec-score" aria-live="polite"><b id="dec-hits">0</b> parole su <span id="dec-total">60</span> trovate nel dizionario</span>
+      </div>
+      <div id="dec-key" class="dec-key" aria-label="Chiave glifo → lettera"></div>
+      <div id="dec-words" class="dec-words"></div>
+    </div>
+    <div class="caveat" id="dec-lesson">
+      <h3>La trappola in cui cade ogni decifratore</h3>
+      <p>Con <span id="dec-nsym">17</span> simboli da assegnare e libera scelta della chiave, una ricerca trova sempre qualche “parola”. Premi il pulsante di ricerca e contale. È così che funzionano molte decifrazioni pubblicate: adattano la chiave al testo e poi riportano le corrispondenze.</p>
+      <p>Il nostro test vero evitava la trappola: la chiave veniva fissata su alcune pagine e verificata su altre mai viste. Lì le chiavi migliori trovavano solo l’1,1% di parole latine e il 7,0% di parole italiane, mentre lo stesso metodo ricostruiva il 100% di un vero testo cifrato.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 6 -->
+<section class="band band-alt" id="yourtext">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow">Esperimento 6 · statistica</div>
+        <h2>La tua lingua potrebbe<br><em>essere il Voynich?</em></h2>
+      </div>
+      <p>Incolla un testo in qualsiasi lingua. Calcoliamo le stesse semplici statistiche che conosciamo per il Voynich. Poi cifralo e guarda che cosa non cambia.</p>
+    </div>
+    <div class="chart-card">
+      <label for="yt-input" class="label" style="display:block;margin-bottom:8px">Il tuo testo</label>
+      <textarea id="yt-input" rows="6" spellcheck="false">Questa erba nasce nei luoghi umidi e ha foglie larghe e una radice lunga. Il suo succo mescolato con il vino calma il dolore di testa e abbassa la febbre. Il seme cotto in acqua calda purga il ventre. I fiori vanno raccolti nel mese di maggio prima che sorga il sole.</textarea>
+      <div class="actions" style="margin-top:14px">
+        <button class="button primary" id="yt-cipher">Cifra con un alfabeto casuale</button>
+        <button class="button ghost" id="yt-reset">Ripristina l’esempio</button>
+      </div>
+      <div class="table-scroll" style="margin-top:20px"><table>
+        <thead><tr><th>Statistica</th><th class="num">Il tuo testo</th><th class="num">Voynich (ZL3b)</th><th>Cambia con un cifrario semplice?</th></tr></thead>
+        <tbody id="yt-table"></tbody>
+      </table></div>
+      <p class="chart-note">L’esempio è un breve passo di erbario in italiano scritto per questa demo. Le statistiche su poche centinaia di lettere sono rumorose; incolla un testo più lungo per numeri più stabili.</p>
+    </div>
+    <details class="levels">
+      <summary>Che cosa mostra il confronto <span class="level-tag">STATISTICA</span></summary>
+      <div class="body">
+        <p>Una sostituzione uno a uno rinomina le lettere ma conserva ogni frequenza, ogni lettera ripetuta e ogni lunghezza di parola. Quindi, se i numeri della tua lingua sono lontani da quelli del Voynich, nessuna sostituzione semplice della tua lingua può produrre il Voynich. Per questo i ricercatori si sono rivolti a cifrari prolissi, sillabari e sistemi di abbreviazione, che invece cambiano questi numeri.</p>
+        <p>L’entropia per singolo glifo è calcolata solo dalle frequenze. L’entropia condizionata su testi brevi è fortemente distorta verso il basso, quindi qui non la confrontiamo con il Voynich; vedi le stime su campioni pareggiati e pagine tenute da parte nella <a href="results.html#context">pagina dei risultati</a>.</p>
+      </div>
+    </details>
+  </div>
+</section>
+
+<section class="closing">
+  <div class="wrap">
+    <div class="eyebrow">Vuoi la versione seria?</div>
+    <h2>Ogni esperimento qui ha una<br>versione verificata nel repository.</h2>
+    <p>Le analisi complete usano pagine tenute da parte, modelli nulli e controlli positivi.</p>
+    <a class="button" href="methods.html">Vedi metodi e test →</a>
+  </div>
+</section>
+</main>
+
+<footer class="wrap">
+  <a class="brand" href="index.html">OLTRE I SEGNI</a>
+  <p>Fabio Furini · Istantanea esplorativa, 18 ottobre 2026 · Analisi assistita da AI<br>Conteggi: trascrizione Zandbergen–Landini ZL3b (2025). Codice MIT · Testi originali CC BY 4.0</p>
+  <a href="https://github.com/fabiofurini/voynich-seraphinianus-lab/tree/main/research">Dati di partenza ↗</a>
+</footer>
+</body>
+</html>

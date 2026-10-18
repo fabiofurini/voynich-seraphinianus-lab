@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Ipotesi · Oltre i segni</title>
+<meta name="description" content="Dieci ipotesi esplicite sul manoscritto Voynich e sul Codex Seraphinianus, con esiti, prove, congetture aperte e il dibattito scientifico.">
+<meta name="theme-color" content="#101d1a">
+<link rel="alternate" hreflang="en" href="../hypotheses.html">
+<link rel="alternate" hreflang="it" href="hypotheses.html">
+<link rel="icon" href="../assets/mark.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="../styles.css">
+<script defer src="../app.js"></script>
+</head>
+<body>
+<a class="skip" href="#main">Vai al contenuto</a>
+<header>
+  <a class="brand" href="index.html"><img src="../assets/mark.svg" width="30" height="30" alt=""><span>OLTRE<span class="brand-light"> I SEGNI</span></span></a>
+  <button id="menu" aria-controls="navigation" aria-expanded="false">Menu ☰</button>
+  <nav id="navigation" aria-label="Principale">
+    <a href="index.html">La storia</a>
+    <a href="results.html">Risultati</a>
+    <a href="lab.html">Laboratorio</a>
+    <a href="methods.html">Metodi e test</a>
+    <a href="hypotheses.html" aria-current="page">Ipotesi</a>
+    <a class="nav-repo" href="https://github.com/fabiofurini/voynich-seraphinianus-lab">GitHub ↗</a>
+    <span class="lang-switch"><a href="../hypotheses.html" hreflang="en" lang="en">EN</a> · <b>IT</b></span>
+  </nav>
+</header>
+
+<main id="main">
+<section class="page-hero">
+  <div class="wrap">
+    <div class="eyebrow"><span class="dot"></span> Ipotesi e congetture · un registro che può cambiare</div>
+    <h1>Affermazioni esplicite.<br><em>Nessun verdetto già pronto.</em></h1>
+    <p class="lead">Ogni ipotesi è scritta in modo da poter fallire. “Non supportata” non significa “smentita”: ogni esito vale per un modello, un insieme di dati e un modo di dividere il testo in unità.</p>
+    <div class="legend" style="margin-top:26px">
+      <span><span class="status green">Supportata</span> i dati concordano</span>
+      <span><span class="status amber">Sfavorita</span> prove contrarie, non esaustive</span>
+      <span><span class="status blue">Contraddetta</span> respinta su dati tenuti da parte, per questo modello</span>
+      <span><span class="status gray">Aperta</span> non ancora verificabile, o non verificata</span>
+    </div>
+  </div>
+</section>
+
+<section class="band">
+  <div class="wrap">
+    <div class="eyebrow">Il registro</div>
+    <h2>Dieci ipotesi, dieci esiti.</h2>
+    <div class="hyp-grid">
+      <article class="hyp-card"><span class="id">H01</span><span class="status amber">Sfavorita</span><h3>Il testo dell’erbario è latino o italiano in un cifrario semplice</h3><p>Un glifo per lettera, spazi conservati, con le nostre 23 unità grafiche.</p><p class="evidence">Il risolutore ricostruisce entrambi i controlli e non trova alcuna lettura nel Voynich. Glifi tripli che un testo latino non potrebbe produrre. La ricerca è euristica, quindi l’ipotesi non è falsificata in modo esaustivo.</p></article>
+      <article class="hyp-card"><span class="id">H02</span><span class="status blue">Contraddetta</span><h3>Non ci sono regole locali ripetibili</h3><p>Il testo sarebbe allora quasi casuale a livello di glifo.</p><p class="evidence">Modelli addestrati su alcune pagine prevedono altre pagine molto meglio delle sole frequenze dei glifi.</p></article>
+      <article class="hyp-card"><span class="id">H03</span><span class="status blue">Contraddetta</span><h3>La prevedibilità locale dimostra una lingua umana</h3><p>Un argomento allettante, spesso usato per il Voynich.</p><p class="evidence">Il Seraphinianus, una scrittura inventata, è altrettanto prevedibile localmente. La proprietà non discrimina.</p></article>
+      <article class="hyp-card"><span class="id">H04</span><span class="status gray">Non stabilita</span><h3>I due codici sono statisticamente equivalenti</h3><p>Lo stesso tipo di oggetto, prodotto nello stesso modo.</p><p class="evidence">Alcuni schemi condivisi, alcune differenze stabili (guadagno di contesto 0,001 contro 0,09 bit) e incertezza dell’OCR. Nessun test di equivalenza eseguito.</p></article>
+      <article class="hyp-card"><span class="id">H05</span><span class="status blue">Contraddetta</span><h3>Oltre due glifi precedenti non serve nulla</h3><p>Una formulazione precedente, troppo forte, di un nostro risultato.</p><p class="evidence">Con le unità EVA connesse il guadagno è piccolo ma positivo (0,003–0,015 bit). Abbiamo corretto l’affermazione.</p></article>
+      <article class="hyp-card"><span class="id">H06</span><span class="status amber">Non supportata</span><h3>I prefissi vincolano fortemente i suffissi</h3><p>Come nelle lingue con accordo o armonia vocalica dentro la parola.</p><p class="evidence">Guadagno combinato di circa 0,001 bit per suffisso nel modello a 2 unità, e nessuna generalizzazione a forme mai viste.</p></article>
+      <article class="hyp-card"><span class="id">H07</span><span class="status blue">Contraddetta</span><h3>Una grammatica ad albero prevede meglio di una catena</h3><p>La PCFG a due stati testata contro un HMM a due stati, su classi di suffisso.</p><p class="evidence">PCFG peggiore di 0,0193 bit/token; intervallo al 95% [+0,0065; +0,0343]. Respinge un modello su una rappresentazione, non la gerarchia in generale.</p></article>
+      <article class="hyp-card"><span class="id">H08</span><span class="status amber">Non giustificata</span><h3>L’OCR del Seraphinianus è abbastanza preciso da contare i tratti</h3><p>Necessario per fidarsi delle statistiche sui glifi ripetuti nel testo di confronto.</p><p class="evidence">Le discordanze si concentrano proprio sul numero di tratti ripetuti e sulla segmentazione.</p></article>
+      <article class="hyp-card"><span class="id">H09</span><span class="status gray">Aperta</span><h3>Il manoscritto non ha alcun significato recuperabile</h3><p>La famiglia di spiegazioni “falso” o “glossolalia”.</p><p class="evidence">Nessun esperimento qui lo stabilisce, e la statistica da sola non può farlo (vedi l’argomento di identificabilità nella pagina dei metodi).</p></article>
+      <article class="hyp-card"><span class="id">H10</span><span class="status gray">Aperta</span><h3>Il testo rispetta o viola i vincoli di Moro</h3><p>Regole dipendenti dalla struttura che il cervello umano impara, e regole lineari “impossibili” che non impara.</p><p class="evidence">Non verificabile direttamente: non abbiamo sintassi, confini di enunciato o unità morfosintattiche identificate su cui provarli.</p></article>
+    </div>
+  </div>
+</section>
+
+<section class="band band-alt">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow">Congetture allo studio</div>
+        <h2>Idee che stiamo verificando,<br><em>non risultati.</em></h2>
+      </div>
+      <p>Sono piste di lavoro. Ognuna riporta l’osservazione che la motiva e la verifica che potrebbe smontarla.</p>
+    </div>
+    <div class="hyp-grid">
+      <article class="hyp-card"><span class="id">C1 · FORMAZIONE DELLE PAROLE</span><h3>Le parole sono prefisso + base + suffisso</h3><p>Famiglie come <span class="eva">okaiin</span> / <span class="eva">qokaiin</span> (166 e 220 occorrenze) suggeriscono una regola <span class="eva">parola → prefisso + base + suffisso</span>, o estensioni <span class="eva">X → aX</span> e <span class="eva">X → Xa</span>.</p><p class="evidence">Attenzione: anche un automa a stati finiti genera forme simili. Disegnare un albero non è una prova di dipendenza strutturale umana.</p></article>
+      <article class="hyp-card"><span class="id">C2 · ALLOGRAFIA</span><h3>La <span class="eva">m</span> finale è una variante di <span class="eva">r</span></h3><p>Sostituire la <span class="eva">m</span> a fine riga con <span class="eva">r</span> trasforma il 74,7% dei casi tenuti da parte in parole note, contro il 42,6% lasciandola invariata.</p><p class="evidence">Indebolita dai controlli: il sostituto migliore cambia a seconda di come si trattano gli spazi incerti, e le etichette <span class="eva">otalar</span> e <span class="eva">otalam</span> stanno una accanto all’altra in f70v2. Fusione globale abbandonata per ora.</p></article>
+      <article class="hyp-card"><span class="id">C3 · UNITÀ</span><h3><span class="eva">qo</span> e <span class="eva">iin</span> sono unità singole</h3><p><span class="eva">q</span> è seguita da <span class="eva">o</span> nel 98% dei casi; <span class="eva">in</span>, <span class="eva">iin</span>, <span class="eva">iiin</span> compaiono 1.601, 3.688 e 149 volte.</p><p class="evidence">Cambiare le unità cambia ogni statistica di questo sito. Le unità vanno apprese solo sulle pagine di addestramento, poi confrontate sugli stessi bersagli di test.</p></article>
+      <article class="hyp-card"><span class="id">C4 · IMPAGINAZIONE</span><h3>I glifi a forca segnano i paragrafi</h3><p>L’89,4% delle parole a inizio paragrafo comincia con <span class="eva">f k p t</span>, contro l’8,5% delle altre parole a inizio riga; 169 pagine su 178 concordano.</p><p class="evidence">Domanda aperta: sono marcatori separati, come le iniziali decorate, o fanno parte della prima parola?</p></article>
+      <article class="hyp-card"><span class="id">C5 · ETICHETTE</span><h3>Le etichette dello zodiaco nominano cose</h3><p><span class="eva">okeodaly</span> compare in entrambe le pagine del Toro, f71v e f72r1, con vicini diversi.</p><p class="evidence">I due fogli appartengono allo stesso bifoglio, quindi è un’osservazione sola, non due. Grafie simili compaiono in altre 9–10 pagine.</p></article>
+      <article class="hyp-card"><span class="id">C6 · PRODUZIONE</span><h3>Il testo è stato generato da un processo locale</h3><p>Il quadro d’insieme (contesto a lungo raggio debole, combinabilità totale tra prefissi e suffissi, deriva da sezione a sezione) è compatibile con uno scriba che segue abitudini locali.</p><p class="evidence">Per verificarlo: generatori con argomento variabile e modelli di copia-e-modifica adattati alla struttura delle sezioni, valutati su pagine tenute da parte.</p></article>
+    </div>
+  </div>
+</section>
+
+<section class="band band-alt" id="debate">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow">Il dibattito più ampio</div>
+        <h2>Che cosa si sa<br><em>al di fuori di questo progetto.</em></h2>
+      </div>
+      <p>Un secolo di ricerche ha ristretto la domanda. Questi sono i fatti accertati e le principali famiglie di spiegazione, con le prove più forti che ciascuna cita.</p>
+    </div>
+    <div class="tab-card">
+      <h3>Fatti accertati sull’oggetto</h3>
+      <div class="table-scroll"><table>
+        <thead><tr><th>Fatto</th><th>Prova</th></tr></thead>
+        <tbody>
+          <tr><td>La pergamena risale all’inizio del XV secolo</td><td>Datazione al radiocarbonio all’Università dell’Arizona (2009): 1404–1438.</td></tr>
+          <tr><td>Gli inchiostri sono compatibili con l’epoca</td><td>Le analisi dei materiali di McCrone Associates (2009) non hanno trovato pigmenti moderni.</td></tr>
+          <tr><td>Il testo ha due “dialetti” statistici</td><td>Prescott Currier (1976) ha distinto Currier A e B, che differiscono per finali di parola e frequenze.</td></tr>
+          <tr><td>È stato scritto da più scribi</td><td>Lisa Fagin Davis (2020) ha identificato cinque mani tramite la paleografia.</td></tr>
+          <tr><td>Le statistiche delle parole somigliano a una lingua per alcuni aspetti e non per altri</td><td>Le frequenze delle parole seguono una curva simile a Zipf, ma l’entropia a livello di glifo è insolitamente bassa (Bowern &amp; Lindemann 2021).</td></tr>
+        </tbody>
+      </table></div>
+    </div>
+    <div class="hyp-grid">
+      <article class="hyp-card"><span class="id">FAMIGLIA A</span><h3>Una lingua naturale in una scrittura sconosciuta</h3><p>Le proposte includono lingue europee, semitiche e asiatiche, spesso con una scrittura sillabica o abbreviativa.</p><p class="evidence"><b>A favore:</b> frequenze delle parole simili a Zipf, raggruppamento delle parole per sezione (Montemurro &amp; Zanette 2013), testo che segue le illustrazioni. <b>Contro:</b> entropia dei glifi molto bassa, struttura delle parole rigida. I nostri risultati: l’<a href="results.html#sections">effetto delle sezioni</a> la sostiene, il <a href="results.html#context">guadagno di contesto</a> la vincola.</p></article>
+      <article class="hyp-card"><span class="id">FAMIGLIA B</span><h3>Un cifrario o un codice</h3><p>Una lingua nota mascherata da un cifrario prolisso, un nomenclatore o un libro di codici.</p><p class="evidence"><b>A favore:</b> nell’Italia del Quattrocento i cifrari erano molto diffusi; i cifrari prolissi abbassano l’entropia. <b>Contro:</b> nessun testo in chiaro recuperato nonostante sforzi intensi. I nostri risultati: la sostituzione semplice di latino o italiano è <a href="results.html#cipher">sfavorita</a>.</p></article>
+      <article class="hyp-card"><span class="id">FAMIGLIA C</span><h3>Testo senza significato, prodotto con una procedura</h3><p>Un falso, un oggetto da vendere o un esercizio devozionale prodotto con tabelle o una griglia.</p><p class="evidence"><b>A favore:</b> Rugg (2004) ha riprodotto parole simili a quelle del Voynich con una griglia di Cardano; Timm &amp; Schinner (2020) hanno generato testo simile copiando e modificando parole precedenti. <b>Contro:</b> la procedura dovrebbe riprodurre gli effetti di sezione e i dialetti di Currier. I nostri risultati: la <a href="lab.html#generator">macchina delle parole</a> mostra fin dove arrivano regole semplici.</p></article>
+      <article class="hyp-card"><span class="id">FAMIGLIA D</span><h3>Lingua artificiale o glossolalia</h3><p>Una lingua filosofica inventata, o una scrittura simile al parlato prodotta senza un codice fisso.</p><p class="evidence"><b>A favore:</b> morfologia regolare con distribuzioni insolite. <b>Contro:</b> difficile da verificare senza unità. Il Seraphinianus, scrittura inventata da un artista, è l’analogo moderno più vicino e ne condivide diverse statistiche.</p></article>
+    </div>
+    <div class="caveat">
+      <h3>Una nota sulle decifrazioni annunciate</h3>
+      <p>Quasi ogni anno viene annunciata una nuova decifrazione. Nessuna è stata accettata, perché nessuna prevede testo mai visto. Le letture provvisorie di nomi di piante di Stephen Bax (2014) sono spesso citate come il tentativo più accurato: lui stesso le presentava come un punto di partenza, non come una soluzione.</p>
+    </div>
+  </div>
+</section>
+
+<section class="band">
+  <div class="wrap-narrow">
+    <div class="eyebrow">Falsificabilità</div>
+    <h2>Che cosa ci farebbe cambiare idea?</h2>
+    <p class="kicker">Ognuna di queste cose metterebbe in crisi una spiegazione puramente locale del testo del Voynich.</p>
+    <div class="glossary">
+      <details open><summary>Un vantaggio gerarchico stabile su pagine tenute da parte</summary><p>Una grammatica con struttura annidata che preveda pagine mai viste meglio del miglior modello sequenziale, per più codifiche e split.</p></details>
+      <details><summary>Una segmentazione validata in modo indipendente</summary><p>Unità apprese senza guardare le pagine di test, che concordino anche con le prove paleografiche ricavate dalle immagini.</p></details>
+      <details><summary>Dipendenze a lunga distanza non spiegate dall’impaginazione</summary><p>Dipendenze che resistano ai controlli per posizione nella riga, pagina, sezione e scriba.</p></details>
+      <details><summary>Una decifrazione che prevede</summary><p>Una lettura ancorata a elementi esterni, che si generalizzi a pagine nuove senza scelte ad hoc e faccia previsioni prima che vengano verificate.</p></details>
+    </div>
+  </div>
+</section>
+
+<section class="band band-alt">
+  <div class="wrap-narrow">
+    <div class="eyebrow">Glossario</div>
+    <h2>I termini usati in questo sito.</h2>
+    <div class="glossary">
+      <details><summary>EVA</summary><p>L’European Voynich Alphabet: una convenzione per scrivere i glifi del Voynich con lettere latine. <span class="eva">ch</span> o <span class="eva">aiin</span> nominano forme, non suoni.</p></details>
+      <details><summary>Entropia, in bit per glifo</summary><p>Quante domande sì/no servono in media a un modello per indovinare il glifo successivo. Meno bit significa previsione migliore, non traduzione migliore.</p></details>
+      <details><summary>Controllo positivo</summary><p>Un caso di prova di cui conosciamo la risposta. Se un metodo fallisce lì, il suo fallimento sul Voynich non ci dice nulla.</p></details>
+      <details><summary>PCFG e HMM</summary><p>Una grammatica probabilistica libera dal contesto costruisce alberi annidati; un modello di Markov nascosto concatena stati nascosti da sinistra a destra. Confrontarli significa chiedersi se l’annidamento aggiunga capacità predittiva.</p></details>
+      <details><summary>Currier A e B, mani</summary><p>Due “dialetti” statistici del testo del Voynich individuati da Prescott Currier negli anni Settanta, e le diverse mani di scriba individuate dai paleografi.</p></details>
+      <details><summary>I vincoli di Moro</summary><p>Andrea Moro e colleghi hanno mostrato che il cervello tratta le regole basate sulla struttura gerarchica in modo diverso da quelle basate sull’ordine lineare delle parole. Per verificarli su una scrittura servono prima le unità sintattiche.</p></details>
+    </div>
+    <div class="doc-list" style="margin-top:34px">
+      <a href="https://doi.org/10.1146/annurev-linguistics-011619-030613"><span class="doc-icon">RIF</span><div><h3>Bowern &amp; Lindemann (2021)</h3><p>The Linguistics of the Voynich Manuscript. Annual Review of Linguistics.</p></div><span>↗</span></a>
+      <a href="https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0066344"><span class="doc-icon">RIF</span><div><h3>Montemurro &amp; Zanette (2013)</h3><p>Keywords and co-occurrence patterns in the Voynich manuscript. PLOS ONE.</p></div><span>↗</span></a>
+      <a href="https://www.nature.com/articles/nn1077"><span class="doc-icon">RIF</span><div><h3>Musso, Moro et al. (2003)</h3><p>Broca's area and the language instinct. Nature Neuroscience.</p></div><span>↗</span></a>
+      <a href="https://doi.org/10.1080/01611194.2019.1596999"><span class="doc-icon">RIF</span><div><h3>Timm &amp; Schinner (2020)</h3><p>A possible generating algorithm of the Voynich manuscript. Cryptologia.</p></div><span>↗</span></a>
+      <a href="https://doi.org/10.1080/0161-110491892755"><span class="doc-icon">RIF</span><div><h3>Rugg (2004)</h3><p>An elegant hoax? A possible solution to the Voynich manuscript. Cryptologia.</p></div><span>↗</span></a>
+      <a href="https://doi.org/10.1353/mns.2020.0011"><span class="doc-icon">RIF</span><div><h3>Davis (2020)</h3><p>How many glyphs and how many scribes? Digital palaeography and the Voynich manuscript. Manuscript Studies.</p></div><span>↗</span></a>
+      <a href="https://www.voynich.nu/"><span class="doc-icon">WEB</span><div><h3>René Zandbergen, voynich.nu</h3><p>Il sito di riferimento su storia, sistema di scrittura e trascrizioni del manoscritto.</p></div><span>↗</span></a>
+    </div>
+  </div>
+</section>
+
+<section class="closing">
+  <div class="wrap">
+    <div class="eyebrow">Proponi un’ipotesi</div>
+    <h2>Scrivila in modo che possa fallire.</h2>
+    <p>Indica la versione del corpus, le unità, lo split, il controllo e il risultato che dimostrerebbe che hai torto.</p>
+    <a class="button" href="https://github.com/fabiofurini/voynich-seraphinianus-lab/blob/main/CONTRIBUTING.md">Come contribuire (in inglese) ↗</a>
+  </div>
+</section>
+</main>
+
+<footer class="wrap">
+  <a class="brand" href="index.html">OLTRE I SEGNI</a>
+  <p>Fabio Furini · Istantanea esplorativa, 18 ottobre 2026 · Analisi assistita da AI<br>Codice MIT · Testi originali CC BY 4.0</p>
+  <a href="https://github.com/fabiofurini/voynich-seraphinianus-lab/blob/main/notebook/HYPOTHESES.md">Registro delle ipotesi su GitHub (in inglese) ↗</a>
+</footer>
+</body>
+</html>

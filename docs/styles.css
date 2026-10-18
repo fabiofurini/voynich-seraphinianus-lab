@@ -410,3 +410,9 @@ select:focus-visible,textarea:focus-visible{outline:3px solid var(--orange);outl
 /* lining figures wherever numbers are data */
 .num-big,.metric b,.hero-stats b,.dec-score b{font-variant-numeric:lining-nums tabular-nums}
 .glyph-pick{display:inline-flex}
+
+/* ---------- language switch ---------- */
+.lang-switch{font-size:12px;letter-spacing:.06em;color:var(--muted);white-space:nowrap}
+.lang-switch b{color:var(--green)}
+.lang-switch a{text-decoration:none;border-bottom:1px solid var(--line-2)}
+.lang-switch a:hover{color:var(--orange)}

@@ -1,6 +1,6 @@
 'use strict';
-// Beyond the Signs — Voynich Lab (lab.html). Depends on helpers defined in app.js
-// (el, svgRoot, hostW, css, hover). All counts come from research/ outputs on ZL3b:
+// Beyond the Signs — Voynich Lab (lab.html, it/lab.html). Depends on helpers defined in app.js
+// (el, svgRoot, hostW, css, hover, T, num, LOCALE). All counts come from research/ outputs on ZL3b:
 // voynich_full_inventory.json, voynich_inventory.json and patterns/results.json.
 
 const UNITS={o:25619,e:20425,y:17879,a:14818,d:13215,i:11873,ch:11050,l:10658,k:10104,r:7595,n:6186,t:6017,q:5435,sh:4534,s:2822,p:1442,m:1071,cth:891,ckh:866,f:416,cph:201,g:154,cfh:67,x:41,v:15,b:15,j:14,c:12,u:9,z:9,h:4};
@@ -13,7 +13,12 @@ const RELATIONS={
   q:{n:5087,previous:{'^':5061,o:14,y:11,l:1},next:{o:4987,k:16,e:51,y:7,c:16,a:6,f:1,s:2,p:1}},
   n:{n:5550,previous:{i:5439,a:101,e:1,o:5,'^':3,r:1},next:{'$':5493,y:12,o:20,l:2,d:5,s:2,g:1,a:11,c:2,k:1,p:1}}
 };
-const INSIGHT={
+const INSIGHT=IT?{
+  q:'q quasi solo apre le parole (99,5%) ed è seguita da o nel 98% dei casi. Poche lettere alfabetiche si comportano così: “qo” potrebbe essere un segno unico o un prefisso.',
+  n:'n viene dopo i nel 98% dei casi e chiude la parola nel 99%. Gruppi come in, iin e iiin sembrano un unico segno scritto con un numero variabile di tratti.',
+  c:'In EVA, c non sta quasi mai da sola: è seguita da h nell’84% dei casi. Per questo i trascrittori trattano ch come un unico glifo connesso.',
+  h:'h è la seconda metà dei glifi connessi: segue c o s nell’88% dei casi. Da sola è uno dei segni più rari del manoscritto.'
+}:{
   q:'q almost only begins words (99.5%) and is followed by o 98% of the time. Few alphabetic letters behave like this; “qo” may be a single sign or a prefix.',
   n:'n comes after i 98% of the time and ends the word 99% of the time. Groups like in, iin and iiin look like one sign written with a variable number of strokes.',
   c:'In EVA, c almost never stands alone: it is followed by h 84% of the time. Transcribers therefore treat ch as one connected glyph.',
@@ -41,20 +46,20 @@ function freqChart(host,coreOnly){
     const w=Math.max(2,bw-2),r=Math.min(4,w/2);
     const bar=el('path',{d:`M${x+1} ${y(0)} V${y(0)-h+r} a${r} ${r} 0 0 1 ${r} ${-r} H${x+1+w-r} a${r} ${r} 0 0 1 ${r} ${r} V${y(0)} Z`,fill:css('--voynich'),opacity:isCluster?.62:1},s);
     const hit=el('rect',{x:x,y:top,width:bw,height:H-top-bottom,fill:'transparent'},s);
-    hover(hit,`<b>${k}</b>${isCluster?' (connected cluster)':''}<br>${v.toLocaleString('en')} glyphs · ${pct.toFixed(pct<0.1?3:2)}%`);
+    hover(hit,`<b>${k}</b>${isCluster?T(' (connected cluster)',' (gruppo connesso)'):''}<br>${v.toLocaleString(LOCALE)} ${T('glyphs','glifi')} · ${num(pct.toFixed(pct<0.1?3:2))}%`);
     if(!narrow||i%2===0||k.length===1)el('text',{x:x+bw/2,y:H-bottom+16,'text-anchor':'middle','font-size':narrow?10.5:12,fill:ink,'font-family':'IBM Plex Mono,monospace'},s,k);
   });
-  el('text',{x:left,y:H-6,'font-size':11.5,fill:muted},s,'Lighter bars: connected clusters counted as one unit');
+  el('text',{x:left,y:H-6,'font-size':11.5,fill:muted},s,T('Lighter bars: connected clusters counted as one unit','Barre chiare: gruppi connessi contati come un’unica unità'));
 }
 
 /* ---------- 2. neighbours ---------- */
-const edgeLabel=k=>k==='^'?'word start':k==='$'?'word end':k;
+const edgeLabel=k=>k==='^'?T('word start','inizio parola'):k==='$'?T('word end','fine parola'):k;
 function hbars(host,obj,total){
   host.innerHTML='';
   Object.entries(obj).sort((a,b)=>b[1]-a[1]).slice(0,8).forEach(([k,v])=>{
     const pct=100*v/total,row=document.createElement('div');row.className='hbar';
-    row.innerHTML=`<span class="hbar-k ${k==='^'||k==='$'?'edge':''}">${edgeLabel(k)}</span><span class="hbar-track"><i style="width:${Math.max(.6,pct)}%"></i></span><span class="hbar-v">${pct.toFixed(1)}%</span>`;
-    row.title=`${edgeLabel(k)}: ${v.toLocaleString('en')} of ${total.toLocaleString('en')}`;
+    row.innerHTML=`<span class="hbar-k ${k==='^'||k==='$'?'edge':''}">${edgeLabel(k)}</span><span class="hbar-track"><i style="width:${Math.max(.6,pct)}%"></i></span><span class="hbar-v">${num(pct.toFixed(1))}%</span>`;
+    row.title=`${edgeLabel(k)}: ${v.toLocaleString(LOCALE)} ${T('of','su')} ${total.toLocaleString(LOCALE)}`;
     host.appendChild(row);
   });
 }
@@ -67,7 +72,7 @@ function showNeighbours(g){
 /* ---------- 3. matrix ---------- */
 function drawMatrix(share){
   const t=$('mx-table');t.innerHTML='';
-  const head=t.createTHead().insertRow();head.insertCell().outerHTML='<th>start \\ ending</th>';
+  const head=t.createTHead().insertRow();head.insertCell().outerHTML=T('<th>start \\ ending</th>','<th>inizio \\ finale</th>');
   SUFFIXES.forEach(sx=>head.insertCell().outerHTML=`<th class="num eva">-${sx}</th>`);
   const all=PREFIXES.flatMap(p=>SUFFIXES.map(sx=>FAMILY[p][sx])),max=Math.max(...all);
   const body=t.createTBody();
@@ -81,9 +86,9 @@ function drawMatrix(share){
       c.classList.toggle('dark',level>0.5);
       c.textContent=share?(100*sh).toFixed(0)+'%':v;
       c.tabIndex=0;c.setAttribute('role','button');
-      c.setAttribute('aria-label',`${p}${sx}: ${v} occurrences, ${(100*sh).toFixed(0)}% of the ${p}- row`);
+      c.setAttribute('aria-label',T(`${p}${sx}: ${v} occurrences, ${(100*sh).toFixed(0)}% of the ${p}- row`,`${p}${sx}: ${v} occorrenze, ${(100*sh).toFixed(0)}% della riga ${p}-`));
       const pick=()=>{document.querySelectorAll('.mx-cell.on').forEach(x=>x.classList.remove('on'));c.classList.add('on');
-        $('mx-readout').innerHTML=`<span class="eva" style="font-size:1.35em">${p}<b>${sx}</b></span> · ${v} occurrences · ${(100*sh).toFixed(1)}% of all <span class="eva">${p}-</span> words in this table`;};
+        $('mx-readout').innerHTML=`<span class="eva" style="font-size:1.35em">${p}<b>${sx}</b></span> · ${v} ${T('occurrences','occorrenze')} · ${num((100*sh).toFixed(1))}% ${T('of all','di tutte le parole')} <span class="eva">${p}-</span> ${T('words in this table','della tabella')}`;};
       c.addEventListener('click',pick);c.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();pick();}});
     });
   });
@@ -132,7 +137,7 @@ function renderDec(){
   if(!keyHost.childElementCount){
     DEC_UNITS.forEach(u=>{
       const lab=document.createElement('label');lab.className='dec-slot';
-      lab.innerHTML=`<span class="eva">${u}</span><select data-unit="${u}" aria-label="Letter for glyph ${u}">${LETTERS.map(l=>`<option>${l}</option>`).join('')}</select>`;
+      lab.innerHTML=`<span class="eva">${u}</span><select data-unit="${u}" aria-label="${T('Letter for glyph','Lettera per il glifo')} ${u}">${LETTERS.map(l=>`<option>${l}</option>`).join('')}</select>`;
       keyHost.appendChild(lab);
       lab.querySelector('select').addEventListener('change',e=>{decKey[u]=e.target.value;renderDec();});
     });
@@ -180,14 +185,14 @@ function voyH1(){let h=0;for(const k in UNITS){const p=UNITS[k]/UNITS_TOTAL;h-=p
 function renderYT(){
   const s=stats($('yt-input').value),vh=voyH1();
   const rows=[
-    ['Words analysed',s.words.toLocaleString('en'),'32,888','—'],
-    ['Distinct symbols used',s.symbols,'23 (working set)','No'],
-    ['Entropy per symbol, from frequencies (bits)',s.h1.toFixed(2),vh.toFixed(2),'No'],
-    ['Average word length (symbols)',s.avg.toFixed(2),'4.45','No'],
-    ['Share taken by the 5 commonest symbols',s.top5.toFixed(1)+'%','52.8%','No'],
-    ['Words with the same symbol three times in a row',s.triples.toFixed(1)+'%','1.0%','No']
+    [T('Words analysed','Parole analizzate'),s.words.toLocaleString(LOCALE),T('32,888','32.888'),'—'],
+    [T('Distinct symbols used','Simboli distinti usati'),s.symbols,T('23 (working set)','23 (insieme di lavoro)'),'No'],
+    [T('Entropy per symbol, from frequencies (bits)','Entropia per simbolo, dalle frequenze (bit)'),num(s.h1.toFixed(2)),num(vh.toFixed(2)),'No'],
+    [T('Average word length (symbols)','Lunghezza media delle parole (simboli)'),num(s.avg.toFixed(2)),num('4.45'),'No'],
+    [T('Share taken by the 5 commonest symbols','Quota dei 5 simboli più frequenti'),num(s.top5.toFixed(1))+'%',num('52.8')+'%','No'],
+    [T('Words with the same symbol three times in a row','Parole con lo stesso simbolo tre volte di fila'),num(s.triples.toFixed(1))+'%',num('1.0')+'%','No']
   ];
-  $('yt-table').innerHTML=rows.map(r=>`<tr><td>${r[0]}</td><td class="num">${r[1]}</td><td class="num">${r[2]}</td><td>${r[3]==='No'?'<span class="status green">No, identical</span>':''}</td></tr>`).join('');
+  $('yt-table').innerHTML=rows.map(r=>`<tr><td>${r[0]}</td><td class="num">${r[1]}</td><td class="num">${r[2]}</td><td>${r[3]==='No'?`<span class="status green">${T('No, identical','No, identica')}</span>`:''}</td></tr>`).join('');
 }
 function encipher(){
   const src='abcdefghijklmnopqrstuvwxyz'.split(''),dst=[...src].sort(()=>Math.random()-.5),m={};
@@ -205,7 +210,7 @@ document.addEventListener('DOMContentLoaded',()=>{
   fa.addEventListener('click',()=>{core=false;setSeg([fa,fco],fa);drawF();});
   fco.addEventListener('click',()=>{core=true;setSeg([fa,fco],fco);drawF();});
   drawF();
-  $('h1-voy').textContent=voyH1().toFixed(2);
+  $('h1-voy').textContent=num(voyH1().toFixed(2));
 
   const gbtn=[...document.querySelectorAll('.glyph-pick button')];
   gbtn.forEach(b=>b.addEventListener('click',()=>{setSeg(gbtn,b);showNeighbours(b.dataset.glyph);}));
@@ -218,7 +223,7 @@ document.addEventListener('DOMContentLoaded',()=>{
 
   const roll=()=>{const chain=$('gen-chain').checked,w=generateLine(chain);
     $('gen-line').innerHTML=w.map(x=>`<span>${x}</span>`).join(' ');
-    $('gen-note').textContent=chain?'Each word above is a real Voynich word. Words after -edy favour q- starts, words after -ol, -ar, -ain favour ch- and sh-, as in frequent pairs such as shedy qokedy and ol chedy.':'Each word above is a real Voynich word. The line is not: start and ending were drawn independently.';};
+    $('gen-note').textContent=chain?T('Each word above is a real Voynich word. Words after -edy favour q- starts, words after -ol, -ar, -ain favour ch- and sh-, as in frequent pairs such as shedy qokedy and ol chedy.','Ogni parola qui sopra è una vera parola del Voynich. Dopo -edy sono favoriti gli inizi in q-, dopo -ol, -ar, -ain gli inizi ch- e sh-, come nelle coppie frequenti shedy qokedy e ol chedy.'):T('Each word above is a real Voynich word. The line is not: start and ending were drawn independently.','Ogni parola qui sopra è una vera parola del Voynich. La riga no: inizio e finale sono stati estratti in modo indipendente.');};
   $('gen-go').addEventListener('click',roll);$('gen-chain').addEventListener('change',roll);roll();
 
   $('dec-nsym').textContent=DEC_UNITS.length;
