@@ -17,5 +17,10 @@ for p in R.rglob('*'):
  if p.suffix in ['.py','.md','.json','.html','.js','.yml','.txt']:
   s=p.read_text(errors='ignore')
   for f in forbidden:assert f not in s,(p,f)
-assert not (R/'research/seraph_ocr/CS_OCR_TRANSLITERATION.txt').exists(),'Raw copyrighted source accidentally included'
+# Inputs downloaded by fetch_data.py are gitignored; inspect the public archive too.
+import zipfile
+z=R/'docs/downloads/lab-public-snapshot.zip'
+if z.exists():
+ with zipfile.ZipFile(z) as a:
+  assert not any(n.endswith('CS_OCR_TRANSLITERATION.txt') or n.endswith('words.txt') or n.endswith('.pdf') for n in a.namelist()),'Excluded source in public archive'
 print('Public snapshot checks passed: syntax, JSON, internal links, IDs and private-data exclusions.')

@@ -1,14 +1,22 @@
-# Voynich & Seraphinianus Lab
+# Oltre i segni
 
-An open research notebook on structure, predictability and the limits of decipherment. Coordinated by **Fabio Furini**. Exploratory work developed with AI assistance; independent replication is welcome.
+### Voynich e Seraphinianus: un’indagine aperta
 
-**We have not deciphered the Voynich manuscript, demonstrated that it is meaningless, or established that it is equivalent to the Codex Seraphinianus.** Our goal is to test explicit hypotheses, including those that could contradict our working ideas.
+Un quaderno di ricerca pubblico sulla struttura dei segni, sulla prevedibilita e sui limiti della decifrazione. Progetto di **Fabio Furini**, sviluppato con assistenza AI e aperto a verifiche indipendenti.
 
-- [Public-facing website](https://fabiofurini.github.io/voynich-seraphinianus-lab/) · [Current status](STATUS.md) · [Experiment index](EXPERIMENTS.md) · [Hypotheses](HYPOTHESES.md)
-- [Reproduce the experiments](REPRODUCIBILITY.md) · [Roadmap](ROADMAP.md) · [Consolidated report](reports/2026-10-18-consolidated.md)
-- Website source: [`docs/`](docs/) · numerical outputs and scripts: [`research/`](research/)
+**Non abbiamo decifrato il Voynich, dimostrato che sia privo di significato o stabilito che equivalga al Codex Seraphinianus.** Mettiamo alla prova ipotesi esplicite e conserviamo anche gli esiti contrari alle nostre aspettative.
 
-## Main findings — 18 October 2026
+## Da dove iniziare
+
+|Per capire|Per verificare|
+|---|---|
+|[Sito divulgativo](https://fabiofurini.github.io/voynich-seraphinianus-lab/)|[Metodi e riproduzione](REPRODUCIBILITY.md)|
+|[Stato attuale dei lavori](STATUS.md)|[Registro degli esperimenti](EXPERIMENTS.md)|
+|[Ipotesi e loro esito](HYPOTHESES.md)|[Codice e risultati](research/README.md)|
+|[Documenti e rapporti](reports/README.md)|[Fonti, versioni e hash](DATA_SOURCES.json)|
+|[Roadmap](ROADMAP.md)|[Contribuire](CONTRIBUTING.md)|
+
+## Risultati principali - 18 ottobre 2026
 
 1. Additional within-word context has much less predictive value in the selected Voynich transcription than in our Italian and Latin controls; this persists after matching word lengths and sample sizes and using interpolated backoff.
 2. Both codices have local regularities. This is not a test of semantic content. The Seraphinianus OCR audit identifies important limitations.
@@ -16,7 +24,7 @@ An open research notebook on structure, predictability and the limits of deciphe
 4. A calibrated two-state PCFG does not improve Voynich suffix-class prediction over a two-state HMM. This rejects a prediction about **one model and representation**, not all hierarchical grammars.
 5. Simple substitution attacks calibrated on Italian and Latin controls did not yield coherent held-out readings. They are heuristic, limited experiments, not exhaustive impossibility proofs.
 
-## Repository map
+## Struttura del repository
 
 |Location|Contents|
 |---|---|
@@ -28,7 +36,7 @@ An open research notebook on structure, predictability and the limits of deciphe
 |`scripts/`|Source fetching, integrity and publication checks|
 |`DATA_SOURCES.json`|Source URLs, exact checksums, rights notes and local paths|
 
-## Quick start
+## Riproduzione rapida
 
 ```bash
 python -m venv .venv
@@ -42,7 +50,7 @@ python -m http.server 8000 --directory docs
 
 Raw third-party transcriptions and book images are **not re-licensed or bundled**. The fetcher downloads exact versions for local analysis and checks their hashes. Some historical scripts require the separately documented Stolfi/H transcription; unavailable inputs are reported rather than silently replaced. Precomputed outputs remain available.
 
-## Hosting and collaboration
+## Sito e collaborazione
 
 Enable GitHub Pages with branch `main`, folder `/docs`. No framework, account or database is needed to view the website. See [deployment](DEPLOYMENT.md). Contributions use issues and pull requests. Leo has not yet been granted access or listed as an author; see [collaboration](CONTRIBUTING.md).
 
