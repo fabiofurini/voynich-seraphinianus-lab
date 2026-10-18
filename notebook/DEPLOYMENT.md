@@ -1,8 +1,8 @@
 # Website deployment (GitHub Pages)
 
-[Home](README.md) · [Status](STATUS.md) · [Hypotheses](HYPOTHESES.md) · [Experiments](EXPERIMENTS.md) · [Reports](reports/README.md) · [Reproduce](REPRODUCIBILITY.md) · [Roadmap](ROADMAP.md)
+[Home](../README.md) · [Status](STATUS.md) · [Hypotheses](HYPOTHESES.md) · [Experiments](EXPERIMENTS.md) · [Reports](../reports/README.md) · [Reproduce](REPRODUCIBILITY.md) · [Roadmap](ROADMAP.md)
 
-The website in [`docs/`](docs/) is static: HTML, one stylesheet, two scripts and images, with no build step. Relative links work under the project sub-path.
+The website in [`docs/`](../docs/) is static: HTML, one stylesheet, two scripts and images, with no build step. Relative links work under the project sub-path.
 
 **One-time setup (repository owner):** Settings → Pages → *Build and deployment* → Source: *Deploy from a branch* → Branch: `main`, folder `/docs` → Save.
 

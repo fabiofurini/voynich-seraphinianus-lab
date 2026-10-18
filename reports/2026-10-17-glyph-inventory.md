@@ -1,8 +1,8 @@
 # Voynich: a candidate graphic inventory, not a phonetic alphabet
 
-[Home](../README.md) · [Reports](README.md) · [Experiments](../EXPERIMENTS.md) · [Current status](../STATUS.md)
+[Home](../README.md) · [Reports](README.md) · [Experiments](../notebook/EXPERIMENTS.md) · [Current status](../notebook/STATUS.md)
 
-17 October 2026 · Historical document; read it together with the [current status](../STATUS.md).
+17 October 2026 · Historical document; read it together with the [current status](../notebook/STATUS.md).
 
 ## Outcome
 
@@ -46,7 +46,7 @@ We can use 23 units as a working representation with very high coverage. We have
 ## Reproduction
 
 ```bash
-python research/voynich_inventory.py research/patterns/voynich_ZL3b.txt <Stolfi H file> > inventory.json
+python research/early_studies/voynich_inventory.py research/patterns/voynich_ZL3b.txt <Stolfi H file> > inventory.json
 ```
 
-Python 3 standard library only. The [JSON output](../research/voynich_inventory.json) contains the frequency of each unit, residual signs and the context distributions of `c/h/q/n`.
+Python 3 standard library only. The [JSON output](../research/early_studies/voynich_inventory.json) contains the frequency of each unit, residual signs and the context distributions of `c/h/q/n`.

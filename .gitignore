@@ -7,3 +7,4 @@ research/seraph_ocr/
 research/substitution_attack/run/
 research/substitution_attack/voynich_attack_bin
 .local/
+.DS_Store

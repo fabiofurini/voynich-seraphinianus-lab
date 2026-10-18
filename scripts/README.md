@@ -1,6 +1,6 @@
 # Scripts
 
-[Home](../README.md) · [Reproduce](../REPRODUCIBILITY.md)
+[Home](../README.md) · [Reproduce](../notebook/REPRODUCIBILITY.md)
 
 | Script | What it does |
 |---|---|

@@ -1,6 +1,6 @@
 # Rights, provenance and publication scope
 
-[Home](README.md) · [Status](STATUS.md) · [Hypotheses](HYPOTHESES.md) · [Experiments](EXPERIMENTS.md) · [Reports](reports/README.md) · [Reproduce](REPRODUCIBILITY.md) · [Roadmap](ROADMAP.md)
+[Home](README.md) · [Status](notebook/STATUS.md) · [Hypotheses](notebook/HYPOTHESES.md) · [Experiments](notebook/EXPERIMENTS.md) · [Reports](reports/README.md) · [Reproduce](notebook/REPRODUCIBILITY.md) · [Roadmap](notebook/ROADMAP.md)
 
 **Original analysis code:** MIT. **Original prose and generated numerical tables:** CC BY 4.0, attribution “Fabio Furini / Beyond the Signs (voynich-seraphinianus-lab)”; AI-assisted exploratory work. These licences do not cover third-party sources and do not imply endorsement by their authors.
 

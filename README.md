@@ -2,7 +2,7 @@
 
 **An open, reproducible research notebook on the Voynich manuscript and the Codex Seraphinianus.**
 
-[**Website**](https://fabiofurini.github.io/voynich-seraphinianus-lab/) · [Status](STATUS.md) · [Hypotheses](HYPOTHESES.md) · [Experiments](EXPERIMENTS.md) · [Reports](reports/README.md) · [Reproduce](REPRODUCIBILITY.md) · [Roadmap](ROADMAP.md) · [Contribute](CONTRIBUTING.md)
+[**Website**](https://fabiofurini.github.io/voynich-seraphinianus-lab/) · [Status](notebook/STATUS.md) · [Hypotheses](notebook/HYPOTHESES.md) · [Experiments](notebook/EXPERIMENTS.md) · [Reports](reports/README.md) · [Reproduce](notebook/REPRODUCIBILITY.md) · [Roadmap](notebook/ROADMAP.md) · [Contribute](CONTRIBUTING.md)
 
 > We have **not** deciphered the Voynich manuscript, **not** shown that it is meaningless, and **not** shown that it is equivalent to the Codex Seraphinianus. We test explicit hypotheses against controls and keep the results that go against our expectations.
 
@@ -25,7 +25,7 @@ The aim is a shared, reusable base for anyone working on this subject: code, der
 
 ## 2. What has been done
 
-Twelve experiments, all scripted and reproducible (full register in [EXPERIMENTS.md](EXPERIMENTS.md)):
+Twelve experiments, all scripted and reproducible (full register in [EXPERIMENTS.md](notebook/EXPERIMENTS.md)):
 
 | Area | Experiments | Status |
 |---|---|---|
@@ -44,8 +44,8 @@ Evidence pointing in **both** directions. Each line links to the full result.
 
 **Toward a simple, local process (little information beyond the next glyph)**
 
-- Extra context barely helps: the gain from 2 to 3 preceding glyphs is **0.0003–0.0014 bits** in the Voynich against **0.30–0.38 bits** in Latin and Italian, with matched samples ([E02](EXPERIMENTS.md)).
-- A two-state tree grammar (PCFG) predicts Voynich suffix classes **worse** than a chain model (HMM): +0.0193 bits/token, 95% page-bootstrap interval [+0.0065, +0.0343] ([E09–E10](EXPERIMENTS.md)).
+- Extra context barely helps: the gain from 2 to 3 preceding glyphs is **0.0003–0.0014 bits** in the Voynich against **0.30–0.38 bits** in Latin and Italian, with matched samples ([E02](notebook/EXPERIMENTS.md)).
+- A two-state tree grammar (PCFG) predicts Voynich suffix classes **worse** than a chain model (HMM): +0.0193 bits/token, 95% page-bootstrap interval [+0.0065, +0.0343] ([E09–E10](notebook/EXPERIMENTS.md)).
 - A simulated-annealing cipher solver recovers 100% of enciphered Latin and Italian but finds **no readable key** for the Voynich ([E12](research/substitution_attack/README.md)).
 - 39 of 3,844 Voynich words contain a glyph tripled; the Latin control has 0 of 7,595. A simple substitution of Latin cannot produce this.
 
@@ -56,11 +56,11 @@ Evidence pointing in **both** directions. Each line links to the full result.
 - **89.4%** of paragraph-initial words begin with a gallows glyph, against 8.5% of other line-initial words.
 - With connected EVA units the extra-context gain is small but **not zero** (0.003–0.015 bits).
 
-**Our reading.** The text is highly organised, mostly at very short range. The invented Seraphinianus shares several of these properties, so organisation is not proof of meaning, and a weak local signal is not proof of its absence. See [HYPOTHESES.md](HYPOTHESES.md) for verdicts on ten explicit hypotheses.
+**Our reading.** The text is highly organised, mostly at very short range. The invented Seraphinianus shares several of these properties, so organisation is not proof of meaning, and a weak local signal is not proof of its absence. See [HYPOTHESES.md](notebook/HYPOTHESES.md) for verdicts on ten explicit hypotheses.
 
 ## 4. What comes next
 
-Priorities from the [roadmap](ROADMAP.md):
+Priorities from the [roadmap](notebook/ROADMAP.md):
 
 1. **Reliability first:** an independent, pre-registered transcription sample of the Seraphinianus; multiple Voynich transliterations and segmentations.
 2. **Better units:** learn sub-word tokens on training pages only; test whether `qo`, `iin` and gallows are single signs.
@@ -70,16 +70,30 @@ Priorities from the [roadmap](ROADMAP.md):
 
 ## Repository map
 
-| Path | What is inside |
+```
+voynich-seraphinianus-lab/
+├── README.md              ← start here
+├── notebook/              the living research record: status, hypotheses, experiments, roadmap, reproduction
+├── reports/               readable reports, newest first
+├── research/              code and outputs
+│   ├── grammar_comparison/    E01–E11: context models, affixes, OCR audit, PCFG vs HMM, multiscale
+│   ├── patterns/              word families, positional patterns, word pairs
+│   ├── substitution_attack/   E12: cipher solver with positive controls
+│   └── early_studies/         glyph inventory, final-m test, section classifier
+├── scripts/               fetch sources (hash-checked), reproduce suites, pre-publication checks
+├── docs/                  the public website (GitHub Pages)
+├── DATA_SOURCES.json      every external source: URL, SHA-256, rights note
+├── CHECKSUMS.json         SHA-256 of every file in this snapshot
+└── LICENSE · RIGHTS.md · CITATION.cff · CONTRIBUTING.md · CHANGELOG.md
+```
+
+| Folder | Start with |
 |---|---|
-| [`docs/`](docs/) | The public website (static HTML/CSS/JS, no build step): story, results, interactive lab, methods, hypotheses |
-| [`reports/`](reports/README.md) | Readable reports, from the consolidated snapshot back to the first experiments |
-| [`research/grammar_comparison/`](research/grammar_comparison/README.md) | Main comparative experiments E01–E11 and their outputs |
-| [`research/patterns/`](research/patterns/README.md) | Word families, positional patterns, word-pair associations |
-| [`research/substitution_attack/`](research/substitution_attack/README.md) | E12: C++/Python simple-substitution solver with positive controls |
-| [`research/`](research/README.md) | Inventory, final-*m* test, controls and section classifier (earliest studies) |
-| [`scripts/`](scripts/README.md) | Download sources with hash checks, reproduce suites, pre-publication checks |
-| [`DATA_SOURCES.json`](DATA_SOURCES.json) | Every external source: URL, SHA-256, rights note, local path |
+| [`notebook/`](notebook/README.md) | [STATUS](notebook/STATUS.md) · [HYPOTHESES](notebook/HYPOTHESES.md) · [EXPERIMENTS](notebook/EXPERIMENTS.md) · [ROADMAP](notebook/ROADMAP.md) |
+| [`reports/`](reports/README.md) | [Consolidated report, 18 October 2026](reports/2026-10-18-consolidated.md) |
+| [`research/`](research/README.md) | [grammar_comparison](research/grammar_comparison/README.md) · [patterns](research/patterns/README.md) · [substitution_attack](research/substitution_attack/README.md) · [early_studies](research/early_studies/README.md) |
+| [`scripts/`](scripts/README.md) | `fetch_data.py`, `reproduce.py`, `check_publication.py` |
+| [`docs/`](https://fabiofurini.github.io/voynich-seraphinianus-lab/) | The live website |
 
 ## Reproduce in five commands
 
@@ -91,7 +105,7 @@ python scripts/fetch_data.py             # downloads exact source versions, veri
 python scripts/reproduce.py --suite matched
 ```
 
-Other suites: `affixes`, `hierarchy`, `calibration`, `multiscale`, `boundary`, `substitution`. Details and caveats in [REPRODUCIBILITY.md](REPRODUCIBILITY.md). To view the website locally: `python -m http.server 8000 --directory docs`.
+Other suites: `affixes`, `hierarchy`, `calibration`, `multiscale`, `boundary`, `substitution`. Details and caveats in [REPRODUCIBILITY.md](notebook/REPRODUCIBILITY.md). To view the website locally: `python -m http.server 8000 --directory docs`.
 
 ## Cite, reuse, contribute
 
@@ -99,4 +113,4 @@ Other suites: `affixes`, `hierarchy`, `calibration`, `multiscale`, `boundary`, `
 - **Licences:** code MIT; original text and derived tables CC BY 4.0. Third-party sources keep their own terms and are not redistributed ([RIGHTS.md](RIGHTS.md)). Voynich images on the website come from the Beinecke Library (public-domain work); no Seraphinianus images are reproduced.
 - **Contribute** through issues and pull requests: state a hypothesis, corpus version, segmentation, split, control and the result that would prove it wrong ([CONTRIBUTING.md](CONTRIBUTING.md)).
 
-Project by **Fabio Furini**, developed with AI assistance and open to independent verification. Snapshot of 18 October 2026, version 0.2.0.
+Project by **Fabio Furini**, developed with AI assistance and open to independent verification. Snapshot of 18 October 2026, version 0.2.1.

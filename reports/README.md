@@ -1,6 +1,6 @@
 # Reports
 
-[Home](../README.md) · [Experiments](../EXPERIMENTS.md) · [Status](../STATUS.md) · [Hypotheses](../HYPOTHESES.md)
+[Home](../README.md) · [Experiments](../notebook/EXPERIMENTS.md) · [Status](../notebook/STATUS.md) · [Hypotheses](../notebook/HYPOTHESES.md)
 
 Read the newest report first. Older reports are kept as a record of how the analysis evolved; where a later report corrects them, the correction is noted.
 

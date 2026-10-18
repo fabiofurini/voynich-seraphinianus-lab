@@ -1,6 +1,6 @@
 # Voynich and Seraphinianus: consolidated statistical checks
 
-[Home](../README.md) · [Reports](README.md) · [Experiments](../EXPERIMENTS.md) · [Reproduce](../REPRODUCIBILITY.md) · [Sources](../DATA_SOURCES.json) · [Rights](../RIGHTS.md)
+[Home](../README.md) · [Reports](README.md) · [Experiments](../notebook/EXPERIMENTS.md) · [Reproduce](../notebook/REPRODUCIBILITY.md) · [Sources](../DATA_SOURCES.json) · [Rights](../RIGHTS.md)
 
 18 October 2026. Reproducible exploratory study; no translation and no proof of untranslatability.
 

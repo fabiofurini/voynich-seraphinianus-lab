@@ -1,6 +1,6 @@
 # Glyph inventory and frequencies across the whole Voynich transcription (ZL3b)
 
-[Home](../README.md) · [Reports](README.md) · [Glyph inventory](2026-10-17-glyph-inventory.md) · [Code](../research/voynich_full_inventory.py) · [Output](../research/voynich_full_inventory.json)
+[Home](../README.md) · [Reports](README.md) · [Glyph inventory](2026-10-17-glyph-inventory.md) · [Code](../research/early_studies/voynich_full_inventory.py) · [Output](../research/early_studies/voynich_full_inventory.json)
 
 A count of transcribed graphic signs, not of phonemes. Source: Zandbergen–Landini transcription ZL3b, version of 13 May 2025.
 
@@ -237,7 +237,7 @@ Compound forms and extended codes: 547 occurrences, 0.3144% of the total (full l
 - Original EVA glyph table: <https://www.voynich.nu/hist/gabriel/eva2_reference.pdf>
 
 ```bash
-python research/voynich_full_inventory.py research/patterns/voynich_ZL3b.txt > full_inventory.json
+python research/early_studies/voynich_full_inventory.py research/patterns/voynich_ZL3b.txt > full_inventory.json
 ```
 
 Source SHA-256: `8384ef2572444d076a9dfb22bb069808e331546832e0b456a4507adb376e7657`

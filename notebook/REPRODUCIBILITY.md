@@ -1,6 +1,6 @@
 # Reproducibility
 
-[Home](README.md) · [Status](STATUS.md) · [Hypotheses](HYPOTHESES.md) · [Experiments](EXPERIMENTS.md) · [Reports](reports/README.md) · [Reproduce](REPRODUCIBILITY.md) · [Roadmap](ROADMAP.md)
+[Home](../README.md) · [Status](STATUS.md) · [Hypotheses](HYPOTHESES.md) · [Experiments](EXPERIMENTS.md) · [Reports](../reports/README.md) · [Reproduce](REPRODUCIBILITY.md) · [Roadmap](ROADMAP.md)
 
 ## Requirements
 
@@ -34,16 +34,16 @@ The downloader verifies exact source hashes and stops on any mismatch; it never 
 The earliest studies run directly:
 
 ```bash
-python research/voynich_inventory.py research/patterns/voynich_ZL3b.txt <Stolfi H file> > inventory.json
-python research/voynich_full_inventory.py research/patterns/voynich_ZL3b.txt > full_inventory.json
+python research/early_studies/voynich_inventory.py research/patterns/voynich_ZL3b.txt <Stolfi H file> > inventory.json
+python research/early_studies/voynich_full_inventory.py research/patterns/voynich_ZL3b.txt > full_inventory.json
 python research/patterns/patterns.py                 # add --merge-commas for the joined-space variant
-python research/voynich_sections.py research/patterns/voynich_ZL3b.txt > sections.json
+python research/early_studies/voynich_sections.py research/patterns/voynich_ZL3b.txt > sections.json
 ```
 
 ## Known limitations of the code
 
 - Historical scripts and results remain marked as such. `stability.py` and `matched_backoff.py` reuse the data-preparation prefix of earlier scripts; this is kept for numerical fidelity, and a shared tested parser is planned.
-- The first experiments on the Takahashi (H) transcription need an older source that the standard downloader does not fetch. They are documented in the [reports](reports/README.md) and are not run silently by the main suites.
+- The first experiments on the Takahashi (H) transcription need an older source that the standard downloader does not fetch. They are documented in the [reports](../reports/README.md) and are not run silently by the main suites.
 - The numerical outputs are an exploratory snapshot, not an immutable software release.
 
 ## Uncertainty

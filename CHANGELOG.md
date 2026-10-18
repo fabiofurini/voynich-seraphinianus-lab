@@ -1,6 +1,11 @@
 # Changelog
 
-[Home](README.md) · [Status](STATUS.md) · [Hypotheses](HYPOTHESES.md) · [Experiments](EXPERIMENTS.md) · [Reports](reports/README.md) · [Reproduce](REPRODUCIBILITY.md) · [Roadmap](ROADMAP.md)
+[Home](README.md) · [Status](notebook/STATUS.md) · [Hypotheses](notebook/HYPOTHESES.md) · [Experiments](notebook/EXPERIMENTS.md) · [Reports](reports/README.md) · [Reproduce](notebook/REPRODUCIBILITY.md) · [Roadmap](notebook/ROADMAP.md)
+
+## 0.2.1 — 2026-10-18
+- Root decluttered: research record moved to `notebook/`, first experiments to `research/early_studies/`; every link updated.
+- README gains a visual repository tree; README files added to the new folders.
+- Remaining Italian text removed. Website published on GitHub Pages.
 
 ## 0.2.0 — 2026-10-18
 - Whole repository translated into English for the international research community.

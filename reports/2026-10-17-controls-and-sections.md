@@ -1,6 +1,6 @@
 # Voynich: controls and results, second analysis
 
-[Home](../README.md) · [Reports](README.md) · [Experiments](../EXPERIMENTS.md) · [Current status](../STATUS.md)
+[Home](../README.md) · [Reports](README.md) · [Experiments](../notebook/EXPERIMENTS.md) · [Current status](../notebook/STATUS.md)
 
 17 October 2026 · All forms cited are EVA transliterations, not phonetic readings. No translation obtained, no claim of novelty.
 
@@ -17,7 +17,7 @@ The controls do **not** uniquely identify `m` with `r`. The text distinguishes s
 
 ## A. Controls on replacing final m
 
-119 development and 83 test pages for H, by a deterministic split on SHA-256 of the page code modulo 3; the same rule applies to ZL. In every test the vocabulary contains only non-final words of development lines. Details and counts for each sample are in [voynich_controls.json](../research/voynich_controls.json). The additional candidates `iin/ain/ry/rl` were introduced **after** reading the literature: they are exploratory comparisons, not a new blind test of the previously selected candidate.
+119 development and 83 test pages for H, by a deterministic split on SHA-256 of the page code modulo 3; the same rule applies to ZL. In every test the vocabulary contains only non-final words of development lines. Details and counts for each sample are in [voynich_controls.json](../research/early_studies/voynich_controls.json). The additional candidates `iin/ain/ry/rl` were introduced **after** reading the literature: they are exploratory comparisons, not a new blind test of the previously selected candidate.
 
 | Corpus and treatment of uncertain spaces | n | m unchanged | m → r | m → l | m → iin |
 |---|---:|---:|---:|---:|---:|
@@ -83,9 +83,9 @@ It is methodologically correct to abandon the global m = r normalisation for now
 Python 3; the section test needs NumPy. The first two tests use only the standard library.
 
 ```bash
-python research/voynich_test.py <Stolfi H file> > results_base.json
-python research/voynich_controls.py <Stolfi H file> research/patterns/voynich_ZL3b.txt > controls.json
-python research/voynich_sections.py research/patterns/voynich_ZL3b.txt > sections.json
+python research/early_studies/voynich_test.py <Stolfi H file> > results_base.json
+python research/early_studies/voynich_controls.py <Stolfi H file> research/patterns/voynich_ZL3b.txt > controls.json
+python research/early_studies/voynich_sections.py research/patterns/voynich_ZL3b.txt > sections.json
 ```
 
 The included JSON files contain counts, page-by-page predictions and parameters. This final version uses a strictly development-only vocabulary: a first exploratory run had produced 35/39 before types present only in testing were also excluded from the vocabulary. The figure to cite is **34/39**.

@@ -1,6 +1,6 @@
 # Hypothesis register
 
-[Home](README.md) · [Status](STATUS.md) · [Hypotheses](HYPOTHESES.md) · [Experiments](EXPERIMENTS.md) · [Reports](reports/README.md) · [Reproduce](REPRODUCIBILITY.md) · [Roadmap](ROADMAP.md)
+[Home](../README.md) · [Status](STATUS.md) · [Hypotheses](HYPOTHESES.md) · [Experiments](EXPERIMENTS.md) · [Reports](../reports/README.md) · [Reproduce](REPRODUCIBILITY.md) · [Roadmap](ROADMAP.md)
 
 Every negative result is scoped to a model, a dataset and a representation. “Not supported” is not the same as “disproved”.
 
@@ -23,8 +23,8 @@ These are leads, not results. Each lists what motivates it and what could refute
 
 | ID | Conjecture | Motivation | What would refute it |
 |---|---|---|---|
-| C1 | Words are built as prefix + base + suffix, or by extensions `X → aX`, `X → Xa` | All 36 combinations of six starts and six endings occur ([patterns](research/patterns/README.md)) | Units learned on training pages that do not reproduce the families; note that finite-state machines generate such forms too |
-| C2 | Line-final `m` is a positional variant of `r` | m → r turns 74.7% of held-out cases into known words, against 42.6% unchanged | Already weakened: the best substitute changes with comma handling, and labels `otalar` / `otalam` coexist on f70v2 ([report](reports/2026-10-17-controls-and-sections.md)) |
+| C1 | Words are built as prefix + base + suffix, or by extensions `X → aX`, `X → Xa` | All 36 combinations of six starts and six endings occur ([patterns](../research/patterns/README.md)) | Units learned on training pages that do not reproduce the families; note that finite-state machines generate such forms too |
+| C2 | Line-final `m` is a positional variant of `r` | m → r turns 74.7% of held-out cases into known words, against 42.6% unchanged | Already weakened: the best substitute changes with comma handling, and labels `otalar` / `otalam` coexist on f70v2 ([report](../reports/2026-10-17-controls-and-sections.md)) |
 | C3 | `qo` and `iin` are single signs | q is followed by o 98% of the time; in/iin/iiin occur 1,601/3,688/149 times | Segmentation comparisons on identical held-out targets |
 | C4 | Gallows glyphs mark paragraph starts | 89.4% of paragraph-initial words vs. 8.5% of other line-initial words; 169 of 178 pages agree | Image-level checks showing the effect is a transcription artefact |
 | C5 | Zodiac labels name objects | `okeodaly` on both Taurus pages (f71v, f72r1) | Both folios share a bifolio, so this is one observation |

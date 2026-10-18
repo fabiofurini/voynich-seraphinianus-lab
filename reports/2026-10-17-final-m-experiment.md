@@ -1,6 +1,6 @@
 # Voynich: a reproducible experiment on final m
 
-[Home](../README.md) · [Reports](README.md) · [Experiments](../EXPERIMENTS.md) · [Current status](../STATUS.md)
+[Home](../README.md) · [Reports](README.md) · [Experiments](../notebook/EXPERIMENTS.md) · [Current status](../notebook/STATUS.md)
 
 17 October 2026 · Exploratory analysis; no translation and no claim of novelty. Superseded by the [controls report](2026-10-17-controls-and-sections.md).
 
@@ -40,7 +40,7 @@ Compare the preceding contexts of `Xam/Xar/Xal` pairs while controlling for sect
 ## Reproduction
 
 ```bash
-python research/voynich_test.py <Stolfi H file> > results.json
+python research/early_studies/voynich_test.py <Stolfi H file> > results.json
 ```
 
-The source hash is recorded in the [results](../research/voynich_results.json). No external dependencies.
+The source hash is recorded in the [results](../research/early_studies/voynich_results.json). No external dependencies.

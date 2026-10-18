@@ -1,6 +1,6 @@
 # Grammar comparison (E01–E11)
 
-[Home](../../README.md) · [Experiment register](../../EXPERIMENTS.md) · [Consolidated report](../../reports/2026-10-18-consolidated.md)
+[Home](../../README.md) · [Experiment register](../../notebook/EXPERIMENTS.md) · [Consolidated report](../../reports/2026-10-18-consolidated.md)
 
 Comparative experiments on five corpora: Voynich (EVA and connected-EVA units), Codex Seraphinianus (OCR), Latin (Celsus) and Italian (Murri). Every script writes a JSON file of the same name with `_results`.
 
@@ -22,4 +22,4 @@ Comparative experiments on five corpora: Voynich (EVA and connected-EVA units), 
 
 Run through the suites in [`scripts/reproduce.py`](../../scripts/README.md), after `python scripts/fetch_data.py`.
 
-**Code notes.** The scripts are compact and some reuse the data-preparation prefix of earlier scripts (by executing them); this is kept so that the published numbers are reproduced exactly. A shared, tested parser is on the [roadmap](../../ROADMAP.md).
+**Code notes.** The scripts are compact and some reuse the data-preparation prefix of earlier scripts (by executing them); this is kept so that the published numbers are reproduced exactly. A shared, tested parser is on the [roadmap](../../notebook/ROADMAP.md).
