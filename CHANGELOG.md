@@ -2,6 +2,11 @@
 
 [Home](README.md) · [Status](notebook/STATUS.md) · [Hypotheses](notebook/HYPOTHESES.md) · [Experiments](notebook/EXPERIMENTS.md) · [Reports](reports/README.md) · [Reproduce](notebook/REPRODUCIBILITY.md) · [Roadmap](notebook/ROADMAP.md)
 
+## 0.4.0 — 2026-10-18
+- New pre-registered experiments E13 (syllabary fingerprint) and E14 (zodiac labels as a cycle) in `research/structure_probes/`; protocol committed before the runs (`56565ef`).
+- E13: no syllabary signature in 24 analyses; mock-syllabary control failed narrowly. E14: zodiac labels are not a numbering cycle; numeral controls pass.
+- Hypotheses H11, H12 added; roadmap follow-ups.
+
 ## 0.3.0 — 2026-10-18
 - Italian version of the whole website in `docs/it/` (five pages), with an EN · IT switch and `hreflang` links on every page.
 - Charts and the Voynich Lab are bilingual: labels, tooltips, insights and number formats (decimal comma) follow the page language.

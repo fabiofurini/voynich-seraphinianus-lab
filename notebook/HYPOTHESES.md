@@ -15,6 +15,8 @@ Every negative result is scoped to a model, a dataset and a representation. “N
 | H07 | The tested 2-state PCFG predicts Voynich suffix classes better than a 2-state HMM | Contradicted on the held-out split | PCFG − HMM = +0.0193 bits/token; page bootstrap 95% [+0.0065, +0.0343] |
 | H08 | The Seraphinianus OCR is accurate enough to treat every repeated-character count as ground truth | Not justified | Label comparisons expose count and segmentation disagreements |
 | H09 | The manuscript has no recoverable meaning | Open | No experiment here establishes this |
+| H11 | The script is a consonant–vowel syllabary whose alternations form a Kober/Ventris grid | Not supported; test underpowered | 0 of 24 analyses syllabary-like; alternation inventory alphabet-sized (18–31 signs vs 51–77 in a mock syllabary); the mock-syllabary control did not pass ([E13](../research/structure_probes/README.md)) |
+| H12 | The zodiac labels are a cyclic numbering (degrees or days) usable as an anchor | Contradicted for this representation | No positional alignment (p = 0.13) or adjacency structure (p = 0.30) while numeral controls give p = 0.005 ([E14](../research/structure_probes/README.md)) |
 | H10 | The text respects or violates Moro's constraints | Open; not directly testable with the current representation | No identified syntax, utterance boundaries or morphosyntactic units |
 
 ## Conjectures under study
@@ -27,7 +29,7 @@ These are leads, not results. Each lists what motivates it and what could refute
 | C2 | Line-final `m` is a positional variant of `r` | m → r turns 74.7% of held-out cases into known words, against 42.6% unchanged | Already weakened: the best substitute changes with comma handling, and labels `otalar` / `otalam` coexist on f70v2 ([report](../reports/2026-10-17-controls-and-sections.md)) |
 | C3 | `qo` and `iin` are single signs | q is followed by o 98% of the time; in/iin/iiin occur 1,601/3,688/149 times | Segmentation comparisons on identical held-out targets |
 | C4 | Gallows glyphs mark paragraph starts | 89.4% of paragraph-initial words vs. 8.5% of other line-initial words; 169 of 178 pages agree | Image-level checks showing the effect is a transcription artefact |
-| C5 | Zodiac labels name objects | `okeodaly` on both Taurus pages (f71v, f72r1) | Both folios share a bifolio, so this is one observation |
+| C5 | Zodiac labels name objects (E14: they are not a numbering cycle) | `okeodaly` on both Taurus pages (f71v, f72r1) | Both folios share a bifolio, so this is one observation |
 | C6 | The text was produced by a local process | Weak long-range context, full prefix–suffix combinability, section-wise drift | A stable hierarchical or long-distance effect on held-out pages |
 
 ## Candidate compositional rules

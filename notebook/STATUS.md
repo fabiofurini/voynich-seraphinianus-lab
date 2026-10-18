@@ -18,6 +18,8 @@ Exploratory snapshot, not a peer-reviewed publication. One manuscript and one OC
 | PCFG/HMM first fit (E07) | Calibration failed; superseded | Initial optimiser missed a synthetic hierarchy | Must not be used as negative evidence |
 | PCFG/HMM stronger fit (E08–E10) | Completed and calibrated | Voynich PCFG worse; Seraphinianus nominal advantage uncertain | Two states, suffix classes, lines not known to be sentences |
 | Substitution attack, Italian/Latin (E12) | No coherent reading | Controls recovered; Voynich not | Heuristic; chosen languages, units and spacing only |
+| Syllabary fingerprint (E13, pre-registered) | Completed | No syllabary signature in 24 analyses; alphabet-sized inventory; three stable positional glyph classes | Mock-syllabary control failed narrowly: power for syllabaries not demonstrated |
+| Zodiac labels as a cycle (E14, pre-registered) | Completed | No positional alignment across signs (p = 0.13), no sequential structure (p = 0.30); numeral controls pass | Labels may still be names; only cyclic numbering is excluded |
 | Moro's structural constraints | Not directly tested | No established mapping from syntax to unknown glyphs | Cannot infer compliance from local statistics |
 | Decipherment or meaninglessness | Unresolved | No claim either way | Statistical similarity is not identifiability |
 

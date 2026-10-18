@@ -25,7 +25,7 @@ The aim is a shared, reusable base for anyone working on this subject: code, der
 
 ## 2. What has been done
 
-Twelve experiments, all scripted and reproducible (full register in [EXPERIMENTS.md](notebook/EXPERIMENTS.md)):
+Fourteen experiments, all scripted and reproducible (full register in [EXPERIMENTS.md](notebook/EXPERIMENTS.md)):
 
 | Area | Experiments | Status |
 |---|---|---|
@@ -36,6 +36,7 @@ Twelve experiments, all scripted and reproducible (full register in [EXPERIMENTS
 | Hierarchical grammar | E07 first fit (**calibration failed**, kept on record) · E08 calibration · E09 stronger fit · E10 page bootstrap | Done |
 | Beyond the word | E11 multiscale word clustering | Exploratory |
 | Decipherment | E12 simple-substitution attack with positive controls | No reading found |
+| Footholds for decipherment | **E13** syllabary fingerprint · **E14** zodiac labels as a cycle (both pre-registered) | No syllabary signature · not a numbering cycle |
 | Earlier studies | Final-*m* allograph test, section classifier, positional patterns | Done ([reports](reports/README.md)) |
 
 ## 3. What evidence we have
@@ -48,6 +49,7 @@ Evidence pointing in **both** directions. Each line links to the full result.
 - A two-state tree grammar (PCFG) predicts Voynich suffix classes **worse** than a chain model (HMM): +0.0193 bits/token, 95% page-bootstrap interval [+0.0065, +0.0343] ([E09–E10](notebook/EXPERIMENTS.md)).
 - A simulated-annealing cipher solver recovers 100% of enciphered Latin and Italian but finds **no readable key** for the Voynich ([E12](research/substitution_attack/README.md)).
 - 39 of 3,844 Voynich words contain a glyph tripled; the Latin control has 0 of 7,595. A simple substitution of Latin cannot produce this.
+- Neither foothold that made Linear B decipherable is present: no syllabary signature in sign alternations (0 of 24 analyses), and the zodiac labels do not behave as a numbering cycle although numeral controls pass the same test ([E13–E14](research/structure_probes/README.md)).
 
 **Toward an organised, possibly meaningful system**
 
@@ -79,6 +81,7 @@ voynich-seraphinianus-lab/
 │   ├── grammar_comparison/    E01–E11: context models, affixes, OCR audit, PCFG vs HMM, multiscale
 │   ├── patterns/              word families, positional patterns, word pairs
 │   ├── substitution_attack/   E12: cipher solver with positive controls
+│   ├── structure_probes/      E13–E14: syllabary fingerprint, zodiac cycle (pre-registered)
 │   └── early_studies/         glyph inventory, final-m test, section classifier
 ├── scripts/               fetch sources (hash-checked), reproduce suites, pre-publication checks
 ├── docs/                  the public website (GitHub Pages); Italian version in docs/it/
@@ -91,7 +94,7 @@ voynich-seraphinianus-lab/
 |---|---|
 | [`notebook/`](notebook/README.md) | [STATUS](notebook/STATUS.md) · [HYPOTHESES](notebook/HYPOTHESES.md) · [EXPERIMENTS](notebook/EXPERIMENTS.md) · [ROADMAP](notebook/ROADMAP.md) |
 | [`reports/`](reports/README.md) | [Consolidated report, 18 October 2026](reports/2026-10-18-consolidated.md) |
-| [`research/`](research/README.md) | [grammar_comparison](research/grammar_comparison/README.md) · [patterns](research/patterns/README.md) · [substitution_attack](research/substitution_attack/README.md) · [early_studies](research/early_studies/README.md) |
+| [`research/`](research/README.md) | [grammar_comparison](research/grammar_comparison/README.md) · [patterns](research/patterns/README.md) · [substitution_attack](research/substitution_attack/README.md) · [structure_probes](research/structure_probes/README.md) · [early_studies](research/early_studies/README.md) |
 | [`scripts/`](scripts/README.md) | `fetch_data.py`, `reproduce.py`, `check_publication.py` |
 | [`docs/`](https://fabiofurini.github.io/voynich-seraphinianus-lab/) | The live website |
 
@@ -113,4 +116,4 @@ Other suites: `affixes`, `hierarchy`, `calibration`, `multiscale`, `boundary`, `
 - **Licences:** code MIT; original text and derived tables CC BY 4.0. Third-party sources keep their own terms and are not redistributed ([RIGHTS.md](RIGHTS.md)). Voynich images on the website come from the Beinecke Library (public-domain work); no Seraphinianus images are reproduced.
 - **Contribute** through issues and pull requests: state a hypothesis, corpus version, segmentation, split, control and the result that would prove it wrong ([CONTRIBUTING.md](CONTRIBUTING.md)).
 
-Project by **Fabio Furini**, developed with AI assistance and open to independent verification. Snapshot of 18 October 2026, version 0.3.0.
+Project by **Fabio Furini**, developed with AI assistance and open to independent verification. Snapshot of 18 October 2026, version 0.4.0.

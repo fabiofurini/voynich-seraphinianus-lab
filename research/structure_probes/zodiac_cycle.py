@@ -106,27 +106,30 @@ def text_baseline(rows, sizes, rng, reps):
 
 # ------------------------------------------------------------------ B2
 
-def align_distance(a, b):
-    """Mean normalised edit distance of rank-paired labels, minimised over rotations and direction."""
-    n1, n2 = len(a), len(b)
+def distance_matrix(a, b):
+    return np.array([[C.norm_lev(x, y) for y in b] for x in a])
+
+
+def align_distance(D, order=None):
+    """Mean normalised edit distance of rank-paired labels, minimised over cyclic rotations
+    and reading direction of the second page. D[i, j] = distance between label i of the
+    first page and label j of the second; `order` is a permutation of the second page."""
+    n1, n2 = D.shape
+    order = np.arange(n2) if order is None else np.asarray(order)
+    ranks = np.array([round(i * (n2 - 1) / (n1 - 1)) if n1 > 1 else 0 for i in range(n1)])
     best = None
-    for direction in (1, -1):
-        bb = b[::direction]
+    for seq in (order, order[::-1]):
         for rot in range(n2):
-            br = bb[rot:] + bb[:rot]
-            d = 0.0
-            for i in range(n1):
-                j = round(i * (n2 - 1) / (n1 - 1)) if n1 > 1 else 0
-                d += C.norm_lev(a[i], br[j])
-            d /= n1
+            br = np.roll(seq, -rot)
+            d = D[np.arange(n1), br[ranks]].mean()
             if best is None or d < best:
                 best = d
-    return best
+    return float(best)
 
 
-def plain_distance(a, b):
-    n1, n2 = len(a), len(b)
-    return float(np.mean([C.norm_lev(a[i], b[round(i * (n2 - 1) / (n1 - 1)) if n1 > 1 else 0]) for i in range(n1)]))
+def plain_distance(D):
+    n1, n2 = D.shape
+    return float(np.mean([D[i, round(i * (n2 - 1) / (n1 - 1)) if n1 > 1 else 0] for i in range(n1)]))
 
 
 def positional_alignment(sequences, rng, max_diff=3, perms=PERMUTATIONS):
@@ -138,14 +141,15 @@ def positional_alignment(sequences, rng, max_diff=3, perms=PERMUTATIONS):
             a, b = sequences[pages[i]], sequences[pages[j]]
             if abs(len(a) - len(b)) > max_diff or min(len(a), len(b)) < 4:
                 continue
-            obs = align_distance(a, b)
+            D = distance_matrix(a, b)
+            obs = align_distance(D)
             null = []
+            idx = list(range(len(b)))
             for _ in range(perms):
-                bp = b[:]
-                rng.shuffle(bp)
-                null.append(align_distance(a, bp))
+                rng.shuffle(idx)
+                null.append(align_distance(D, idx))
             s = C.summarize_null(obs, null, larger_is_extreme=False)
-            s.update({'pages': [pages[i], pages[j]], 'plain_rank_distance': plain_distance(a, b)})
+            s.update({'pages': [pages[i], pages[j]], 'plain_rank_distance': plain_distance(D)})
             pairs.append(s)
             pooled_obs.append(obs)
             pooled_null += np.array(null)

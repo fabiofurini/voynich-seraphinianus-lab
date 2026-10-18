@@ -61,3 +61,63 @@ python research/structure_probes/zodiac_cycle.py            # -> zodiac_cycle_re
 ```
 
 Python 3.10+, NumPy only.
+
+---
+
+## Results (run on 18 October 2026, after the pre-registration commit `56565ef`)
+
+Outputs: [syllabary_fingerprint_results.json](syllabary_fingerprint_results.json) · [zodiac_cycle_results.json](zodiac_cycle_results.json). Runtime about 3 minutes each.
+
+**Implementation note.** Before the first run, two functions were rewritten for speed without changing the protocol: the CNM partition is vectorised with NumPy (identical partitions and *Q* on 200 of 200 random test graphs, same tie-breaking), and B2 pre-computes the label distance matrix once per page pair instead of once per permutation. Both changes are in the results commit.
+
+### E13 — Syllabary fingerprint
+
+**Controls.** Latin and Italian letters are classified *alphabet-like* in all 16 analyses, and the found partition recovers vowels vs consonants (Latin purity 0.95–1.00). The **mock CV syllabary never reaches the pre-registered "syllabary-like" criteria.** Its closest result (stem 3, forward) has 6 communities and a largest community of 27% of nodes (rule: ≤ 25%), with purity against consonant classes 0.53 (rule: ≥ 0.6). Under the decision rules the positive control fails narrowly, so **this test cannot classify any corpus as a syllabary**: its power to detect one is not demonstrated.
+
+**Voynich**, 24 analyses (3 segmentations × forward/mirrored × stem 2/3 × matched/full):
+
+| Verdict | Analyses |
+|---|---:|
+| syllabary-like | **0** |
+| alphabet-like | 12 |
+| mixed / not classifiable | 9 |
+| free-combination-like | 3 (all stem 2, matched sample, mirrored) |
+
+Modularity is above the null in 21 of 24 analyses (p ≤ 0.006); the partitions have 2–3 communities, the largest holding 36–70% of nodes. The Seraphinianus behaves the same way (alphabet-like, mixed or free-combination; never syllabary-like), so this pattern does **not** separate a script with meaning from an invented one.
+
+**Verdict under the pre-registered rules.** No syllabary signature in any of 24 analyses; the dominant pattern is "few large classes". Because the CV control did not pass, the absence of a syllabary signature is **suggestive, not conclusive**.
+
+**Observations not covered by the pre-registration** (reported as exploratory):
+- *Inventory size.* Signs with alternation degree ≥ 5 number 18–31 in the Voynich, 20–23 in the alphabets and 51–77 in the mock syllabary. The Voynich alternation graph is alphabet-sized.
+- *Stable glyph classes.* In the forward analyses the Voynich splits into three classes that recur across stems, segmentations and samples:
+  1. the gallows and their bench forms with `q`: `k t p f ckh cth cph cfh q` (sometimes `g`, `b`);
+  2. `a e o y d ch sh`;
+  3. `i l r m n` with the `in/iin/iiin` units (sometimes `s`, `g`, `j`).
+
+  The alphabets split into vowels and consonants instead. The first class matches the "core" of Stolfi's [*A Grammar for Voynichese Words*](https://www.ic.unicamp.br/~stolfi/voynich/00-EXPORT/00-06-07-word-grammar/) (2000); the other two divide his "mantle" and "crust" differently. The classes look **positional** (where a glyph can stand in a word) rather than phonological. This replicates, by a blind method, a structure described in the literature; it is not a new discovery.
+
+### E14 — Zodiac labels as a cycle
+
+**Controls.** The power check passes. Latin cardinals and Roman numerals 1–30: B1 = 100% recurrence, B2 p = 0.005 (perfect alignment), B3 p = 0.005 (the minimum with 199 permutations). Distinct Latin words: B1 = 0%, B2 p = 0.57, B3 p = 0.35.
+
+**Voynich** (247 clean single-word labels, 285 clean labels on 12 pages, 28 rings):
+
+| Test | Result | Reference |
+|---|---|---|
+| B1 cross-sign repetition | 21.5% of labels recur on another sign (22 types; `otaly` on 4 signs) | running-text blocks 34.6% (5th–95th percentile 27.5–42.1%); pharmaceutical 5.7%, nymph 7.1%, cosmological 0%, star 0% |
+| B2 positional alignment | pooled p = 0.128; 2 of 34 page pairs below 0.05 (1.7 expected by chance) | numerals p = 0.005 |
+| B3 within-ring adjacency | p = 0.301 | numerals p = 0.005 |
+| B4 descriptive | 77% start with `o`, 54% with `ot-`/`ok-` (running text: 20% start with `o`); mean length 6.5 units (text 4.5); 48% also occur in running text | — |
+
+**Verdict under the pre-registered rules: mixed.** B1 falls between the two definitions: below running text, above the other label families. B2 and B3 are clearly negative while the numeral controls pass. **The labels do not behave as a numbering cycle**: labels at the same position on different signs are no more alike than chance, and neighbouring labels do not progress like consecutive numerals.
+
+Exploratory reading: the zodiac labels form a distinct vocabulary class with a characteristic `o-`/`ot-`/`ok-` onset. They recur across signs more than other labels do because they share that vocabulary, not because they share positions.
+
+### What the two probes say together
+
+The question was whether the Voynich offers either of the two footholds that made Linear B decipherable.
+
+- **Sign system (Kober/Ventris grid):** no syllabary signature; the alternation structure has alphabet size and positional glyph classes. The test's power for syllabaries is not demonstrated, so this route is weakened, not closed.
+- **Internal anchor (zodiac as a numbered cycle):** not present in its most natural form, with demonstrated power. The zodiac labels may still be names (of stars, days or figures), but they cannot be used as a numeral key.
+
+Neither probe opens the Linear B route; both narrow it. A decipherment from internal evidence alone would now need either a non-cyclic anchor or a sign system that is neither an alphabet written letter by letter nor a simple syllabary.

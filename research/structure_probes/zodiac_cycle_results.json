@@ -1,0 +1,937 @@
+{
+ "experiment": "E14 zodiac cycle",
+ "seed": 20261018,
+ "permutations": 999,
+ "pages": {
+  "f70v1": "Aries (dark)",
+  "f70v2": "Pisces",
+  "f71r": "Aries (light)",
+  "f71v": "Taurus (light)",
+  "f72r1": "Taurus (dark)",
+  "f72r2": "Gemini",
+  "f72r3": "Cancer",
+  "f72v1": "Libra",
+  "f72v2": "Virgo",
+  "f72v3": "Leo",
+  "f73r": "Scorpio",
+  "f73v": "Sagittarius"
+ },
+ "inventory": {
+  "labels": 299,
+  "clean_single_word": 247,
+  "clean_multi_word": 38,
+  "uncertain_or_special": 14,
+  "without_clock_position": 1,
+  "per_page": {
+   "f70v1": 15,
+   "f70v2": 30,
+   "f71r": 15,
+   "f71v": 15,
+   "f72r1": 15,
+   "f72r2": 29,
+   "f72r3": 30,
+   "f72v1": 30,
+   "f72v2": 30,
+   "f72v3": 30,
+   "f73r": 30,
+   "f73v": 30
+  },
+  "rings_per_page": {
+   "f70v1": 2,
+   "f70v2": 3,
+   "f71r": 2,
+   "f71v": 2,
+   "f72r1": 2,
+   "f72r2": 3,
+   "f72r3": 3,
+   "f72v1": 2,
+   "f72v2": 2,
+   "f72v3": 2,
+   "f73r": 3,
+   "f73v": 3
+  }
+ },
+ "B1_cross_sign_repetition": {
+  "zodiac_Lz": {
+   "labels": 247,
+   "types": 213,
+   "types_on_2plus_groups": 22,
+   "share_of_labels_recurring_elsewhere": 0.2145748987854251,
+   "most_repeated": [
+    [
+     "otaly",
+     4
+    ],
+    [
+     "okal",
+     3
+    ],
+    [
+     "oky",
+     3
+    ],
+    [
+     "okeody",
+     3
+    ],
+    [
+     "otaldar",
+     2
+    ],
+    [
+     "okeoly",
+     2
+    ],
+    [
+     "okydy",
+     2
+    ],
+    [
+     "okaram",
+     2
+    ],
+    [
+     "otalaiin",
+     2
+    ],
+    [
+     "otaraldy",
+     2
+    ],
+    [
+     "okalar",
+     2
+    ],
+    [
+     "okaly",
+     2
+    ]
+   ]
+  },
+  "pharmaceutical_Lf": {
+   "labels": 174,
+   "types": 166,
+   "types_on_2plus_groups": 4,
+   "share_of_labels_recurring_elsewhere": 0.05747126436781609,
+   "most_repeated": [
+    [
+     "okol",
+     3
+    ],
+    [
+     "otoldy",
+     3
+    ],
+    [
+     "otoky",
+     2
+    ],
+    [
+     "otaly",
+     2
+    ]
+   ],
+   "pages": 15
+  },
+  "cosmological_L0": {
+   "labels": 122,
+   "types": 113,
+   "types_on_2plus_groups": 0,
+   "share_of_labels_recurring_elsewhere": 0.0,
+   "most_repeated": [],
+   "pages": 4
+  },
+  "star_Ls": {
+   "labels": 65,
+   "types": 65,
+   "types_on_2plus_groups": 0,
+   "share_of_labels_recurring_elsewhere": 0.0,
+   "most_repeated": [],
+   "pages": 4
+  },
+  "nymph_Ln": {
+   "labels": 56,
+   "types": 53,
+   "types_on_2plus_groups": 2,
+   "share_of_labels_recurring_elsewhere": 0.07142857142857142,
+   "most_repeated": [
+    [
+     "otoly",
+     2
+    ],
+    [
+     "otedy",
+     2
+    ]
+   ],
+   "pages": 8
+  },
+  "running_text_blocks_same_sizes": {
+   "mean_share": 0.3463625568888727,
+   "p5": 0.2748987854251012,
+   "p95": 0.42105263157894735,
+   "samples": 999
+  },
+  "within_page_repeats": 7
+ },
+ "B2_positional_alignment": {
+  "pairs": [
+   {
+    "observed": 0.5873544973544973,
+    "null_mean": 0.5991015618793396,
+    "null_sd": 0.012578009513737913,
+    "null_min": 0.5535582010582012,
+    "null_max": 0.6293518518518518,
+    "z": -0.9339366862468954,
+    "p_empirical": 0.17,
+    "permutations": 999,
+    "pages": [
+     "f70v1",
+     "f71r"
+    ],
+    "plain_rank_distance": 0.6168253968253968
+   },
+   {
+    "observed": 0.5902026677026677,
+    "null_mean": 0.6213288554955222,
+    "null_sd": 0.018536331353957356,
+    "null_min": 0.5334422059422059,
+    "null_max": 0.6634330484330485,
+    "z": -1.6791989309259563,
+    "p_empirical": 0.06,
+    "permutations": 999,
+    "pages": [
+     "f70v1",
+     "f71v"
+    ],
+    "plain_rank_distance": 0.69505957005957
+   },
+   {
+    "observed": 0.640460557960558,
+    "null_mean": 0.6389450802413766,
+    "null_sd": 0.014984650493523077,
+    "null_min": 0.5801587301587302,
+    "null_max": 0.6701118326118325,
+    "z": 0.1011353397822935,
+    "p_empirical": 0.512,
+    "permutations": 999,
+    "pages": [
+     "f70v1",
+     "f72r1"
+    ],
+    "plain_rank_distance": 0.7324338624338623
+   },
+   {
+    "observed": 0.5828373015873015,
+    "null_mean": 0.5733254229285976,
+    "null_sd": 0.011583521852924066,
+    "null_min": 0.5242772108843538,
+    "null_max": 0.6040674603174603,
+    "z": 0.8211560162337709,
+    "p_empirical": 0.796,
+    "permutations": 999,
+    "pages": [
+     "f70v2",
+     "f72r2"
+    ],
+    "plain_rank_distance": 0.6240504535147392
+   },
+   {
+    "observed": 0.6774686039917132,
+    "null_mean": 0.6751506809104848,
+    "null_sd": 0.010756060086308694,
+    "null_min": 0.6306023400036006,
+    "null_max": 0.701646474440592,
+    "z": 0.21549926856385113,
+    "p_empirical": 0.544,
+    "permutations": 999,
+    "pages": [
+     "f70v2",
+     "f72r3"
+    ],
+    "plain_rank_distance": 0.706228365472063
+   },
+   {
+    "observed": 0.6811507936507936,
+    "null_mean": 0.6727599481567735,
+    "null_sd": 0.011860167358854388,
+    "null_min": 0.6152069160997733,
+    "null_max": 0.7010912698412699,
+    "z": 0.7074812049558233,
+    "p_empirical": 0.755,
+    "permutations": 999,
+    "pages": [
+     "f70v2",
+     "f72v1"
+    ],
+    "plain_rank_distance": 0.7090419501133788
+   },
+   {
+    "observed": 0.6945294784580499,
+    "null_mean": 0.6835987064161667,
+    "null_sd": 0.011343827295245034,
+    "null_min": 0.639030612244898,
+    "null_max": 0.7099773242630387,
+    "z": 0.9635876637918336,
+    "p_empirical": 0.833,
+    "permutations": 999,
+    "pages": [
+     "f70v2",
+     "f72v2"
+    ],
+    "plain_rank_distance": 0.6945294784580499
+   },
+   {
+    "observed": 0.6445114409400124,
+    "null_mean": 0.6310378212163926,
+    "null_sd": 0.0122880591806676,
+    "null_min": 0.5826066790352504,
+    "null_max": 0.6582985466914039,
+    "z": 1.0964806993131533,
+    "p_empirical": 0.884,
+    "permutations": 999,
+    "pages": [
+     "f70v2",
+     "f72v3"
+    ],
+    "plain_rank_distance": 0.6920879715522572
+   },
+   {
+    "observed": 0.6868905895691609,
+    "null_mean": 0.6694274206178968,
+    "null_sd": 0.012356438477213313,
+    "null_min": 0.6185090702947845,
+    "null_max": 0.700014172335601,
+    "z": 1.4132849836518977,
+    "p_empirical": 0.953,
+    "permutations": 999,
+    "pages": [
+     "f70v2",
+     "f73r"
+    ],
+    "plain_rank_distance": 0.770252267573696
+   },
+   {
+    "observed": 0.7187925170068027,
+    "null_mean": 0.7013355617522286,
+    "null_sd": 0.011057869359175344,
+    "null_min": 0.6464002267573697,
+    "null_max": 0.7289540816326532,
+    "z": 1.5786906760739678,
+    "p_empirical": 0.959,
+    "permutations": 999,
+    "pages": [
+     "f70v2",
+     "f73v"
+    ],
+    "plain_rank_distance": 0.7630243764172338
+   },
+   {
+    "observed": 0.6078060828060827,
+    "null_mean": 0.6293521367595443,
+    "null_sd": 0.014493910678644605,
+    "null_min": 0.5714344914344914,
+    "null_max": 0.6634539534539534,
+    "z": -1.4865590406326705,
+    "p_empirical": 0.078,
+    "permutations": 999,
+    "pages": [
+     "f71r",
+     "f71v"
+    ],
+    "plain_rank_distance": 0.6491177341177341
+   },
+   {
+    "observed": 0.6321428571428572,
+    "null_mean": 0.6191090007756673,
+    "null_sd": 0.014706330306809063,
+    "null_min": 0.5521861471861472,
+    "null_max": 0.6522414622414623,
+    "z": 0.8862752362603468,
+    "p_empirical": 0.807,
+    "permutations": 999,
+    "pages": [
+     "f71r",
+     "f72r1"
+    ],
+    "plain_rank_distance": 0.7365824915824917
+   },
+   {
+    "observed": 0.6231072498929642,
+    "null_mean": 0.6212637464621591,
+    "null_sd": 0.01875063469468819,
+    "null_min": 0.5445615892044463,
+    "null_max": 0.6686149168292025,
+    "z": 0.0983168549130405,
+    "p_empirical": 0.495,
+    "permutations": 999,
+    "pages": [
+     "f71v",
+     "f72r1"
+    ],
+    "plain_rank_distance": 0.7247912801484231
+   },
+   {
+    "observed": 0.6620469866268186,
+    "null_mean": 0.6666772793815279,
+    "null_sd": 0.009926487118728266,
+    "null_min": 0.6270007828306149,
+    "null_max": 0.6904206962505283,
+    "z": -0.4664583451655641,
+    "p_empirical": 0.285,
+    "permutations": 999,
+    "pages": [
+     "f72r2",
+     "f72r3"
+    ],
+    "plain_rank_distance": 0.6620469866268186
+   },
+   {
+    "observed": 0.6433531746031746,
+    "null_mean": 0.6715281750003973,
+    "null_sd": 0.010222198384573665,
+    "null_min": 0.6275368480725624,
+    "null_max": 0.6987103174603175,
+    "z": -2.7562564662941376,
+    "p_empirical": 0.013,
+    "permutations": 999,
+    "pages": [
+     "f72r2",
+     "f72v1"
+    ],
+    "plain_rank_distance": 0.7210034013605442
+   },
+   {
+    "observed": 0.6749999999999999,
+    "null_mean": 0.6739798046345666,
+    "null_sd": 0.010592419420058936,
+    "null_min": 0.6290958049886621,
+    "null_max": 0.6962443310657596,
+    "z": 0.09631372446424709,
+    "p_empirical": 0.493,
+    "permutations": 999,
+    "pages": [
+     "f72r2",
+     "f72v2"
+    ],
+    "plain_rank_distance": 0.7088860544217689
+   },
+   {
+    "observed": 0.5980983302411874,
+    "null_mean": 0.5977163013869363,
+    "null_sd": 0.011857666050870162,
+    "null_min": 0.5440888476602762,
+    "null_max": 0.6221049783549782,
+    "z": 0.03221787935434885,
+    "p_empirical": 0.447,
+    "permutations": 999,
+    "pages": [
+     "f72r2",
+     "f72v3"
+    ],
+    "plain_rank_distance": 0.6967480931766646
+   },
+   {
+    "observed": 0.6689909297052156,
+    "null_mean": 0.6596302226262545,
+    "null_sd": 0.010796625721492143,
+    "null_min": 0.6089285714285715,
+    "null_max": 0.6861536281179138,
+    "z": 0.867003017463811,
+    "p_empirical": 0.806,
+    "permutations": 999,
+    "pages": [
+     "f72r2",
+     "f73r"
+    ],
+    "plain_rank_distance": 0.707624716553288
+   },
+   {
+    "observed": 0.7021683673469388,
+    "null_mean": 0.6971585531109341,
+    "null_sd": 0.010237080723792744,
+    "null_min": 0.6525085034013606,
+    "null_max": 0.723327664399093,
+    "z": 0.4893791864277272,
+    "p_empirical": 0.662,
+    "permutations": 999,
+    "pages": [
+     "f72r2",
+     "f73v"
+    ],
+    "plain_rank_distance": 0.7144132653061225
+   },
+   {
+    "observed": 0.7222972863495739,
+    "null_mean": 0.7404824613309241,
+    "null_sd": 0.010175942076193396,
+    "null_min": 0.6866608095366267,
+    "null_max": 0.7657625356971762,
+    "z": -1.7870753238557036,
+    "p_empirical": 0.055,
+    "permutations": 999,
+    "pages": [
+     "f72r3",
+     "f72v1"
+    ],
+    "plain_rank_distance": 0.7570728714519562
+   },
+   {
+    "observed": 0.7235883820851142,
+    "null_mean": 0.7246771778180637,
+    "null_sd": 0.011089264624162092,
+    "null_min": 0.6664804391928577,
+    "null_max": 0.7551665533691677,
+    "z": -0.09818466506581179,
+    "p_empirical": 0.416,
+    "permutations": 999,
+    "pages": [
+     "f72r3",
+     "f72v2"
+    ],
+    "plain_rank_distance": 0.7369313511470373
+   },
+   {
+    "observed": 0.6906227215050745,
+    "null_mean": 0.7068946844727528,
+    "null_sd": 0.010355506416016892,
+    "null_min": 0.6647430818999447,
+    "null_max": 0.7315815569083541,
+    "z": -1.5713343523702914,
+    "p_empirical": 0.066,
+    "permutations": 999,
+    "pages": [
+     "f72r3",
+     "f72v3"
+    ],
+    "plain_rank_distance": 0.7676405233594776
+   },
+   {
+    "observed": 0.7494822413123067,
+    "null_mean": 0.7515329593942521,
+    "null_sd": 0.009379092905094612,
+    "null_min": 0.7169291976481519,
+    "null_max": 0.7741216662785291,
+    "z": -0.2186478055709984,
+    "p_empirical": 0.369,
+    "permutations": 999,
+    "pages": [
+     "f72r3",
+     "f73r"
+    ],
+    "plain_rank_distance": 0.796432996923193
+   },
+   {
+    "observed": 0.750587931797082,
+    "null_mean": 0.7527458090094256,
+    "null_sd": 0.010608092143560548,
+    "null_min": 0.7124682325662719,
+    "null_max": 0.7757285984410167,
+    "z": -0.20341803060726682,
+    "p_empirical": 0.368,
+    "permutations": 999,
+    "pages": [
+     "f72r3",
+     "f73v"
+    ],
+    "plain_rank_distance": 0.7862812145491885
+   },
+   {
+    "observed": 0.6298206937095826,
+    "null_mean": 0.6142597329840128,
+    "null_sd": 0.013733445133306573,
+    "null_min": 0.561199294532628,
+    "null_max": 0.6467372134038802,
+    "z": 1.1330704404120049,
+    "p_empirical": 0.876,
+    "permutations": 999,
+    "pages": [
+     "f72v1",
+     "f72v2"
+    ],
+    "plain_rank_distance": 0.6860229276895944
+   },
+   {
+    "observed": 0.5888848805515473,
+    "null_mean": 0.6188372475409512,
+    "null_sd": 0.013674118046869948,
+    "null_min": 0.5602987547431991,
+    "null_max": 0.6480145369034257,
+    "z": -2.190442329570209,
+    "p_empirical": 0.037,
+    "permutations": 999,
+    "pages": [
+     "f72v1",
+     "f72v3"
+    ],
+    "plain_rank_distance": 0.7245417134306024
+   },
+   {
+    "observed": 0.6056437389770722,
+    "null_mean": 0.5995553754813013,
+    "null_sd": 0.014130826419639529,
+    "null_min": 0.5346560846560846,
+    "null_max": 0.6335978835978835,
+    "z": 0.43085685967446913,
+    "p_empirical": 0.636,
+    "permutations": 999,
+    "pages": [
+     "f72v1",
+     "f73r"
+    ],
+    "plain_rank_distance": 0.7121693121693122
+   },
+   {
+    "observed": 0.5828042328042328,
+    "null_mean": 0.5860277384968743,
+    "null_sd": 0.016087533416957338,
+    "null_min": 0.5262345679012346,
+    "null_max": 0.6200176366843033,
+    "z": -0.20037289801329794,
+    "p_empirical": 0.372,
+    "permutations": 999,
+    "pages": [
+     "f72v1",
+     "f73v"
+    ],
+    "plain_rank_distance": 0.655952380952381
+   },
+   {
+    "observed": 0.6507780182780183,
+    "null_mean": 0.653097540782726,
+    "null_sd": 0.012524439238262509,
+    "null_min": 0.6040704665704665,
+    "null_max": 0.6788961038961039,
+    "z": -0.18519970919108916,
+    "p_empirical": 0.37,
+    "permutations": 999,
+    "pages": [
+     "f72v2",
+     "f72v3"
+    ],
+    "plain_rank_distance": 0.7260521885521887
+   },
+   {
+    "observed": 0.6140343915343915,
+    "null_mean": 0.638108134589616,
+    "null_sd": 0.013657469183679159,
+    "null_min": 0.5811904761904763,
+    "null_max": 0.6655158730158731,
+    "z": -1.7626796540015546,
+    "p_empirical": 0.057,
+    "permutations": 999,
+    "pages": [
+     "f72v2",
+     "f73r"
+    ],
+    "plain_rank_distance": 0.6973015873015874
+   },
+   {
+    "observed": 0.6386243386243386,
+    "null_mean": 0.6346739993962217,
+    "null_sd": 0.014171440308349435,
+    "null_min": 0.5870105820105819,
+    "null_max": 0.6709126984126984,
+    "z": 0.27875354531109336,
+    "p_empirical": 0.553,
+    "permutations": 999,
+    "pages": [
+     "f72v2",
+     "f73v"
+    ],
+    "plain_rank_distance": 0.7554100529100528
+   },
+   {
+    "observed": 0.6128400406178185,
+    "null_mean": 0.6216946891844012,
+    "null_sd": 0.014338531419199545,
+    "null_min": 0.5371319010207899,
+    "null_max": 0.6527764416653306,
+    "z": -0.6175422229591909,
+    "p_empirical": 0.239,
+    "permutations": 999,
+    "pages": [
+     "f72v3",
+     "f73r"
+    ],
+    "plain_rank_distance": 0.7114170808615253
+   },
+   {
+    "observed": 0.6577414355192134,
+    "null_mean": 0.6515789545624937,
+    "null_sd": 0.013393854312914762,
+    "null_min": 0.5987320292875848,
+    "null_max": 0.6827868633424189,
+    "z": 0.46009765469657393,
+    "p_empirical": 0.668,
+    "permutations": 999,
+    "pages": [
+     "f72v3",
+     "f73v"
+    ],
+    "plain_rank_distance": 0.7301092939981829
+   },
+   {
+    "observed": 0.5945634920634922,
+    "null_mean": 0.6146912388579056,
+    "null_sd": 0.014096026545899627,
+    "null_min": 0.5509920634920635,
+    "null_max": 0.6454761904761905,
+    "z": -1.4279021629870756,
+    "p_empirical": 0.081,
+    "permutations": 999,
+    "pages": [
+     "f73r",
+     "f73v"
+    ],
+    "plain_rank_distance": 0.6987301587301588
+   }
+  ],
+  "pooled": {
+   "observed": 0.6508595956563429,
+   "null_mean": 0.6532730595192555,
+   "null_sd": 0.0022080648536871306,
+   "null_min": 0.6455647310038477,
+   "null_max": 0.6595207020272243,
+   "z": -1.0930221813378893,
+   "p_empirical": 0.128,
+   "permutations": 999,
+   "pairs_tested": 34,
+   "pairs_p_below_0_05": 2
+  }
+ },
+ "B3_within_ring_adjacency": {
+  "observed": 0.6674347262649203,
+  "null_mean": 0.6711059235626217,
+  "null_sd": 0.00710028244043672,
+  "null_min": 0.6480318433250715,
+  "null_max": 0.6948945337234802,
+  "z": -0.5170494735242634,
+  "p_empirical": 0.301,
+  "permutations": 999,
+  "rings": 28,
+  "labels": 284
+ },
+ "B4_descriptive": {
+  "label_length_units_mean": 6.480701754385965,
+  "text_word_length_units_mean": 4.47503251487802,
+  "label_initial_share": {
+   "o": 0.768,
+   "y": 0.098,
+   "c": 0.06,
+   "a": 0.021,
+   "s": 0.018,
+   "d": 0.011
+  },
+  "text_initial_share": {
+   "o": 0.205,
+   "c": 0.184,
+   "q": 0.16,
+   "s": 0.121,
+   "d": 0.09,
+   "a": 0.05
+  },
+  "single_word_labels_also_in_running_text": 0.4777327935222672,
+  "labels_starting_ot_or_ok": 0.543859649122807
+ },
+ "controls": {
+  "control_latin_cardinals_1_30": {
+   "B1": {
+    "labels": 360,
+    "types": 30,
+    "types_on_2plus_groups": 30,
+    "share_of_labels_recurring_elsewhere": 1.0,
+    "most_repeated": [
+     [
+      "unus",
+      12
+     ],
+     [
+      "duo",
+      12
+     ],
+     [
+      "tres",
+      12
+     ],
+     [
+      "quattuor",
+      12
+     ],
+     [
+      "quinque",
+      12
+     ],
+     [
+      "sex",
+      12
+     ],
+     [
+      "septem",
+      12
+     ],
+     [
+      "octo",
+      12
+     ],
+     [
+      "novem",
+      12
+     ],
+     [
+      "decem",
+      12
+     ],
+     [
+      "undecim",
+      12
+     ],
+     [
+      "duodecim",
+      12
+     ]
+    ]
+   },
+   "B2": {
+    "observed": 0.0,
+    "null_mean": 0.6391755755650989,
+    "null_sd": 0.002861573750255821,
+    "null_min": 0.6320581929294048,
+    "null_max": 0.6468573121603425,
+    "z": -223.3650541098084,
+    "p_empirical": 0.005,
+    "permutations": 199,
+    "pairs_tested": 66,
+    "pairs_p_below_0_05": 66
+   },
+   "B3": {
+    "observed": 0.5441976541976541,
+    "null_mean": 0.7666612113691258,
+    "null_sd": 0.009060858890868159,
+    "null_min": 0.7467362036112036,
+    "null_max": 0.791806573056573,
+    "z": -24.552148957498723,
+    "p_empirical": 0.005,
+    "permutations": 199,
+    "rings": 12,
+    "labels": 360
+   }
+  },
+  "control_roman_numerals_1_30": {
+   "B1": {
+    "labels": 360,
+    "types": 30,
+    "types_on_2plus_groups": 30,
+    "share_of_labels_recurring_elsewhere": 1.0,
+    "most_repeated": [
+     [
+      "i",
+      12
+     ],
+     [
+      "ii",
+      12
+     ],
+     [
+      "iii",
+      12
+     ],
+     [
+      "iv",
+      12
+     ],
+     [
+      "v",
+      12
+     ],
+     [
+      "vi",
+      12
+     ],
+     [
+      "vii",
+      12
+     ],
+     [
+      "viii",
+      12
+     ],
+     [
+      "ix",
+      12
+     ],
+     [
+      "x",
+      12
+     ],
+     [
+      "xi",
+      12
+     ],
+     [
+      "xii",
+      12
+     ]
+    ]
+   },
+   "B2": {
+    "observed": 0.0,
+    "null_mean": 0.49562035768065915,
+    "null_sd": 0.0027434219727277575,
+    "null_min": 0.4873905723905723,
+    "null_max": 0.5031565656565656,
+    "z": -180.6577196682101,
+    "p_empirical": 0.005,
+    "permutations": 199,
+    "pairs_tested": 66,
+    "pairs_p_below_0_05": 66
+   },
+   "B3": {
+    "observed": 0.3922222222222222,
+    "null_mean": 0.6086094825981762,
+    "null_sd": 0.00910282458593157,
+    "null_min": 0.5820370370370369,
+    "null_max": 0.6304166666666666,
+    "z": -23.771441307391644,
+    "p_empirical": 0.005,
+    "permutations": 199,
+    "rings": 12,
+    "labels": 360
+   }
+  },
+  "control_distinct_latin_words": {
+   "B1": {
+    "labels": 360,
+    "types": 360,
+    "types_on_2plus_groups": 0,
+    "share_of_labels_recurring_elsewhere": 0.0,
+    "most_repeated": []
+   },
+   "B2": {
+    "observed": 0.8026106301106302,
+    "null_mean": 0.802159991274313,
+    "null_sd": 0.0013457917871719034,
+    "null_min": 0.7980796055796059,
+    "null_max": 0.8055026455026455,
+    "z": 0.33485033911829626,
+    "p_empirical": 0.565,
+    "permutations": 199,
+    "pairs_tested": 66,
+    "pairs_p_below_0_05": 4
+   },
+   "B3": {
+    "observed": 0.8545105820105822,
+    "null_mean": 0.8564437265693547,
+    "null_sd": 0.006417744363821722,
+    "null_min": 0.8362070105820104,
+    "null_max": 0.8727248677248678,
+    "z": -0.3012186913629896,
+    "p_empirical": 0.345,
+    "permutations": 199,
+    "rings": 12,
+    "labels": 360
+   }
+  }
+ },
+ "runtime_seconds": 175.7
+}

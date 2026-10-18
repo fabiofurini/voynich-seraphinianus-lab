@@ -205,7 +205,8 @@ def modularity(W, part):
 
 def greedy_modularity(W):
     """Clauset-Newman-Moore agglomeration on a weighted symmetric matrix (zero diagonal).
-    Returns (partition, Q). Small graphs only (tens of nodes)."""
+    At each step merges the pair (i < j) with the largest modularity gain; ties go to the
+    first pair in row-major order. Returns (partition, Q). Small graphs only."""
     n = len(W)
     m2 = W.sum()
     if n == 0 or m2 == 0:
@@ -214,15 +215,13 @@ def greedy_modularity(W):
     a = W.sum(1) / m2
     comms = [[i] for i in range(n)]
     while len(comms) > 1:
-        best, best_dq = None, 1e-12
-        for i in range(len(comms)):
-            for j in range(i + 1, len(comms)):
-                dq = 2 * (E[i, j] - a[i] * a[j])
-                if dq > best_dq:
-                    best, best_dq = (i, j), dq
-        if best is None:
+        k = len(comms)
+        dq = 2 * (E - np.outer(a, a))
+        dq[np.tril_indices(k)] = -np.inf
+        flat = int(np.argmax(dq))
+        if dq.flat[flat] <= 1e-12:
             break
-        i, j = best
+        i, j = divmod(flat, k)
         E[i, :] += E[j, :]
         E[:, i] += E[:, j]
         a[i] += a[j]

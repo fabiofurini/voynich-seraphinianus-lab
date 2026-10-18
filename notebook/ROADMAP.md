@@ -23,6 +23,11 @@ No roadmap item implies a promised decipherment. Completed and inconclusive work
 - [ ] Topic-varying asemic generators and copy-and-edit controls matched to section structure.
 - [ ] Compare document-level and sentence-level signals without treating physical lines as known sentences.
 
+## P2b — Follow-ups from E13/E14
+- [ ] Repeat E13 with a positive control that passes (larger mock-syllabary corpora, real syllabic scripts such as Linear B or Japanese kana transliterations) before reading any syllabary verdict.
+- [ ] Test whether the three positional glyph classes of E13 predict held-out word structure better than Stolfi's core–mantle–crust model.
+- [ ] Look for non-cyclic anchors: zodiac labels against star-name lists; label onsets (`ot-`, `ok-`) by section.
+
 ## P3 — Interpretation
 - [ ] Work with a linguist on which latent units could carry Moro-style structural dependencies.
 - [ ] Define identifiability assumptions for each family of claimed decipherments.
