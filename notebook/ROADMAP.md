@@ -12,6 +12,7 @@ No roadmap item implies a promised decipherment. Completed and inconclusive work
 - [ ] Independent reproduction of this snapshot.
 
 ## P1 — Stronger generative comparisons
+- [ ] **Gropper (2026) replication:** independently audit the preprint's ten-slot template, copy-and-mutate generator, line-initial transition rule, compression claim and scribe-controlled section effect. See [critical review](GROPPER_2026.md) and [tracking issue](https://github.com/fabiofurini/voynich-seraphinianus-lab/issues/1).
 - [ ] Learn sub-word tokens on training pages only; compare tokenisations under complexity penalties.
 - [ ] Compare left/right extension grammars, finite-state models and richer PCFGs on exactly the same held-out targets.
 - [ ] Synthetic positive and negative controls that vary hierarchy strength, noise and coding.
